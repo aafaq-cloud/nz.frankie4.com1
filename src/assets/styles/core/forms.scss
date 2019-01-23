@@ -10,7 +10,7 @@ textarea,
 .select-wrap {
   font-size: rem-calc(16);
   font-weight: 300;
-  padding: 13px 20px 14px;
+  padding: 13px 20px 13px;
   width: 100%;
   appearance: none;
   border-radius: 0;
@@ -19,11 +19,11 @@ textarea,
   background-color: $color-form-element-background;
 
   @include placeholder() {
-    font-size: rem-calc(10);
+    font-size: rem-calc(14);
   }
 
   @include breakpoint(medium) {
-    font-size: rem-calc(10);
+    font-size: rem-calc(14);
   }
 }
 

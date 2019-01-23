@@ -11,50 +11,40 @@ $payment-icons-spacing: 10px;
 // Footer
 // -----------------------------------------------------
 footer {
-  padding: 60px 0;
-  border-top: 1px solid $color-border;
+  padding: 60px 0 40px;
 
   // Navigation
-  // -------------------------
-
   .menu {
     list-style: none;
     padding: 0;
+    margin: 0;
 
     a {
-      display: block;
       text-decoration: none;
     }
   }
 
   .sub-menu {
-    list-style: none;
-    margin: 0;
     padding: 0;
-    line-height: (22 / 12);
-    margin-top: 20px;
-    font-weight: 600;
+    list-style: none;
+
     li {
-      margin-bottom: 4px;
-    }
-    .icon {
-      transform: rotate(-90deg);
-      height: 0.5em;
-      width: 0.5em;
-      margin-right: 4px;
+      padding: 0;
     }
   }
 
   // Socials
-  // -------------------------
-  .social-icons-container {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    > h4 {
+  .social-icons {
+    &-container {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    &-title {
+      font-weight: normal;
       flex-shrink: 0;
-      margin-right: 10px;
-      margin-bottom: 0;
+      margin: 0 14px 0 0;
     }
   }
 
@@ -63,26 +53,30 @@ footer {
       @include flex-align(center);
     }
   }
-}
 
-.footer-legals {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 0;
-  a {
-    text-decoration: none;
-  }
-  li {
-    display: inline-block;
-    &::after {
-      content: "|";
-      display: inline-block;
-      margin: 0 0.3em;
-    }
-    &:last-of-type {
+  // Legals
+  .footer-legals {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    font-size: rem-calc(11px);
+
+    li {
       &::after {
-        display: none;
+        content: "|";
+        margin: 0 0.4em;
       }
+      &:last-of-type {
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 }

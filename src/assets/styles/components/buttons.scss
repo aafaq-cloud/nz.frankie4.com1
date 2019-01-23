@@ -10,17 +10,16 @@ button {
   position: relative;
   display: inline-flex;
   @include flex-align(center, middle);
-  padding: 13px 28px;
+  padding: 14px 28px 13px;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 0;
 
   text-align: center;
   font-size: 1rem;
-  letter-spacing: (0.86 / 12) * 1em;
+  font-weight: bold;
   text-decoration: none;
-  text-transform: uppercase;
-  line-height: (15 / 12);
+  line-height: (18 / 14);
   min-width: 150px;
 
   transition: background 200ms, color 200ms,

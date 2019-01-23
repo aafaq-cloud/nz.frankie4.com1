@@ -1,13 +1,12 @@
 <div class="section section-newsletter">
   <div class="grid-container">
-    <div class="text-center mb-30">
-      <h2>{{section.settings.section_title}}</h2>
-      <h3 class="h6 color-secondary-text">{{section.settings.section_subheading}}</h3>
+    <div class="text-center mb-15">
+      <h2 class="m-0">{{section.settings.section_title}}</h2>
+      <p class="m-0">{{section.settings.section_subheading}}</p>
     </div>
 
-
     <div class="grid-x align-center">
-      <div class="cell small-12 medium-7 large-6">
+      <div class="cell medium-7 large-6">
 
         {% form 'customer' %}
 
@@ -19,7 +18,7 @@
 
         <input type="hidden" name="contact[tags]" value="newsletter">
 
-        <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="grid-x grid-margin-y align-right">
 
           {% if form.errors %}
           <div class="cell small-12">
@@ -38,7 +37,7 @@
             autocapitalize="off">
           </div>
 
-          <div class="cell small-12 medium-4">
+          <div class="cell shrink medium-4">
             <input type="submit" class="button button-primary button-solid" value="{{ 'general.newsletter_form.submit' | t }}">
           </div>
         </div>
@@ -50,17 +49,6 @@
   </div>
 
 </div>
-{% stylesheet "scss" %}
-.section.section-newsletter {
-  background-color: darken(white, 5);
-  background-color: var(--color-secondary);
-  padding: 50px 0;
-
-  input[type="email"] {
-    border-color: transparent;
-  }
-}
-{% endstylesheet %}
 {% schema %}
 {
   "name": "Subscribe",

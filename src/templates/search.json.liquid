@@ -14,6 +14,7 @@
     {
         "title"    : {{ product.title | json }},
         "brand"    : {{ product.vendor | json }},
+        "price"    : {{ product.price | money | json }},
         "url"      : {{ product.url | within: product.collections.last | json }},
         "thumbnail": {{ product.featured_image.src | img_url: '600x600' | json }}
     }

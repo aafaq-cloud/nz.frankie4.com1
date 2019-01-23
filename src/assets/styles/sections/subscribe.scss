@@ -1,0 +1,9 @@
+.section-newsletter {
+  background-color: $color-secondary;
+  color: white;
+  padding: 46px 0;
+
+  input[type="email"] {
+    border-color: transparent;
+  }
+}

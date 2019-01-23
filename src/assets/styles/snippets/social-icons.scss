@@ -1,25 +1,30 @@
 // Social Icons
 // -------------------------
-$social-icons-size: 1em;
-$social-icons-spacing: (14 / 30) * 1em;
+$social-icons-size: 24px;
+$social-icons-spacing: 8px;
 
 .social-icons {
   list-style: none;
-  font-size: rem-calc(30);
+  font-size: rem-calc($social-icons-size);
   padding: 0;
-  margin: (-($social-icons-spacing / 2));
+  margin: 0 (-($social-icons-spacing / 2));
 
   li {
-    padding: ($social-icons-spacing / 2);
+    margin: 0 ($social-icons-spacing / 2);
     line-height: 0;
   }
 
   a {
     display: block;
+    transition: color 200ms;
+
+    &:hover {
+      color: $color-secondary;
+    }
   }
 
   svg {
-    width: $social-icons-size;
-    height: $social-icons-size;
+    width: 1em;
+    height: 1em;
   }
 }

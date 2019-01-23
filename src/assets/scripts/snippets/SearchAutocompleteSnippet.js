@@ -43,13 +43,13 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                       :aria-label="title">
                         <img v-if="image" class="result-item-image cell shrink" :src=" image" />
                         <div class="details">
-                            <span v-if="brand" class="text-small color-secondary-text">{{ brand }}</span>
                             <h5 class="m-0">{{ title }}</h5>
+                            <span v-if="price" class="text-small color-secondary-text">{{ price }}</span>
                         </div>
                     </a>
                 </li>
                 `,
-      props: ["title", "image", "url", "brand"]
+      props: ["title", "image", "url", "brand", "price"]
     });
 
     Vue.component("result-page-item", {
@@ -111,7 +111,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
         focusedIndex: -1
       },
       template: `
-      <form :class="keyword_focused ? 'search-autocomplete-view search-focussed' : 'search-autocomplete-view search-blurred'" action="/search" method="get">
+      <form :class="keyword_focused || resultsFocused ? 'search-autocomplete-view search-focussed' : 'search-autocomplete-view search-blurred'" action="/search" method="get">
         <div class="search-input-wrapper">
           <input v-model="keyword"
                  ref="keyword"
@@ -144,6 +144,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                         :image="item.thumbnail"
                         :url="item.url"
                         :brand="item.brand"
+                        :price="item.price"
                         :key="item.url"
                         :ref="'product-' + item.url"
                         @result-blur="resultBlur"

@@ -14,33 +14,40 @@
         "type": "color",
         "id": "color_primary",
         "label": "Primary",
-        "default": "#F7EEEA",
+        "default": "#343840",
         "info": "Buttons and special ornaments"
       },
       {
         "type": "color",
         "id": "color_secondary",
         "label": "Secondary",
-        "default": "#000",
+        "default": "#e1cbcd",
         "info": "Alternative accents"
+      },
+      {
+        "type": "color",
+        "id": "color_tertiary",
+        "label": "Tertiary",
+        "default": "#e4eaed",
+        "info": "Tertiary accents"
       },
       {
         "type": "color",
         "id": "color_body_text",
         "label": "Text",
-        "default": "#1A1B1C"
+        "default": "#1a1b1c"
       },
       {
         "type": "color",
         "id": "color_secondary_text",
         "label": "Secondary Text",
-        "default": "#68727D"
+        "default": "#68727d"
       },
       {
         "type": "color",
         "id": "color_main_bg",
         "label": "Background",
-        "default": "#fff"
+        "default": "#ffffff"
       }
     ]
   },
