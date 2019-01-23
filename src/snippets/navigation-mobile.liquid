@@ -1,0 +1,69 @@
+{% comment %}
+Mobile Navigation
+====================
+Navigation to display on small and medium viewports
+{% endcomment %}
+
+<nav role="navigation" class="mobile-nav hide-for-large">
+    <span class="mobile-nav-links-title">Menu</span>
+    <ul class="mobile-nav-links">
+        {% for link in linklists[section.settings.main_linklist].links %}
+            <li>
+                <a {% if link.links != blank %}class="has-children"{% endif %} href="{{ link.url }}">{{ link.title | escape }}</a>
+                {% if link.links != blank %}
+                    <span class="toggle">{% include 'icon-chevron' %}</span>
+
+                    <ul class="sub-links child-links">
+                        {% for child_link in link.links %}
+                            <li>
+                                <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                                {% if child_link.links != blank %}
+                                    <span class="toggle">{% include 'icon-chevron' %}</span>
+                                    <ul class="sub-links grandchild-links">
+                                        {% for grandchild_link in child_link.links %}
+                                            <li>
+                                                <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+        {% if shop.customer_accounts_enabled %}
+            <li>
+                <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                <span class="toggle">{% include 'icon-chevron' %}</span>
+
+                <ul class="sub-links child-links">
+
+                    {% if customer %}
+                        <li>
+                            <a href="/account">{{ 'layout.customer.view_account' | t }}</a>
+                        </li>
+                        <li>
+                            <a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+                        </li>
+                        <li>
+                            <a href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="nav-overlay js-mobile-nav-toggle hide-for-large">
+    <a class="nav-overlay__close">
+        {% include 'icon-cross' %}
+    </a>
+</div>

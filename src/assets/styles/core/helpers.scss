@@ -1,0 +1,151 @@
+.clearfix {
+  @include clearfix;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.js-focus-hidden:focus {
+  outline: none;
+}
+
+.visually-shown {
+  @include visually-shown;
+}
+
+// Only show when JS is not supported
+.no-js:not(html) {
+  display: none;
+
+  .no-js & {
+    display: block;
+  }
+}
+
+// Only show when JS is supported
+.js {
+  .no-js & {
+    display: none;
+  }
+}
+
+// Only show when browser cookies are not supported
+.supports-no-cookies:not(html) {
+  display: none;
+
+  html.supports-no-cookies & {
+    display: block;
+  }
+}
+
+// Only show when browser cookies are supported
+.supports-cookies {
+  html.supports-no-cookies & {
+    display: none;
+  }
+}
+
+// Skip to content button
+// Overrides .visually-hidden when focused
+.skip-link:focus {
+  @include visually-shown(absolute);
+  z-index: 10000;
+  background-color: $color-body;
+  color: $color-body-text;
+  transition: none;
+}
+
+// Absolute position link cover
+.cover-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+// Hide outline on focus for elements which are given focus by JS
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.hide {
+  /* stylelint-disable declaration-no-important */
+  display: none !important;
+}
+
+.db {
+  display: block;
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+.color-secondary-text {
+  color: $color-body-secondary-text;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.m {
+  &-0 {
+    margin: 0;
+  }
+}
+
+.mt {
+  &-0 {
+    margin-top: 0;
+  }
+  &-10 {
+    margin-top: 10px;
+  }
+  &-20 {
+    margin-top: 20px;
+  }
+  &-30 {
+    margin-top: 30px;
+  }
+  &-40 {
+    margin-top: 40px;
+  }
+  &-50 {
+    margin-top: 50px;
+  }
+}
+
+.mb {
+  &-0 {
+    margin-bottom: 0;
+  }
+  &-10 {
+    margin-bottom: 10px;
+  }
+  &-15 {
+    margin-bottom: 15px;
+  }
+  &-20 {
+    margin-bottom: 20px;
+  }
+  &-30 {
+    margin-bottom: 30px;
+  }
+  &-40 {
+    margin-bottom: 40px;
+  }
+}
+
+.mr {
+  &-10 {
+    margin-right: 10px;
+  }
+}

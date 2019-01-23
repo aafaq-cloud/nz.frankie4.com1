@@ -1,0 +1,23 @@
+<div class="pagination mt-40">
+    <div class="grid-x align-justify align-middle">
+        <div class="pagination__previous cell auto">
+            {% if paginate.previous.is_link %}
+                <a href="{{ paginate.previous.url }}">Previous</a>
+            {% endif %}
+        </div>
+        <div class="pagination__pages cell auto">
+            {% for part in paginate.parts %}
+                {% if part.is_link %}
+                    {{ part.title | link_to: part.url}}
+                {% else %}
+                    <span class="current">{{ part.title }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="pagination__next cell auto">
+            {% if paginate.next.is_link %}
+                <a href="{{ paginate.next.url }}">Next</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

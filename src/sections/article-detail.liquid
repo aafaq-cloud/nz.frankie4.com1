@@ -1,0 +1,148 @@
+{% comment %}
+When a comment is submitted, the browser is redirected to a page that includes
+the new comment id in its URL.
+#comments is a required ID and is used as an anchor link by Shopify.
+{% endcomment %}
+
+{%- assign number_of_comments = article.comments_count -%}
+
+{% comment %}
+If a comment was just submitted but requires moderation, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.status != 'published' %}
+    {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+
+{% assign current_article_id = article.id %}
+
+<div class="section section-article-detail">
+
+    <article class="grid-container" role="article">
+
+        <div class="grid-x">
+
+            <div class="cell medium-10 large-6">
+                <img data-src="{{article.image | img_url: '800x800', crop: 'center'}}" class="lazyload article__image">
+            </div>
+
+            <div class="article__content cell medium-10 large-6">
+
+                {% include 'breadcrumb' %}
+
+                <h1 class="mt-10 mb-40">{{ article.title }}</h1>
+
+                <div class="rte clearfix" itemprop="articleBody">
+                    {{ article.content }}
+                </div>
+
+                <div class="article__share mt-40">
+                    <span class="article__share-label color-secondary-text text-small">Share</span>
+                    {% if settings.social_sharing_blog %}
+                        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Article",
+          "articleBody": "{{ article.content | strip_html }}",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ shop.url }}{{ page.url }}"
+          },
+          "headline": "{{ article.title }}",
+          {% if article.excerpt != blank %}
+            "description": "{{ article.excerpt | strip_html }}",
+          {% endif %}
+          {% if article.image %}
+                    {% assign image_size = article.image.width | append: 'x' %}
+            "image": [
+              "https:{{ article | img_url: image_size }}"
+            ],
+          {% endif %}
+          "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+          "dateCreated": "{{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+          "author": {
+            "@type": "Person",
+            "name": "{{ article.author }}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            {% if settings.share_image %}
+                    {% assign image_size = settings.share_image.width | append: 'x' %}
+              "logo": {
+                "@type": "ImageObject",
+                "height": "{{ settings.share_image.height }}",
+                "url": "https:{{ settings.share_image | img_url: image_size }}",
+                "width": "{{ settings.share_image.width }}"
+              },
+            {% elsif article.image %}
+                    {% assign image_size = article.image.width | append: 'x' %}
+              "logo": {
+                "@type": "ImageObject",
+                "height": "{{ article.image.height }}",
+                "url": "https:{{ article.image | img_url: image_size }}",
+                "width": "{{ article.image.width }}"
+              },
+            {% endif %}
+            "name": "{{ shop.name }}"
+          }
+        }
+    </script>
+</div>
+
+<div class="section section-article-related">
+    <div class="grid-container">
+        <div class="text-center mt-30 mb-40">
+            <h2>{{section.settings.related_articles_title}}</h2>
+            <p class="h6 color-secondary-text">{{section.settings.related_articles_subtitle}}</p>
+        </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% assign article_listing = 1 %}
+            {% for article in blog.articles limit: 4  %}
+                {% unless current_article_id ==  article.id or article_listing == 4 %}
+                    <div class="cell small-12 medium-6 large-4{% if article_listing == 3 %} hide-for-medium-only{% endif %}">
+                        {% include 'article-tile' %}
+                    </div>
+                {% assign article_listing = article_listing | plus: 1 %}
+                {% endunless %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+
+    {
+        "name": "Article Detail",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Related Posts"
+            },
+            {
+                "type": "text",
+                "id": "related_articles_title",
+                "label": "Related Posts Title",
+                "default": "We think you’ll love these"
+            },
+            {
+                "type": "text",
+                "id": "related_articles_subtitle",
+                "label": "Related Posts Subtitle",
+                "default": "We've selected some similar posts just for you"
+            }
+        ]
+    }
+
+{% endschema %}

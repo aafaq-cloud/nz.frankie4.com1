@@ -1,0 +1,18 @@
+.section-collection {
+  .load-more-group {
+    margin-top: 50px;
+  }
+}
+
+#collection-load-more-button {
+  cursor: pointer;
+}
+
+.collection-header {
+  margin-top: map-get($grid-margin-gutters, small);
+  margin-bottom: map-get($grid-margin-gutters, small);
+  @include breakpoint(medium) {
+    margin-top: map-get($grid-margin-gutters, medium);
+    margin-bottom: map-get($grid-margin-gutters, medium);
+  }
+}

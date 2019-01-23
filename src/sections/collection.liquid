@@ -1,0 +1,171 @@
+<div data-autoload-class="CollectionSection" class="section section-collection no-margin-top">
+
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x collection-header">
+      <div class="cell large-6">
+        {% include 'breadcrumb' %}
+
+        <h1>{{collection.title}}</h1>
+        <p class="color-secondary-text semibold">{{collection.description}}</p>
+      </div>
+      {% unless collection.image == blank %}
+        <div class="cell large-6 show-for-large">
+          <div class="collection-banner-image-wrapper">
+            <img class="collection-banner-image lazyload" data-src="{{collection.image | img_url: '690x367'}}">
+          </div>
+        </div>
+        {% endunless %}
+    </div>
+
+        <!-- <div class="collection-toolbar grid-x align-justify align-middle">
+          <div class="cell auto grid-x grid-margin-x align-middle align-right">
+
+            <div class="collection-toolbar__count cell shrink">
+              <span>{{ collection.products.size }} items</span>
+            </div>
+            <div class="collection-toolbar__sort cell shrink">
+              {% capture sort_by %}{{ collection.sort_by | default: collection.default_sort_by  }}{% endcapture %}
+              {% assign sort_by = sort_by | handleize %}
+
+              <div class="select-wrap">
+                {% include 'icon-chevron-down-bold' %}
+
+                <select id="sort-by">
+                  <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>Featured</option>
+                  <option value="price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>Price (low to high)</option>
+                  <option value="price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>Price (high to low)</option>
+                  <option value="title-ascending" {% if sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+                  <option value="title-descending" {% if sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
+                  <option value="created-ascending" {% if sort_by == 'created-ascending' %}selected{% endif %}>Oldest</option>
+                  <option value="created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+                  <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div> -->
+
+        {% paginate collection.products by 8 %}
+
+        <div id="collection-infinite-container" class="collection-products grid-x grid-margin-x grid-margin-y"
+        data-load_more_enable="{% if section.settings.plus_load_more_enabled and paginate.pages > 1 %}true{% else %}false{% endif %}">
+        {% for product in collection.products %}
+          {% include "collection-marketing-block", blocks: section.blocks, index: forloop.index %}
+
+          <div class="cell small-6 large-3 grid-x align-stretch">
+            {% include 'product-tile' %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <script>
+      var loadMoreEnable = {% if section.settings.plus_load_more_enabled and paginate.pages > 1 %}true{% else %}false{% endif %};
+      </script>
+
+      {% if paginate.pages > 1 %}
+      {% comment %} checks if we want to use the load more {% endcomment %}
+      {% if section.settings.plus_load_more_enabled %}
+      {% comment %} checks if there's a next page {% endcomment %}
+      {% if paginate.next.is_link %}
+      <div id="collection-load-more-container" class="button-group align-center load-more-group" style="display:none;">
+        <div class="inside">
+          <button id="collection-load-more-button"
+          type="button"
+          class="button button-primary"
+          data-num-pages="{{ paginate.pages }}"
+          data-next-url="{{ paginate.next.url }}"
+          data-load-more-text="{{ 'collections.load_more' | t }}"
+          data-loading-text="{{ 'collections.load_more_loading' | t }}">
+          {{ 'collections.load_more' | t }}
+        </button>
+      </div>
+    </div>
+    {% endif %}
+    {% endif %}
+
+    {% comment %} You'll keep this so that if they don't have JavaScript enabled, it still works. You'll hide with JavaScript {% endcomment %}
+    {% include 'pagination' %}
+    {% endif %}
+
+    {% endpaginate %}
+  </div>
+
+</div>
+{% stylesheet "scss" %}
+.collection-banner-image-wrapper {
+  background-color: darken(white, 5);
+  position: relative;
+  @supports (object-fit: cover) {
+    padding-bottom: (367 / 690) * 100%;
+  }
+}
+.collection-banner-image {
+  width: 100%;
+  display: block;
+  transition: opacity 0.35s;
+  @supports (object-fit: cover) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+  &.lazyload {
+    opacity: 0;
+  }
+  &.lazyloaded {
+    opacity: 1;
+  }
+}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection infinite scroll"
+    },
+    {
+      "type": "paragraph",
+      "content": "Replace default collection pagination with a 'lazy load' ajax functionality which loads subsequent product pages as you scroll down."
+    },
+    {
+      "type": "checkbox",
+      "id": "plus_load_more_enabled",
+      "label": "Enable ajax collection pagination",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "marketing_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Position",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "text",
+          "id": "scope",
+          "label": "Collections to show on",
+          "default": "all",
+          "info": "Comma separate multiple collection slugs, or use 'all' to show on every collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

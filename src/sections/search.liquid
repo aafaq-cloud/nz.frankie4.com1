@@ -1,0 +1,123 @@
+<div class="section section-search">
+
+    <div class="grid-container">
+
+        {% paginate search.results by 50 %}
+
+            {% if search.performed %}
+
+                {% assign product_count = 0 %}
+                {% assign page_count = 0 %}
+                {% assign article_count = 0 %}
+
+                {% for item in search.results %}
+                    {% if item.object_type == 'product' %}
+                        {% if item.available %}
+                            {% assign product_count = product_count | plus: 1 %}
+                        {% endif %}
+                    {% elsif item.object_type == 'page' %}
+                        {% assign page_count = page_count | plus: 1 %}
+                    {% elsif item.object_type == 'article' %}
+                        {% assign article_count = article_count | plus: 1 %}
+                    {% endif%}
+
+                {% endfor %}
+
+                {% if product_count > 0 %}
+
+                    <div class="search-results-section">
+                        <h3 class="mb-40">{{ 'general.search.search_title_product' | t }}</h3>
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            {% for item in search.results %}
+
+                                {% if item.object_type == 'product' %}
+                                    {% if item.available %}
+                                        {% assign product = item %}
+                                        <div class="cell small-6 medium-4 large-3">
+                                            {% include 'product-tile' %}
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endif %}
+
+                {% if article_count > 0 %}
+
+                    <div class="search-results-section">
+
+                        <h3 class="mb-40">{{ 'general.search.search_title_article' | t }}</h3>
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            {% for item in search.results %}
+
+                                {% if item.object_type == 'article' %}
+                                    <div class="cell small-12 medium-6 large-3">
+                                        {%- assign article = item -%}
+                                        {% include 'article-tile' %}
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endif %}
+
+
+                {% if page_count > 0 %}
+
+                    <div class="search-results-section">
+
+                        <h3 class="mb-40">{{ 'general.search.search_title_page' | t }}</h3>
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            {% for item in search.results %}
+
+                                {% if item.object_type == 'page' %}
+                                    <div class="cell small-12 medium-6 large-3">
+                                        {%- assign page = item -%}
+                                        {% include 'page-item' %}
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endif %}
+
+                {% if paginate.pages > 1 %}
+                    {% include 'pagination' %}
+                {% endif %}
+
+
+            {% endif %}
+
+        {% endpaginate %}
+
+        {% assign show_search_form = true %}
+
+        {% if search.performed %}
+            {% unless product_count == 0 and article_count == 0 and page_count == 0 %}
+                {% assign show_search_form = false %}
+            {% endunless %}
+        {% endif %}
+
+        {% if show_search_form %}
+
+            <form>
+                <div class="grid-x grid-margin-x grid-margin-y align-center align-middle mt-50">
+                    <div class="search-box cell medium-4 large-3">
+                        <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms }}">
+                    </div>
+                    <div class="cell shrink">
+                        <button type="submit" class="button button-primary">{{ 'general.search.submit' | t }}</button>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+
+</div>

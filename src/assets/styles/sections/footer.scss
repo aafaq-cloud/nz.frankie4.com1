@@ -1,0 +1,88 @@
+// =====================================================
+// Footer
+// =====================================================
+// Variables
+// =====================================================
+
+// Variables
+// -----------------------------------------------------
+$payment-icons-spacing: 10px;
+
+// Footer
+// -----------------------------------------------------
+footer {
+  padding: 60px 0;
+  border-top: 1px solid $color-border;
+
+  // Navigation
+  // -------------------------
+
+  .menu {
+    list-style: none;
+    padding: 0;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+
+  .sub-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: (22 / 12);
+    margin-top: 20px;
+    font-weight: 600;
+    li {
+      margin-bottom: 4px;
+    }
+    .icon {
+      transform: rotate(-90deg);
+      height: 0.5em;
+      width: 0.5em;
+      margin-right: 4px;
+    }
+  }
+
+  // Socials
+  // -------------------------
+  .social-icons-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    > h4 {
+      flex-shrink: 0;
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .social-icons {
+    @include breakpoint(small down) {
+      @include flex-align(center);
+    }
+  }
+}
+
+.footer-legals {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  a {
+    text-decoration: none;
+  }
+  li {
+    display: inline-block;
+    &::after {
+      content: "|";
+      display: inline-block;
+      margin: 0 0.3em;
+    }
+    &:last-of-type {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

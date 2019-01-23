@@ -1,0 +1,47 @@
+.accordion {
+  &[aria-expanded="false"] {
+    display: none;
+  }
+
+  &-for-small {
+    @include breakpoint(small down) {
+      &[aria-expanded="false"] {
+        display: none;
+      }
+    }
+  }
+
+  &-for-medium {
+    @include breakpoint(medium down) {
+      &[aria-expanded="false"] {
+        display: none;
+      }
+    }
+  }
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    padding: 17px 20px;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+    @include no-select;
+
+    ~ .accordion-toggle {
+      border-top: none;
+    }
+
+    &-title {
+      margin: 0;
+      flex: 1 1 0;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &-body {
+    padding: 20px;
+    border-bottom: 1px solid $color-border;
+  }
+}

@@ -1,0 +1,47 @@
+<div data-autoload-class="CartModalSnippet" class="cart-modal show-for-large">
+
+    <div class="cart-modal-view grid-container" :class="{open: open}">
+        <div class="inside">
+
+            <ul v-if="cart.items.length > 0" class="products">
+
+                <li is="product-item"
+                    v-for="(item, index) in cart.items"
+                    v-bind:id="item.id"
+                    v-bind:title="item.product_title"
+                    v-bind:image="item.image"
+                    v-bind:url="item.url"
+                    v-bind:price="item.price"
+                    v-bind:quantity="item.quantity"
+                    v-bind:variant_options="item.variant_options">
+                </li>
+
+            </ul>
+
+            <div class="details">
+
+                <div v-if="cart.items.length == 0">
+                    <span>{{ 'cart.general.empty' | t }}</span>
+                </div>
+
+                <div v-if="cart.items.length > 0">
+
+                    <div class="totals">
+                        <div class="total-row grid-x align-justify">
+                            <span>Subtotal</span>
+                            <span>${ cart.total_price | formatMoney }</span>
+                        </div>
+                        <p class="shipping-note">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+                    </div>
+
+                    <div class="button-group stacked">
+                        <a class="button button-primary" href="/cart">View cart / Pay securely</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

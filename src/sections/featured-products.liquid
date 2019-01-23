@@ -1,0 +1,54 @@
+<div class="section section-featured-products">
+
+
+    <div class="grid-container">
+      <div class="text-center mt-30 mb-40">
+        <h2>{{section.settings.section_title}}</h2>
+        <p class="h6 color-secondary-text">{{section.settings.section_subheading}}</p>
+      </div>
+      <div class="grid-x grid-margin-x grid-margin-y">
+        {% for product in collections[section.settings.collection].products limit:4 %}
+          <div class="cell large-3 small-6 grid-x align-stretch">
+            {% include 'product-tile' %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% schema %}
+
+{
+    "name": "Featured Products",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Title"
+        },
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Title",
+            "default": "Your Most Loved"
+        },
+        {
+            "type": "text",
+            "id": "section_subheading",
+            "label": "Subheading"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "info": "Products will be pulled from the selected collection.",
+            "label": "Collection"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Products",
+            "category": "Sections"
+        }
+    ]
+}
+
+{% endschema %}

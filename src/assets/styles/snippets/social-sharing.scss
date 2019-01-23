@@ -1,0 +1,27 @@
+.social-sharing {
+  display: inline-flex;
+  line-height: 1;
+
+  > a {
+    text-decoration: none;
+    transition: color $transition-duration;
+    line-height: 1;
+
+    &:hover {
+      color: $color-body-secondary-text;
+    }
+
+    + a {
+      margin-left: 10px;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    span {
+      display: none;
+    }
+  }
+}

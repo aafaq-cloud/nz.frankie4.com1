@@ -1,0 +1,43 @@
+<div class="section section-banner no-margin">
+<img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.image | img_url: '1400x'}} 1400w, {{section.settings.image | img_url: '1100x'}} 1100w, {{section.settings.image | img_url: '800x'}} 800w, {{section.settings.image | img_url: '450x'}} 450w" class="banner-image">
+<div class="banner-content-wrapper">
+  <div class="grid-container text-center">
+    <h1 class="banner-title">{{section.settings.title}}</h1>
+    <a class="button button-primary" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
+  </div>
+</div>
+</div>
+
+{% schema %}
+    {
+        "name": "Banner",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "button-text",
+            "type": "text",
+            "label": "Button Text"
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Button Link"
+          }
+        ],
+        "presets": [
+            {
+                "name": "Banner",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

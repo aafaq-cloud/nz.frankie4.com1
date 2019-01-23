@@ -1,0 +1,21 @@
+.section-article-detail {
+
+  .article {
+    &__content {
+      padding-top: 30px;
+
+      @include breakpoint(large) {
+        padding-top: 20px;
+        padding-left: 65px;
+      }
+    }
+
+    &__share-label {
+      display: block;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: (0.86 / 12) * 1em;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{% comment %}
+Main Navigation
+====================
+Navigation to display on large viewports
+{% endcomment %}
+
+<nav class="main-nav show-for-large">
+    <ul class="main-nav-links">
+        {% for link in linklists[section.settings.main_linklist].links %}
+            <li>
+                <a href="{{ link.url }}">
+                  {{ link.title | escape }}
+                  {% if link.links != blank %}
+                    {% include "icon-chevron-down" %}
+                  {% endif %}
+                </a>
+                {% if link.links != blank %}
+                    <div class="main-nav-dropdown main-nav-stacked show-for-large">
+                        <ul class="main-nav-child-links">
+                            {% for child_link in link.links %}
+                                <li class="child-link">
+                                    <a href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                                    {% if child_link.links != blank %}
+                                        <ul class="main-nav-grandchild-links">
+                                            {% for grandchild_link in child_link.links %}
+                                                <li>
+                                                    <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

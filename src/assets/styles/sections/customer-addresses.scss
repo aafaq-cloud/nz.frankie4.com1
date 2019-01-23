@@ -1,0 +1,49 @@
+.section-customer-addresses {
+
+  // Edit Address
+  .edit-customer-address {
+    .edit-address {
+      margin-top: 20px;
+    }
+
+    .button-group {
+      margin: 30px 0 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    .select-wrap {
+      margin-bottom: 30px;
+    }
+  }
+
+  // Existing Address
+  .existing-customer-address {
+    height: 100%;
+    border: 1px solid $color-border;
+    padding: 40px;
+    transition: background 400ms;
+
+    &.active {
+      background: $light-grey;
+    }
+
+    .address-edit-toggle,
+    .address-delete {
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 20px;
+      outline: none;
+      padding: 4px 0;
+
+      svg {
+        height: 10px;
+        width: 10px;
+        margin-right: 5px;
+      }
+    }
+  }
+}

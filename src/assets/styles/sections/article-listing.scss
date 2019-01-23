@@ -1,0 +1,31 @@
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px -5px 15px;
+  width: calc(100% + 10px);
+  justify-content: center;
+
+  &__tag {
+    min-width: 160px;
+    padding: 8px 16px;
+    margin: 5px;
+    text-transform: uppercase;
+    border: 1px solid $color-body-text;
+    text-decoration: none;
+    color: $color-body-text;
+    transition: color 200ms, background 200ms;
+    letter-spacing: (0.86 / 12) * 1em;
+    text-align: center;
+
+    @include breakpoint(medium) {
+      padding: 10px 16px;
+    }
+
+    &:hover,
+    &.active {
+      background: $color-body-text;
+      color: white;
+    }
+  }
+}

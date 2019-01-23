@@ -1,0 +1,46 @@
+{% if template contains 'page' %}
+    {{ page.title }}
+{% elsif template contains 'cart' %}
+    {{ 'cart.general.title' | t }}
+{% elsif template contains 'customers/login' %}
+    Sign In
+{% elsif template contains 'list-collections' %}
+    Collections
+{% elsif template contains 'collection' %}
+    {{ collection.title }}
+{% elsif template contains 'product' %}
+    {{ product.title }}
+{% elsif template contains '404' %}
+    {{ 'general.404.title' | t }}
+{% elsif search.performed %}
+    {% if search.results_count > 0 %}
+
+        {% assign product_count = 0 %}
+        {% assign page_count = 0 %}
+        {% assign article_count = 0 %}
+
+        {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+                {% if item.available %}
+                    {% assign product_count = product_count | plus: 1 %}
+                {% endif%}
+            {% elsif item.object_type == 'page' %}
+                {% assign page_count = page_count | plus: 1 %}
+            {% elsif item.object_type == 'article' %}
+                {% assign article_count = article_count | plus: 1 %}
+            {% endif%}
+        {% endfor %}
+
+        {% if product_count == 0 and page_count == 0 and article_count == 0 %}
+            {{ 'general.search.no_results_html' | t: terms: search.terms }}
+        {% else %}
+            {{ 'general.search.results_for_html' | t: terms: search.terms }}
+        {% endif %}
+
+    {% else %}
+        {{ 'general.search.no_results_html' | t: terms: search.terms }}
+    {% endif %}
+
+{% else %}
+    {{ page_title }}
+{% endif %}

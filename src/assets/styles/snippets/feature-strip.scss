@@ -1,0 +1,14 @@
+.header-feature-strip {
+  background-color: $color-secondary;
+  text-transform: uppercase;
+  &-list {
+    list-style: none;
+    padding: 0;
+    height: 40px;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}

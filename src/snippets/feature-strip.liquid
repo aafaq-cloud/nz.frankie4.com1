@@ -1,0 +1,17 @@
+{% if settings.show_feature_strip %}
+    <div class="header-feature-strip text-small text-center show-for-medium">
+        <div class="grid-container">
+            <ul class="header-feature-strip-list grid-x align-middle align-center">
+                {% unless settings.feature_strip_text_1 == blank %}
+                    <li class="cell grow small-4">{{ settings.feature_strip_text_1 }}</li>
+                {% endunless %}
+                {% unless settings.feature_strip_text_1 == blank %}
+                    <li class="cell grow small-4">{{ settings.feature_strip_text_2 }}</li>
+                {% endunless %}
+                {% unless settings.feature_strip_text_1 == blank %}
+                    <li class="cell grow small-4">{{ settings.feature_strip_text_3 }}</li>
+                {% endunless %}
+            </ul>
+        </div>
+    </div>
+{% endif %}

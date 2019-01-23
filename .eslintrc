@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:shopify/esnext",
+    "plugin:shopify/jquery",
+    "prettier"
+  ],
+  "plugins": ["html", "prettier"],
+  "globals": {
+    "Shopify": true,
+    "theme": true,
+    "AppShopifyCart": true,
+    "Foundation": true
+  },
+  "rules": {
+    "linebreak-style": ["warn", "windows"],
+    "quotes": ["warn", "double"],
+    "indent": ["warn", 2],
+    "no-unused-vars": ["warn", { "vars": "local" }],
+    "no-console": "off",
+    "import/extensions": "never",
+    "arrow-parens": ["warn", "as-needed"],
+    "shopify/binary-assignment-parens": "off"
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".vue"]
+      }
+    }
+  },
+  "env": {
+    "browser": true
+  }
+}

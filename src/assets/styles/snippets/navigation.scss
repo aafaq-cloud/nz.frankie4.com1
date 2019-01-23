@@ -1,0 +1,79 @@
+.main-nav {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: (0.86 / 12) * 1em;
+  line-height: (17 / 12);
+  .icon {
+    height: (8 / 12) * 1em;
+    width: (8 / 12) * 1em;
+    margin: (2 / 12) * 1em 0 (2 / 12) * 1em 9px;
+  }
+  @include breakpoint($nav-switch-breakpoint) {
+    a {
+      display: flex;
+      text-decoration: none;
+      transition: color 0.2s linear;
+      justify-content: center;
+      align-items: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-links {
+      display: flex;
+      justify-content: center;
+
+      > li {
+        &:hover {
+          .main-nav-dropdown {
+            display: block;
+          }
+        }
+
+        > a {
+          padding: 2px 8px 10px;
+
+          @include breakpoint(xlarge) {
+            padding: 22px 19px;
+          }
+          height: map_get($top-bar-height, small);
+
+          @include breakpoint($nav-switch-breakpoint) {
+            height: map_get($top-bar-height, large);
+
+            .compact-header:not(.lock-header) & {
+              height: map_get($top-bar-compact-height, large);
+            }
+          }
+        }
+      }
+    }
+
+    &-child-links {
+      a {
+        padding: 5px 0;
+      }
+    }
+
+    &-grandchild-links {
+      a {
+        color: $color-body-text;
+        padding: 3px 0;
+      }
+    }
+
+    &-dropdown {
+      position: absolute;
+      display: none;
+      background-color: white;
+      text-align: left;
+      margin-top: -1px;
+      transition: top 100ms;
+      padding: 15px 19px;
+    }
+  }
+}

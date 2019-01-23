@@ -1,0 +1,25 @@
+// Social Icons
+// -------------------------
+$social-icons-size: 1em;
+$social-icons-spacing: (14 / 30) * 1em;
+
+.social-icons {
+  list-style: none;
+  font-size: rem-calc(30);
+  padding: 0;
+  margin: (-($social-icons-spacing / 2));
+
+  li {
+    padding: ($social-icons-spacing / 2);
+    line-height: 0;
+  }
+
+  a {
+    display: block;
+  }
+
+  svg {
+    width: $social-icons-size;
+    height: $social-icons-size;
+  }
+}

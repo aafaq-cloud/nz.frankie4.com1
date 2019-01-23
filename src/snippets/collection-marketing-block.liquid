@@ -1,0 +1,11 @@
+{% for block in blocks %}
+  {% assign scope = block.settings.scope | split: ',' %}
+  {% if scope contains "all" or scope contains collection.handle %}
+  {% assign offset = index | plus: paginate.current_offset %}
+    {% if offset == block.settings.position %}
+      <div class="cell small-6 large-3 collection-marketing-image-wrapper">
+        <img class="lazyload collection-marketing-image" data-src="{{block.settings.image | img_url: '335x567', crop: 'center'}}">
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,96 @@
+.cart-modal-view {
+  position: relative;
+  display: none;
+  &.open {
+    display: block;
+  }
+
+  .inside {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: block;
+    margin-left: auto;
+    width: 360px;
+    max-width: 100%;
+    background: white;
+    box-shadow: 0 2px 20px 0 rgba(black, 0.1);
+    padding: 35px 20px 20px;
+
+    .has-promo-strip & {
+      top: 30px;
+    }
+  }
+}
+.popup-products {
+  margin: 10px 0;
+  list-style: none;
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 0;
+}
+
+.popup-product {
+  flex-wrap: nowrap;
+  margin: 10px 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.loading {
+    .product-edit {
+      svg {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: currentColor;
+        border-radius: 50%;
+
+        animation: pulseOut 1000ms infinite linear;
+      }
+    }
+  }
+
+  &-image {
+    width: 80px;
+    margin-right: 10px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+  &-right {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 1em;
+  }
+  &-edit {
+    padding: 1px 10px;
+    .icon {
+      font-size: inherit;
+    }
+  }
+}
+
+.js-toggle-cart-modal {
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  &.active {
+    color: #eeb59b;
+  }
+}

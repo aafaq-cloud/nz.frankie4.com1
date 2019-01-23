@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-shopify",
+    "stylelint-config-prettier"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "selector-class-pattern": null,
+    "max-nesting-depth": 3,
+    "selector-max-id": 0,
+    "selector-max-class": 3,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-colon-space-after": "always",
+    "scss/double-slash-comment-whitespace-inside": "always",
+    "scss/media-feature-value-dollar-variable": "always",
+    "scss/partial-no-import": true
+  }
+}

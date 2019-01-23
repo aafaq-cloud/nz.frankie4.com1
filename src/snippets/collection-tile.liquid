@@ -1,0 +1,21 @@
+<article class="collection-tile small-12 medium-4 cell text-center">
+  {% if image != blank %}
+    <img class="section-list-collection-image lazyload" data-src="{{image | img_url: '450x420', crop: 'center'}}" alt="{{image.alt}}">
+  {% elsif collection.image != blank %}
+    <img class="section-list-collection-image lazyload" data-src="{{collection.image | img_url: '450x420', crop: 'center'}}" alt="{{collection.image.alt}}">
+  {% elsif collection.products.first != blank %}
+    <img class="section-list-collection-image lazyload" data-src="{{collection.products.first | img_url: '450x420', crop: 'center'}}" alt="{{collection.products.first.image.alt}}">
+  {% endif %}
+  <!-- keyboard users move straight to the clearer "view all" anchor -->
+  <a class="cover-link" href="{{collection.url}}" tabindex="-1" aria-hidden="true"></a>
+  {% if title != blank %}
+    <h2 class="h3">{{title}}</h2>
+  {% else %}
+    <h2 class="h3">{{collection.title}}</h2>
+  {% endif %}
+
+  <a href="{{collection.url}}" class="section-list-collection-link text-small">Shop Now</a>
+
+
+
+</article>

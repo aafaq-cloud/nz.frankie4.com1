@@ -1,0 +1,115 @@
+<div class="section featured-content">
+  <div class="grid-container">
+    <div class="grid-x align-middle featured-content-grid">
+      <div class="cell medium-9 featured-content-image-wrapper">
+        <img class="featured-content-image lazyload" data-src="{{section.settings.image | img_url: '1045x780', crop: 'center'}}">
+      </div>
+      <div class="cell medium-6 featured-content-text-wrapper">
+        <h2 class="mb-30">{{section.settings.title}}</h2>
+        <div class="rte color-secondary-text semibold">
+          {{ section.settings.content }}
+        </div>
+        {% unless section.settings.button-link == blank %}
+          <a class="button button-primary mt-20" href="{{section.settings.button-link}}">{{section.settings.button-content}}</a>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet 'scss' %}
+.featured-content-image-wrapper {
+  position: relative;
+  background-color: darken(white, 5);
+  margin-bottom: 30px;
+  @media (min-width: 40em) {
+    margin-right: -(3 / 12) * 100%;
+    margin-bottom: 0;
+  }
+}
+.featured-content-image {
+  width: 100%;
+  border: none;
+  transition: opacity 0.3s;
+  display: block;
+  &.lazyload {
+    opacity: 0;
+  }
+  &.lazyloaded {
+    opacity: 1;
+  }
+  @supports (object-fit: cover) {
+    @media (min-width: 40em) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.featured-content-grid.align-middle {
+  @supports (object-fit: cover) {
+    align-items: stretch;
+  }
+}
+.featured-content-text-wrapper {
+  @media (min-width: 40em) {
+    padding: 100px;
+    margin-top: 126px;
+    margin-bottom: 126px;
+    background-color: white;
+    position: relative;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+
+{
+  "name": "Featured Content",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Section Title"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "header",
+    "content": "Content"
+  },
+  {
+    "type": "richtext",
+    "id": "content",
+    "label": "Text"
+  },
+  {
+    "type": "text",
+    "id": "button-content",
+    "label": "Button Content",
+    "default": "Read More"
+  },
+  {
+    "type": "url",
+    "id": "button-link",
+    "label": "Button Link"
+  },
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  }
+  ],
+  "presets": [
+  {
+    "name": "Featured Content",
+    "category": "Sections"
+  }
+  ]
+}
+
+{% endschema %}

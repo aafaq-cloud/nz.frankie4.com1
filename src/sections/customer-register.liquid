@@ -1,0 +1,57 @@
+<div class="section section-customer-register section-customer-form">
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell medium-8 large-6">
+
+                <div class="form-box">
+
+                    <h2 class="mb-30">{{ 'customer.register.title' | t }}</h2>
+
+                    {% form 'create_customer' %}
+
+                        <input type="text"
+                               name="customer[first_name]"
+                               id="FirstName"
+                               placeholder="{{ 'customer.register.first_name' | t }}"
+                               autofocus
+                               required
+                               class="mb-20 {% if form.errors contains 'first_name' %}input-error{% endif %}"
+                               {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+
+                        <input type="text"
+                               name="customer[last_name]"
+                               id="LastName"
+                               required
+                               placeholder="{{ 'customer.register.last_name' | t }}"
+                               class="mb-20 {% if form.errors contains 'last_name' %}input-error{% endif %}"
+                               {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+
+                        <input type="email"
+                               name="customer[email]"
+                               id="Email"
+                               class="mb-20 {% if form.errors contains 'email' %}input-error{% endif %}"
+                               placeholder="{{ 'customer.register.email' | t }}"
+                               value="{% if form.email %}{{ form.email }}{% endif %}"
+                               required
+                               spellcheck="false"
+                               autocomplete="off"
+                               autocapitalize="off">
+
+                        <input type="password"
+                           name="customer[password]"
+                           id="CreatePassword"
+                           class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                           placeholder="{{ 'customer.register.password' | t }}">
+
+                        {{ form.errors | default_errors }}
+
+                        <div class="button-group mt-40 align-right">
+                            <input type="submit" class="button button-primary" value="{{ 'customer.register.submit' | t }}">
+                        </div>
+
+                    {% endform %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

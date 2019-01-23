@@ -1,0 +1,34 @@
+<div class="section section-article-listing no-margin-top">
+    <div class="grid-container">
+
+        <div class="article-tags">
+            <a class="article-tags__tag {% if current_tags == blank %} active{% endif %}"
+               href="{{ blog.url }}">View All</a>
+            {% for tag in blog.all_tags %}
+                <a class="article-tags__tag{% if current_tags contains tag %} active{% endif %}"
+                   href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+            {% endfor %}
+        </div>
+
+        {% paginate blog.articles by 12 %}
+
+            <div class="grid-x grid-margin-x grid-margin-y">
+
+                {% for article in blog.articles %}
+
+                    <div class="cell small-12 medium-6 large-4">
+                        {% include 'article-tile' %}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+            {% endif %}
+
+        {% endpaginate %}
+
+    </div>
+</div>

@@ -1,0 +1,51 @@
+.product-tile {
+  position: relative;
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__body {
+    margin-top: 20px;
+    flex-grow: 1;
+  }
+
+  &__color-swatches {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  &__color-swatch {
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    margin: 0 2px;
+  }
+
+  &-actions {
+    position: relative;
+    transition: opacity 0.35s;
+    margin: 15px -5px -5px;
+    @include breakpoint(medium) {
+      margin: 12.5px -7.5px -7.5px;
+    }
+    @include breakpoint(large) {
+      opacity: 0;
+    }
+    > .cell {
+      margin: 5px;
+      @include breakpoint(medium) {
+        margin: 7.5px;
+      }
+    }
+  }
+
+  &:hover {
+    .product-tile-actions {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+<header data-autoload-class="HeaderSection" data-section-id="{{ section.id }}" class="site-header" data-section-type="header-section">
+  {% include 'promo-strip' %}
+  <div class="header-top">
+    <div class="grid-x header-top-wrapper align-middle align-justify">
+      <nav class="toolbar-items-left toolbar-items cell grow show-for-medium">
+        <ul class="grid-x top-nav align-middle">
+          {% for link in linklists[section.settings.top_linklist].links %}
+            <li>
+              <a href="{{link.url}}">{{link.title | escape }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <div class="main-bar-logo cell grow">
+        <a href="/">
+            {% if section.settings.logo != blank %}
+              <img src="{{ section.settings.logo | img_url: '400x200' }}" alt="logo"/>
+            {% else %}
+              <span class="main-bar-logo-text">{{ shop.name }}</span>
+            {% endif %}
+        </a>
+      </div>
+      <ul class="align-right toolbar-items-right toolbar-items cell grow">
+        <li class="toolbar-item toolbar-item-search">
+          <button aria-label="{{ 'general.search.placeholder' | t }}" class="search-focusser toolbar-item-inner">{% include "icon-search" %}</button>
+
+          {% include 'search-autocomplete' %}
+        </li>
+          {% if shop.customer_accounts_enabled %}
+        <li class="toolbar-item show-for-medium">
+          <a href="/account" class="toolbar-item-inner">
+              {% include 'icon-user' %}
+          </a>
+          <div class="toolbar-item__dropdown">
+              {% if customer %}
+            <div class="button-group stacked">
+              <a class="button button-primary button-small"
+                 href="/account">{{ 'layout.customer.view_account' | t }}</a>
+              <a class="button button-primary button-small"
+                 href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+            </div>
+              {% else %}
+            <div class="button-group stacked">
+              <a class="button button-primary button-small"
+                 href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+              <a class="button button-primary button-small"
+                 href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+            </div>
+              {% endif %}
+              </div>
+              </li>
+              {% endif %}
+
+        <li class="toolbar-item">
+
+              {% include 'interactive-cart' %}
+              {% comment %}
+              {{ cart.item_count }}
+              {% endcomment %}
+          </a>
+        </li>
+        <li class="toolbar-item hide-for-medium">
+          <button class="toolbar-item-inner js-mobile-nav-toggle" aria-label="Open Mobile Menu">
+              {% include 'icon-hamburger' %}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-bar grid-container">
+    <div class="main-bar-bottom">
+        {% include 'navigation-mobile' %}
+        {% include 'navigation' %}
+    </div>
+  </div>
+
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "header",
+        "content": "Menus"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Main Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "top_linklist",
+        "label": "Top Menu"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}

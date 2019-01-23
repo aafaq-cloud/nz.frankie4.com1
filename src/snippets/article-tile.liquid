@@ -1,0 +1,24 @@
+<article class="article-tile cell text-center grid-y">
+
+    <a href="{{ article.url }}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
+
+    <div class="cell article-tile__image-container">
+        <img data-src="{{article | img_url: '450x420', crop: 'center'}}" class="lazyload article-tile__image">
+    </div>
+
+    <div class="cell article-tile__body grid-y">
+        {% capture date %}{{ article.published_at | date: '%d %B %Y' }}{% endcapture %}
+        <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
+        <h4 class="article-tile__title grid-x align-middle align-center m-0">{{ article.title }}</h4>
+
+        {% if article.tags.size > 0 %}
+            <div class="article-tile__tags text-small color-secondary-text mt-10">
+                {% for tag in article.tags %}
+                    {% if forloop.index0 > 0 %}<span class="delimeter">,</span>{% endif %}
+                    <span class="article-tile__tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+</article>

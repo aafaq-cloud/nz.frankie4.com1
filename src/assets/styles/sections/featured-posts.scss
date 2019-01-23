@@ -1,0 +1,74 @@
+.section-featured-posts {
+  .posts-container {
+    position: relative;
+  }
+
+  // JS Inactive styles
+  .slider {
+    &:not(.slick-initialized) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+
+      .article-tile {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+
+        @include breakpoint(small down) {
+          &:nth-of-type(n + 2) {
+            display: none;
+          }
+        }
+
+        @include breakpoint(medium) {
+          @include breakpoint(medium down) {
+            max-width: 50%;
+
+            &:nth-of-type(n + 3) {
+              display: none;
+            }
+          }
+        }
+
+        @include breakpoint(large) {
+          max-width: 25%;
+
+          &:nth-of-type(n + 5) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .slick-slider {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    padding: 0;
+
+    @include breakpoint(medium) {
+      padding: 0 40px;
+    }
+
+    @include breakpoint(xxlarge) {
+      padding: 0;
+    }
+  }
+
+  .slick-slide {
+    padding: 0 10px;
+  }
+
+  .slick-prev {
+    @include breakpoint(xxlarge) {
+      left: -40px;
+    }
+  }
+
+  .slick-next {
+    @include breakpoint(xxlarge) {
+      right: -40px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.collection-marketing-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 0.35s;
+  @supports (object-fit: cover) {
+    object-fit: cover;
+    height: 100%;
+  }
+  &.lazyload {
+    opacity: 0;
+  }
+  &.lazyloaded {
+    opacity: 1;
+  }
+  &-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: darken(white, 5);
+  }
+}

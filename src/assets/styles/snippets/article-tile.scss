@@ -1,0 +1,15 @@
+.article-tile {
+  position: relative;
+  display: flex;
+  height: 100%;
+
+  &__body {
+    margin: 20px;
+    flex-grow: 1;
+  }
+
+  &__date {
+    text-transform: uppercase;
+    letter-spacing: (0.72 / 12) * 1em;
+  }
+}

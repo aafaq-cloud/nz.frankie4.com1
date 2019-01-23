@@ -1,0 +1,74 @@
+{% layout none %}
+{% assign product_limit = 3 %}
+{% assign page_limit = 3 %}
+{% assign article_limit = 3 %}
+{% assign product_count = 0 %}
+{% assign page_count = 0 %}
+{% assign article_count = 0 %}
+{% capture results_product %}
+{% for item in search.results %}
+{% if item.object_type == 'product' %}
+{% assign product = item %}
+{% if product_count < product_limit %}
+    {% if product_count > 0 %},{% endif %}
+    {
+        "title"    : {{ product.title | json }},
+        "brand"    : {{ product.vendor | json }},
+        "url"      : {{ product.url | within: product.collections.last | json }},
+        "thumbnail": {{ product.featured_image.src | img_url: '600x600' | json }}
+    }
+    {% assign product_count = product_count | plus: 1 %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endcapture %}
+
+{% capture results_page %}
+{% for item in search.results %}
+{% if item.object_type == 'page' %}
+{% assign page = item %}
+{% if page_count < page_limit %}
+    {% if page_count > 0 %},{% endif %}
+    {
+    "title"    : {{ page.title | json }},
+    "url"      : {{ page.url | within: product.collections.last | json }},
+    "excerpt"  : {{ page.content | strip_html | truncatewords: 10 | json }}
+    }
+    {% assign page_count = page_count | plus: 1 %}
+    {% endif %}
+{% endif %}
+{% endfor %}
+{% endcapture %}
+
+{% capture results_article %}
+{% for item in search.results %}
+{% if item.object_type == 'article' %}
+{% assign article = item %}
+
+{% if article_count < article_limit %}
+    {% if article_count > 0 %},{% endif %}
+    {
+    "title"    : {{ article.title | json }},
+    "url"      : {{ article.url | within: product.collections.last | json }},
+    "thumbnail": {{ article.image.src | img_url: '600x600' | json }}
+    }
+    {% assign article_count = article_count | plus: 1 %}
+    {% endif %}
+{% endif %}
+{% endfor %}
+{% endcapture %}
+{% assign result_count = product_count | plus: page_count | plus: article_count %}
+{% if result_count > 0 %}
+{% assign result_message = 'general.search.results_for_html' | t: terms: search.terms | json %}
+{% else %}
+{% assign result_message = 'general.search.no_results_html' | t: terms: search.terms | json %}
+{% endif %}
+{
+    "results": {
+        "product": [{{ results_product}}],
+        "page": [{{ results_page}}],
+        "article": [{{ results_article}}],
+        "results_count": {{ result_count }},
+        "results_message": {{ result_message }}
+    }
+}

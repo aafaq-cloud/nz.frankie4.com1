@@ -1,0 +1,8 @@
+<div class="toolbar-item-inner" data-autoload-class="CartModalSnippet" data-empty-text="{{ 'cart.general.empty' | t}}">
+  <a class="js-toggle-cart-modal" href="/cart" aria-label="Open Shopping Cart">
+      {% include 'icon-cart' %}
+      <span class="visually-hidden">Total number of items in cart: </span><span class="cart-quantity">{{cart.item_count}}</span>
+
+  </a>
+  <div class="cart-modal-view"></div>
+</div>

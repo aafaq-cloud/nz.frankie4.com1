@@ -1,0 +1,51 @@
+.component-quantity-selector {
+  display: inline-flex;
+
+  a {
+    display: flex;
+    @include flex-align(center, middle);
+    width: 44px;
+    height: 44px;
+    color: $color-form-element-text;
+    border: 1px solid $color-form-element-border;
+    cursor: pointer;
+    transition: border $transition-duration, color $transition-duration;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    &.disabled {
+      color: $color-form-element-disabled-text;
+    }
+
+    &:not(.disabled) {
+      &:hover {
+        border-color: $color-form-element-text;
+      }
+    }
+  }
+
+  input {
+    min-width: 44px;
+    height: 44px;
+    width: 44px;
+
+    -webkit-appearance: none;
+    outline: none;
+    border-style: solid;
+    border-radius: 0;
+    border-color: $color-form-element-border;
+    border-width: 1px 0;
+    padding: 0 4px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+
+{% comment %}
+    The color swatch snippet must be loaded and initialised before being used. This will build up a mapping of colour names to hex values
+
+    It is loaded as a snippet:
+    {% include 'color-swatch-helper', loader: 'init-color-swatch' %}
+
+{% endcomment %}
+{% if loader == 'init-color-swatch' %}
+
+    {% if product_colour_map == blank %}
+        {% assign product_colour_map = settings.product_colour_map | remove: '<p>' | strip_newlines  | strip %}
+        {% assign product_colour_map =  product_colour_map | split: '</p>' %}
+
+        {% assign colour_names_array = '' %}
+        {% assign colour_value_array = '' %}
+
+        {% for product_colour in product_colour_map %}
+            {% unless product_colour == blank %}
+            {% assign colour_map = product_colour | split: ':' %}
+                {% if colour_map.size > 1 %}
+
+                    {% if colour_names_array.size > 0 %}
+                        {% assign colour_names_array = colour_names_array | append: ',' %}
+                        {% assign colour_value_array = colour_value_array | append: ',' %}
+                    {% endif %}
+                    {% assign color_name = colour_map[0] | downcase %}
+                    {% assign colour_names_array = colour_names_array | append: color_name %}
+                    {% assign colour_value_array = colour_value_array | append: colour_map[1] %}
+                {% endif %}
+            {% endunless %}
+        {% endfor %}
+
+        {% assign colour_names_array = colour_names_array | split: ',' %}
+        {% assign colour_value_array = colour_value_array | split: ',' %}
+
+    {% endif %}
+{% endif %}
+
+{% comment %}
+    The get hex color from name snippet will check the saved colours and retrieve a hex value if a match is found
+
+    It is loaded as a snippet:
+    {% include 'color-swatch-helper', loader: 'get-hex-color-from-name', color_name: value %}
+
+    Once loaded it will assign a matching hex value if found the liquid variable {{ color_hex }}
+
+{% endcomment %}
+
+{% if loader == 'get-hex-color-from-name'  %}
+
+    {% assign color_hex = '' %}
+    {% assign color_name_clean = color_name | downcase %}
+
+    {% for name in colour_names_array %}
+        {% if color_name_clean == name  %}
+            {% assign color_hex = colour_value_array[forloop.index0] %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+
+{% endif %}

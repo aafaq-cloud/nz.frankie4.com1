@@ -1,0 +1,17 @@
+<div class="section section-page-content">
+    <div class="page-content grid-container">
+        <div class="grid-x align-center">
+            <div class="medium-10 large-9">
+                {% include 'breadcrumb' %}
+                <h1 class="mt-10 mb-40">{% include 'page-title' %}</h1>
+                <div class="rte clearfix">
+                    {% if template contains '404' %}
+                        <p>{{ 'general.404.subtext_html' | t }}</p>
+                    {% else %}
+                        {{ page.content }}
+                    {% endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

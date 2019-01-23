@@ -1,0 +1,93 @@
+<div class="section section-list-collection">
+
+    <div class="grid-container">
+      <div class="section-list-collection-wrapper">
+        <div class="grid-x grid-margin-x">
+
+            {% for block in section.blocks %}
+
+                {% assign collection = collections[block.settings.collection] %}
+
+                {% include 'collection-tile' collection, image: block.settings.image, title: block.settings.title %}
+
+            {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% stylesheet "scss" %}
+.section-list-collection-image {
+  display: block;
+  width: 100%;
+  transition: opacity 0.4s;
+  margin-bottom: 20px;
+  &.lazyload, &.lazyloading {
+    padding-top: (420 / 450) * 100%;
+    background-color: #fefefe;
+  }
+}
+.section-list-collection-link {
+  display: block;
+  margin-bottom: (20 / 12) * 1em;
+  color: grey;
+  color: var(--color-secondary-text);
+  letter-spacing: (0.72 / 10) * 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+
+{
+  "name": "Featured Collections",
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select collection to display"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override collection image",
+          "info": "Ideal size: 450x420"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Override collection title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Sections",
+      "name": "Featured Collections",
+      "blocks": [
+        {
+          "type": "collection_block",
+          "settings": {
+            "collection": "sale"
+          }
+        }
+      ]
+
+    }
+  ]
+}
+
+{% endschema %}

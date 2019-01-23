@@ -1,0 +1,17 @@
+.promo-strip {
+  background-color: $color-body-text;
+  color: white;
+  text-transform: uppercase;
+  padding: 9px 10px;
+  p {
+    margin: 0;
+  }
+}
+
+body.has-promo-strip {
+  padding-top: map_get($top-bar-height, small) + $toolbar-height + 30px;
+
+  @include breakpoint($nav-switch-breakpoint) {
+    padding-top: $toolbar-height + map_get($top-bar-height, large) + 30px;
+  }
+}

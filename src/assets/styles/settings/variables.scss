@@ -1,0 +1,57 @@
+// stylelint-disable color-no-hex
+
+// Colors
+// ----------------------------------------
+$dark-grey: #1a1517;
+$grey: #777777;
+$light-grey: #e5e5e5;
+$pink: #cf4168;
+$red: #c93330;
+$light-pink: #fff7f8;
+$yellow: #f9fba8;
+$green: #41cf81;
+$blue: #81a0c9;
+
+// Text colors
+$color-body-text: var(--color-body-text);
+$color-body-secondary-text: var(--color-secondary-text);
+
+// Background colors
+$color-body: var(--color-main-background);
+
+// Placeholders
+$placeholder-color-foreground: #161d25;
+$placeholder-color-background: #f9fafb;
+
+// Forms
+$color-form-element-text: $color-body-text;
+$color-form-element-placeholder-text: $color-body-secondary-text;
+$color-form-element-background: white;
+$color-form-element-border: #e7e7e7;
+$color-form-element-disabled-text: #e1e1e1;
+$color-form-element-disabled-border: #e1e1e1;
+$color-form-error: #c93330;
+
+// Other colors
+$color-border: $light-grey;
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+
+// Header
+// ----------------------------------------
+$nav-switch-breakpoint: large;
+$nav-switch-breakpoint-down: medium down;
+$toolbar-height: 80px;
+$top-bar-height: (
+  small: 0,
+  medium: 60px,
+  large: 60px
+);
+$top-bar-compact-height: (
+  large: 60px
+);
+$compact-header-transition: transform 200ms;
+
+// Transitions
+// ----------------------------------------
+$transition-duration: 250ms;

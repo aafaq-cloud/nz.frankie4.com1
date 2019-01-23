@@ -1,0 +1,11 @@
+.collection-tile {
+  position: relative;
+  margin-bottom: 30px;
+  @include breakpoint(medium) {
+    &:hover {
+      .section-list-collection-image {
+        opacity: 0.9;
+      }
+    }
+  }
+}

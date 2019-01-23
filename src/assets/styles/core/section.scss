@@ -1,0 +1,15 @@
+.section {
+  padding: 30px 0;
+
+  &.no-margin {
+    padding: 0;
+  }
+
+  &.no-margin-top {
+    padding-top: 0;
+  }
+
+  &.no-margin-bottom {
+    padding-bottom: 0;
+  }
+}

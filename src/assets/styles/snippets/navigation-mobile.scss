@@ -1,0 +1,181 @@
+$menu-width: 280px;
+
+.mobile-nav {
+  display: none;
+
+  @include breakpoint(medium down) {
+    display: block;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    bottom: -80px; // Account for toolbar overlap
+    right: 100%;
+    width: $menu-width;
+    padding-bottom: 80px; // Account for toolbar overlap
+    z-index: 320;
+    overflow: auto;
+    transition: transform 0.2s ease-out;
+
+    .main-nav-active & {
+      transform: translateX(100%);
+    }
+
+    &-links-title {
+      display: block;
+      padding: 6px 20px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      background: #f6f7f9;
+      border-top: 1px solid #e4e5e7;
+      border-bottom: 1px solid #e4e5e7;
+    }
+
+    &-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        position: relative;
+      }
+
+      > li {
+        + li {
+          border-top: 1px solid #e4e5e7;
+        }
+      }
+
+      a {
+        display: block;
+        min-height: 40px;
+        padding: 12px 20px;
+        @include no-select();
+
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.3em;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.has-children {
+          padding-right: 40px;
+        }
+      }
+
+      .toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 20px;
+          height: 20px;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .child-links {
+      a {
+        padding-left: 30px;
+      }
+    }
+
+    .grandchild-links {
+      a {
+        padding-left: 40px;
+      }
+    }
+
+    .sub-links {
+      display: none;
+    }
+
+    .open {
+      > .sub-links {
+        display: block;
+      }
+
+      > .toggle {
+        transform: scaleY(-1);
+      }
+    }
+
+    .social-icon-container {
+      overflow: hidden;
+    }
+
+    .social-icons {
+      padding: 16px 20px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.nav-overlay {
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: -80px; // Account for toolbar overlap
+  width: 100%;
+  z-index: 310;
+  @include no-select();
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($dark-grey, 0.8);
+  }
+
+  &__close {
+    display: block;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: $menu-width + 20px;
+    top: 20px;
+    z-index: 4;
+
+    color: #ffffff;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.main-nav-active {
+  @include breakpoint(medium down) {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,97 @@
+{% comment %}
+Custom logic to get related products.
+Related products are any product that shares one or more collections with the current product.
+The section has an option to exclude collections. This is useful for excluding general collections
+such as 'featured' or 'all'.
+{% endcomment %}
+
+{% assign excluded_collections = section.settings.exclude_collections | split: "," %}
+{% assign related_collections = '' %}
+
+{% for collection in product.collections %}
+    {% unless excluded_collections contains collection.handle %}
+        {% if related_collections != '' %}
+            {% assign related_collections = related_collections | append: ',' %}
+        {% endif %}
+        {% assign related_collections = related_collections | append: collection.handle %}
+    {% endunless %}
+{% endfor %}
+{% assign related_collections = related_collections | split: "," %}
+
+{% assign related_products_count = 0 %}
+{% assign related_products = '' %}
+
+{% for looped_product in collections.all.products %}
+
+    {% if looped_product.handle == product.handle %}
+        {% continue %}
+    {% endif %}
+
+    {% for collection in looped_product.collections %}
+        {% if related_collections contains collection.handle %}
+            {% if related_products != '' %}
+                {% assign related_products = related_products | append: ',' %}
+            {% endif %}
+            {% assign related_products = related_products | append: looped_product.handle %}
+            {% assign related_products_count = related_products_count | plus: 1 %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% if related_products_count >= 4 %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% assign related_products = related_products | split: "," %}
+
+{% if related_products.size > 0 %}
+    <div class="section section-related-products">
+
+        <div class="text-center mt-30 mb-40">
+            <h2>{{section.settings.section_title}}</h2>
+            <p class="h6 color-secondary-text">{{section.settings.section_subheading}}</p>
+        </div>
+
+        <div class="grid-container products-container">
+
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {% for related_product_handle in related_products %}
+                    {%- assign product = all_products[related_product_handle] -%}
+                    <div class="cell large-3 small-6 grid-x align-stretch">
+                        {% include 'product-tile' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+
+{
+    "name": "Related Products",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Title"
+        },
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "section_subheading",
+            "label": "Subheading"
+        },
+        {
+            "type": "text",
+            "id": "exclude_collections",
+            "label": "Exclude Collections",
+            "info": "Add comma separated list of collection handles to exclude from related products."
+        }
+    ]
+}
+
+{% endschema %}

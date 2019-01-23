@@ -1,0 +1,13 @@
+.page-item {
+  &__body {
+    position: relative;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .button-group {
+      margin-top: 10px;
+    }
+  }
+}

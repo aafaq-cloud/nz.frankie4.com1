@@ -1,0 +1,55 @@
+<article class="product-tile text-center grid-y" data-handle="{{product.handle}}">
+  <a href="{{product.url | within: collection}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
+  <div class="cell product-tile__image-container">
+    <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
+  </div>
+  <div class="cell product-tile__body grid-y">
+    <h3 class="text-small color-secondary-text m-0">{{ product.vendor }}</h3>
+    <h2 class="product-tile__title h4 grid-x align-middle align-center">{{ product.title }}</h2>
+    <div class="product-tile__info">
+      <span class="product-tile__price color-secondary-text h6">
+        {{ product.price_max | money }}
+      </span>
+
+      {% assign colors = '' %}
+      {% assign color_option_index = -1 %}
+
+      {% for option in product.options_with_values %}
+        {% if option.name == 'Color' or option.name == 'Colour' %}
+            {% assign color_option_index = forloop.index0 %}
+            {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% unless color_option_index == -1 %}
+        {% for variant in product.variants %}
+          {% unless colors == '' %}
+            {% assign colors = colors | append: ',' %}
+          {% endunless %}
+          {% assign colors = colors | append: variant.options[color_option_index] %}
+        {% endfor %}
+      {% endunless %}
+
+      {% assign colors = colors | split: "," | uniq %}
+
+      {% if colors.size > 0 %}
+        <div class="product-tile__color-swatches">
+          {% for color in colors %}
+            {% include 'color-swatch-helper', loader: 'init-color-swatch' %}
+            {% include 'color-swatch-helper', loader: 'get-hex-color-from-name', color_name: color %}
+            <span style="color: {{ color_hex }};" title="{{ color }}" class="product-tile__color-swatch"></span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+  <div class="product-tile-actions grid-x cell align-bottom">
+    <!-- TODO: Functionality -->
+    {% form "product", product, class: 'cell grow grid-x' %}
+      <input hidden name="id" value="{{product.selected_or_first_available_variant.id}}">
+      <button type="submit" class="button button-primary cell grow">Add to Cart</button>
+    {% endform %}
+    <a class="button button-hollow cell grow" href="{{product.url | within: collection}}">View Details</a>
+  </div>
+</article>

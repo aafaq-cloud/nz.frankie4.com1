@@ -1,0 +1,164 @@
+button {
+  background: transparent;
+  appearance: none;
+  border: none;
+}
+
+// Button
+// -----------------------------------------------------
+.button {
+  position: relative;
+  display: inline-flex;
+  @include flex-align(center, middle);
+  padding: 13px 28px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0;
+
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: (0.86 / 12) * 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: (15 / 12);
+  min-width: 150px;
+
+  transition: background 200ms, color 200ms,
+    border 200ms, opacity 200ms;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.no-hover {
+    cursor: default;
+  }
+
+  &.has-icon {
+    padding-left: 40px;
+    padding-right: 40px;
+
+    i {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 18px;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+  }
+
+  &.js-loading {
+    // Loading animation
+  }
+}
+
+// Button Sizes
+// -----------------------------------------------------
+.button-small {
+  padding: 10px 20px;
+  font-size: 10px;
+}
+
+.button-medium {
+  padding: 14px 30px;
+  font-size: 12px;
+}
+
+.button-expanded {
+  width: 100%;
+}
+
+// Button Group
+// -----------------------------------------------------
+
+@mixin button-group-stacked-styles() {
+  .inside {
+    width: 100%;
+    margin: -4px 0;
+  }
+
+  .button {
+    width: 100%;
+    margin: 4px 0;
+  }
+}
+
+.button-group {
+  &.align-right {
+    text-align: right;
+
+    .inside {
+      @include flex-align(right);
+    }
+  }
+
+  &.align-center {
+    text-align: center;
+
+    .inside {
+      @include flex-align(center);
+    }
+  }
+
+  .inside {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: -4px;
+    width: 100%;
+  }
+
+  .button {
+    margin: 4px;
+  }
+
+  &.small-stacked {
+    @include breakpoint(small only) {
+      @include button-group-stacked-styles();
+    }
+  }
+
+  &.stacked {
+    @include button-group-stacked-styles();
+  }
+}
+
+// Button Themes
+// -----------------------------------------------------
+.button-primary {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: #ffffff;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      opacity: 0.9;
+    }
+  }
+}
+
+.button-secondary {
+  background: $color-secondary;
+  border-color: $color-secondary;
+  color: #ffffff;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      opacity: 0.9;
+    }
+  }
+}
+
+.button-hollow {
+  background-color: white;
+  border-color: $color-body-text;
+  color: $color-body-text;
+
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      opacity: 0.9;
+    }
+  }
+}
