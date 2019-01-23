@@ -4,8 +4,8 @@
   &-list {
     list-style: none;
     padding: 0;
-    margin: 0 (-$spacing);
-    width: calc(100% + #{$spacing * 2});
+    margin: 0 (-($spacing / 2));
+    width: calc(100% + #{$spacing});
   }
 
   &-item {
