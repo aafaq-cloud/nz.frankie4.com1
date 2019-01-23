@@ -57,12 +57,12 @@ button {
 // -----------------------------------------------------
 .button-small {
   padding: 10px 20px;
-  font-size: 10px;
+  font-size: rem-calc(10px);
 }
 
 .button-medium {
   padding: 14px 30px;
-  font-size: 12px;
+  font-size: rem-calc(12px);
 }
 
 .button-expanded {
