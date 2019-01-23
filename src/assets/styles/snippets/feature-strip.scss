@@ -1,9 +1,16 @@
 .header-feature-strip {
+  $spacing: 16px;
 
   &-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 (-$spacing);
+    width: calc(100% + #{$spacing * 2});
+  }
+
+  &-item {
+    width: 33.333%;
+    padding: 0 ($spacing / 2);
   }
 
   &-list-wrapper {
