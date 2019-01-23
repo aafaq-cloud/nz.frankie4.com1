@@ -5,7 +5,7 @@ $menu-width: 280px;
 
   @include breakpoint(medium down) {
     display: block;
-    background-color: #ffffff;
+    background-color: white;
     position: fixed;
     top: 0;
     bottom: -80px; // Account for toolbar overlap
@@ -13,27 +13,23 @@ $menu-width: 280px;
     width: $menu-width;
     padding-bottom: 80px; // Account for toolbar overlap
     z-index: 320;
-    overflow: auto;
     transition: transform 0.2s ease-out;
 
     .main-nav-active & {
       transform: translateX(100%);
     }
 
-    &-links-title {
-      display: block;
-      padding: 6px 20px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      background: #f6f7f9;
-      border-top: 1px solid #e4e5e7;
-      border-bottom: 1px solid #e4e5e7;
+    &-wrapper {
+      min-height: 100%;
+    }
+
+    &-links-wrapper {
+      overflow: auto;
     }
 
     &-links {
       list-style: none;
-      padding: 0;
+      padding: 20px;
       margin: 0;
 
       ul {
@@ -48,7 +44,7 @@ $menu-width: 280px;
 
       > li {
         + li {
-          border-top: 1px solid #e4e5e7;
+          border-top: 1px solid $color-border;
         }
       }
 
@@ -57,13 +53,10 @@ $menu-width: 280px;
         min-height: 40px;
         padding: 12px 20px;
         @include no-select();
-
-        text-transform: uppercase;
         text-decoration: none;
-        letter-spacing: 0.3em;
-        font-size: 12px;
         white-space: nowrap;
         overflow: hidden;
+        font-size: rem-calc(14px);
         text-overflow: ellipsis;
 
         &.has-children {
@@ -116,17 +109,12 @@ $menu-width: 280px;
       }
     }
 
-    .social-icon-container {
-      overflow: hidden;
+    &-footer {
+      padding: 20px;
     }
 
     .social-icons {
-      padding: 16px 20px;
-
-      svg {
-        width: 24px;
-        height: 24px;
-      }
+      font-size: rem-calc(24px);
     }
   }
 }
@@ -168,14 +156,5 @@ $menu-width: 280px;
       width: 12px;
       height: 12px;
     }
-  }
-}
-
-.main-nav-active {
-  @include breakpoint(medium down) {
-    position: fixed;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
   }
 }

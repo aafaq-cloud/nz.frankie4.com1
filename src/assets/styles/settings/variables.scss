@@ -39,16 +39,14 @@ $color-secondary: var(--color-secondary);
 
 // Header
 // ----------------------------------------
-$nav-switch-breakpoint: large;
-$nav-switch-breakpoint-down: medium down;
-$toolbar-height: 80px;
+$nav-switch-breakpoint: medium;
+$nav-switch-breakpoint-down: small down;
+
+$toolbar-height: 42px;
 $top-bar-height: (
   small: 0,
-  medium: 60px,
-  large: 60px
-);
-$top-bar-compact-height: (
-  large: 60px
+  medium: 140px,
+  large: 140px
 );
 $compact-header-transition: transform 200ms;
 

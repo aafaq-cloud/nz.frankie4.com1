@@ -36,7 +36,7 @@
   input {
     width: 100%;
     padding: 11px 20px 11px 50px;
-    background: white;
+    background-color: white;
     border: none;
     outline: none;
     height: 45px;
@@ -44,6 +44,10 @@
     @include breakpoint(medium) {
       font-size: 12px;
       padding: 14px 20px 13px 50px;
+    }
+
+    @include breakpoint(large) {
+      background-color: transparent;
     }
 
     &:focus {

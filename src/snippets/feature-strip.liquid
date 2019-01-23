@@ -1,17 +1,41 @@
 {% if settings.show_feature_strip %}
-    <div class="header-feature-strip text-small text-center show-for-medium">
+    <div class="header-feature-strip text-small text-center show-for-large">
         <div class="grid-container">
-            <ul class="header-feature-strip-list grid-x align-middle align-center">
+            <ul class="header-feature-strip-list grid-x grid-margin-x align-middle align-center">
                 {% unless settings.feature_strip_text_1 == blank %}
-                    <li class="cell grow small-4">{{ settings.feature_strip_text_1 }}</li>
+                    <li class="cell small-4 feature-strip-item-1">
+                        <div class="header-feature-strip-list-wrapper">
+                            {{ settings.feature_strip_text_1 }}
+                        </div>
+                    </li>
                 {% endunless %}
-                {% unless settings.feature_strip_text_1 == blank %}
-                    <li class="cell grow small-4">{{ settings.feature_strip_text_2 }}</li>
+                {% unless settings.feature_strip_text_2 == blank %}
+                    <li class="cell small-4 feature-strip-item-2">
+                        <div class="header-feature-strip-list-wrapper">
+                            {{ settings.feature_strip_text_2 }}
+                        </div>
+                    </li>
                 {% endunless %}
-                {% unless settings.feature_strip_text_1 == blank %}
-                    <li class="cell grow small-4">{{ settings.feature_strip_text_3 }}</li>
+                {% unless settings.feature_strip_text_3 == blank %}
+                    <li class="cell small-4 feature-strip-item-3">
+                        <div class="header-feature-strip-list-wrapper">
+                            {{ settings.feature_strip_text_3 }}
+                        </div>
+                    </li>
                 {% endunless %}
             </ul>
         </div>
     </div>
+
+    <style>
+        .feature-strip-item-1 {
+            background-color: {{ settings.feature_strip_color_1 }};
+        }
+        .feature-strip-item-2 {
+            background-color: {{ settings.feature_strip_color_2 }};
+        }
+        .feature-strip-item-3 {
+            background-color: {{ settings.feature_strip_color_3 }};
+        }
+    </style>
 {% endif %}

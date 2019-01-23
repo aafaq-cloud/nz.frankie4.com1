@@ -4,22 +4,22 @@ Main Navigation
 Navigation to display on large viewports
 {% endcomment %}
 
-<nav class="main-nav show-for-large">
+<nav class="main-nav">
     <ul class="main-nav-links">
         {% for link in linklists[section.settings.main_linklist].links %}
             <li>
                 <a href="{{ link.url }}">
                   {{ link.title | escape }}
                   {% if link.links != blank %}
-                    {% include "icon-chevron-down" %}
+                    {% include "icon-chevron" %}
                   {% endif %}
                 </a>
                 {% if link.links != blank %}
-                    <div class="main-nav-dropdown main-nav-stacked show-for-large">
+                    <div class="main-nav-dropdown main-nav-stacked">
                         <ul class="main-nav-child-links">
                             {% for child_link in link.links %}
                                 <li class="child-link">
-                                    <a href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                                    <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
                                     {% if child_link.links != blank %}
                                         <ul class="main-nav-grandchild-links">
                                             {% for grandchild_link in child_link.links %}

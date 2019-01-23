@@ -15,23 +15,10 @@ body {
   right: 0;
   top: 0;
   background: white;
-
-  // .compact-header & {
-  //   @include breakpoint($nav-switch-breakpoint) {
-  //     transform: translateY(-$toolbar-height);
-  //   }
-  // }
-  //
-  // .show-header & {
-  //   @include breakpoint($nav-switch-breakpoint-down) {
-  //     transform: translateY($toolbar-height);
-  //   }
-  // }
 }
 
 .top-nav {
   list-style: none;
-  color: $color-body-secondary-text;
   padding: 0;
   margin: 0;
 
@@ -46,19 +33,10 @@ body {
 }
 
 .header-top {
-  padding: 0 10px;
-  @include breakpoint(large) {
-    padding: 0 20px;
-  }
+  height: $toolbar-height;
+  background: #f6f6f6;
 }
 
-.header-top-wrapper {
-  height: 80px;
-}
-
-.header-top-wrapper > .cell {
-  flex-basis: 33%;
-}
 
 // Toolbar
 // ----------------------------------------
@@ -134,27 +112,60 @@ body {
   }
 }
 
-// Main Bar
-// ----------------------------------------
-.main-bar {
-  height: map_get($top-bar-height, small);
-  transition: height 100ms;
+.header-logo {
+  height: 100%;
 
-  @include breakpoint($nav-switch-breakpoint) {
-    height: map_get($top-bar-height, large);
 
-    .compact-header:not(.lock-header) & {
-      height: map_get($top-bar-compact-height, large);
+  &-inner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+
+    @include breakpoint(medium) {
+      justify-content: center;
     }
   }
 
-  > div {
-    height: 100%;
+  a {
+    text-decoration: none;
+    font-weight: 700;
+
+    img {
+      height: 18px;
+      width: auto;
+
+      @include breakpoint($nav-switch-breakpoint) {
+        height: 26px;
+      }
+    }
   }
 
-  &-top {
-    position: relative;
-    z-index: 2;
+  &-text {
+    font-size: rem-calc(28px);
+    line-height: 1;
+
+    @include breakpoint(large) {
+      font-size: rem-calc(36px);
+    }
+  }
+
+}
+
+// Main Bar
+// ----------------------------------------
+.main-bar {
+
+  @include breakpoint(medium) {
+    height: map_get($top-bar-height, medium);
+  }
+
+  @include breakpoint(large) {
+    height: map_get($top-bar-height, large);
+  }
+
+  &-wrapper {
+    height: 100%;
   }
 
   &-item {
@@ -199,39 +210,5 @@ body {
         right: 0;
       }
     }
-  }
-
-  &-logo {
-    font-weight: 700;
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: flex-start;
-
-    @include breakpoint(medium) {
-      justify-content: center;
-    }
-
-    a {
-      text-decoration: none;
-
-      img {
-        height: 18px;
-        width: auto;
-
-        @include breakpoint($nav-switch-breakpoint) {
-          height: 26px;
-        }
-      }
-    }
-  }
-}
-.main-bar-logo-text {
-  font-size: rem-calc(28px);
-  line-height: 1;
-  text-transform: uppercase;
-  text-decoration: none;
-  @include breakpoint(large) {
-    font-size: rem-calc(36px);
   }
 }

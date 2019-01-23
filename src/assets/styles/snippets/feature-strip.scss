@@ -1,11 +1,18 @@
 .header-feature-strip {
-  background-color: $color-secondary;
-  text-transform: uppercase;
+
   &-list {
     list-style: none;
     padding: 0;
-    height: 40px;
     margin: 0;
+  }
+
+  &-list-wrapper {
+    padding: 10px;
+    height: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   p {

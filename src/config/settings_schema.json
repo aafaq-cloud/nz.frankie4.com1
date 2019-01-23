@@ -63,19 +63,49 @@
         "label": "Display Feature Strip"
       },
       {
+        "type": "header",
+        "content": "Feature Box 1"
+      },
+      {
         "type": "richtext",
         "id": "feature_strip_text_1",
-        "label": "Content 1"
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_1",
+        "label": "Background Colour",
+        "default": "#e4eaed"
+      },
+      {
+        "type": "header",
+        "content": "Feature Box 2"
       },
       {
         "type": "richtext",
         "id": "feature_strip_text_2",
-        "label": "Content 2"
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_2",
+        "label": "Background Colour",
+        "default": "#e4eaed"
+      },
+      {
+        "type": "header",
+        "content": "Feature Box 3"
       },
       {
         "type": "richtext",
         "id": "feature_strip_text_3",
-        "label": "Content 3"
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_3",
+        "label": "Background Colour",
+        "default": "#e4eaed"
       }
     ]
   },

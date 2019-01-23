@@ -9,6 +9,7 @@
         {% if settings[social_link] != blank %}
             <li>
                 <a href="{{ settings[social_link] }}"
+                   target="_blank"
                    title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
                     {% include social_icon %}
                     <span class="show-for-sr">{{ social }}</span> </a>

@@ -1,20 +1,9 @@
 .main-nav {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: (0.86 / 12) * 1em;
-  line-height: (17 / 12);
-  .icon {
-    height: (8 / 12) * 1em;
-    width: (8 / 12) * 1em;
-    margin: (2 / 12) * 1em 0 (2 / 12) * 1em 9px;
-  }
+
   @include breakpoint($nav-switch-breakpoint) {
+
     a {
-      display: flex;
       text-decoration: none;
-      transition: color 0.2s linear;
-      justify-content: center;
-      align-items: center;
     }
 
     ul {
@@ -28,6 +17,8 @@
       justify-content: center;
 
       > li {
+        position: relative;
+
         &:hover {
           .main-nav-dropdown {
             display: block;
@@ -35,34 +26,21 @@
         }
 
         > a {
-          padding: 2px 8px 10px;
-
-          @include breakpoint(xlarge) {
-            padding: 22px 19px;
-          }
-          height: map_get($top-bar-height, small);
-
-          @include breakpoint($nav-switch-breakpoint) {
-            height: map_get($top-bar-height, large);
-
-            .compact-header:not(.lock-header) & {
-              height: map_get($top-bar-compact-height, large);
-            }
-          }
+          height: 50px;
+          padding: 0 24px 10px;
+          font-size: 18px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
 
     &-child-links {
       a {
-        padding: 5px 0;
-      }
-    }
-
-    &-grandchild-links {
-      a {
-        color: $color-body-text;
-        padding: 3px 0;
+        display: inline-block;
+        padding: 4px 0;
+        font-size: 14px;
       }
     }
 
@@ -70,10 +48,12 @@
       position: absolute;
       display: none;
       background-color: white;
+      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.15);
       text-align: left;
       margin-top: -1px;
-      transition: top 100ms;
-      padding: 15px 19px;
+      left: -16px; // Align with parent text
+      padding: 0 40px 30px;
+      width: 210px;
     }
   }
 }
