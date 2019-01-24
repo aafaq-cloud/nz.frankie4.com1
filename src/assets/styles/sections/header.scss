@@ -1,8 +1,8 @@
 body {
-  padding-top: map_get($top-bar-height, small) + $toolbar-height;
+  padding-top: map_get($top-bar-height, small) + map_get($toolbar-height, small);
 
   @include breakpoint($nav-switch-breakpoint) {
-    padding-top: $toolbar-height + map_get($top-bar-height, large);
+    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($top-bar-height, large);
   }
 }
 
@@ -33,8 +33,13 @@ body {
 }
 
 .header-top {
-  height: $toolbar-height;
-  background: #f6f6f6;
+  height: map_get($toolbar-height, small);
+  background: white;
+
+  @include breakpoint($nav-switch-breakpoint) {
+    height: map_get($toolbar-height, $nav-switch-breakpoint);
+    background: #f6f6f6;
+  }
 }
 
 
@@ -43,9 +48,13 @@ body {
 .toolbar {
   &-items {
     display: inline-flex;
-    height: $toolbar-height;
     margin: 0;
     padding: 0;
+    height: map_get($toolbar-height, small);
+
+    @include breakpoint($nav-switch-breakpoint) {
+      height: map_get($toolbar-height, $nav-switch-breakpoint);
+    }
   }
 
   &-item {

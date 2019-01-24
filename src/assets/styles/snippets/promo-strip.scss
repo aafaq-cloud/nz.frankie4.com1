@@ -2,16 +2,23 @@
   background-color: $color-primary;
   color: white;
   text-transform: uppercase;
-  padding: 9px 10px;
+  padding: 0 14px;
+  height: $promo-strip-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   p {
     margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
 body.has-promo-strip {
-  padding-top: map_get($top-bar-height, small) + $toolbar-height + 30px;
+  padding-top: map_get($top-bar-height, small) + map_get($toolbar-height, small) + $promo-strip-height;
 
   @include breakpoint($nav-switch-breakpoint) {
-    padding-top: $toolbar-height + map_get($top-bar-height, large) + 30px;
+    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($top-bar-height, large) + $promo-strip-height;
   }
 }
