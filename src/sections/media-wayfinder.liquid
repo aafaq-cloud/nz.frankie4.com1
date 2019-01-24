@@ -1,0 +1,98 @@
+<div class="section section-media-wayfinder">
+
+    <div class="media-block-container grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% for block in section.blocks %}
+
+                {% assign width = block.settings.width %}
+                {% assign cell_class = '' %}
+
+                {% if width == "1-3" %}
+                    {% assign cell_class = "medium-4" %}
+                {% elsif width == "1-2" %}
+                    {% assign cell_class = "medium-6" %}
+                {% elsif width == "2-3" %}
+                    {% assign cell_class = "medium-8" %}
+                {% endif %}
+
+                <div class="cell media-block {{ cell_class }}">
+                    <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
+
+                    {% if block.settings.title or block.settings.link_text %}
+                        <div class="media-block-content-wrapper grid-y align-right align-middle h-100">
+                            <div class="media-block-content cell text-center">
+                                {% if block.settings.title != blank %}
+                                    <h2 class="extrabold m-0">{{ block.settings.title }}</h2>
+                                {% endif %}
+                                {% if block.settings.link_text != blank %}
+                                    <span class="arrow-link color-secondary-text">
+                                        {{ block.settings.link_text }}
+                                        {% include 'icon-chevron-right' %}
+                                    </span>
+                                    {% if block.settings.link != blank %}
+                                        <a href="{{ block.settings.link }}" class="cover-link"></a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Media Wayfinder",
+        "settings": [
+        ],
+        "blocks": [
+            {
+                "type": "media_block",
+                "name": "Media Block",
+                "settings": [
+                    {
+                        "type": "radio",
+                        "id": "width",
+                        "options": [
+                            { "value": "1-3", "label": "1/3"},
+                            { "value": "1-2", "label": "1/2"},
+                            { "value": "2-3", "label": "2/3"},
+                            { "value": "1-1", "label": "Full"}
+                        ],
+                        "label": "Media Block Width"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Background Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_text",
+                        "label": "Link Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Media Wayfinder",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

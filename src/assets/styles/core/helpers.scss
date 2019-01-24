@@ -69,6 +69,17 @@
 }
 
 // Absolute position link cover
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}
 .cover-link {
   position: absolute;
   top: 0;
@@ -133,6 +144,10 @@
 
 .semibold {
   font-weight: 600;
+}
+
+.extrabold {
+  font-weight: 800;
 }
 
 .h-100 {
