@@ -1,4 +1,7 @@
 <div class="section section-banner no-margin">
+    {% if section.settings.mobile_image %}
+        <img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.mobile_image | img_url: '1400x'}} 1400w, {{section.settings.mobile_image | img_url: '1100x'}} 1100w, {{section.settings.mobile_image | img_url: '800x'}} 800w, {{section.settings.mobile_image | img_url: '450x'}} 450w" class="mobile-banner-image banner-image">
+    {% endif %}
     <img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.image | img_url: '1400x'}} 1400w, {{section.settings.image | img_url: '1100x'}} 1100w, {{section.settings.image | img_url: '800x'}} 800w, {{section.settings.image | img_url: '450x'}} 450w" class="banner-image">
     <div class="banner-content-wrapper">
       <div class="grid-container text-center">
@@ -21,6 +24,11 @@
             "id": "image",
             "type": "image_picker",
             "label": "Image"
+          },
+          {
+            "id": "mobile_image",
+            "type": "image_picker",
+            "label": "Mobile Image"
           },
           {
             "id": "title",

@@ -3,6 +3,7 @@
   margin-bottom: 30px;
 }
 
+
 .banner-image {
   top: 0;
   left: 0;
@@ -16,6 +17,19 @@
 
     @include breakpoint(medium) {
       height: 740px;
+    }
+  }
+
+  &.mobile-banner-image {
+
+    @include breakpoint(small down) {
+      + .banner-image {
+        display: none;
+      }
+    }
+
+    @include breakpoint(medium) {
+      display: none;
     }
   }
 }
