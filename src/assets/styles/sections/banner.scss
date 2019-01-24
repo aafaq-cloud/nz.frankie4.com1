@@ -8,12 +8,14 @@
   left: 0;
   width: 100%;
   display: block;
+
   @supports (object-fit: cover) {
     height: 60vh;
     max-height: 80vh;
     object-fit: cover;
+
     @include breakpoint(medium) {
-      height: 640px;
+      height: 740px;
     }
   }
 }
@@ -33,7 +35,33 @@
 
 .banner-title {
   font-weight: 700;
+
+  @include breakpoint(580px) {
+    font-size: rem-calc(70);
+  }
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(90);
+  }
+
   @include breakpoint(large) {
-    font-size: rem-calc(120);
+    font-size: rem-calc(140);
+  }
+
+  @include breakpoint(xlarge) {
+    font-size: rem-calc(180);
+  }
+}
+
+
+.banner-subtitle {
+  font-size: rem-calc(14px);
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(18px);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem-calc(20px);
   }
 }

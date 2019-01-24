@@ -1,11 +1,16 @@
 <div class="section section-banner no-margin">
-<img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.image | img_url: '1400x'}} 1400w, {{section.settings.image | img_url: '1100x'}} 1100w, {{section.settings.image | img_url: '800x'}} 800w, {{section.settings.image | img_url: '450x'}} 450w" class="banner-image">
-<div class="banner-content-wrapper">
-  <div class="grid-container text-center">
-    <h1 class="banner-title">{{section.settings.title}}</h1>
-    <a class="button button-primary" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
-  </div>
-</div>
+    <img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.image | img_url: '1400x'}} 1400w, {{section.settings.image | img_url: '1100x'}} 1100w, {{section.settings.image | img_url: '800x'}} 800w, {{section.settings.image | img_url: '450x'}} 450w" class="banner-image">
+    <div class="banner-content-wrapper">
+      <div class="grid-container text-center">
+        <h1 class="banner-title m-0">{{section.settings.title}}</h1>
+        {% if section.settings.subtitle != blank %}
+            <p class="banner-subtitle mt-10 mb-0">{{section.settings.subtitle}}</p>
+        {% endif %}
+        {% if section.settings.button-text != blank %}
+            <a class="button button-light mt-30" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
+        {% endif %}
+      </div>
+    </div>
 </div>
 
 {% schema %}
@@ -21,6 +26,11 @@
             "id": "title",
             "type": "text",
             "label": "Title"
+          },
+          {
+            "id": "subtitle",
+            "type": "text",
+            "label": "Subtitle"
           },
           {
             "id": "button-text",
