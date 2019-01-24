@@ -347,8 +347,8 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
 
         inputFocus() {
           this.keyword_focused = true;
-          HeaderSection.lockHeader();
-          HeaderSection.showHeader();
+          // HeaderSection.lockHeader();
+          // HeaderSection.showHeader();
 
           instance.scrollPosition = window.pageYOffset;
 

@@ -1,9 +1,9 @@
 <header data-autoload-class="HeaderSection" data-section-id="{{ section.id }}" class="site-header" data-section-type="header-section">
   {% include 'promo-strip' %}
-  <div class="header-top">
-    <div class="header-top-wrapper grid-container">
+  <div class="toolbar">
+    <div class="toolbar-wrapper grid-container h-100">
 
-      <div class="grid-x align-middle align-justify">
+      <div class="grid-x align-middle align-justify h-100">
 
         <nav class="toolbar-items-left toolbar-items cell shrink show-for-medium">
           <ul class="grid-x top-nav align-middle text-small">
@@ -15,7 +15,7 @@
           </ul>
         </nav>
 
-        <div class="header-logo cell auto show-for-mobile-navigation">
+        <div class="header-logo cell auto">
           <div class="header-logo-inner">
             <a href="/">
                 {% if section.settings.logo != blank %}
@@ -77,27 +77,32 @@
   </div>
 
 
-  <div class="main-bar grid-container hide-for-mobile-navigation">
+  <div class="main-bar hide-for-mobile-navigation">
 
-    <div class="main-bar-wrapper grid-y align-justify">
+    <div class="grid-container h-100">
 
-      <div class="header-logo cell auto">
-        <div class="header-logo-inner">
-          <a href="/">
-              {% if section.settings.logo != blank %}
-                <img src="{{ section.settings.logo | img_url: '400x200' }}" alt="logo"/>
-              {% else %}
-                <span class="header-logo-text">{{ shop.name }}</span>
-              {% endif %}
-          </a>
+      <div class="main-bar-wrapper">
+
+        <div class="main-bar-top">
+          <div class="header-logo">
+            <div class="header-logo-inner">
+              <a href="/">
+                  {% if section.settings.logo != blank %}
+                    <img src="{{ section.settings.logo | img_url: '400x200' }}" alt="logo"/>
+                  {% else %}
+                    <span class="header-logo-text">{{ shop.name }}</span>
+                  {% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-bar-bottom">
+            {% include 'navigation' %}
         </div>
       </div>
 
-      <div class="main-bar-bottom cell shrink">
-          {% include 'navigation' %}
-      </div>
     </div>
-
   </div>
 
   {% include 'navigation-mobile' %}

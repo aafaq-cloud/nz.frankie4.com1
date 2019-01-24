@@ -34,7 +34,8 @@
 }
 
 .banner-title {
-  font-weight: 700;
+  font-weight: 800;
+  font-size: rem-calc(54);
 
   @include breakpoint(580px) {
     font-size: rem-calc(70);

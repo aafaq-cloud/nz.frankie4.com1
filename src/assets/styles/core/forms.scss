@@ -18,10 +18,6 @@ textarea,
   border: 1px solid $color-form-element-border;
   background-color: $color-form-element-background;
 
-  @include placeholder() {
-    font-size: rem-calc(14);
-  }
-
   @include breakpoint(medium) {
     font-size: rem-calc(14);
   }

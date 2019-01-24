@@ -12,10 +12,10 @@
     @include breakpoint(medium) {
       position: sticky;
       padding-left: 20px;
-      top: map_get($top-bar-height, small) + map_get($toolbar-height, small) + 30px;
+      top: map_get($header-height, small) + map_get($toolbar-height, small) + 30px;
 
       @include breakpoint($nav-switch-breakpoint) {
-        top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($top-bar-height, large) + 30px;
+        top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($header-height, large) + 30px;
       }
     }
     @include breakpoint(large) {

@@ -1,8 +1,8 @@
 body {
-  padding-top: map_get($top-bar-height, small) + map_get($toolbar-height, small);
+  padding-top: map_get($header-height, small) + map_get($toolbar-height, small);
 
   @include breakpoint($nav-switch-breakpoint) {
-    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($top-bar-height, large);
+    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($header-height, large);
   }
 }
 
@@ -15,6 +15,7 @@ body {
   right: 0;
   top: 0;
   background: white;
+
 }
 
 .top-nav {
@@ -32,7 +33,9 @@ body {
   }
 }
 
-.header-top {
+.toolbar {
+  position: relative;
+  z-index: 10;
   height: map_get($toolbar-height, small);
   background: white;
 
@@ -40,12 +43,24 @@ body {
     height: map_get($toolbar-height, $nav-switch-breakpoint);
     background: #f6f6f6;
   }
-}
 
+  .header-logo {
 
-// Toolbar
-// ----------------------------------------
-.toolbar {
+    @include breakpoint($nav-switch-breakpoint) {
+      opacity: 0;
+      transition: opacity 100ms;
+
+      .compact-header & {
+        opacity: 1;
+        transition: opacity 100ms 100ms;
+      }
+
+      &-text {
+        font-size: rem-calc(28px);
+      }
+    }
+  }
+
   &-items {
     display: inline-flex;
     margin: 0;
@@ -111,6 +126,13 @@ body {
       font-size: rem-calc(20);
     }
   }
+
+  .cart-quantity {
+    position: absolute;
+    left: 19px;
+    top: 50%;
+    transform: translateY(calc(-50% + -8px));
+  }
 }
 
 .search-focusser {
@@ -123,7 +145,6 @@ body {
 
 .header-logo {
   height: 100%;
-
 
   &-inner {
     align-items: center;
@@ -165,59 +186,40 @@ body {
 // ----------------------------------------
 .main-bar {
 
-  @include breakpoint(medium) {
-    height: map_get($top-bar-height, medium);
-  }
-
-  @include breakpoint(large) {
-    height: map_get($top-bar-height, large);
-  }
-
   &-wrapper {
     height: 100%;
   }
 
-  &-item {
-    align-items: center;
-    height: map_get($top-bar-height, small);
-    width: map_get($top-bar-height, small);
+  .header-logo {
+    padding-bottom: 10px; // Add some space from the menu
 
-    a,
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-      cursor: pointer;
-      outline: none;
+    &-inner {
+      align-items: flex-end;
     }
   }
 
-  @include breakpoint($nav-switch-breakpoint) {
-    &-items {
-      position: absolute;
-      bottom: -32px;
-      opacity: 0;
-      transition: opacity 200ms;
+  &-top {
+    transition: height 200ms linear, opacity 100ms 100ms;
 
-      body:not(.compact-header) & {
-        opacity: 0;
-        cursor: default;
-        pointer-events: none;
-      }
-
-      .compact-header & {
-        opacity: 1;
-      }
-
-      &.left {
-        left: 0;
-      }
-
-      &.right {
-        right: 0;
-      }
+    @include breakpoint(medium) {
+      height: map_get($header-height, medium) - 60px;
     }
+
+    @include breakpoint(large) {
+      height: map_get($header-height, large) - 60px;
+    }
+
+    .compact-header & {
+      height: 0;
+      opacity: 0;
+      transition: height 200ms linear, opacity 100ms;
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 60px;
   }
 }

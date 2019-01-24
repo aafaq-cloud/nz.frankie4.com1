@@ -16,9 +16,9 @@
 }
 
 body.has-promo-strip {
-  padding-top: map_get($top-bar-height, small) + map_get($toolbar-height, small) + $promo-strip-height;
+  padding-top: map_get($header-height, small) + map_get($toolbar-height, small) + $promo-strip-height;
 
   @include breakpoint($nav-switch-breakpoint) {
-    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($top-bar-height, large) + $promo-strip-height;
+    padding-top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($header-height, large) + $promo-strip-height;
   }
 }

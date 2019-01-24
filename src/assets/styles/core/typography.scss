@@ -1,7 +1,7 @@
 body,
 html {
   font-display: fallback;
-  font-family: Montserrat, Futura, "Century Gothic", sans-serif;
+  font-family: 'Muli', sans-serif;
   font-size: $global-font-size;
   line-height: (22 / 12);
   color: $color-body-text;
@@ -18,14 +18,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   text-decoration: none;
   margin: 0 0 rem-calc(10);
 }
 
 h1 {
-  font-size: rem-calc(52);
+  font-size: rem-calc(60);
   line-height: (63 / 52);
 }
 
@@ -35,12 +35,12 @@ h2 {
 }
 
 h3 {
-  font-size: rem-calc(24);
+  font-size: rem-calc(32);
   line-height: (29 / 24);
 }
 
 h4 {
-  font-size: rem-calc(20);
+  font-size: rem-calc(24);
   line-height: (24 / 20);
 }
 
