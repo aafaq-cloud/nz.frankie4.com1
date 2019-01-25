@@ -22,26 +22,52 @@
   &-toggle {
     display: flex;
     align-items: center;
-    padding: 17px 20px;
+    padding: 25px 20px;
     border-top: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
     cursor: pointer;
     @include no-select;
 
-    ~ .accordion-toggle {
-      border-top: none;
-    }
 
     &-title {
       margin: 0;
+      font-weight: 400;
       flex: 1 1 0;
       text-overflow: ellipsis;
       overflow: hidden;
     }
+
+    .open-icon {
+      display: block;
+    }
+    .close-icon {
+      display: none;
+    }
+
+    &:not(.closed) {
+      border-bottom: none;
+
+      .accordion-toggle-title {
+        font-weight: 700;
+      }
+
+      .open-icon {
+        display: none;
+      }
+      .close-icon {
+        display: block;
+      }
+
+    }
   }
 
   &-body {
-    padding: 20px;
+    padding: 5px 20px 20px;
     border-bottom: 1px solid $color-border;
+
+    + .accordion-toggle {
+      border-top: none;
+    }
+
   }
 }
