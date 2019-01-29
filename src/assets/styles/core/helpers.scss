@@ -87,6 +87,7 @@
   bottom: 0;
   left: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .hover-link {
@@ -113,6 +114,27 @@
     &::before {
       transform: translateY(-50%) scaleX(1);
     }
+  }
+}
+
+.link {
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    z-index: -1;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 6px;
+    width: 70px;
+    background-color: $color-secondary;
+    transform: translateY(-50%) scaleX(1);
+    transition: transform 200ms;
+    transform-origin: left;
+    opacity: 0.6;
   }
 }
 

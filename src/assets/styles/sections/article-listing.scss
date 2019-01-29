@@ -4,28 +4,71 @@
   flex-wrap: wrap;
   margin: 5px -5px 15px;
   width: calc(100% + 10px);
-  justify-content: center;
 
   &__tag {
-    min-width: 160px;
-    padding: 8px 16px;
+    position: relative;
+    font-size: rem-calc(14);
+    z-index: 1;
     margin: 5px;
-    text-transform: uppercase;
-    border: 1px solid $color-body-text;
+    padding: 10px 5px;
     text-decoration: none;
     color: $color-body-text;
     transition: color 200ms, background 200ms;
     letter-spacing: (0.86 / 12) * 1em;
     text-align: center;
+    overflow: hidden;
 
     @include breakpoint(medium) {
-      padding: 10px 16px;
+      font-size: rem-calc(18);
+      padding: 10px 20px;
     }
 
-    &:hover,
+
+    &::before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 50%;
+      height: 6px;
+      width: 70px;
+      background-color: $color-secondary;
+      transform: translateY(-50%) scaleX(0);
+      transition: transform 200ms;
+      transform-origin: left;
+      opacity: 0.6;
+    }
+
+    &:hover {
+      &::before {
+        transform: translateY(-50%) scaleX(1);
+      }
+    }
+
     &.active {
-      background: $color-body-text;
-      color: white;
+      font-weight: bold;
+
+      &::before {
+        content: '';
+        z-index: -1;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        height: 6px;
+        width: 70px;
+        background-color: $color-secondary;
+        transform: translateY(-50%) scaleX(1);
+        transition: transform 200ms;
+        transform-origin: left;
+        opacity: 0.6;
+      }
+
     }
   }
+}
+
+#article-load-more-container {
+  margin-top: 50px;
 }
