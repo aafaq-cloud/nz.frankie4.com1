@@ -20,28 +20,42 @@ If a comment was just submitted but requires moderation, we have an extra commen
 
     <article class="grid-container" role="article">
 
+    {% include 'breadcrumb' %}
+
         <div class="grid-x">
 
-            <div class="cell medium-10 large-6">
-                <img data-src="{{article.image | img_url: '800x800', crop: 'center'}}" class="lazyload article__image">
+            <div class="article__meta cell medium-12 large-2">
+               {% capture date %}{{ article.published_at | date: '%b %d, %Y' }}{% endcapture %}
+               <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
+
+               {% if article.tags.size > 0 %}
+                   <div class="article-tile__tags text-small color-secondary-text mt-10 link">
+                       {% for tag in article.tags %}
+                           {% if forloop.index0 > 0 %}<span class="delimeter">|</span>{% endif %}
+                           <span class="article-tile__tag">{{ tag }}</span>
+                       {% endfor %}
+                   </div>
+               {% endif %}
+
             </div>
 
-            <div class="article__content cell medium-10 large-6">
+            <div class="article__content cell medium-12 large-10">
 
-                {% include 'breadcrumb' %}
+                <div class="grid-x grid-margin-x align-middle">
+                    <div class="cell large-5">
+                        <h1 class="mt-10 mb-40">{{ article.title }}</h1>
+                    </div>
+                    <div class="cell large-6 large-offset-1">
+                        <p class="lead">{{ article.excerpt }}</p>
+                    </div>
+                </div>
 
-                <h1 class="mt-10 mb-40">{{ article.title }}</h1>
+                <img data-src="{{article.image | img_url: '1024x', crop: 'center'}}" class="lazyload article__image">
 
                 <div class="rte clearfix" itemprop="articleBody">
                     {{ article.content }}
                 </div>
 
-                <div class="article__share mt-40">
-                    <span class="article__share-label color-secondary-text text-small">Share</span>
-                    {% if settings.social_sharing_blog %}
-                        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-                    {% endif %}
-                </div>
 
             </div>
 
@@ -101,9 +115,9 @@ If a comment was just submitted but requires moderation, we have an extra commen
 
 <div class="section section-article-related">
     <div class="grid-container">
-        <div class="text-center mt-30 mb-40">
-            <h2>{{section.settings.related_articles_title}}</h2>
-            <p class="h6 color-secondary-text">{{section.settings.related_articles_subtitle}}</p>
+        <div class="mt-30 mb-40">
+            <h2 class="h1">{{section.settings.related_articles_title}}</h2>
+            <p class="lead color-secondary-text">{{section.settings.related_articles_subtitle}}</p>
         </div>
         <div class="grid-x grid-margin-x grid-margin-y">
             {% assign article_listing = 1 %}

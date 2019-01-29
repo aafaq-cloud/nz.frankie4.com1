@@ -1,24 +1,30 @@
-<article class="article-tile cell text-center grid-y">
+<article class="article-tile cell text-left grid-y {{ article_type }}">
 
     <a href="{{ article.url }}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
 
     <div class="cell article-tile__image-container">
-        <img data-src="{{article | img_url: '450x420', crop: 'center'}}" class="lazyload article-tile__image">
+        {% if article_type == 'full' %}
+            <img src="{{article | img_url: '800x'}}" srcset=" {{article | img_url: '800x'}} 800w, {{article | img_url: '450x385', crop: 'center'}} 450w"  class="lazyload article-tile__image">
+        {% else %}
+             <img data-src="{{article | img_url: '450x385', crop: 'center'}}" class="lazyload article-tile__image">
+        {% endif %}
     </div>
 
-    <div class="cell article-tile__body grid-y">
-        {% capture date %}{{ article.published_at | date: '%d %B %Y' }}{% endcapture %}
-        <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
-        <h4 class="article-tile__title grid-x align-middle align-center m-0">{{ article.title }}</h4>
+    <div class="cell article-tile__body">
+        <div class="article-tile__box">
+            {% capture date %}{{ article.published_at | date: '%b %d, %Y' }}{% endcapture %}
+            <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
+            <h3 class="article-tile__title grid-x align-middle m-0">{{ article.title }}</h3>
 
-        {% if article.tags.size > 0 %}
-            <div class="article-tile__tags text-small color-secondary-text mt-10">
-                {% for tag in article.tags %}
-                    {% if forloop.index0 > 0 %}<span class="delimeter">,</span>{% endif %}
-                    <span class="article-tile__tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-        {% endif %}
+            {% if article.tags.size > 0 %}
+                <div class="article-tile__tags text-small color-secondary-text mt-10 link">
+                    {% for tag in article.tags %}
+                        {% if forloop.index0 > 0 %}<span class="delimeter">|</span>{% endif %}
+                        <span class="article-tile__tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
 
 </article>
