@@ -1,0 +1,49 @@
+.component-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  // Video
+  // -------------------------
+
+  video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* % of current element */
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+
+  &.initialised {
+    video {
+      opacity: 1;
+    }
+  }
+
+  &.fill-height {
+    video {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  // Fallback Image
+  // -------------------------
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
