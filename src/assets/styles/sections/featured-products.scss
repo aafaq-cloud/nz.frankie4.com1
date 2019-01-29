@@ -19,15 +19,6 @@
         padding: 0 40px;
       }
     }
-
-    &-title {
-      text-align: left;
-
-      @include breakpoint(medium) {
-        text-align: center;
-      }
-    }
-
   }
 
   .glide {
@@ -43,7 +34,7 @@
       @include breakpoint(small down) {
         display: none;
         width: 50%;
-        border: 1px solid #e9e9e9;
+        border: 1px solid $color-border;
         padding: 20px;
         height: auto;
 
@@ -87,11 +78,7 @@
         svg {
           transform: rotate(270deg);
         }
-
       }
-
     }
-
   }
-
 }

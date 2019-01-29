@@ -25,13 +25,25 @@ h6 {
 }
 
 h1 {
-  font-size: rem-calc(60);
+  font-size: rem-calc(30);
   line-height: (63 / 52);
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(45);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem-calc(60);
+  }
 }
 
 h2 {
-  font-size: rem-calc(40);
+  font-size: rem-calc(30);
   line-height: (49 / 40);
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(40);
+  }
 }
 
 h3 {
@@ -99,7 +111,6 @@ p {
     font-size: rem-calc(20px);
     line-height: (30 / 20);
   }
-
 }
 
 .text-small {
