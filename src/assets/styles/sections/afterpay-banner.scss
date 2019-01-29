@@ -1,0 +1,32 @@
+.section-afterpay-banner {
+  @include breakpoint(small down) {
+    margin: map-get($grid-margin-gutters, small) 0;
+  }
+
+  .afterpay-section-container {
+    @include breakpoint(small down) {
+      padding: 0 map-get($grid-margin-gutters, small);
+    }
+  }
+
+  .banner-wrapper {
+    padding: 30px;
+    font-size: 14px;
+
+    @include breakpoint(medium) {
+      padding: 40px 35px;
+      font-size: 24px;
+    }
+  }
+
+  svg {
+    display: inline;
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+
+    path {
+      fill: currentColor;
+    }
+  }
+}

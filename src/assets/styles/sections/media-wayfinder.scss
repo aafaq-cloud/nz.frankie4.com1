@@ -1,16 +1,12 @@
 .section-media-wayfinder {
 
   @include breakpoint(small down) {
-    margin: 0;
+    margin: map-get($grid-margin-gutters, small) 0;
   }
 
   .media-block-container {
     @include breakpoint(small down) {
-      padding: (map-get($grid-margin-gutters, small) / 2);
-
-      > .grid-x {
-        margin: 0;
-      }
+      padding: 0 map-get($grid-margin-gutters, small);
     }
   }
 

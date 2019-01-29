@@ -1,0 +1,42 @@
+<div class="section section-afterpay-banner">
+
+    <div class="afterpay-section-container grid-container">
+        <div class="banner-wrapper bg-tertiary">
+            <div class="grid-x grid-margin-y grid-margin-x align-middle text-center medium-text-left">
+                <div class="cell medium-auto">
+                    But now. <strong>Pay later.</strong> With {% include 'icon-afterpay' %}
+                </div>
+                {% if section.settings.button_text != blank %}
+                    <div class="cell medium-shrink">
+                        <a href="{{section.settings.link}}" class="button button-light button-expanded">{{section.settings.button_text}}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Afterpay Banner",
+        "settings": [
+            {
+                "id": "button_text",
+                "type": "text",
+                "label": "Button Text"
+            },
+            {
+                "id": "link",
+                "type": "url",
+                "label": "Button Link"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Afterpay Banner",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}
