@@ -2,6 +2,7 @@
 
     <div class="media-block-container grid-container">
         <div class="grid-x grid-margin-x grid-margin-y">
+
             {% for block in section.blocks %}
 
                 {% assign width = block.settings.width %}
@@ -16,7 +17,16 @@
                 {% endif %}
 
                 <div class="cell media-block {{ cell_class }}">
-                    <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
+
+                    {% if block.settings.video != blank %}
+                        <div class="component-video" data-autoload-class="ComponentVideo">
+                            <video autoplay="" loop="" muted="" plays-inline="" width="1280" height="720">
+                                <source src="{{ block.settings.video }}" type="video/mp4">
+                            </video>
+                        </div>
+                    {% elsif block.settings.image != blank %}
+                        <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
+                    {% endif %}
 
                     {% if block.settings.title or block.settings.link_text %}
                         <div class="media-block-content-wrapper grid-y align-right align-middle h-100">
@@ -69,6 +79,12 @@
                         "type": "image_picker",
                         "id": "image",
                         "label": "Background Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "video",
+                        "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
                     },
                     {
                         "type": "text",

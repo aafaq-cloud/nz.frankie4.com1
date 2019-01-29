@@ -5,7 +5,7 @@ export const throttledResize = (function throttledResize() {
   const callbacks = [];
 
   let running = false;
-
+  throttledResize
   // run the actual callbacks
   function runCallbacks() {
     callbacks.forEach(callback => {

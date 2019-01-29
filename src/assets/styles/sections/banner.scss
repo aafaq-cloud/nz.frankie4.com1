@@ -1,6 +1,16 @@
 .section-banner {
   position: relative;
   margin-bottom: 30px;
+
+
+  .banner-video {
+    height: 60vh;
+    max-height: 80vh;
+
+    @include breakpoint(medium) {
+      height: 740px;
+    }
+  }
 }
 
 
