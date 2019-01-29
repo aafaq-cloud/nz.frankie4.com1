@@ -4,10 +4,9 @@
     <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
   </div>
   <div class="cell product-tile__body grid-y">
-    <h3 class="text-small color-secondary-text m-0">{{ product.vendor }}</h3>
     <h2 class="product-tile__title h4 grid-x align-middle align-center">{{ product.title }}</h2>
     <div class="product-tile__info">
-      <span class="product-tile__price color-secondary-text h6">
+      <span class="product-tile__price color-secondary-text">
         {{ product.price_max | money }}
       </span>
 
@@ -44,12 +43,15 @@
     </div>
 
   </div>
-  <div class="product-tile-actions grid-x cell align-bottom">
-    <!-- TODO: Functionality -->
-    {% form "product", product, class: 'cell grow grid-x' %}
-      <input hidden name="id" value="{{product.selected_or_first_available_variant.id}}">
-      <button type="submit" class="button button-primary cell grow">Add to Cart</button>
-    {% endform %}
-    <a class="button button-hollow cell grow" href="{{product.url | within: collection}}">View Details</a>
-  </div>
+
+  {% if customer %}
+      <a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}">
+          {% include 'icon-heart' %}
+      </a>
+  {% else %}
+      <a class="product-tile__wishlist-add" href="/pages/wishlist">
+          {% include 'icon-heart' %}
+      </a>
+  {% endif %}
+
 </article>

@@ -17,6 +17,7 @@
 @import "glide.theme.scss";
 
 // Core
+@import "./core/animations";
 @import "./core/forms";
 @import "./core/helpers";
 @import "./core/layout";
@@ -48,6 +49,7 @@
 @import "./sections/collection";
 @import "./sections/faq";
 @import "./sections/featured-collections";
+@import "./sections/featured-products";
 @import "./sections/footer";
 @import "./sections/header";
 @import "./sections/image-with-text";

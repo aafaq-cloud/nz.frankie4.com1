@@ -1,18 +1,43 @@
-<div class="section section-featured-products">
+<div data-autoload-class="FeaturedProductsSection" class="section section-featured-products">
 
 
     <div class="grid-container">
-      <div class="text-center mt-30 mb-40">
-        <h2>{{section.settings.section_title}}</h2>
-        <p class="h6 color-secondary-text">{{section.settings.section_subheading}}</p>
-      </div>
-      <div class="grid-x grid-margin-x grid-margin-y">
-        {% for product in collections[section.settings.collection].products limit:4 %}
-          <div class="cell large-3 small-6 grid-x align-stretch">
-            {% include 'product-tile' %}
+        <div class="grid-x grid-margin-x">
+          <div class="mt-30 featured-products-title cell">
+            <h2 class="h1">{{section.settings.section_title}}</h2>
+            <div class="grid-x align-middle">
+                <p class="lead mt-0 mb-10 color-secondary-text cell large-auto">{{section.settings.section_subheading}}</p>
+                <a href="{{collections[section.settings.collection].url}}" class="cell large-shrink">More ></a>
+            </div>
           </div>
-        {% endfor %}
-      </div>
+        </div>
+        <div class="grid-x grid-margin-x">
+          <div class="featured-products-container cell mt-30">
+              <div class="glide">
+                  <div data-glide-el="track" class="glide__track">
+                      <div class="glide__slides">
+                       {% for product in collections[section.settings.collection].products limit:9 %}
+                            <div class="glide__slide">
+                                  {% include 'product-tile' %}
+                            </div>
+                       {% endfor %}
+                      </div>
+                  </div>
+                  <div class="glide__arrows" data-glide-el="controls">
+                      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
+                      <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
+                  </div>
+              </div>
+
+              <div class="grid-x grid-margin-x grid-margin-y" style="display:none">
+                {% for product in collections[section.settings.collection].products limit:9 %}
+
+                    {% include 'product-tile' %}
+
+                {% endfor %}
+              </div>
+            </div>
+        </div>
     </div>
 </div>
 
