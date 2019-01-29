@@ -1,12 +1,25 @@
 .section-article-detail {
 
   .article {
+
+    &__meta {
+      padding-top: 30px;
+
+      @include breakpoint(large) {
+        padding-top: 20px;
+      }
+    }
+
     &__content {
       padding-top: 30px;
 
       @include breakpoint(large) {
         padding-top: 20px;
         padding-left: 65px;
+      }
+
+      img {
+        margin: 20px 0;
       }
     }
 

@@ -4,12 +4,57 @@
   height: 100%;
 
   &__body {
-    margin: 20px;
+
     flex-grow: 1;
   }
 
+  &__box {
+    padding: 20px 0;
+    background: #fff;
+  }
+
+  &__image-container {
+    img {
+      width: 100%;
+    }
+  }
+
   &__date {
-    text-transform: uppercase;
     letter-spacing: (0.72 / 12) * 1em;
   }
+
+  &__tags {
+    padding-left: 20px;
+  }
+
+  &.full {
+
+    @include breakpoint(medium) {
+      height: 550px;
+
+      .article-tile__image-container img {
+        position: absolute;
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+
+      .article-tile__body {
+        position: relative;
+        padding: 20px;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+      }
+      .article-tile__box {
+        width: 100%;
+        max-width: 375px;
+        padding: 20px 30px;
+      }
+    }
+  }
+
 }

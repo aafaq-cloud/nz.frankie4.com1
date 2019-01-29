@@ -91,6 +91,11 @@ p {
 // Text Classes
 // ============================
 
+.lead {
+  font-size: rem-calc(20px);
+  line-height: (30 / 20);
+}
+
 .text-small {
   font-size: rem-calc(12px);
   line-height: (15 / 12);
