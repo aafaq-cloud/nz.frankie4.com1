@@ -1,6 +1,6 @@
 .section-afterpay-banner {
   @include breakpoint(small down) {
-    margin: map-get($grid-margin-gutters, small) 0;
+    margin: map-get($grid-margin-gutters, small) 0 !important;
   }
 
   .afterpay-section-container {

@@ -6,14 +6,9 @@
 
 
   @include breakpoint(medium down) {
-    margin-bottom: 0;
+    margin: 0;
   }
 
-
-  @include breakpoint(large) {
-    margin-top: 90px;
-    margin-bottom: 50px;
-  }
 
   .outer-container {
     position: relative;
@@ -21,6 +16,10 @@
 
     @include breakpoint(medium down) {
       padding: 0;
+    }
+
+    @include breakpoint(large) {
+      padding-top: 50px; // Account for overflow image
     }
   }
 

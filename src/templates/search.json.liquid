@@ -31,9 +31,9 @@
 {% if page_count < page_limit %}
     {% if page_count > 0 %},{% endif %}
     {
-    "title"    : {{ page.title | json }},
-    "url"      : {{ page.url | within: product.collections.last | json }},
-    "excerpt"  : {{ page.content | strip_html | truncatewords: 10 | json }}
+        "title"    : {{ page.title | json }},
+        "url"      : {{ page.url | within: product.collections.last | json }},
+        "excerpt"  : {{ page.content | strip_html | truncatewords: 10 | json }}
     }
     {% assign page_count = page_count | plus: 1 %}
     {% endif %}
@@ -49,9 +49,9 @@
 {% if article_count < article_limit %}
     {% if article_count > 0 %},{% endif %}
     {
-    "title"    : {{ article.title | json }},
-    "url"      : {{ article.url | within: product.collections.last | json }},
-    "thumbnail": {{ article.image.src | img_url: '600x600' | json }}
+        "title"    : {{ article.title | json }},
+        "url"      : {{ article.url | within: product.collections.last | json }},
+        "thumbnail": {{ article.image.src | img_url: '600x600' | json }}
     }
     {% assign article_count = article_count | plus: 1 %}
     {% endif %}
