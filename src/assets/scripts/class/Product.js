@@ -363,7 +363,7 @@ export class Product extends EventEmitter {
    * Update the url when a variant is selected
    */
   updateHistoryState() {
-    if (!history.replaceState || this.quickview || !this.selectedVariant) {
+    if (!history.replaceState || this.quickview || !this.selectedVariant || this.product.variants.length < 2) {
       return;
     }
 
