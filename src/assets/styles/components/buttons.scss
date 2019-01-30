@@ -71,6 +71,10 @@ button {
 
 .button-expanded {
   width: 100%;
+
+  @include breakpoint(large) {
+    min-width: 100%;
+  }
 }
 
 // Button Group
@@ -167,7 +171,7 @@ button {
 
 .button-hollow {
   background-color: white;
-  border-color: $color-body-text;
+  border-color: $color-border;
   color: $color-body-text;
 
 

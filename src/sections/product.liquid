@@ -5,6 +5,19 @@
 
 {% assign current_variant_id = product.selected_or_first_available_variant.id %}
 
+{% assign related_products = '' %}
+{% for unclean_tag in product.tags %}
+    {% if unclean_tag contains 'variant_' %}
+        {% assign tag = unclean_tag | remove: 'variant_' %}
+        {% if related_products != blank %}
+            {% assign related_products = related_products | append: ',' %}
+        {% endif %}
+        {% assign related_products = related_products | append: tag %}
+    {% endif %}
+{% endfor %}
+{% assign related_products = related_products | split: ',' %}
+
+
 <div data-autoload-class="ProductSection" class="section section-product" itemscope itemtype="http://schema.org/Product">
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
@@ -45,7 +58,7 @@
 
             </div>
 
-            <div class="product-images cell small-12 medium-8">
+            <div class="product-images cell small-12 medium-7">
                 <div class="glide">
                     <div data-glide-el="track" class="glide__track">
                         <div class="glide__slides">
@@ -66,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="product-details cell medium-4">
+            <div class="product-details cell medium-5">
 
                 {% if is_quickview %}
                     <h3 class="hide-for-small-only">{{ product.title }}</h3>
@@ -112,105 +125,104 @@
 
                         <div class="variant-wrapper">
 
-                            <div class="grid-x grid-margin-x align-bottom">
-                                <div class="cell large-auto">
-                                    {% unless product.has_only_default_variant %}
+                            <label class="option-label">Colour</label>
 
-                                        {% for option in product.options_with_values %}
-                                            <div class="form-row mb-20">
+                            {% for related_product in related_products %}
+                                {% assign related_product_object = all_products[related_product] %}
+                                <a href="{{ related_product_object.url }}" title="{{ related_product_object.title }}">{{ related_product_object.title }}</a>
+                            {% endfor %}
 
-                                                <label class="option-label hide">{{ option.name }}</label>
+                            {% unless product.has_only_default_variant %}
 
-                                                {% if option.name == 'Color' or option.name == 'Colour' %}
+                                {% for option in product.options_with_values %}
+                                    <div class="mb-20">
 
-                                                    <div class="color-swatch">
+                                        <label class="option-label hide">{{ option.name }}</label>
 
-                                                        {%- assign selector_name = forloop.index0 -%}
+                                        {% if option.name == 'Size' %}
 
-                                                        {% include 'color-swatch-helper', loader: 'init-color-swatch' %}
+                                            <div class="radio-select">
 
-                                                        {% for value in option.values %}
+                                                {%- assign selector_name = forloop.index0 -%}
 
-                                                            {%- assign input_id = 'variantselector-' | append: selector_name | append: forloop.index0 -%}
+                                                {% for value in option.values %}
 
-                                                            {% include 'color-swatch-helper', loader: 'get-hex-color-from-name', color_name: value %}
+                                                    {%- assign input_id = 'variantselector-' | append: selector_name | append: forloop.index0 -%}
 
-                                                            <input id="{{ label_prefix }}{{ input_id }}"
-                                                                   data-single-option-selector
-                                                                   data-index="{{ option.position }}"
-                                                                   name="variantselector-{{ selector_name }}[]"
-                                                                   type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                                                            <label title="{{ value }}"
-                                                                   class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}"
-                                                                   style="color: {{ color_hex }}">
-                                                                <span>{{ value | escape }}</span>
-                                                            </label>
-                                                        {% endfor %}
+                                                    <input id="{{ label_prefix }}{{ input_id }}"
+                                                           data-single-option-selector
+                                                           data-index="{{ option.position }}"
+                                                           name="variantselector-{{ selector_name }}[]"
+                                                           type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                                                    <label title="{{ value }}"
+                                                           class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
+                                                        <span>{{ value | escape }}</span>
+                                                    </label>
+                                                {% endfor %}
 
-                                                    </div>
-
-                                                {% else %}
-
-                                                    <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
-
-                                                        <select id="SingleOptionSelector-{{ forloop.index0 }}"
-                                                                data-single-option-selector
-                                                                data-index="{{ option.position }}"
-                                                                {% if option.values.size < 2 %}disabled{% endif %}>
-                                                            {% for value in option.values %}
-                                                                <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                                                                    {{ value }}
-                                                                </option>
-                                                            {% endfor %}
-                                                        </select>
-
-                                                        {% include 'icon-chevron-down-bold' %}
-
-                                                    </div>
-
-                                                {% endif %}
                                             </div>
-                                        {% endfor %}
-                                    {% endunless %}
-                                </div>
 
-                                {% if section.settings.showquantity %}
-                                    <div class="cell shrink">
-                                        <div class="form-row mb-20">
-                                            <label class="option-label hide" for="{{ label_prefix }}Quantity">{{ 'products.product.quantity' | t }}</label>
+                                        {% else %}
 
                                             <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
-                                                <select id="{{ label_prefix }}Quantity" name="quantity" data-quantity-selector>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
+
+                                                <select id="SingleOptionSelector-{{ forloop.index0 }}"
+                                                        data-single-option-selector
+                                                        data-index="{{ option.position }}"
+                                                        {% if option.values.size < 2 %}disabled{% endif %}>
+                                                    {% for value in option.values %}
+                                                        <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                                                            {{ value }}
+                                                        </option>
+                                                    {% endfor %}
                                                 </select>
 
                                                 {% include 'icon-chevron-down-bold' %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
 
+                                            </div>
+
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {% endunless %}
+
+                            <select name="id" class="variant-id" data-product-id>
+                                {% for variant in product.variants %}
+                                    <option {% if variant == current_variant %}selected="selected"{% endif %} value="{{ variant.id }}">
+                                        {{ variant.title }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+
+                            <div class="grid-x grid-buttons">
 
                                 <div class="cell">
 
-                                    <select name="id" class="variant-id" data-product-id>
-                                        {% for variant in product.variants %}
-                                            <option {% if variant == current_variant %}selected="selected"{% endif %} value="{{ variant.id }}">
-                                                {{ variant.title }}
-                                            </option>
-                                        {% endfor %}
-                                    </select>
+                                    {% if section.settings.showquantity %}
+                                        <label class="option-label hide" for="{{ label_prefix }}Quantity">{{ 'products.product.quantity' | t }}</label>
 
+                                        <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
+                                            <select id="{{ label_prefix }}Quantity" name="quantity" data-quantity-selector>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+
+                                            {% include 'icon-chevron-down-bold' %}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+
+                                <div class="cell">
 
                                     <button type="submit"
-                                            class="add-to-cart button button-primary button-expanded has-icon mb-20"
+                                            class="add-to-cart button button-primary button-expanded has-icon"
                                             name="add"
                                             data-add-to-cart
                                             {% unless current_variant.available %}disabled="disabled"{% endunless %}>
@@ -226,16 +238,21 @@
                                         </span>
                                     </button>
 
-                                    {% if is_quickview %}
-                                        <a href="{{ product.url }}" class="button button-hollow button-expanded mb-20">{{ 'products.product.quickview_view_full' | t }}</a>
-                                    {% endif %}
-
-                                    <span class="error-message mb-20" data-add-to-cart-error></span>
-
+                                    <span class="error-message mt-10" data-add-to-cart-error></span>
                                 </div>
+
                             </div>
 
 
+                            <div class="grid-x grid-buttons mt-20">
+
+                                <div class="cell">
+                                    <a href="#" class="button button-hollow button-expanded">Add to Wishlist</a>
+                                </div>
+                                <div class="cell">
+                                    <a href="#" class="button button-hollow button-expanded">Share with a friend</a>
+                                </div>
+                            </div>
                         </div>
                     </form>
 
