@@ -23,7 +23,6 @@
             <div class="product-details-mobile cell show-for-small-only">
                 <div class="grid-x grid-margin-x align-middle">
                     <div class="cell auto">
-                        <h6 class="text-small color-secondary-text">{{ product.vendor }}</h6>
                         <h1 class="h3">{{ product.title }}</h1>
                     </div>
                     <div class="cell shrink">
@@ -69,8 +68,6 @@
 
             <div class="product-details cell medium-4">
 
-                <h6 class="text-small color-secondary-text hide-for-small-only">{{ product.vendor }}</h6>
-
                 {% if is_quickview %}
                     <h3 class="hide-for-small-only">{{ product.title }}</h3>
                 {% else %}
@@ -87,22 +84,22 @@
 
                         <div class="price-wrapper mb-40" data-price-wrapper>
 
-                            <h4>
+                            <h4 class="price-wrapper">
+                                <span class="price color-secondary-text mr-10" data-product-price>
+                                  {{ current_variant.price | money }}
+                                </span>
+
                                 {% if product.compare_at_price_max > product.price %}
                                     <span class="show-for-sr" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-                                    <s class="price-compare mr-10{% if current_variant.compare_at_price <= current_variant.price %} hide{% endif %}" data-compare-price>
+                                    <s class="price-compare color-secondary-text{% if current_variant.compare_at_price <= current_variant.price %} hide{% endif %}" data-compare-price>
                                         {% if current_variant.compare_at_price > current_variant.price %}
                                             {{ current_variant.compare_at_price | money }}
                                         {% endif %}
                                     </s>
                                 {% endif %}
-
-                                <span class="price" data-product-price>
-                                  {{ current_variant.price | money }}
-                                </span>
                             </h4>
 
-                            <div class="after-pay-info">
+                            <div class="after-pay-info color-secondary-text text-small">
                                 <p>
                                     Or 4 interest free payments of
                                     <span class="after-pay-price" data-product-price data-product-price-divide="4">{{ current_variant.price | divided_by: 4 | money }}</span>
@@ -182,15 +179,19 @@
                                         <div class="form-row mb-20">
                                             <label class="option-label hide" for="{{ label_prefix }}Quantity">{{ 'products.product.quantity' | t }}</label>
 
-                                            <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
-                                                <a class="js-quantity-remove">{% include 'icon-minus' %}</a>
-                                                <input data-quantity-selector
-                                                       type="number"
-                                                       id="{{ label_prefix }}Quantity"
-                                                       name="quantity"
-                                                       value="1"
-                                                       min="1">
-                                                <a class="js-quantity-add">{% include 'icon-plus' %}</a>
+                                            <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
+                                                <select id="{{ label_prefix }}Quantity" name="quantity" data-quantity-selector>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                </select>
+
+                                                {% include 'icon-chevron-down-bold' %}
                                             </div>
                                         </div>
                                     </div>
@@ -230,10 +231,6 @@
                                     {% endif %}
 
                                     <span class="error-message mb-20" data-add-to-cart-error></span>
-
-                                    {% if section.settings.product_information_label %}
-                                        <div class="product-info-label text-small m-0">{{ section.settings.product_information_label }}</div>
-                                    {% endif %}
 
                                 </div>
                             </div>
@@ -330,12 +327,6 @@
         "label": "Display quantity selector",
         "info": "If unchecked, Add To Cart is always 1 item",
         "default": true
-      },
-      {
-        "type": "richtext",
-        "id": "product_information_label",
-        "label": "Product Label",
-        "info": "Enter an information label to appear on all product pages"
       },
       {
         "type": "header",

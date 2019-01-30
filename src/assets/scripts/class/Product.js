@@ -42,13 +42,13 @@ export class Product extends EventEmitter {
       form: "[data-product-form]",
       productID: "[data-product-id]",
       productPrice: "[data-product-price]",
-      quantitySelector: "[data-quantity-selector]",
       properties: "[name^=\"properties\"]",
     };
 
     const selectorsSingle = {
       addToCart: "[data-add-to-cart]",
       addToCartText: "[data-add-to-cart-text]",
+      quantitySelector: "[data-quantity-selector]",
       errorMessage: "[data-add-to-cart-error]",
     };
 
@@ -75,6 +75,11 @@ export class Product extends EventEmitter {
   initVariantSelectors() {
     this.variantSelectors = [];
 
+    if (this.product.options.length === 1 && this.product.options[0] === 'Title') {
+      this.updateSelectedVariant();
+      return;
+    }
+
     for (let i = 0; i < this.product.options.length; ++i) {
       const variantSelector = new VariantSelector(i, this.container);
       this.variantSelectors.push(variantSelector);
@@ -99,36 +104,41 @@ export class Product extends EventEmitter {
   setSelectedVariant() {
     let found = null;
 
-    // Loop through each variant and find a match
-    for (let v = 0; v < this.product.variants.length; v++) {
-      let variant = this.product.variants[v];
+    if (this.product.variants.length === 1) {
+      found = this.product.variants[0];
+    }
+    else {
+      // Loop through each variant and find a match
+      for (let v = 0; v < this.product.variants.length; v++) {
+        let variant = this.product.variants[v];
 
-      let satisfied = false;
+        let satisfied = false;
 
-      // Loop through the variant options
-      for (let i = 0; i < variant.options.length; ++i) {
+        // Loop through the variant options
+        for (let i = 0; i < variant.options.length; ++i) {
 
-        satisfied = false;
+          satisfied = false;
 
-        // Loop through the variant selectors
-        for (let j = 0; j < this.variantSelectors.length; ++j) {
+          // Loop through the variant selectors
+          for (let j = 0; j < this.variantSelectors.length; ++j) {
 
-          // Check if the variant select value matches the variant option
-          if (String(variant.options[i]) === String(this.variantSelectors[j].getValue())) {
-            satisfied = true;
+            // Check if the variant select value matches the variant option
+            if (String(variant.options[i]) === String(this.variantSelectors[j].getValue())) {
+              satisfied = true;
+              break;
+            }
+          }
+
+          // If we do not have a match let's break out of the loop and move onto the next variant
+          if (!satisfied) {
             break;
           }
         }
 
-        // If we do not have a match let's break out of the loop and move onto the next variant
-        if (!satisfied) {
-          break;
+        if (satisfied) {
+          found = variant;
+          // break;
         }
-      }
-
-      if (satisfied) {
-        found = variant;
-        // break;
       }
     }
 
@@ -393,7 +403,7 @@ export class Product extends EventEmitter {
       formSubmitting = true;
 
       const variantID = this.selectors.productID.value;
-      const quantity = this.selectors.quantitySelector.value;
+      const quantity = this.selectorsSingle.quantitySelector.value;
       let properties = {};
 
       if (this.selectors.properties.length) {

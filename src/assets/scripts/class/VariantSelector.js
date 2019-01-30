@@ -25,6 +25,8 @@ export class VariantSelector extends EventEmitter {
       return;
     }
 
+    console.log(instance.getElements);
+
     instance.setWrapper();
     instance.setType();
     instance.setOptions();
