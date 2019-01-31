@@ -1,0 +1,59 @@
+<div class="section section-contact-wayfinder small-margin ">
+    <div class="grid-container">
+
+    {% if section.blocks !=  blank %}
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+
+                {% for block in section.blocks %}
+                    <div class="cell medium-6 large-4">
+                        <div class="wayfinder-tile">
+
+                            <a class="cover-link" href="{{ block.settings.url }}"></a>
+
+                            {% if block.settings.icon %}
+                                <img src="{{ block.settings.icon | img_url: "medium" }}"/>
+                            {% endif %}
+
+                            <h5>{{ block.settings.title }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% schema %}
+     {
+         "name": "Wayfinder Tiles",
+         "settings": [
+         ],
+         "blocks": [
+             {
+                  "type": "wayfinder_tile",
+                  "name": "Wayfinder Tile",
+                  "settings": [
+                      {
+                          "type": "text",
+                          "id": "title",
+                          "label":"Item Title"
+                      },
+                      {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label":"Icon"
+                      },
+                      {
+                        "type": "url",
+                        "id": "url",
+                        "label":"URL"
+                      }
+                  ]
+              }
+         ]
+     }
+ {% endschema %}
