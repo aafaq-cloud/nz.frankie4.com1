@@ -45,22 +45,34 @@ such as 'featured' or 'all'.
 {% assign related_products = related_products | split: "," %}
 
 {% if related_products.size > 0 %}
-    <div class="section section-related-products">
+    <div class="section section-related-products large-margin">
 
-        <div class="text-center mt-30 mb-40">
-            <h2>{{section.settings.section_title}}</h2>
-            <p class="h6 color-secondary-text">{{section.settings.section_subheading}}</p>
-        </div>
+         <div class="grid-container related-products-container">
 
-        <div class="grid-container products-container">
+             <div class="title-block medium-text-center">
+                <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
+                <p class="lead color-secondary-text mt-5 mb-0">{{section.settings.section_subheading}}</p>
+            </div>
 
-            <div class="grid-x grid-margin-x grid-margin-y">
-                {% for related_product_handle in related_products %}
-                    {%- assign product = all_products[related_product_handle] -%}
-                    <div class="cell large-3 small-6 grid-x align-stretch">
-                        {% include 'product-tile' %}
+            <div class="grid-x grid-margin-x">
+                <div data-autoload-class="ComponentCarousel" class="carousel cell mt-30">
+                    <div class="glide">
+                        <div data-glide-el="track" class="glide__track">
+                          <div class="glide__slides">
+                           {% for related_product_handle in related_products limit:9 %}
+                                {%- assign product = all_products[related_product_handle] -%}
+                                <div class="glide__slide">
+                                      {% include 'product-tile' %}
+                                </div>
+                           {% endfor %}
+                          </div>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
+                          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
+                        </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 import {ComponentSelect} from "../components/ComponentSelect";
 import {ComponentQuantitySelector} from "../components/ComponentQuantitySelector";
 import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
+import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 
 // Snippets
@@ -25,6 +26,7 @@ export class Autoloader {
       ComponentQuantitySelector,
       ComponentSelect,
       ComponentAccordionItem,
+      ComponentCarousel,
       ComponentVideo,
 
       // Snippets

@@ -1,0 +1,67 @@
+.carousel {
+  
+  @include breakpoint(medium) {
+    padding: 0 40px;
+  }
+
+  .glide {
+
+    &__slides {
+
+      @include breakpoint(small down) {
+        flex-wrap: wrap;
+      }
+    }
+
+    &__slide {
+      @include breakpoint(small down) {
+        display: none;
+        width: 50%;
+        border: 1px solid $color-border;
+        padding: 20px;
+        height: auto;
+
+        &:nth-child(even) {
+          border-left: 0;
+        }
+        &:nth-child(-n+2) {
+         border-bottom: 0
+        }
+
+        &:nth-child(-n+4) {
+          display: block;
+        }
+      }
+
+
+    }
+
+    &__arrow {
+      display: none;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      left: -40px;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+
+      svg {
+        transform: rotate(90deg);
+        height: 3rem;
+        width: 3rem;
+      }
+
+      &--right {
+
+        left: auto;
+        right: -40px;
+
+        svg {
+          transform: rotate(270deg);
+        }
+      }
+    }
+  }
+}
