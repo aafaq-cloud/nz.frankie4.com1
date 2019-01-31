@@ -130,7 +130,7 @@ export class CartModalSnippet extends AbstractComponent {
             <div class="details">
 
               <div v-if="cart.items.length == 0">
-                <h4 class="text-center cart-modal-empty mt-40 mb-20">{{ emptyText }}</h4>
+                <h5 class="text-center cart-modal-empty mt-40 mb-20">{{ emptyText }}</h5>
               </div>
 
               <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>

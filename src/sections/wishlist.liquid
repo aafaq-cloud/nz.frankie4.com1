@@ -22,15 +22,17 @@
                 {% endfor %}
 
                 {% if wishlist_product_counter == 0 %}
-                    <div class="cell message-box rte">
-                        <p>
-                            Your wishlist is empty.
-                        </p>
+                    <div class="cell">
+                        <div class="rte">
+                            <p>
+                                Your wishlist is empty.
+                            </p>
+                        </div>
                     </div>
                 {% endif %}
             </div>
         {% else %}
-            <div class="message-box rte">
+            <div class="rte">
                 <p>
                     <a href="/account/login">Login</a> or <a href="/account/register">Register</a> to create a wishlist.
                 </p>
