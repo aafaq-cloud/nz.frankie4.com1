@@ -1,0 +1,65 @@
+.section-contact {
+
+  .search-input-wrapper {
+    z-index: 1;
+  }
+
+  .contact-search {
+
+    input[type="search"] {
+      padding-right: 50px;
+    }
+
+    &-icon {
+      position: absolute;
+      display: flex;
+      @include flex-align(center, middle);
+      top: 0;
+      bottom: 0;
+      right: 15px;
+      padding: 0 0 0 20px;
+      font-size: 20px;
+      letter-spacing: 0.15em;
+    }
+
+  }
+
+  .results {
+
+    &-text {
+      margin-top: 40px;
+      margin-bottom: 20px;
+
+      .search-value {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          content: '';
+          z-index: -1;
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          height: 40%;
+          width: 100%;
+          background-color: $color-secondary;
+          transform: translateY(-50%) scaleX(1);
+          transition: transform 200ms;
+          transform-origin: left;
+          opacity: 0.6;
+        }
+      }
+
+    }
+
+    &-container {
+      .result {
+        padding: 20px 0;
+        border-bottom: 1px solid $color-border;
+      }
+    }
+
+  }
+
+}
