@@ -51,48 +51,11 @@
     z-index: 4;
     cursor: pointer;
     outline: none;
+    font-size: 18px;
+    line-height: 1;
 
     @include breakpoint(medium) {
       display: block;
-    }
-
-    svg {
-      width: 18px;
-      height: 18px;
-      color: $color-accent;
-    }
-
-    .fill {
-      opacity: 0;
-      fill: currentColor;
-      transition: opacity 200ms;
-    }
-
-    .outline {
-      transition: all 200ms;
-    }
-
-
-    &.shopify-wishlist-added {
-      .fill {
-        opacity: 1;
-      }
-      .outline {
-        fill: none;
-      }
-    }
-
-    &.js-loading {
-      svg {
-        animation: throbOut 800ms infinite linear;
-      }
-    }
-
-  }
-
-  &:hover {
-    .product-tile-actions {
-      opacity: 1;
     }
   }
 }

@@ -31,6 +31,7 @@ button {
 
   &:disabled {
     cursor: default;
+    opacity: 0.3;
   }
 
   &.no-hover {
@@ -148,37 +149,26 @@ button {
 // Button Themes
 // -----------------------------------------------------
 .button-primary {
-  background: $color-primary;
-  border-color: $color-primary;
-  color: #ffffff;
+  background: $darker-grey;
+  border-color: $darker-grey;
+  color: white;
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      opacity: 0.9;
+      background: darken($darker-grey, 10%);
     }
   }
 }
 
 .button-secondary {
-  background: $color-accent;
-  border-color: $color-accent;
-  color: #ffffff;
-
-  &:hover {
-    &:not(:disabled):not(.no-hover) {
-      opacity: 0.9;
-    }
-  }
-}
-
-.button-light {
-  background-color: white;
+  background: white;
   border-color: transparent;
-  color: $color-body-text;
+  color: $darker-grey;
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      opacity: 0.9;
+      background: $darker-grey;
+      color: white;
     }
   }
 }
@@ -186,12 +176,11 @@ button {
 .button-hollow {
   background-color: white;
   border-color: $color-border;
-  color: $color-body-text;
-
+  color: $darker-grey;
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      opacity: 0.9;
+      border-color: $darker-grey;
     }
   }
 }

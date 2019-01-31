@@ -1,0 +1,54 @@
+@keyframes throbOut {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  30% {
+    opacity: 0.5;
+    transform: scale(0.7, 0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.icon-heart {
+
+  .fill {
+    opacity: 0;
+    fill: $color-accent;
+    transition: opacity 200ms;
+    transform-origin: center;
+  }
+
+  .outline {
+    transition: all 200ms;
+  }
+}
+
+.shopify-wishlist-added {
+
+  .icon-heart {
+    .fill {
+      opacity: 1;
+    }
+    .outline {
+      fill: $color-accent;
+    }
+  }
+}
+
+.js-loading {
+  .icon-heart {
+
+    .fill {
+      opacity: 1;
+      animation: throbOut 800ms infinite linear;
+    }
+
+    .outline {
+      fill: $color-accent;
+    }
+  }
+}
