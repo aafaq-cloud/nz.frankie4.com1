@@ -8,6 +8,7 @@ import {AbstractComponent} from "../class/AbstractComponent";
 import {Product} from "../class/Product";
 import Glide from '@glidejs/glide';
 import {throttledResize} from "../helpers/throttledResize";
+import {scroller} from "../helpers/scroller";
 
 export class ProductSection extends AbstractComponent {
   constructor(component) {
@@ -15,6 +16,7 @@ export class ProductSection extends AbstractComponent {
 
     this.initProduct();
     this.initSlider();
+    this.initThumbnails();
   }
 
   /**
@@ -65,5 +67,37 @@ export class ProductSection extends AbstractComponent {
         this.glideActive = false;
       }
     }
+  }
+
+  /**
+   * Initialise the scroll to image on thumbnail click
+   */
+  initThumbnails() {
+    const thumbnails = this.component.querySelectorAll("[data-thumbnail]");
+    const images = this.component.querySelectorAll("[data-image]");
+
+    for (let i = 0; i < thumbnails.length; i++) {
+      thumbnails[i].addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const imageIndex = thumbnails[i].getAttribute("data-image-index");
+
+        for (let j = 0; j < images.length; j++) {
+          if (images[j].getAttribute("data-image-index") === imageIndex) {
+
+            let offset = 20;
+            const header = document.querySelector("header");
+
+            if (header !== null) {
+              offset += header.offsetHeight;
+            }
+
+            scroller.scroll(images[j], 600, offset);
+            break;
+          }
+        }
+      });
+    }
+
   }
 }

@@ -12,6 +12,7 @@
   .banner-wrapper {
     padding: 30px;
     font-size: 14px;
+    background: $color-secondary;
 
     @include breakpoint(medium) {
       padding: 40px 35px;

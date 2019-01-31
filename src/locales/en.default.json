@@ -283,6 +283,7 @@
       "on_sale": "On Sale",
       "on_sale_from_html": "On Sale from {{ price }}",
       "from_text_html": "From {{ price }}",
+      "related_products_select_label": "Colour",
       "quantity": "Quantity",
       "add_to_cart": "Add to Bag",
       "quickview": "Quick View",

@@ -26,13 +26,6 @@
       },
       {
         "type": "color",
-        "id": "color_tertiary",
-        "label": "Tertiary",
-        "default": "#e4eaed",
-        "info": "Tertiary accents"
-      },
-      {
-        "type": "color",
         "id": "color_body_text",
         "label": "Text",
         "default": "#1a1b1c"

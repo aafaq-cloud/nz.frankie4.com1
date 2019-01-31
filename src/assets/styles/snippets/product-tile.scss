@@ -48,6 +48,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 4;
     cursor: pointer;
     outline: none;
 
@@ -58,7 +59,7 @@
     svg {
       width: 18px;
       height: 18px;
-      color: #d97771;
+      color: $color-accent;
     }
 
     .fill {

@@ -38,16 +38,30 @@ button {
   }
 
   &.has-icon {
+
+    i {
+      line-height: 0;
+      margin-left: 10px;
+      font-size: 16px;
+      vertical-align: middle;
+
+      > svg {
+        display: block;
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+
+  &.has-icon-absolute {
     padding-left: 40px;
     padding-right: 40px;
 
     i {
       position: absolute;
-      width: 18px;
-      height: 18px;
       left: 18px;
       top: 50%;
-
+      margin: 0;
       transform: translateY(-50%);
     }
   }
@@ -146,8 +160,8 @@ button {
 }
 
 .button-secondary {
-  background: $color-secondary;
-  border-color: $color-secondary;
+  background: $color-accent;
+  border-color: $color-accent;
   color: #ffffff;
 
   &:hover {

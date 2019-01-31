@@ -103,7 +103,7 @@
     top: 50%;
     height: 6px;
     width: 70px;
-    background-color: $color-secondary;
+    background-color: $light-pink;
     transform: translateY(-50%) scaleX(0);
     transition: transform 200ms;
     transform-origin: left;
@@ -130,7 +130,7 @@
     left: 0;
     height: 6px;
     width: 70px;
-    background-color: $color-secondary;
+    background-color: $light-pink;
     transform: translateY(-50%) scaleX(1);
     transition: transform 200ms;
     transform-origin: left;
@@ -152,20 +152,16 @@
   display: block;
 }
 
-.color-primary {
-  color: $color-primary;
-}
-
-.color-secondary {
-  color: $color-secondary;
-}
-
 .color-secondary-text {
   color: $color-body-secondary-text;
 }
 
-.bg-tertiary {
-  background: $color-tertiary;
+.color-primary {
+  color: $color-primary;
+}
+
+.color-accent {
+  color: $color-accent;
 }
 
 .semibold {

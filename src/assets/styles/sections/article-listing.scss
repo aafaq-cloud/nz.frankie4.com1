@@ -33,7 +33,7 @@
       top: 50%;
       height: 6px;
       width: 70px;
-      background-color: $color-secondary;
+      background-color: $light-pink;
       transform: translateY(-50%) scaleX(0);
       transition: transform 200ms;
       transform-origin: left;
@@ -58,7 +58,7 @@
         top: 50%;
         height: 6px;
         width: 70px;
-        background-color: $color-secondary;
+        background-color: $light-pink;
         transform: translateY(-50%) scaleX(1);
         transition: transform 200ms;
         transform-origin: left;

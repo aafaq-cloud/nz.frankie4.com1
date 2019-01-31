@@ -2,15 +2,22 @@
 
 // Colors
 // ----------------------------------------
-$dark-grey: #1a1517;
-$grey: #777777;
+$dark-grey: #7d8488;
+$grey: #dddfe0;
 $light-grey: #e9e9e9;
-$pink: #cf4168;
-$red: #c93330;
-$light-pink: #fff7f8;
-$yellow: #f9fba8;
-$green: #41cf81;
-$blue: #81a0c9;
+$pale-grey: #f6f6f6;
+$pale-blue: #e4eaed;
+
+$green: #c2e6d6;
+$dark-pink: #d97771;
+$pink: #f8c4c2;
+$light-pink: #e1cbcd;
+
+// Colors
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-accent: $dark-pink;
+$color-border: $light-grey;
 
 // Text colors
 $color-body-text: var(--color-body-text);
@@ -32,11 +39,7 @@ $color-form-element-disabled-text: #e1e1e1;
 $color-form-element-disabled-border: #e1e1e1;
 $color-form-error: #c93330;
 
-// Other colors
-$color-border: $light-grey;
-$color-primary: var(--color-primary);
-$color-secondary: var(--color-secondary);
-$color-tertiary: var(--color-tertiary);
+
 
 // Header
 // ----------------------------------------

@@ -39,7 +39,11 @@
                         <h1 class="h3">{{ product.title }}</h1>
                     </div>
                     <div class="cell shrink">
-                        <h5 class="m-0 text-right">
+                        <h5 class="price-wrapper m-0 text-right color-secondary-text">
+                            <span class="price db" data-product-price>
+                              {{ current_variant.price | money }}
+                            </span>
+
                             {% if product.compare_at_price_max > product.price %}
                                 <span class="show-for-sr" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
                                 <s class="price-compare{% if current_variant.compare_at_price <= current_variant.price %} hide{% endif %}" data-compare-price>
@@ -48,24 +52,32 @@
                                     {% endif %}
                                 </s>
                             {% endif %}
-
-                            <span class="price db" data-product-price>
-                              {{ current_variant.price | money }}
-                            </span>
                         </h5>
                     </div>
                 </div>
 
             </div>
 
-            <div class="product-images cell small-12 medium-7">
+            <div class="product-thumbnails cell show-for-large large-shrink">
+                {% if product.images.size > 0 %}
+                    <div class="product-item-thumbnails">
+                        {% for image in product.images %}
+                            <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}">
+                                <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="product-images cell small-12 medium-7 large-auto">
                 <div class="glide">
                     <div data-glide-el="track" class="glide__track">
                         <div class="glide__slides">
                             {% if product.images.size > 0 %}
                                 {% for image in product.images %}
                                     <div class="glide__slide">
-                                        <img data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
+                                        <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
                                     </div>
                                 {% endfor %}
                             {% endif %}
@@ -95,7 +107,7 @@
 
                     <form data-product-form action="/cart/add" method="post" enctype="multipart/form-data">
 
-                        <div class="price-wrapper mb-40" data-price-wrapper>
+                        <div class="price-wrapper" data-price-wrapper>
 
                             <h4 class="price-wrapper">
                                 <span class="price color-secondary-text mr-10" data-product-price>
@@ -117,20 +129,31 @@
                                     Or 4 interest free payments of
                                     <span class="after-pay-price" data-product-price data-product-price-divide="4">{{ current_variant.price | divided_by: 4 | money }}</span>
                                     with {% include 'icon-afterpay' %}
-                                    <a class="icon-coloured afterpay-modal" href="#">learn more</a>
+                                    <a class="icon-coloured afterpay-modal" target="_blank" href="#">learn more</a>
                                 </p>
                             </div>
 
                         </div>
 
-                        <div class="variant-wrapper">
+                        <div class="variant-wrapper mt-40">
 
-                            <label class="option-label">Colour</label>
+                            {% if related_products != blank %}
+                                <div class="mb-20">
+                                    <label class="option-label">{{ 'products.product.related_products_select_label' | t }}</label>
 
-                            {% for related_product in related_products %}
-                                {% assign related_product_object = all_products[related_product] %}
-                                <a href="{{ related_product_object.url }}" title="{{ related_product_object.title }}">{{ related_product_object.title }}</a>
-                            {% endfor %}
+                                    <div class="related-products">
+                                        <a class="related-products__product current">
+                                            <img data-src="{{product | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
+                                        </a>
+                                        {% for related_product in related_products %}
+                                            {% assign related_product_object = all_products[related_product] %}
+                                            <a class="related-products__product" href="{{ related_product_object.url }}" title="{{ related_product_object.title }}">
+                                                <img data-src="{{related_product_object | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
 
                             {% unless product.has_only_default_variant %}
 
@@ -222,13 +245,10 @@
                                 <div class="cell">
 
                                     <button type="submit"
-                                            class="add-to-cart button button-primary button-expanded has-icon"
+                                            class="add-to-cart button button-primary button-expanded has-icon-absolute"
                                             name="add"
                                             data-add-to-cart
                                             {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-                                        <i data-add-to-cart-icon>
-                                            {% include 'icon-checkmark' %}
-                                        </i>
                                         <span data-add-to-cart-text>
                                             {% if current_variant.available %}
                                                 {{ 'products.product.add_to_cart' | t }}
@@ -236,6 +256,9 @@
                                                 {{ 'products.product.sold_out' | t }}
                                             {% endif %}
                                         </span>
+                                        <i data-add-to-cart-icon>
+                                            {% include 'icon-checkmark' %}
+                                        </i>
                                     </button>
 
                                     <span class="error-message mt-10" data-add-to-cart-error></span>
@@ -243,11 +266,15 @@
 
                             </div>
 
-
                             <div class="grid-x grid-buttons mt-20">
 
                                 <div class="cell">
-                                    <a href="#" class="button button-hollow button-expanded">Add to Wishlist</a>
+                                    <a class="button button-hollow button-expanded has-icon" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}">
+                                        <span data-shopify-wishlist-label data-shopify-wishlist-text-add="Add to Wishlist" data-shopify-wishlist-text-added="Added to Wishlist">Add to Wishlist</span>
+                                        <i>
+                                            {% include 'icon-heart' %}
+                                        </i>
+                                    </a>
                                 </div>
                                 <div class="cell">
                                     <a href="#" class="button button-hollow button-expanded">Share with a friend</a>
@@ -260,61 +287,43 @@
 
                 <div class="product-information mt-40">
                     {% if product.description %}
-                        <div aria-controls="accordion-item-1" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">Description</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-1" aria-expanded="false">
+                        <h6 class="mb-20">Features</h6>
+                        <div class="rte">
                             {{ product.description }}
                         </div>
                     {% endif %}
 
-                    {% if section.settings.product_accordion_title_1 %}
-                        <div aria-controls="accordion-item-2" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">{{ section.settings.product_accordion_title_1 }}</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-2" aria-expanded="false">
+                    {% if section.settings.product_accordion_title_1 != blank %}
+                        <h6 class="mt-40 mb-20">{{ section.settings.product_accordion_title_1 }}</h6>
+                        <div class="rte">
                             {{ section.settings.product_accordion_content_1 }}
                         </div>
                     {% endif %}
 
-                    {% if section.settings.product_accordion_title_2 %}
-                        <div aria-controls="accordion-item-3" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">{{ section.settings.product_accordion_title_2 }}</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-3" aria-expanded="false">
+                    {% if section.settings.product_accordion_title_2 != blank %}
+                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_2 }}</h6>
+                        <div class="rte">
                             {{ section.settings.product_accordion_content_2 }}
                         </div>
                     {% endif %}
 
-                    {% if section.settings.product_accordion_title_3 %}
-                        <div aria-controls="accordion-item-4" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">{{ section.settings.product_accordion_title_3 }}</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-4" aria-expanded="false">
+                    {% if section.settings.product_accordion_title_3 != blank %}
+                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_3 }}</h6>
+                        <div class="rte">
                             {{ section.settings.product_accordion_content_3 }}
                         </div>
                     {% endif %}
 
-                    {% if section.settings.product_accordion_title_4 %}
-                        <div aria-controls="accordion-item-5" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">{{ section.settings.product_accordion_title_4 }}</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-5" aria-expanded="false">
+                    {% if section.settings.product_accordion_title_4 != blank %}
+                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_4 }}</h6>
+                        <div class="rte">
                             {{ section.settings.product_accordion_content_4 }}
                         </div>
                     {% endif %}
 
-                    {% if section.settings.product_accordion_title_5 %}
-                        <div aria-controls="accordion-item-6" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                            <h6 class="accordion-toggle-title">{{ section.settings.product_accordion_title_5 }}</h6>
-                            {% include 'icon-plus' %}
-                        </div>
-                        <div class="grid-x accordion accordion-body rte" id="accordion-item-6" aria-expanded="false">
+                    {% if section.settings.product_accordion_title_5 != blank %}
+                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_5 }}</h6>
+                        <div class="rte">
                             {{ section.settings.product_accordion_content_5 }}
                         </div>
                     {% endif %}
@@ -352,52 +361,52 @@
       {
         "type": "text",
         "id": "product_accordion_title_1",
-        "label": "Accordion Title 1"
+        "label": "Title 1"
       },
       {
         "type": "richtext",
         "id": "product_accordion_content_1",
-        "label": "Accordion Content 1"
+        "label": "Content 1"
       },
       {
         "type": "text",
         "id": "product_accordion_title_2",
-        "label": "Accordion Title 2"
+        "label": "Title 2"
       },
       {
         "type": "richtext",
         "id": "product_accordion_content_2",
-        "label": "Accordion Content 2"
+        "label": "Content 2"
       },
       {
         "type": "text",
         "id": "product_accordion_title_3",
-        "label": "Accordion Title 3"
+        "label": "Title 3"
       },
       {
         "type": "richtext",
         "id": "product_accordion_content_3",
-        "label": "Accordion Content 3"
+        "label": "Content 3"
       },
       {
         "type": "text",
         "id": "product_accordion_title_4",
-        "label": "Accordion Title 4"
+        "label": "Title 4"
       },
       {
         "type": "richtext",
         "id": "product_accordion_content_4",
-        "label": "Accordion Content 4"
+        "label": "Content 4"
       },
       {
         "type": "text",
         "id": "product_accordion_title_5",
-        "label": "Accordion Title 5"
+        "label": "Title 5"
       },
       {
         "type": "richtext",
         "id": "product_accordion_content_5",
-        "label": "Accordion Content 5"
+        "label": "Content 5"
       }
     ]
   }

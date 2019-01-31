@@ -1,0 +1,25 @@
+<script>
+  var ShopifyWishlist = {
+    store: ' {{ shop.permanent_domain }} ',
+    apiurl: 'https://wishlist.appdata.lambagency.com.au/api/',
+    customerid: {% if customer.id %}{{ customer.id }}{% else %}0{% endif %},
+    wishlist: {% if template == 'page.wishlist' %}true{% else %}false{% endif %},
+    loginmessage: '<p><a href="/account/login">Login</a> or <a href="/account/register">Register</a> to create a wishlist.</p>',
+    loginmessagedisplayduration: 5000,
+  };
+</script>
+
+<style>
+    .shopify-wishlist-login-message {
+        display: none;
+        opacity: 0;
+        transition: opacity 400ms;
+        -webkit-transition: opacity 400ms;
+    }
+    .shopify-wishlist-login-message.js-active {
+        display: block;
+    }
+    .shopify-wishlist-login-message.js-visible {
+        opacity: 1;
+    }
+</style>
