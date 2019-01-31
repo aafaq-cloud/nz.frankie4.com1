@@ -4,11 +4,9 @@
      background: $color-primary;
   }
 
-
   @include breakpoint(medium down) {
-    margin: 0;
+    margin: 0 !important;
   }
-
 
   .outer-container {
     position: relative;

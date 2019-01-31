@@ -1,16 +1,16 @@
 .section {
-  margin: 40px 0;
+  margin: 30px 0;
 
-  @include breakpoint(medium) {
-    margin: 60px 0;
-  }
+  &.large-margin {
+    margin: 40px 0;
 
-  @include breakpoint(large) {
-    margin: 80px 0;
-  }
+    @include breakpoint(medium) {
+      margin: 60px 0;
+    }
 
-  &.small-margin {
-    margin: 30px 0;
+    @include breakpoint(large) {
+      margin: 80px 0;
+    }
   }
 
   &.no-margin {

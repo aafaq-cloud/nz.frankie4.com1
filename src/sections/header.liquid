@@ -30,33 +30,38 @@
         <ul class="align-right toolbar-items-right toolbar-items cell shrink">
           <li class="toolbar-item toolbar-item-search">
             <button aria-label="{{ 'general.search.placeholder' | t }}" class="search-focusser toolbar-item-inner">{% include "icon-search" %}</button>
-
             {% include 'search-autocomplete' %}
           </li>
-            {% if shop.customer_accounts_enabled %}
-          <li class="toolbar-item show-for-medium">
-            <a href="/account" class="toolbar-item-inner">
-                {% include 'icon-user' %}
+          <li class="toolbar-item">
+            <a href="/pages/wishlist" data-shopify-wishlist-link class="wishlist-link">
+                {% include 'icon-heart' %}
             </a>
-            <div class="toolbar-item__dropdown">
+          </li>
+
+          {% if shop.customer_accounts_enabled %}
+            <li class="toolbar-item hide-for-mobile-navigation">
+              <a href="/account" class="toolbar-item-inner">
+                  {% include 'icon-user' %}
+              </a>
+              <div class="toolbar-item__dropdown">
                 {% if customer %}
-              <div class="button-group stacked">
-                <a class="button button-primary button-small"
-                   href="/account">{{ 'layout.customer.view_account' | t }}</a>
-                <a class="button button-primary button-small"
-                   href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
-              </div>
+                  <div class="button-group stacked">
+                    <a class="button button-primary button-small"
+                       href="/account">{{ 'layout.customer.view_account' | t }}</a>
+                    <a class="button button-primary button-small"
+                       href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+                  </div>
                 {% else %}
-              <div class="button-group stacked">
-                <a class="button button-primary button-small"
-                   href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
-                <a class="button button-primary button-small"
-                   href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+                  <div class="button-group stacked">
+                    <a class="button button-primary button-small"
+                       href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+                    <a class="button button-primary button-small"
+                       href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+                  </div>
+                {% endif %}
               </div>
-                {% endif %}
-                </div>
-                </li>
-                {% endif %}
+            </li>
+          {% endif %}
 
           <li class="toolbar-item">
 
