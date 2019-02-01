@@ -95,14 +95,14 @@
   z-index: 1;
 
   &::before {
-    content: '';
-    z-index: -1;
     display: block;
     position: absolute;
+    content: '';
+    z-index: -1;
     left: -10px;
+    right: -10px;
     top: 50%;
     height: 6px;
-    width: 70px;
     background-color: $light-pink;
     transform: translateY(-50%) scaleX(0);
     transition: transform 200ms;
@@ -209,6 +209,9 @@
 .mb {
   &-0 {
     margin-bottom: 0;
+  }
+  &-5 {
+    margin-bottom: 5px;
   }
   &-10 {
     margin-bottom: 10px;
