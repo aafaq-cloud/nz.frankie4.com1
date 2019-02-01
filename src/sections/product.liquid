@@ -71,6 +71,9 @@
             </div>
 
             <div class="product-images cell small-12 medium-7 large-auto">
+
+                {% include 'product-stickers' with product:product limit:1 %}
+
                 <div class="glide">
                     <div data-glide-el="track" class="glide__track">
                         <div class="glide__slides">
@@ -93,10 +96,14 @@
 
             <div class="product-details cell medium-5">
 
+                <div class="show-for-medium">
+                    {% include 'product-stickers' with product:product %}
+                </div>
+
                 {% if is_quickview %}
                     <h3 class="hide-for-small-only">{{ product.title }}</h3>
                 {% else %}
-                    <h1 class="h2 hide-for-small-only">{{ product.title }}</h1>
+                    <h1 class="hide-for-small-only">{{ product.title }}</h1>
                 {% endif %}
 
                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">

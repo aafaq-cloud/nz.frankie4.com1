@@ -30,6 +30,10 @@
     }
 
     @include position-sticky();
+
+    .product-stickers {
+      margin-bottom: 6px;
+    }
   }
 
   .price-wrapper {
@@ -206,6 +210,7 @@
 
   // Images
   .product-images {
+    position: relative;
 
     @include breakpoint(medium) {
       padding-right: 20px;
@@ -214,6 +219,16 @@
     @include breakpoint(large) {
       padding-right: 40px;
 
+    }
+
+    .product-stickers {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      @include breakpoint(medium) {
+        display: none;
+      }
     }
   }
 

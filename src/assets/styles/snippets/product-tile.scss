@@ -10,21 +10,6 @@
     flex-grow: 1;
   }
 
-  &__color-swatches {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
-  &__color-swatch {
-    width: 8px;
-    height: 8px;
-    background: currentColor;
-    border-radius: 50%;
-    margin: 0 2px;
-  }
-
   &-actions {
     position: relative;
     transition: opacity 0.35s;
@@ -57,5 +42,11 @@
     @include breakpoint(medium) {
       display: block;
     }
+  }
+
+  .product-stickers {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }

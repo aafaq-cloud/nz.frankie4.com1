@@ -9,40 +9,10 @@
       <span class="product-tile__price color-secondary-text">
         {{ product.price_max | money }}
       </span>
-
-      {% assign colors = '' %}
-      {% assign color_option_index = -1 %}
-
-      {% for option in product.options_with_values %}
-        {% if option.name == 'Color' or option.name == 'Colour' %}
-            {% assign color_option_index = forloop.index0 %}
-            {% break %}
-        {% endif %}
-      {% endfor %}
-
-      {% unless color_option_index == -1 %}
-        {% for variant in product.variants %}
-          {% unless colors == '' %}
-            {% assign colors = colors | append: ',' %}
-          {% endunless %}
-          {% assign colors = colors | append: variant.options[color_option_index] %}
-        {% endfor %}
-      {% endunless %}
-
-      {% assign colors = colors | split: "," | uniq %}
-
-      {% if colors.size > 0 %}
-        <div class="product-tile__color-swatches">
-          {% for color in colors %}
-            {% include 'color-swatch-helper', loader: 'init-color-swatch' %}
-            {% include 'color-swatch-helper', loader: 'get-hex-color-from-name', color_name: color %}
-            <span style="color: {{ color_hex }};" title="{{ color }}" class="product-tile__color-swatch"></span>
-          {% endfor %}
-        </div>
-      {% endif %}
     </div>
-
   </div>
+
+  {% include 'product-stickers' with product:product limit: 1 %}
 
   {% if customer %}
       <a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}">

@@ -69,6 +69,7 @@ body {
 
     @include breakpoint($nav-switch-breakpoint) {
       height: map_get($toolbar-height, $nav-switch-breakpoint);
+      width: 33% !important; // Ensure logo title is centered
     }
   }
 
