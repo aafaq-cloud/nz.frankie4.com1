@@ -13,22 +13,30 @@
                 </div>
             </div>
             <div class="cell-image cell large-6">
-                <div class="background-image background-image-3 show-for-large">
-                    <img src="{{section.settings.image_4 | img_url: '600x'}}" srcset=" {{section.settings.image_4 | img_url: '600x'}} 600w, {{section.settings.image_4 | img_url: '450x'}} 450w" class="banner-image_4">
-                </div>
-                <img src="{{section.settings.image_1 | img_url: '1400x'}}" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w" class="banner-image_1">
-                <div class="background-image background-image-2 show-for-large">
-                    <img src="{{section.settings.image_3 | img_url: '600x'}}" srcset=" {{section.settings.image_3 | img_url: '600x'}} 600w, {{section.settings.image_3 | img_url: '450x'}} 450w" class="banner-image_3">
-                </div>
+                {% if section.settings.image_4 != blank %}
+                    <div class="background-image background-image-3 show-for-large">
+                        <img src="{{section.settings.image_4 | img_url: '600x'}}" srcset=" {{section.settings.image_4 | img_url: '600x'}} 600w, {{section.settings.image_4 | img_url: '450x'}} 450w" class="banner-image_4">
+                    </div>
+                {% endif %}
+                {% if section.settings.image_1 != blank %}
+                    <img src="{{section.settings.image_1 | img_url: '1400x'}}" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w" class="banner-image_1">
+                {% endif %}
+                {% if section.settings.image_3 != blank %}
+                    <div class="background-image background-image-2 show-for-large">
+                        <img src="{{section.settings.image_3 | img_url: '600x'}}" srcset=" {{section.settings.image_3 | img_url: '600x'}} 600w, {{section.settings.image_3 | img_url: '450x'}} 450w" class="banner-image_3">
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 
-    <div class="background-image-1-row show-for-large">
-        <div class="background-image background-image-1">
-            <img src="{{section.settings.image_2 | img_url: '1400x'}}" srcset="{{section.settings.image_2 | img_url: '1400x'}} 1400w, {{section.settings.image_2 | img_url: '1100x'}} 1100w, {{section.settings.image_2 | img_url: '800x'}} 800w, {{section.settings.image_2 | img_url: '450x'}} 450w" class="banner-image_2">
+    {% if section.settings.image_2 != blank %}
+        <div class="background-image-1-row show-for-large">
+            <div class="background-image background-image-1">
+                <img src="{{section.settings.image_2 | img_url: '1400x'}}" srcset="{{section.settings.image_2 | img_url: '1400x'}} 1400w, {{section.settings.image_2 | img_url: '1100x'}} 1100w, {{section.settings.image_2 | img_url: '800x'}} 800w, {{section.settings.image_2 | img_url: '450x'}} 450w" class="banner-image_2">
+            </div>
         </div>
-    </div>
+    {% endif %}
 
 </div>
 

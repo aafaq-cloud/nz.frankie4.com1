@@ -1,17 +1,17 @@
 @mixin position-sticky() {
   @include breakpoint(medium) {
     position: sticky;
-    top: map_get($header-height, small) + map_get($toolbar-height, small) - 60px;
+    top: map_get($header-height, small) + $toolbar-height-for-small - 60px;
 
     @include breakpoint($nav-switch-breakpoint) {
-      top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($header-height, large) - 60px;
+      top: $toolbar-height-for-large + map_get($header-height, large) - 60px;
     }
 
     .has-promo-strip & {
-      top: map_get($header-height, small) + map_get($toolbar-height, small) - 60px + $promo-strip-height;
+      top: map_get($header-height, small) + $toolbar-height-for-small - 60px + $promo-strip-height;
 
       @include breakpoint($nav-switch-breakpoint) {
-        top: map_get($toolbar-height, $nav-switch-breakpoint) + map_get($header-height, large) - 60px  + $promo-strip-height;
+        top: $toolbar-height-for-large + map_get($header-height, large) - 60px  + $promo-strip-height;
       }
     }
   }

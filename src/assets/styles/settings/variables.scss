@@ -44,15 +44,13 @@ $color-form-error: #c93330;
 
 // Header
 // ----------------------------------------
-$nav-switch-breakpoint: medium;
-$nav-switch-breakpoint-down: small down;
+$nav-switch-breakpoint: 840px;
+$nav-switch-breakpoint-down: 839px down;
 
 $promo-strip-height: 32px;
 
-$toolbar-height: (
-  small: 60px,
-  medium: 42px
-);
+$toolbar-height-for-small: 60px;
+$toolbar-height-for-large: 42px;
 
 $header-height: (
   small: 0,
