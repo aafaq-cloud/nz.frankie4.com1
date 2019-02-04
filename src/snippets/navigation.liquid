@@ -7,15 +7,25 @@ Navigation to display on large viewports
 <nav class="main-nav">
     <ul class="main-nav-links">
         {% for link in linklists[section.settings.main_linklist].links %}
-            <li>
+
+            {% assign menu_class = "" %}
+            {% if link.links != blank %}
+                {% assign menu_class = " has-children" | strip %}
+            {% endif %}
+            {% if link.title == section.settings.mega_menu_handle %}
+                {% assign menu_class = menu_class | append: " mega-menu" | strip %}
+            {% endif %}
+
+            <li{% if menu_class != blank %} class="{{ menu_class }}"{% endif %}>
                 <a href="{{ link.url }}">
                   {{ link.title | escape }}
                   {% if link.links != blank %}
                     {% include "icon-chevron" %}
                   {% endif %}
                 </a>
-                {% if link.links != blank %}
-                    <div class="main-nav-dropdown main-nav-stacked">
+
+                {% capture link_list %}
+                    {% if link.links != blank %}
                         <ul class="main-nav-child-links">
                             {% for child_link in link.links %}
                                 <li class="child-link">
@@ -32,8 +42,30 @@ Navigation to display on large viewports
                                 </li>
                             {% endfor %}
                         </ul>
-                    </div>
+                    {% endif %}
+                {% endcapture %}
 
+
+                {% if link.title == section.settings.mega_menu_handle %}
+                    <div class="main-nav-mega-menu grid-x">
+                        <div class="main-nav-mega-menu-links cell">
+                            {{ link_list }}
+                        </div>
+                        <div class="main-nav-mega-menu-image cell auto">
+                            {% if section.settings.mega_menu_image_url_1 %}<a href="{{ section.settings.mega_menu_image_url_1 }}">{% endif %}
+                                <img src="{{section.settings.mega_menu_image_1 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_1 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_1 | img_url: '450x'}} 450w">
+                            {% if section.settings.mega_menu_image_url_1 %}</a>{% endif %}
+                        </div>
+                        <div class="main-nav-mega-menu-image cell auto">
+                            {% if section.settings.mega_menu_image_url_2 %}<a href="{{ section.settings.mega_menu_image_url_2 }}">{% endif %}
+                                <img src="{{section.settings.mega_menu_image_2 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_2 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_2 | img_url: '450x'}} 450w">
+                            {% if section.settings.mega_menu_image_url_2 %}</a>{% endif %}
+                        </div>
+                    </div>
+                {% elsif link_list != blank %}
+                    <div class="main-nav-dropdown">
+                        {{ link_list }}
+                    </div>
                 {% endif %}
             </li>
         {% endfor %}

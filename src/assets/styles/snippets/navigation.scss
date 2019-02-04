@@ -17,11 +17,16 @@
       justify-content: center;
 
       > li {
-        position: relative;
+        &.has-children:not(.mega-menu) {
+          position: relative;
+        }
 
-        &:hover {
+        &:not(:hover) {
           .main-nav-dropdown {
-            display: block;
+            display: none;
+          }
+          .main-nav-mega-menu {
+            display: none;
           }
         }
 
@@ -48,9 +53,9 @@
       }
     }
 
+    // Dropdown
     &-dropdown {
       position: absolute;
-      display: none;
       background-color: white;
       box-shadow: 0 10px 10px 0 rgba(0,0,0,0.15);
       text-align: left;
@@ -58,6 +63,34 @@
       left: -16px; // Align with parent text
       padding: 0 40px 30px;
       width: 210px;
+    }
+
+    // Mega Menu
+    &-mega-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background: white;
+      padding: 20px 20px 20px 40px;
+
+      &-links {
+        width: 250px;
+      }
+
+      &-image {
+        padding-right: 10px;
+
+        + .main-nav-mega-menu-image {
+          padding-left: 10px;
+          padding-right: 0;
+        }
+
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
     }
   }
 }
