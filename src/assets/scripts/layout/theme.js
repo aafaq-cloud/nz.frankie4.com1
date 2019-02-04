@@ -13,14 +13,15 @@ import "lazysizes";
 
 import {Autoloader} from "../class/Autoloader";
 import {ShopifyCart} from "../class/ShopifyCart";
+import MicroModal from 'micromodal';
 import {QuickView} from "../class/Quickview";
 
 window.slate = window.slate || {};
 window.theme = window.theme || {};
 
 $(document).ready(() => {
-  // Initialise Foundation
-  // MediaQuery._init();
+  // Initialise modal
+  MicroModal.init();
 
   // Initialise the core application
   window.AppShopifyCart = new ShopifyCart();

@@ -10,7 +10,7 @@ button {
   position: relative;
   display: inline-flex;
   @include flex-align(center, middle);
-  padding: 14px 28px 13px;
+  padding: 14px 26px 13px;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 0;
@@ -68,20 +68,34 @@ button {
   }
 
   &.js-loading {
-    // Loading animation
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      right: 4px;
+      left:4px;
+      bottom: 4px;
+      top: 4px;
+      animation: loaderIndicator 1000ms infinite linear;
+    }
   }
 }
+
+
 
 // Button Sizes
 // -----------------------------------------------------
 .button-small {
-  padding: 10px 20px;
-  font-size: rem-calc(10px);
+  padding: 9px 20px;
+  font-size: rem-calc(14px);
 }
 
 .button-medium {
   padding: 14px 30px;
-  font-size: rem-calc(12px);
+  font-size: rem-calc(14px);
 }
 
 .button-expanded {

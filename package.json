@@ -32,6 +32,7 @@
     "jquery": "^3.2.1",
     "lazysizes": "^4.0.4",
     "lodash-es": "^4.17.4",
+    "micromodal": "^0.3.2",
     "normalize.css": "^8.0.0",
     "slick-carousel": "^1.8.1",
     "vue": "^2.5.16",

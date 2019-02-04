@@ -2,13 +2,20 @@
   <a href="{{product.url | within: collection}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
   <div class="cell product-tile__image-container">
     <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
+
+    <button data-product-quickview data-product-url="{{ product.url }}" class="product-tile__quickview button button-secondary button-small">{{ 'products.product.quickview' | t }}</button>
   </div>
   <div class="cell product-tile__body grid-y">
-    <h2 class="product-tile__title h4 grid-x align-middle align-center">{{ product.title }}</h2>
+    <h5 class="product-tile__title grid-x align-middle align-center">{{ product.title }}</h5>
     <div class="product-tile__info">
       <span class="product-tile__price color-secondary-text">
         {{ product.price_max | money }}
       </span>
+      {% if product.compare_at_price_max > product.price_max %}
+        <s class="product-tile__compare-price color-secondary-text text-small">
+            {{ product.compare_at_price_max | money }}
+        </s>
+      {% endif %}
     </div>
   </div>
 

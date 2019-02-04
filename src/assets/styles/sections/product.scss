@@ -24,12 +24,17 @@
     display: none; // Hide this select from the end-user
   }
 
+  &:not(.is-quickview) {
+    .product-details {
+      @include position-sticky();
+    }
+  }
+
+
   .product-details {
     @include breakpoint(small down) {
       margin-top: 20px;
     }
-
-    @include position-sticky();
 
     .product-stickers {
       margin-bottom: 6px;
@@ -74,12 +79,21 @@
 
       transition: box-shadow 200ms;
 
-      &:hover {
-        box-shadow: inset 0 0 0 3px $color-border;
-      }
 
       &.current {
         box-shadow: inset 0 0 0 3px currentColor;
+      }
+
+      &:not(.unavailable):not(.current) {
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: inset 0 0 0 3px $color-border;
+        }
+      }
+
+      &.unavailable {
+        opacity: 0.5;
       }
 
       &-image {
@@ -89,6 +103,22 @@
         width: calc(100% - 16px);
         height: calc(100% - 16px);
         object-fit: cover;
+      }
+
+      &.js-loading {
+
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          border-top: 1px solid currentColor;
+          border-bottom: 1px solid currentColor;
+          right: 4px;
+          left:4px;
+          bottom: 4px;
+          top: 4px;
+          animation: loaderIndicator 1000ms infinite linear;
+        }
       }
     }
   }
@@ -239,30 +269,40 @@
         width: 100%;
       }
     }
+  }
 
-    @include breakpoint(medium) {
-      &__slides {
-        margin: -10px;
-        flex-wrap: wrap;
-      }
 
-      &__slide {
-        padding: 10px;
+  &:not(.is-quickview) {
 
-        @include breakpoint(large) {
-          width: 100%;
+    .glide {
+
+      @include breakpoint(medium) {
+        &__slides {
+          margin: -10px;
+          flex-wrap: wrap;
         }
-      }
 
-      &__bullets {
-        display: none;
+        &__slide {
+          padding: 10px;
+
+          @include breakpoint(large) {
+            width: 100%;
+          }
+        }
+
+        &__bullets {
+          display: none;
+        }
       }
     }
   }
 
   // Product Thumbnails
-  .product-thumbnails {
-    @include position-sticky();
+
+  &:not(.is-quickview) {
+    .product-thumbnails {
+      @include position-sticky();
+    }
   }
 
   .product-item-thumbnails {

@@ -217,16 +217,5 @@
         "info": "Will be scaled down to 32 x 32px"
       }
     ]
-  },
-  {
-    "name": "Product",
-    "settings": [
-      {
-        "type": "richtext",
-        "id": "product_colour_map",
-        "label": "Product Colours",
-        "info": "Enter a single colour name and colour hex code on each line separated by a colon :"
-      }
-    ]
   }
 ]

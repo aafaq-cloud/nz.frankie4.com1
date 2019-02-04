@@ -56,16 +56,29 @@ export class ProductSection extends AbstractComponent {
    * Handle the adding and removing of the slider based on breakpoint
    */
   resizeHandler() {
-    // Add slider if small viewport
-    if (window.innerWidth < 640 && !this.glideActive) {
+    if(this.component.classList.contains('is-quickview')) {
+      this.mountGlide();
+    } else if (window.innerWidth < 640) {
+      this.mountGlide();
+    } else if (window.innerWidth >= 640) {
+      this.dismountGlide();
+    }
+  }
+
+  mountGlide() {
+    if (!this.glideActive) {
       this.glide = new Glide(this.glideElement).mount();
       this.glideActive = true;
-    // Remove slider if medium or larger viewport
-    } else if (window.innerWidth >= 640 && this.glideActive) {
+    }
+  }
+
+
+  dismountGlide() {
+    if (this.glideActive) {
       if (this.glide) {
         this.glide.destroy();
-        this.glideActive = false;
       }
+      this.glideActive = false;
     }
   }
 

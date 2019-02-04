@@ -48,14 +48,19 @@ export class ComponentCarousel extends AbstractComponent {
     // Add slider if small viewport
     if (window.innerWidth < 640 && this.glideActive) {
       if (this.glide) {
-        console.log('destroyed');
         this.glide.destroy();
         this.glideActive = false;
+
+        // Refresh Quickview
+        AppQuickview.initQuickViewButtons();
       }
       // Remove slider if medium or larger viewport
     } else if (window.innerWidth >= 640 && !(this.glideActive)) {
       this.glide = new Glide(this.glideElement,this.glideSettings).mount();
       this.glideActive = true;
+
+      // Refresh Quickview
+      AppQuickview.initQuickViewButtons();
     }
   }
 }

@@ -163,7 +163,7 @@ export class CollectionSection extends AbstractComponent {
           }
 
           // Refresh Quickview
-          // AppQuickview.initQuickViewButtons();
+          AppQuickview.initQuickViewButtons();
         },
         complete() {
           instance.collectionLoading = false;

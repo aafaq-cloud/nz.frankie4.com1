@@ -18,7 +18,7 @@
 {% assign related_products = related_products | split: ',' %}
 
 
-<div data-autoload-class="ProductSection" class="section section-product" itemscope itemtype="http://schema.org/Product">
+<div data-autoload-class="ProductSection" class="section section-product{% if is_quickview %} is-quickview no-margin{% endif %}" itemscope itemtype="http://schema.org/Product">
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -29,7 +29,9 @@
     <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
     <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
+    {% unless is_quickview %}
     <div class="grid-container">
+    {% endunless %}
 
         <div class="grid-x grid-margin-y align-top">
 
@@ -58,17 +60,19 @@
 
             </div>
 
-            <div class="product-thumbnails cell show-for-large large-shrink">
-                {% if product.images.size > 0 %}
-                    <div class="product-item-thumbnails">
-                        {% for image in product.images %}
-                            <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}">
-                                <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
-                            </a>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
+            {% unless is_quickview %}
+                <div class="product-thumbnails cell show-for-large large-shrink">
+                    {% if product.images.size > 0 %}
+                        <div class="product-item-thumbnails">
+                            {% for image in product.images %}
+                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}">
+                                    <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endunless %}
 
             <div class="product-images cell small-12 medium-7 large-auto">
 
@@ -153,8 +157,15 @@
                                             <img data-src="{{product | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
                                         </a>
                                         {% for related_product in related_products %}
+                                        <script>console.log({{ related_product_object | json }});</script>
                                             {% assign related_product_object = all_products[related_product] %}
-                                            <a class="related-products__product" href="{{ related_product_object.url }}" title="{{ related_product_object.title }}">
+                                            {% if is_quickview %}
+                                                <a class="related-products__product{% if related_product_object.available == false %} unavailable{% endif %}" {% if related_product_object.available %}data-product-quickview data-product-url="{{ related_product_object.url }}"{% endif %}
+                                                   title="{{ related_product_object.title }}{% if related_product_object.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}">
+                                            {% else %}
+                                                <a class="related-products__product{% if related_product_object.available == false %} unavailable{% endif %}" {% if related_product_object.available %}href="{{ related_product_object.url }}"{% endif %}
+                                                   title="{{ related_product_object.title }}{% if related_product_object.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}">
+                                            {% endif %}
                                                 <img data-src="{{related_product_object | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
                                             </a>
                                         {% endfor %}
@@ -292,49 +303,54 @@
 
                 </div>
 
-                <div class="product-information mt-40">
-                    {% if product.description %}
-                        <h6 class="mb-20">Features</h6>
-                        <div class="rte">
-                            {{ product.description }}
-                        </div>
-                    {% endif %}
 
-                    {% if section.settings.product_accordion_title_1 != blank %}
-                        <h6 class="mt-40 mb-20">{{ section.settings.product_accordion_title_1 }}</h6>
-                        <div class="rte">
-                            {{ section.settings.product_accordion_content_1 }}
-                        </div>
-                    {% endif %}
+                {% unless is_quickview %}
 
-                    {% if section.settings.product_accordion_title_2 != blank %}
-                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_2 }}</h6>
-                        <div class="rte">
-                            {{ section.settings.product_accordion_content_2 }}
-                        </div>
-                    {% endif %}
+                    <div class="product-information mt-40">
+                        {% if product.description %}
+                            <h6 class="mb-20">Features</h6>
+                            <div class="rte">
+                                {{ product.description }}
+                            </div>
+                        {% endif %}
 
-                    {% if section.settings.product_accordion_title_3 != blank %}
-                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_3 }}</h6>
-                        <div class="rte">
-                            {{ section.settings.product_accordion_content_3 }}
-                        </div>
-                    {% endif %}
+                        {% if section.settings.product_accordion_title_1 != blank %}
+                            <h6 class="mt-40 mb-20">{{ section.settings.product_accordion_title_1 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_1 }}
+                            </div>
+                        {% endif %}
 
-                    {% if section.settings.product_accordion_title_4 != blank %}
-                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_4 }}</h6>
-                        <div class="rte">
-                            {{ section.settings.product_accordion_content_4 }}
-                        </div>
-                    {% endif %}
+                        {% if section.settings.product_accordion_title_2 != blank %}
+                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_2 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_2 }}
+                            </div>
+                        {% endif %}
 
-                    {% if section.settings.product_accordion_title_5 != blank %}
-                        <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_5 }}</h6>
-                        <div class="rte">
-                            {{ section.settings.product_accordion_content_5 }}
-                        </div>
-                    {% endif %}
-                </div>
+                        {% if section.settings.product_accordion_title_3 != blank %}
+                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_3 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_3 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_4 != blank %}
+                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_4 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_4 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_5 != blank %}
+                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_5 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_5 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                {% endunless %}
 
                 {% unless product == empty %}
                     <script type="application/json" data-product-json>
@@ -345,7 +361,10 @@
             </div>
 
         </div>
+
+    {% unless is_quickview %}
     </div>
+    {% endunless %}
 
 </div>
 

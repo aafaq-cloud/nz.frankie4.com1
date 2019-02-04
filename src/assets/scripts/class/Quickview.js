@@ -6,7 +6,7 @@ export class QuickView {
     this.loading = false;
 
     const modalHTML = `
-            <div style="display: none;" class="modal-quickview reveal large" data-reveal>
+            <div style="display: none;" class="modal-quickview reveal large padded" data-reveal>
                 <a class="close-button" data-close aria-label="Close Quick View">
                     <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
                         <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
@@ -56,10 +56,10 @@ export class QuickView {
               view: "quickview",
             },
             success(response) {
+              instance.loading = false;
               instance.modalContent.html(response);
               instance.modal.foundation("open");
               Autoloader.initAutoloadClasses();
-              instance.loading = false;
             },
             complete() {
               setTimeout(() => {
@@ -67,6 +67,9 @@ export class QuickView {
                 $("body")[0].dispatchEvent(
                   new Event("shopify-wishlist.refresh"),
                 );
+
+                // Refresh Quickview
+                AppQuickview.initQuickViewButtons();
               }, 100);
 
               setTimeout(() => {
