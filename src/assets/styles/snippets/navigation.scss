@@ -32,14 +32,21 @@
 
         > a {
           height: 50px;
-          padding: 0 15px 10px;
-          font-size: 18px;
+          padding: 0 16px 10px;
+          font-size: 16px;
           display: flex;
           justify-content: center;
           align-items: center;
 
-          @include breakpoint(960px) {
-            padding: 0 24px 10px;
+          @include breakpoint(920px) {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+          @include breakpoint(980px) {
+            padding-left: 24px;
+            padding-right: 24px;
+            font-size: 18px;
           }
         }
       }

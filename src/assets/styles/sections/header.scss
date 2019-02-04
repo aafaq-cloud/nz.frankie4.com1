@@ -58,6 +58,12 @@ body {
       &-text {
         font-size: rem-calc(28px);
       }
+
+      a {
+        img {
+          height: 28px;
+        }
+      }
     }
   }
 
@@ -163,11 +169,12 @@ body {
     font-weight: 700;
 
     img {
-      height: 18px;
+      display: block;
+      height: 34px;
       width: auto;
 
       @include breakpoint($nav-switch-breakpoint) {
-        height: 26px;
+        height: 54px;
       }
     }
   }
@@ -192,7 +199,7 @@ body {
   }
 
   .header-logo {
-    padding-bottom: 10px; // Add some space from the menu
+    padding-bottom: 2px;
 
     &-inner {
       align-items: flex-end;
