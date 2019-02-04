@@ -16,3 +16,34 @@
     margin-bottom: map-get($grid-margin-gutters, medium);
   }
 }
+
+.collection-banner {
+  padding: 20px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+
+  @include breakpoint(medium) {
+    height: 340px;
+    padding: 0 90px;
+  }
+}
+
+.collection-toolbar {
+  .select-wrap {
+    border: 0;
+
+    select {
+      font-weight: bold;
+    }
+  }
+
+  &__sort {
+
+    &-label {
+      white-space: nowrap;
+    }
+
+  }
+}

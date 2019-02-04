@@ -2,28 +2,32 @@
 
   <div class="grid-container">
     <div class="grid-x grid-margin-x collection-header">
-      <div class="cell large-6">
+      <div class="cell large-12">
         {% include 'breadcrumb' %}
 
-        <h1>{{collection.title}}</h1>
-        <p class="color-secondary-text semibold">{{collection.description}}</p>
-      </div>
-      {% unless collection.image == blank %}
-        <div class="cell large-6 show-for-large">
-          <div class="collection-banner-image-wrapper">
-            <img class="collection-banner-image lazyload" data-src="{{collection.image | img_url: '690x367'}}">
-          </div>
+        <div class="collection-banner" style="background-image:url('{{collection.image | img_url: '1200x'}}')">
+            <div class="grid-x align-middle align-right h-100">
+                <div class="cell large-4">
+                    <h1>{{collection.title}}</h1>
+                    <p class="color-secondary-text semibold">{{collection.description}}</p>
+                </div>
+            </div>
         </div>
-        {% endunless %}
+
+      </div>
+
     </div>
 
-        <!-- <div class="collection-toolbar grid-x align-justify align-middle">
-          <div class="cell auto grid-x grid-margin-x align-middle align-right">
+        <div class="collection-toolbar">
+          <div class="cell auto grid-x grid-margin-x align-middle align-justify">
 
             <div class="collection-toolbar__count cell shrink">
-              <span>{{ collection.products.size }} items</span>
+              <span class="text-small">{{ collection.products.size }} items</span>
             </div>
-            <div class="collection-toolbar__sort cell shrink">
+            <div class="collection-toolbar__sort cell shrink flex-container align-middle">
+
+              <div class="collection-toolbar__sort-label">Sort By</div>
+
               {% capture sort_by %}{{ collection.sort_by | default: collection.default_sort_by  }}{% endcapture %}
               {% assign sort_by = sort_by | handleize %}
 
@@ -44,7 +48,7 @@
             </div>
 
           </div>
-        </div> -->
+        </div>
 
         {% paginate collection.products by 8 %}
 

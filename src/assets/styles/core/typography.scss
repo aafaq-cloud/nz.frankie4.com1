@@ -105,7 +105,7 @@ p {
 
 .lead {
   font-size: rem-calc(14px);
-  line-height: (17 / 14);
+  line-height: (21 / 14);
 
   @include breakpoint(medium) {
     font-size: rem-calc(20px);
