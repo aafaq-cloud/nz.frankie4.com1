@@ -1,0 +1,112 @@
+<div class="section section-concept-stores">
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-middle title-block">
+            <div class="cell large-3">
+                <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
+            </div>
+            <div class="cell large-5 large-offset-2">
+                <p class="lead">{{section.settings.section_subheading}}</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="grid-container">
+
+    {% if section.blocks !=  blank %}
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+
+            {% for block in section.blocks %}
+
+                <div class="cell">
+                    <div class="store grid-x" style="background-image:url({{ block.settings.store_image | img_url: "x1200" }})">
+
+
+                         <div class="mobile-image" style="background-image:url({{ block.settings.store_image | img_url: "x1200" }})"></div>
+
+
+                        <div class="store-box">
+                            <h2>{{ block.settings.title }}</h2>
+                            <div>{{ block.settings.address }}</div>
+                            <div class="mb-30"><strong>{{ block.settings.phone }}</strong></div>
+
+
+                            <div class="opening-hours">
+                                <div class="text-small opening-hours-title">Opening Hours</div>
+                                 <div class="opening-hours-list">
+                                 {{ block.settings.opening_hours }}
+                                 </div>
+                            </div>
+
+                            <div class="text-small">This concept store is under the same roof as our sister store All Podiatry & The Shoe Co.</div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% schema %}
+     {
+         "name": "Concept Stores",
+         "settings": [
+            {
+                "type": "header",
+                "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "section_subheading",
+                "label": "Subheading"
+            }
+         ],
+         "blocks": [
+             {
+                 "type": "stores",
+                 "name": "Stores",
+                 "settings": [
+                     {
+                         "type": "text",
+                         "id": "title",
+                         "label":"Store Name"
+                     },
+                     {
+                          "type": "text",
+                          "id": "address",
+                          "label":"Store Address"
+                     },
+                     {
+                           "type": "text",
+                           "id": "phone",
+                           "label":"Phone"
+                     },
+                     {
+                            "type": "richtext",
+                            "id": "opening_hours",
+                            "label":"Opening Hours"
+                     },
+                     {
+                           "type": "image_picker",
+                           "id": "store_image",
+                           "label":"Store Image"
+                     }
+                 ]
+             }
+         ]
+     }
+ {% endschema %}

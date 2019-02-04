@@ -1,0 +1,59 @@
+.section-concept-stores {
+
+  .title-block {
+
+    @include breakpoint(medium) {
+      margin-bottom: 70px;
+    }
+  }
+
+  .store {
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+
+    @include breakpoint(medium) {
+      padding: 50px;
+      justify-content: flex-end;
+    }
+
+    .mobile-image {
+      display: block;
+      height: 200px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+
+    &-box {
+      padding: 20px 0;
+      background: #fff;
+      width: 100%;
+
+
+
+      @include breakpoint(medium) {
+        max-width: 510px;
+        padding: 50px 45px;
+        box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
+      }
+
+      .opening-hours {
+
+        &-title {
+          color: $dark-grey;
+        }
+
+        &-list p {
+          columns: 2;
+        }
+      }
+
+    }
+  }
+
+}
