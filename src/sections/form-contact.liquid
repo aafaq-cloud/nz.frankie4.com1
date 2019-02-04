@@ -1,75 +1,81 @@
-<div class="section section-contact-form">
+<div class="section section-contact-form" data-autoload-class="ContactFormSection">
 
-  <div class="text-center">
-    <h2>{{section.settings.section_title}}</h2>
-    <h3 class="h6 color-text-secondary">{{section.settings.section_subheading}}</h3>
+  <div class="title-block medium-text-center  mb-30">
+      <h2 class="h3">{{section.settings.section_title}}</h2>
   </div>
 
   <div class="grid-container">
     <div class="grid-x align-center">
-      <div class="cell small-12 medium-8 large-6">
+      <div class="cell small-12 medium-8 large-6 text-center">
 
-        {% form 'contact' %}
+          <div class="form-container {% if form.errors %}open{% endif %}">
 
-        {% if form.posted_successfully? %}
-          <p class="form-success mb-30">
-            {{ 'contact.form.post_success' | t }}
-          </p>
-        {% endif %}
+             <button class="button button-primary show-form">Send us an email</button>
 
-        <div class="grid-x grid-margin-x grid-margin-y">
+             {% form 'contact' %}
 
-          {% if form.errors %}
-          <div class="cell small-12">
-            {{ form.errors | default_errors }}
+                {% if form.posted_successfully? %}
+                  <p class="form-success mb-30">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                {% endif %}
+
+                <div class="grid-x grid-margin-x grid-margin-y">
+
+                  {% if form.errors %}
+                  <div class="cell small-12">
+                    {{ form.errors | default_errors }}
+                  </div>
+                  {% endif %}
+
+                  <div class="cell small-12">
+                    <input type="text"
+                    name="contact[name]"
+                    id="ContactFormName"
+                    class="{% if form.errors contains 'name' %}input-error{% endif %}"
+
+                    placeholder="{{ 'contact.form.name' | t }}"
+                    value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                  </div>
+                  <div class="cell small-12 medium-6">
+                    <input type="email"
+                    name="contact[email]"
+                    id="ContactFormEmail"
+                    class="{% if form.errors contains 'email' %}input-error{% endif %}"
+
+                    placeholder="{{ 'contact.form.email' | t }}"
+                    value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocapitalize="off">
+                  </div>
+                  <div class="cell small-12 medium-6">
+                    <input type="tel"
+                    name="contact[phone]"
+                    id="ContactFormPhone"
+                    class="{% if form.errors contains 'phone' %}input-error{% endif %}"
+                    placeholder="{{ 'contact.form.phone' | t }}"
+                    value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                    pattern="[0-9\-]*">
+                  </div>
+                  <div class="cell small-12">
+                    <textarea rows="10"
+                    name="contact[body]"
+                    id="ContactFormMessage"
+                    class="{% if form.errors contains 'body' %}input-error{% endif %}"
+
+                    placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                  </div>
+
+                  <div class="button-group cell small-12 text-center">
+                    <input type="submit" class="button button-primary button-solid" value="{{ 'contact.form.send' | t }}">
+                  </div>
+                </div>
+
+                {% endform %}
           </div>
-          {% endif %}
 
-          <div class="cell small-12">
-            <input type="text"
-            name="contact[name]"
-            id="ContactFormName"
-            class="{% if form.errors contains 'name' %}input-error{% endif %}"
-            required
-            placeholder="{{ 'contact.form.name' | t }}"
-            value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
-          </div>
-          <div class="cell small-12 medium-6">
-            <input type="email"
-            name="contact[email]"
-            id="ContactFormEmail"
-            class="{% if form.errors contains 'email' %}input-error{% endif %}"
-            required
-            placeholder="{{ 'contact.form.email' | t }}"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            spellcheck="false"
-            autocomplete="off"
-            autocapitalize="off">
-          </div>
-          <div class="cell small-12 medium-6">
-            <input type="tel"
-            name="contact[phone]"
-            id="ContactFormPhone"
-            class="{% if form.errors contains 'phone' %}input-error{% endif %}"
-            placeholder="{{ 'contact.form.phone' | t }}"
-            value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-            pattern="[0-9\-]*">
-          </div>
-          <div class="cell small-12">
-            <textarea rows="10"
-            name="contact[body]"
-            id="ContactFormMessage"
-            class="{% if form.errors contains 'body' %}input-error{% endif %}"
-            required
-            placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
-          </div>
 
-          <div class="button-group stacked cell small-12">
-            <input type="submit" class="button button-primary button-solid" value="{{ 'contact.form.send' | t }}">
-          </div>
-        </div>
-
-        {% endform %}
 
       </div>
     </div>
@@ -78,7 +84,7 @@
 
 {% schema %}
 {
-  "name": "Contact",
+  "name": "Contact Form",
   "settings": [
   {
     "type": "header",
@@ -88,16 +94,11 @@
     "type": "text",
     "id": "section_title",
     "label": "Title"
-  },
-  {
-    "type": "text",
-    "id": "section_subheading",
-    "label": "Subheading"
   }
   ],
   "presets": [
   {
-    "name": "Contact",
+    "name": "Contact Form",
     "category": "Forms"
   }
   ]

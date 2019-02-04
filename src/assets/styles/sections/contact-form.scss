@@ -1,0 +1,24 @@
+.section-contact-form {
+
+  background: $color-secondary;
+  padding: 40px 0;
+
+  .form-container {
+
+    form {
+      display: none;
+    }
+
+
+    &.open {
+      form {
+        display: block;
+      }
+      .show-form {
+        display: none;
+      }
+    }
+
+  }
+
+}
