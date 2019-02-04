@@ -21,12 +21,13 @@ export class CollectionSection extends AbstractComponent {
 
     super(component);
     this.component = $(component);
-    // this.initSorting();
+    this.initSorting();
     this.initInfiniteScroll();
   }
 
   initSorting() {
     const instance = this;
+    instance.sortby = instance.component.find('#sort-by');
 
     Shopify.queryParams = {};
 
