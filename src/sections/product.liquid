@@ -157,7 +157,6 @@
                                             <img data-src="{{product | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
                                         </a>
                                         {% for related_product in related_products %}
-                                        <script>console.log({{ related_product_object | json }});</script>
                                             {% assign related_product_object = all_products[related_product] %}
                                             {% if is_quickview %}
                                                 <a class="related-products__product{% if related_product_object.available == false %} unavailable{% endif %}" {% if related_product_object.available %}data-product-quickview data-product-url="{{ related_product_object.url }}"{% endif %}

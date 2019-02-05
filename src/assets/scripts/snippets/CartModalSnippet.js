@@ -58,10 +58,10 @@ export class CartModalSnippet extends AbstractComponent {
           <div class="product-details grid-y flex-child-auto">
             <h3 class="color-secondary-text text-small m-0"><span class="visually-hidden">Brand: </span>{{product.vendor}}</h3>
             <h2 class="h6"><a :href="product.url">{{ product.product_title }}</a></h2>
-            <div class="text-small color-secondary-text">QTY: {{ product.quantity }} | <template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template></div>
+            <div class="text-small color-secondary-text">QTY: {{ product.quantity }} <template v-if="product.variant_title != null">| <template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template></template></div>
           </div>
           <div class="popup-product-right">
-            <div class="semibold color-secondary-text">{{ product.price | formatMoney }}</div>
+            <div class="semibold color-secondary-text" v-html="formatMoneyValue(product.line_price)"></div>
             <button class="popup-product-edit text-small" @click="remove" :aria-label="'Remove' + product.product_title + 'from shopping cart'">
               <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
                 <path d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
@@ -91,6 +91,13 @@ export class CartModalSnippet extends AbstractComponent {
           window.AppShopifyCart.removeItem(this.product.id).then(() => {
             this.loading = false;
           });
+        },
+        formatMoneyValue(value) {
+          if (!value) {
+            return "";
+          } else {
+            return formatMoney(value, theme.moneyFormat);
+          }
         }
       }
     });
@@ -108,7 +115,7 @@ export class CartModalSnippet extends AbstractComponent {
             <div v-if="cart.items.length > 0">
             <div class="totals">
               <div class="total-row grid-x align-justify">
-                <h3 class="h6">Total {{ cart.total_price | formatMoney }}</h3>
+                <h3 class="h6" v-html="formatTotalMoneyValue(cart.total_price)"></h3>
               </div>
             </div>
 
@@ -141,6 +148,13 @@ export class CartModalSnippet extends AbstractComponent {
       methods: {
         close() {
           instance.closeCart();
+        },
+        formatTotalMoneyValue(value) {
+          if (!value) {
+            return "";
+          } else {
+            return "Total " + formatMoney(value, theme.moneyFormat);
+          }
         }
       }
     });
@@ -149,6 +163,12 @@ export class CartModalSnippet extends AbstractComponent {
     window.AppShopifyCart.on("cart.update", () => {
       this.vm.cart = AppShopifyCart.getCart();
       this.cartQuantityElement.html(this.vm.cart.item_count);
+
+      setTimeout(() => {
+        document.body.dispatchEvent(
+          new Event("shopify-currency.refresh")
+        );
+      }, 10);
     });
   }
 

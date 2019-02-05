@@ -66,7 +66,14 @@ Navigation to display on small and medium viewports
         </div>
 
         <div class="mobile-nav-footer cell shrink">
-            {% include 'social-icons' %}
+            <div class="grid-x align-middle">
+                <div class="cell auto">
+                    {% include 'social-icons' %}
+                </div>
+                <div class="cell shrink">
+                    {% include 'currency-picker' %}
+                </div>
+            </div>
         </div>
 
     </div>

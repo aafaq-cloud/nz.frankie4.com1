@@ -1,0 +1,16 @@
+{% comment %}
+
+{% endcomment %}
+{% if settings.show_multiple_currencies %}
+
+    <script>
+      shopifyCurrency = {
+        format: '{{ settings.currency_format | default: 'money_with_currency_format' }}',
+        shopCurrency: '{{ shop.currency }}',
+        defaultCurrency: '{{ settings.default_currency | default: shop.currency }}',
+        money_with_currency_format: {{ shop.money_with_currency_format | strip_html | json }},
+        money_format: {{ shop.money_format | strip_html | json }},
+      };
+    </script>
+
+{% endif %}

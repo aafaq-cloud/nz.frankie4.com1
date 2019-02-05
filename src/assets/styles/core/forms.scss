@@ -82,9 +82,9 @@ input[type="search"]::-webkit-search-results-decoration {
     top: 50%;
     width: 10px;
     height: 10px;
-    margin-top: -5px;
     z-index: 0;
     color: $color-form-element-text;
+    transform: translateY(-50%);
   }
 
   select {

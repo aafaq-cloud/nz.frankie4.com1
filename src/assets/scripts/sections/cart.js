@@ -1,6 +1,7 @@
 import Vue from "vue";
 import {formatMoney} from "@shopify/theme-currency";
 import {getSizedImageUrl} from "@shopify/theme-images";
+import $ from "jquery";
 
 import {AbstractComponent} from "../class/AbstractComponent";
 
@@ -10,7 +11,10 @@ import Spinner from "./spinner";
 
 export class CartSection extends AbstractComponent {
   constructor(component) {
+    component = $(component);
+
     super(component);
+
 
     this.cart = {};
     this.totalDOM = this.component.find(".cart-total-price");

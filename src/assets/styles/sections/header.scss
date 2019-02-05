@@ -72,10 +72,10 @@ body {
     margin: 0;
     padding: 0;
     height: $toolbar-height-for-small;
+    width: 33% !important; // Ensure logo title is centered
 
     @include breakpoint($nav-switch-breakpoint) {
       height: $toolbar-height-for-large;
-      width: 33% !important; // Ensure logo title is centered
     }
   }
 

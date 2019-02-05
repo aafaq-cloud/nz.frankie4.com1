@@ -1,5 +1,6 @@
 // This should be kept in sync with snippets/cart-product.liquid to ensure consistent experience between JS and non-JS cart
 import Vue from "vue";
+import { formatMoney } from "@shopify/theme-currency";
 
 export default Vue.component("cart-product", {
   template: `
@@ -14,7 +15,7 @@ export default Vue.component("cart-product", {
         <a :href="product.url">{{product.title}}</a>
       </h4>
       <div>
-        <span class="cart-line-price">{{product.price | formatMoney}}</span>
+        <span class="cart-line-price" v-html="formatMoneyValue(product.price)"></span>
       </div>
 
       <button class="cart-modal-product-remove" type="button" @click="remove">
@@ -41,7 +42,7 @@ export default Vue.component("cart-product", {
     </div>
     <div class="cell shrink column-total">
       <label class="show-for-small-only">Line total: </label>
-      <output>{{ product.line_price | formatMoney }}</output>
+      <output v-html="formatMoneyValue(product.line_price)"></output>
     </div>
   </article>`,
   props: ["product", "id", "line_id"],
@@ -72,11 +73,17 @@ export default Vue.component("cart-product", {
         this.loading = false;
       });
     },
+    formatMoneyValue(value) {
+      if (!value) {
+        return "";
+      } else {
+        return formatMoney(value, theme.moneyFormat);
+      }
+    },
     subtract() {
       if (this.loading) {
         return;
       }
-      // console.log(this.product);
       this.loading = true;
       window.AppShopifyCart.updateItem(this.id, this.product.quantity - 1).then(
         () => {

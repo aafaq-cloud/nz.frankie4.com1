@@ -1,0 +1,27 @@
+.currency-picker {
+
+  &.component-select {
+    @include breakpoint($nav-switch-breakpoint) {
+      font-size: rem-calc(12px);
+      background: transparent;
+      border-color: transparent;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      right: 12px;
+    }
+
+    select {
+      padding: 10px 30px 10px 20px;
+    }
+
+    .js-select {
+
+      .label {
+        padding: 10px 30px 10px 20px;
+      }
+    }
+  }
+}

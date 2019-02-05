@@ -1,6 +1,7 @@
 import {VariantSelector} from "./VariantSelector";
 import {formatMoney} from "@shopify/theme-currency";
 import EventEmitter from "event-emitter-es6";
+import $ from "jquery";
 
 export class Product extends EventEmitter {
 
@@ -258,6 +259,10 @@ export class Product extends EventEmitter {
     this.updateHistoryState();
 
     this.emit("variant-change", this.selectedVariant);
+
+    document.body.dispatchEvent(
+      new Event("shopify-currency.refresh")
+    );
   }
 
   /**
