@@ -20,6 +20,7 @@
 .collection-banner {
   padding: 20px;
   width: 100%;
+  background-color: $primary-color;
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -36,6 +37,7 @@
 
     select {
       font-weight: bold;
+      line-height: 1.5em;
     }
   }
 

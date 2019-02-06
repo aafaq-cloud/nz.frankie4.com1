@@ -1,0 +1,157 @@
+<div class="collection-filters" data-autoload-class="CollectionFilterSnippet" data-collection="{{ collection.handle }}">
+
+
+
+    <h3>Filter Results</h3>
+
+    <!-- Collection -->
+    <div class="filter">
+        {% assign current_collection = collection.title %}
+         <div aria-controls="accordion-item-collection" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+            <h5 class="accordion-toggle-title">Collection</h6>
+             <span class="open-icon">{% include 'icon-plus' %}</span>
+             <span class="close-icon">{% include 'icon-minus' %}</span>
+         </div>
+         <div class="grid-x accordion accordion-body" id="accordion-item-collection" aria-expanded="true">
+            <ul>
+              {% for collection in collections %}
+                 <li class="{% if collection.title == current_collection %} active{% endif %}">
+                     <a href="{{collection.url}}">{{collection.title}}</a>
+                     {% if collection.title == current_collection %}
+                         <span class="reset" data-name="collection">{% include 'icon-cross' %}</span>
+                     {% endif %}
+                 </li>
+             {% endfor %}
+             </ul>
+         </div>
+
+    </div>
+
+    <!-- Colour -->
+    <div class="filter">
+        <div aria-controls="accordion-item-colour" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+            <h5 class="accordion-toggle-title">Colour</h5>
+            <span class="open-icon">{% include 'icon-plus' %}</span>
+            <span class="close-icon">{% include 'icon-minus' %}</span>
+        </div>
+        <div class="grid-x accordion accordion-body" id="accordion-item-colour" aria-expanded="true">
+            <ul>
+                {% for tag in collection.all_tags %}
+                    {% if tag contains 'colour_' %}
+                    <li class="{% if current_tags contains tag %}active{% endif %}">
+                        <input type="radio" name="colour" id="{{ tag }}" value="{{ tag }}"  {% if current_tags contains tag %} checked{% endif %} {% unless collection.tags contains tag %} disabled {% endunless %}>
+                        <label for="{{ tag }}">
+                            {{ tag | remove: "colour_" }}
+                        </label>
+                        {% if current_tags contains tag %}
+                            <span class="reset" data-name="colour">{% include 'icon-cross' %}</span>
+                        {% endif %}
+
+                     </li>
+
+                    {% endif %}
+                {% endfor %}
+             </ul>
+
+
+        </div>
+    </div>
+
+    <!-- Price -->
+    <div class="filter">
+        <div aria-controls="accordion-item-price" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+            <h5 class="accordion-toggle-title">Price</h5>
+            <span class="open-icon">{% include 'icon-plus' %}</span>
+            <span class="close-icon">{% include 'icon-minus' %}</span>
+        </div>
+        <div class="grid-x accordion accordion-body" id="accordion-item-price" aria-expanded="true">
+            <ul>
+                 {% for tag in collection.all_tags %}
+                    {% if tag contains 'price_' %}
+                     <li class="{% if current_tags contains tag %}active{% endif %}">
+                        <input type="radio" name="price" id="{{ tag }}" value="{{ tag }}"  {% if current_tags contains tag %} checked{% endif %} {% unless collection.tags contains tag %} disabled {% endunless %}>
+                        <label for="{{ tag }}">
+                            {{ tag | remove: "price_" }}
+                        </label>
+
+                        {% if current_tags contains tag %}
+                            <span class="reset" data-name="price">{% include 'icon-cross' %}</span>
+                        {% endif %}
+
+                     </li>
+
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Heel Height -->
+    <div class="filter">
+        <div aria-controls="accordion-item-heel_height" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+            <h5 class="accordion-toggle-title">Heel Height</h5>
+            <span class="open-icon">{% include 'icon-plus' %}</span>
+            <span class="close-icon">{% include 'icon-minus' %}</span>
+        </div>
+        <div class="grid-x accordion accordion-body" id="accordion-item-heel_height" aria-expanded="true">
+
+            <ul>
+                {% for tag in collection.all_tags %}
+                    {% if tag contains 'heel_height_' %}
+                        <li class="{% if current_tags contains tag %}active{% endif %}">
+                            <input type="radio" name="heel_height" id="{{ tag }}" value="{{ tag }}"  {% if current_tags contains tag %} checked{% endif %} {% unless collection.tags contains tag %} disabled {% endunless %}>
+                            <label for="{{ tag }}">
+                            {{ tag | remove: "heel_height_" }}
+                            </label>
+
+                            {% if current_tags contains tag %}
+                                <span class="reset" data-name="heel_height">{% include 'icon-cross' %}</span>
+                            {% endif %}
+
+                        </li>
+
+                    {% endif %}
+                {% endfor %}
+             </ul>
+
+
+        </div>
+    </div>
+
+    <!-- Size & Fit -->
+    <div class="filter">
+        <div aria-controls="accordion-item-size" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+            <h5 class="accordion-toggle-title">Size & Fit</h5>
+            <span class="open-icon">{% include 'icon-plus' %}</span>
+            <span class="close-icon">{% include 'icon-minus' %}</span>
+        </div>
+        <div class="grid-x accordion accordion-body" id="accordion-item-size" aria-expanded="true">
+
+            <ul>
+                {% for tag in collection.all_tags %}
+                    {% if tag contains 'size_' %}
+                         <li class="{% if current_tags contains tag %}active{% endif %}">
+                            <input type="radio" name="size" id="{{ tag }}" value="{{ tag }}"  {% if current_tags contains tag %} checked{% endif %} {% unless collection.tags contains tag %} disabled {% endunless %}>
+                            <label for="{{ tag }}">
+                            {{ tag | remove: "size_" }}
+                            </label>
+                        </li>
+                         {% if current_tags contains tag %}
+                            <span class="reset" data-name="size">{% include 'icon-cross' %}</span>
+                         {% endif %}
+
+                    {% endif %}
+                {% endfor %}
+             </ul>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

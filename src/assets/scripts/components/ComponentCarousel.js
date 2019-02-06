@@ -48,7 +48,6 @@ export class ComponentCarousel extends AbstractComponent {
     // Add slider if small viewport
     if (window.innerWidth < 640 && this.glideActive) {
       if (this.glide) {
-        console.log('destroyed');
         this.glide.destroy();
         this.glideActive = false;
       }
