@@ -25,6 +25,11 @@ export class ComponentAccordionItem extends AbstractComponent {
     }
 
     this.component.addEventListener("click", () => this.toggleAccordionItem());
+
+    this.component.addEventListener("accordion-item.open", () => this.openAccordionItem());
+
+    this.component.addEventListener("accordion-item.close", () => this.closeAccordionItem());
+
   }
 
   toggleAccordionItem() {

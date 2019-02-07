@@ -8,6 +8,7 @@ import {ComponentVideo} from "../components/ComponentVideo";
 // Snippets
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
 import {SearchAutocompleteSnippet} from "../snippets/SearchAutocompleteSnippet";
+import {CollectionFilterSnippet} from "../snippets/CollectionFilterSnippet";
 
 // Sections
 import {CollectionSection} from "../sections/collection";
@@ -33,6 +34,7 @@ export class Autoloader {
       // Snippets
       SearchAutocompleteSnippet,
       CartModalSnippet,
+      CollectionFilterSnippet,
 
       // Sections
       HeaderSection,

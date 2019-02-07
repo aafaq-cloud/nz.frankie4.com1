@@ -1,0 +1,102 @@
+.collection-filters {
+
+  // Accordion
+  .accordion-toggle,
+  .accordion-body {
+    border: 0;
+  }
+
+  .accordion-toggle {
+    padding: 10px 0;
+
+    &-title {
+      font-weight: bold;
+    }
+
+    .open-icon,
+    .close-icon {
+      font-size: rem-calc(10);
+    }
+
+  }
+  .accordion-body {
+    padding: 0;
+  }
+
+  // Filters
+  ul {
+    list-style: none;
+    padding-left: 20px;
+    width: 100%;
+
+    li {
+      position: relative;
+      z-index: 1;
+
+
+      a,
+      label {
+        position: relative;
+        display: inline-block;
+        font-weight: normal;
+        text-transform: capitalize;
+        text-decoration: none;
+        cursor: pointer;
+        cursor: pointer;
+
+        &::before {
+          display: block;
+          position: absolute;
+          content: '';
+          z-index: -1;
+          left: -20px;
+          right: -10px;
+          top: 50%;
+          height: 6px;
+          background-color: $light-pink;
+          transform: translateY(-50%) scaleX(0);
+          transition: transform 200ms;
+          transform-origin: left;
+          opacity: 0.6;
+        }
+      }
+
+      input[type='radio'] {
+        display: none;
+
+        // Disabled State Radio Filters
+        &:disabled + label {
+          opacity: 0.4;
+          cursor: default;
+        }
+
+      }
+
+      .reset {
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        top: 0;
+        font-size: rem-calc(10);
+      }
+
+      // Active and Hover State
+      &.active,
+      &:hover {
+        a,
+        input[type="radio"]:not(:disabled) + label {
+          font-weight: bold;
+
+          &::before {
+            transform: translateY(-50%) scaleX(1);
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}
