@@ -189,12 +189,13 @@ button {
 
 .button-hollow {
   background-color: white;
-  border-color: $color-border;
+  border-color: $darker-grey;
   color: $darker-grey;
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      border-color: $darker-grey;
+      background-color: $darker-grey;
+      color: white;
     }
   }
 }

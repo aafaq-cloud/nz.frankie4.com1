@@ -1,7 +1,9 @@
 .section-contact-form {
 
-  background: $color-secondary;
-  padding: 40px 0;
+  .contact-form-container {
+    background: $color-secondary;
+    padding: 40px 0;
+  }
 
   .form-container {
 

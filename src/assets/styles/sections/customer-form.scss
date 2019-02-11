@@ -10,7 +10,7 @@
   background-color: #f6f6f6;
 
   &__alt {
-    background-color: $light-pink;
+    background-color: $color-secondary;
   }
 
   @include breakpoint(small down) {
