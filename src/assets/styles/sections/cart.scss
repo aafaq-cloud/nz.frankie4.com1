@@ -264,9 +264,10 @@
   margin-bottom: 30px;
 
   .cell {
-    margin: 7.5px 20px;
+    margin: 7.5px 0;
     width: calc(100% - 40px);
     @include breakpoint(medium) {
+      margin: 7.5px 20px;
       width: auto;
     }
     @include breakpoint(large) {
@@ -274,7 +275,11 @@
     }
 
     > .grid-x {
-      margin: 7.5px -20px;
+      margin: 7.5px 0;
+
+      @include breakpoint(medium) {
+        margin: 7.5px -20px;
+      }
 
       @include breakpoint(large) {
         margin: 0 -20px;
