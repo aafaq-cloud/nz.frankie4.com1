@@ -57,8 +57,8 @@ export class CartSection extends AbstractComponent {
     window.AppShopifyCart.on("cart.update", () => {
       this.cart = window.AppShopifyCart.getCart();
       this.vm.cart = this.cart;
-      this.total = formatMoney(this.cart.total_price);
-      this.totalDOM.text(this.total);
+      this.total = formatMoney(this.cart.total_price, theme.moneyFormat);
+      this.totalDOM.html(this.total);
     });
   }
 }
