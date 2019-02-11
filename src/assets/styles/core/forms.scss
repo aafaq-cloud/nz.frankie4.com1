@@ -15,7 +15,7 @@ textarea,
   appearance: none;
   border-radius: 0;
   line-height: 14px;
-  border: 1px solid $color-form-element-border;
+  border: 0;
   background-color: $color-form-element-background;
 
   @include breakpoint(medium) {
@@ -75,6 +75,7 @@ input[type="search"]::-webkit-search-results-decoration {
   position: relative;
   padding: 0;
   background-color: $color-form-element-background;
+  border: 1px solid $color-border;
 
   svg {
     position: absolute;
