@@ -2,11 +2,30 @@
 
     <div class="grid-container">
 
+        <div class="title-block medium-text-left">
+            <h2 class="mb-30">{% include 'page-title' %}</h2>
+        </div>
+
         {% if cart.item_count > 0 %}
 
         <form action="/cart" method="post" novalidate>
 
           <div class="grid-y cart-grid" data-cart-grid is="cart-grid">
+
+              <div class="grid-x cart-headings hide-for-small-only">
+                  <div class="cell auto product-heading">
+                      Product
+                  </div>
+                  <div class="cell auto">
+                      Price
+                  </div>
+                  <div class="cell auto">
+                      Quantity
+                  </div>
+                  <div class="cell auto">
+                      Total
+                  </div>
+              </div>
 
             {% for item in cart.items %}
 

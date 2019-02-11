@@ -225,11 +225,6 @@
     .total {
       p {
         font-weight: bold;
-        font-size: rem-calc(18px);
-
-        @include breakpoint(medium) {
-          font-size: rem-calc(20px);
-        }
       }
     }
   }
@@ -262,10 +257,12 @@
   width: auto;
   flex-grow: 1;
 }
+
+
 .cart-grid {
   background-color: white;
   margin-bottom: 30px;
-  border: 1px solid #f6f7f9;
+
   .cell {
     margin: 7.5px 20px;
     width: calc(100% - 40px);
@@ -275,17 +272,29 @@
     @include breakpoint(large) {
       margin: 20px;
     }
+
+    > .grid-x {
+      margin: 7.5px -20px;
+
+      @include breakpoint(large) {
+        margin: 0 -20px;
+      }
+    }
+
   }
   > .grid-x {
     align-items: baseline;
+    border-bottom: 1px solid $color-border;
+
+
     @include breakpoint(medium) {
       align-items: center;
     }
     @include breakpoint(large) {
-      padding: 20px;
+      //padding: 20px;
     }
     + .grid-x {
-      border-top: none;
+      //border-top: none;
     }
   }
   h4 {
@@ -297,6 +306,39 @@
     }
   }
 }
+
+
+.cart-headings {
+  border-top: 1px solid $color-border;
+  font-weight: bold;
+
+  > .cell {
+    margin: 10px 20px;
+  }
+}
+
+.column-product,
+.product-heading {
+  @include breakpoint(large) {
+    min-width: 400px;
+  }
+}
+
+.column-details {
+  a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.cart-product {
+  .error {
+    padding: 10px 0;
+    color: red;
+    width: 100%;
+  }
+}
+
 .cart-product-image-wrapper {
   width: 147px;
   max-width: 100%;

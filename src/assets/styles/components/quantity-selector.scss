@@ -48,4 +48,9 @@
       -webkit-appearance: none;
     }
   }
+
+  button {
+    border: 1px solid $color-form-element-border;
+    cursor: pointer;
+  }
 }

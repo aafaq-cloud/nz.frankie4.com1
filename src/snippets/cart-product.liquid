@@ -3,34 +3,39 @@ This should be kept in sync with assets/scripts/sections/cart-product.js to keep
 {% endcomment %}
 <article class="grid-x cart-product" is="cart-product" :product="{{item | json}}">
 
-  <div class="cell shrink column-image hide-for-small-only">
-    {% if item.image != blank %}
-    <a href="{{ item.url | within: collections.all }}" class="cart-product-image-wrapper" tabindex="-1">
-      <img class="lazyload cart-product-image" data-src="{{item | img_url: '147x220'}}">
-    </a>
-    {% endif %}
-  </div>
-  <div class="cell grow column-details">
-    <h4>
-      <a href="{{ item.url }}">{{ item.product.title }}</a>
-    </h4>
-    <div>
-      {% if item.original_line_price != item.line_price %}
-      <span class="show-for-sr">{{ 'cart.label.discounted_price' | t }}</span>
-      <span class="cart-line-price">{{ item.price | money }}</span>
-      <span class="show-for-sr">{{ 'cart.label.original_price' | t }}</span>
-      <s>{{ item.original_price | money }}</s>
-      {% else %}
-      <span class="cart-line-price">{{ item.price | money }}</span>
-      {% endif %}
+  <div class="cell medium-auto column-product">
+    <div class="grid-x align-middle">
+      <div class="cell shrink column-image hide-for-small-only">
+          {% if item.image != blank %}
+            <a href="{{ item.url | within: collections.all }}" class="cart-product-image-wrapper" tabindex="-1">
+              <img class="lazyload cart-product-image" data-src="{{item | img_url: '147x220'}}">
+            </a>
+          {% endif %}
+      </div>
+      <div class="cell grow column-details">
+        <h4>
+          <a href="{{ item.url }}">{{ item.product.title }}</a>
+        </h4>
+          {% unless item.product.has_only_default_variant %}
+            <p class="options">{{ item.variant.title }}</p>
+          {% endunless %}
+
+      </div>
     </div>
-
-    <a class="cart-modal-product-remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-      <span>{{ 'cart.general.remove' | t }}</span>
-    </a>
+  </div>
+  <div class="cell medium-auto column-price">
+    <label class="show-for-small-only">Price:</label>
+      {% if item.original_line_price != item.line_price %}
+        <span class="show-for-sr">{{ 'cart.label.discounted_price' | t }}</span>
+        <span class="cart-line-price">{{ item.price | money }}</span>
+        <span class="show-for-sr">{{ 'cart.label.original_price' | t }}</span>
+        <s>{{ item.original_price | money }}</s>
+      {% else %}
+        <span class="cart-line-price">{{ item.price | money }}</span>
+      {% endif %}
   </div>
 
-  <div class="cell shrink column-quantity" data-label="{{ 'cart.label.quantity' | t }}">
+  <div class="cell medium-auto column-quantity" data-label="{{ 'cart.label.quantity' | t }}">
     <label class="show-for-small-only">Quantity:</label>
     <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
 
@@ -45,7 +50,7 @@ This should be kept in sync with assets/scripts/sections/cart-product.js to keep
       <button type="button" class="js-quantity-add">+</button>
     </div>
   </div>
-  <div class="cell shrink column-total" data-label="{{ 'cart.label.total' | t }}">
+  <div class="cell medium-auto column-total" data-label="{{ 'cart.label.total' | t }}">
     <label class="show-for-small-only">Line total: </label>
     <output>{{ item.line_price | money }}</output>
   </div>

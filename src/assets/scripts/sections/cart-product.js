@@ -5,25 +5,28 @@ import { formatMoney } from "@shopify/theme-currency";
 export default Vue.component("cart-product", {
   template: `
   <article class="grid-x cart-product">
-    <div class="cell shrink column-image hide-for-small-only" v-if="product.image">
-      <a :href="product.url" class="cart-product-image-wrapper" tabindex="-1">
-        <img class="lazyload cart-product-image" :data-src="product.image | formatImageSize('147x220')" />
-      </a>
+    <div class="error" v-if="errorMessage">{{errorMessage}}</div>
+    <div class="cell medium-auto column-product">
+        <div class="grid-x align-middle">
+            <div class="cell shrink column-image hide-for-small-only" v-if="product.image">
+              <a :href="product.url" class="cart-product-image-wrapper" tabindex="-1">
+                <img class="lazyload cart-product-image" :data-src="product.image | formatImageSize('147x220')" />
+              </a>
+            </div>
+            <div class="cell grow column-details">
+              <h4>
+                <a :href="product.url">{{product.product_title}}</a>           
+              </h4>
+              <template v-if="product.variant_title != null"><template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template></template>
+            </div>
+        </div>
     </div>
-    <div class="cell grow column-details">
-      <h4>
-        <a :href="product.url">{{product.title}}</a>
-      </h4>
-      <div>
-        <span class="cart-line-price" v-html="formatMoneyValue(product.price)"></span>
-      </div>
-
-      <button class="cart-modal-product-remove" type="button" @click="remove">
-        <span>Remove</span>
-      </button>
+    <div class="cell medium-auto column-price">
+     <label class="show-for-small-only">Price:</label>
+      <span class="cart-line-price" v-html="formatMoneyValue(product.price)"></span>
     </div>
 
-    <div class="cell shrink column-quantity">
+    <div class="cell medium-auto column-quantity">
       <label class="show-for-small-only">Quantity:</label>
       <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
 
@@ -40,7 +43,7 @@ export default Vue.component("cart-product", {
         <button type="button" :disabled="loading" class="js-quantity-add" @click="add">+</button>
       </div>
     </div>
-    <div class="cell shrink column-total">
+    <div class="cell medium-auto column-total">
       <label class="show-for-small-only">Line total: </label>
       <output v-html="formatMoneyValue(product.line_price)"></output>
     </div>
@@ -71,6 +74,9 @@ export default Vue.component("cart-product", {
       this.loading = true;
       window.AppShopifyCart.addItem(this.id, 1, {}).then(() => {
         this.loading = false;
+      }).catch((error) => {
+        this.loading = false;
+        this.errorMessage = error.description;
       });
     },
     formatMoneyValue(value) {
@@ -81,6 +87,8 @@ export default Vue.component("cart-product", {
       }
     },
     subtract() {
+      this.errorMessage = '';
+
       if (this.loading) {
         return;
       }
