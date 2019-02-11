@@ -51,6 +51,7 @@ export default Vue.component("cart-product", {
   props: ["product", "id", "line_id"],
   data() {
     return {
+      errorMessage:'',
       loading: false,
     };
   },
@@ -76,7 +77,13 @@ export default Vue.component("cart-product", {
         this.loading = false;
       }).catch((error) => {
         this.loading = false;
-        this.errorMessage = error.description;
+        let self = this;
+        // this.errorMessage = error.description;
+         this.errorMessage = error.description;
+        setTimeout(()=> {   self.errorMessage = '';
+
+        }, 3000);
+
       });
     },
     formatMoneyValue(value) {
