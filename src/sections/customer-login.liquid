@@ -68,11 +68,15 @@
                             {{ form.errors | default_errors }}
 
 
-                            <div class="grid-x mt-40 align-justify align-middle">
-                                <a href="#cancelresetpassword" id="HideRecoverPasswordLink">
-                                    {{ 'customer.recover_password.cancel' | t }}
-                                </a>
-                                <input type="submit" class="button button-primary" value="{{ 'customer.recover_password.submit' | t }}">
+                            <div class="grid-x grid-margin-x mt-40 align-right align-middle">
+                                <div class="cell shrink">
+                                    <a href="#cancelresetpassword" id="HideRecoverPasswordLink" class="button button-hollow">
+                                        {{ 'customer.recover_password.cancel' | t }}
+                                    </a>
+                                </div>
+                                <div class="cell shrink">
+                                    <input type="submit" class="button button-primary" value="{{ 'customer.recover_password.submit' | t }}">
+                                </div>
                             </div>
 
                         {% endform %}
