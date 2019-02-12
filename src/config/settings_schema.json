@@ -200,10 +200,24 @@
     "name": "Cart",
     "settings": [
       {
+        "type": "header",
+        "content": "Cart Notes"
+      },
+      {
         "type": "checkbox",
         "id": "cart_notes_enable",
         "label": "Enable cart notes",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cart Message"
+      },
+      {
+        "type": "text",
+        "id": "cart_message",
+        "label": "Message",
+        "default": "Fast delivery. Fully Tracked"
       }
     ]
   },

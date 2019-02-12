@@ -1,0 +1,58 @@
+$error-color: red;
+
+.field__input {
+    border: 1px solid #E9E9E9 !important;
+    border-radius: 0;
+    box-shadow: none !important;
+
+    &:focus {
+        box-shadow: none !important;
+        border-color: $grey !important;
+    }
+}
+
+.input-checkbox,
+.input-radio {
+    border-radius: 0;
+    border-color: grey;
+
+    &:hover:not(:checked),
+    &:focus:not(:checked) {
+        border: 1px solid $grey;
+    }
+}
+
+.input-checkbox {
+
+    &::after {
+        width: 10px;
+    }
+}
+
+.input-radio {
+
+    &::after {
+        display: none !important;
+    }
+}
+
+.radio__label,
+.checkbox__label {
+    font-size: 12px;
+}
+
+.boxshadow {
+    .field--error {
+        .field__input {
+            box-shadow: none !important;
+            border-color: $error-color !important;
+        }
+    }
+}
+
+.floating-labels {
+
+    .field__label {
+        color: $color-body-text;
+    }
+}
