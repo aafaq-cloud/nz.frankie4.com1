@@ -31,8 +31,14 @@ export class ComponentCarousel extends AbstractComponent {
       }
     };
 
-    this.glide = new Glide(this.glideElement, this.glideSettings).mount();
+    this.glide = new Glide(this.glideElement, this.glideSettings);
 
+
+    this.glide.on("build.after", () => {
+      AppQuickview.initQuickViewButtons();
+    });
+
+    this.glide.mount();
 
     // Ensure it runs on load
     this.resizeHandler();

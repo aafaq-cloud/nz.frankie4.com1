@@ -21,7 +21,7 @@ window.slate = window.slate || {};
 window.theme = window.theme || {};
 
 $(document).ready(() => {
-  // Initialise modal
+  // Initialise modalclose-button
   MicroModal.init();
 
   // Initialise the core application
@@ -31,6 +31,8 @@ $(document).ready(() => {
 
   // Autoload Classes
   Autoloader.registerAutoloadClasses();
+
+  $(document).foundation();
 
   // Apply a specific class to the html element for browser support of cookies.
   if (cookiesEnabled()) {

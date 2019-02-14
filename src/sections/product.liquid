@@ -234,6 +234,45 @@
                                 {% endfor %}
                             </select>
 
+                            {% unless is_quickview %}
+                                {% if section.settings.display_size_guide %}
+                                    <a class="icon-link mb-20" data-open="size-guide-modal">
+                                        {% include 'icon-size-guide' %}
+                                        Size Guide
+                                    </a>
+
+                                    <div class="reveal modal-size-guide" id="size-guide-modal" data-reveal>
+                                        <a class="close-button" data-close aria-label="Close Quick View">
+                                            <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
+                                                <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
+                                                        38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
+                                                        0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
+                                            </svg>
+                                        </a>
+                                        <div class="modal-content">
+                                            <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+
+                                            <div class="modal-content-text">
+                                                {% if section.settings.size_guide_content %}
+                                                    <div class="rte">
+                                                        {{ section.settings.size_guide_content }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if section.settings.size_guide_button_text %}
+                                                    <div class="text-right">
+                                                        <a class="arrow-link color-secondary-text mt-20" href="{{ section.settings.size_guide_button_link }}">
+                                                            {{ section.settings.size_guide_button_text }}
+                                                            {% include 'icon-chevron-right' %}
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endunless %}
+
                             <div class="grid-x grid-buttons">
 
                                 <div class="cell">
@@ -358,7 +397,6 @@
                 {% endunless %}
 
             </div>
-
         </div>
 
     {% unless is_quickview %}
@@ -432,6 +470,35 @@
         "type": "richtext",
         "id": "product_accordion_content_5",
         "label": "Content 5"
+      },
+      {
+        "type": "header",
+        "content": "Size Guide"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_size_guide",
+        "label": "Display Size Guide"
+      },
+      {
+        "type": "image_picker",
+        "id": "size_guide_image",
+        "label": "Image"
+      },
+      {
+        "type": "richtext",
+        "id": "size_guide_content",
+        "label": "Content"
+      },
+      {
+        "type": "text",
+        "id": "size_guide_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "size_guide_button_link",
+        "label": "Button Link"
       }
     ]
   }
