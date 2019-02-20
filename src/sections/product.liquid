@@ -17,6 +17,12 @@
 {% endfor %}
 {% assign related_products = related_products | split: ',' %}
 
+{% assign video = product.metafields.frankie4.video %}
+{% assign slide_count = product.images | size %}
+{% if video != blank %}
+    {% assign slide_count = slide_count | plus: 1 %}
+{% endif %}
+{% assign slide_index_limit = slide_count | minus: 1 %}
 
 <div data-autoload-class="ProductSection" class="section section-product{% if is_quickview %} is-quickview no-margin{% endif %}" itemscope itemtype="http://schema.org/Product">
 
@@ -69,6 +75,16 @@
                                     <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
                                 </a>
                             {% endfor %}
+                            {% if video != blank %}
+                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ slide_index_limit }}">
+                                    <div class="video-wrapper">
+                                        {% include 'icon-play' %}
+                                        <video loop="" muted="" plays-inline="">
+                                            <source src="{{ video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </a>
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>
@@ -88,11 +104,20 @@
                                     </div>
                                 {% endfor %}
                             {% endif %}
+                            {% if video != blank %}
+                                <div class="glide__slide">
+                                    <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
+                                        <video autoplay="" loop="" muted="" plays-inline="">
+                                            <source src="{{ video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="glide__bullets" data-glide-el="controls[nav]">
-                        {% for image in product.images %}
-                            <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+                        {% for i in (0..slide_index_limit) %}
+                            <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
                         {% endfor %}
                     </div>
                 </div>

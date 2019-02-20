@@ -293,6 +293,15 @@
     }
   }
 
+  .video-wrapper {
+    position: relative;
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 
   &:not(.is-quickview) {
 
@@ -336,6 +345,7 @@
   .product-item-thumbnail {
     text-decoration: none;
     cursor: pointer;
+    width: 80px;
 
     + .product-item-thumbnail {
       margin-top: 10px;
@@ -343,7 +353,22 @@
 
     img {
       display: block;
-      width: 80px;
+      width: 100%;
+      height: auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+
+      svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        fill: white;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }
