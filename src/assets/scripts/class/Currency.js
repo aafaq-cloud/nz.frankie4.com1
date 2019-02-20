@@ -134,15 +134,7 @@ export class ShopifyCurrency {
     else {
       instance.Currency.convertAll(window.shopifyCurrency.shopCurrency, cookieCurrency);
     }
-    //$('select[name="currencies"]').val('GBP').change();
-
-    console.log($('[name="currencies"]').length);
-    console.log($('select#rat').length);
-
-    console.log($('select[name="currencies"]').val());
-
     // Listen to select change
-    console.log(instance.Currency.currentCurrency);
     $('[name=currencies]').val(instance.Currency.currentCurrency).change();
 
     $('[name=currencies]').val(instance.Currency.currentCurrency).change(function() {
