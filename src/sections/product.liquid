@@ -171,6 +171,19 @@
 
                         </div>
 
+                        <div class="yotpo bottomLine"
+                             data-appkey="Z0muyyeFN5ulVQUg01mn0wx9APizAX96D4Kz7gBe"
+                             data-domain="{{shop.permanent_domain | escape }}"
+                             data-product-id="{{ product.id }}"
+                             data-product-models="{{ product.id }}"
+                             data-name="{{ product.title | escape }}"
+                             data-url="{{ shop.url }}{{ product.url }}"
+                             data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                             data-description="{{ product.description | escape }}"
+                             data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                        </div>
+
+
                         <div class="variant-wrapper mt-40">
 
                             {% if related_products != blank %}
@@ -426,6 +439,12 @@
 
     {% unless is_quickview %}
     </div>
+    {% endunless %}
+
+    {% unless is_quickview %}
+        <div class="grid-container">
+            <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
+        </div>
     {% endunless %}
 
 </div>

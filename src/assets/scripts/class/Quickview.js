@@ -68,6 +68,10 @@ export class QuickView {
                   new Event("shopify-wishlist.refresh"),
                 );
 
+                document.dispatchEvent(
+                  new Event("products.refresh"),
+                );
+
                 // Refresh Quickview
                 AppQuickview.initQuickViewButtons();
               }, 100);

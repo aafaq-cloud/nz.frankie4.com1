@@ -1,0 +1,12 @@
+.yotpo {
+  &.bottomLine {
+    a {
+      margin-left: 4px !important;
+      color: #{$color-body-secondary-text} !important;
+    }
+
+    .product-tile & {
+      margin-top: 6px;
+    }
+  }
+}

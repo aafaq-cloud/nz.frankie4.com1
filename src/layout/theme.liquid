@@ -56,6 +56,8 @@
   {% endif %}
 
   {{ content_for_header }}
+
+  {% include 'header-includes' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
