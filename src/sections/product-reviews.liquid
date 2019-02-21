@@ -1,0 +1,37 @@
+<div class="section section-product-reviews">
+    <div class="grid-container">
+
+        <div class="title-block medium-text-center">
+            <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
+            {% if section.settings.section_subheading != blank %}
+                <p class="lead color-secondary-text mt-5 mb-0">{{section.settings.section_subheading}}</p>
+            {% endif %}
+        </div>
+
+        <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
+    </div>
+</div>
+
+{% schema %}
+
+    {
+        "name": "Product Reviews",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "section_subheading",
+                "label": "Subheading"
+            }
+        ]
+    }
+
+{% endschema %}
