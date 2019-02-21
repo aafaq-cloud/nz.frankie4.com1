@@ -76,7 +76,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                       :aria-label="title">
                         <div class="details cell auto">
                             <h5 class="m-0">{{ title }}</h5>
-                            <p class="m-0" v-if="excerpt">{{ excerpt }}</p>
+                            <p class="m-0 text-small" v-if="excerpt">{{ excerpt }}</p>
                         </div>
                     </a>
                 </li>
@@ -166,7 +166,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                 </ul>
             </div>
             <div v-if="results.page && results.page.length > 0" class="results-section">
-                <h5 class="results-section-title m-0">Pages</h5>
+                <h5 class="color-secondary-text results-section-title m-0">Pages</h5>
                 <ul>
                     <result-page-item
                         v-for="(item, index) in results.page"
@@ -180,7 +180,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                 </ul>
             </div>
             <div v-if="results.article && results.article.length > 0" class="results-section">
-                <h5 class="results-section-title m-0">Articles</h5>
+                <h5 class="color-secondary-text results-section-title m-0">Articles</h5>
                 <ul>
                     <result-article-tile
                         v-for="(item, index) in results.article"
