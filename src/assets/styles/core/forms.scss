@@ -15,7 +15,7 @@ textarea,
   appearance: none;
   border-radius: 0;
   line-height: 14px;
-  border: 0;
+  border: 1px solid $color-border;
   background-color: $color-form-element-background;
 
   @include breakpoint(medium) {
