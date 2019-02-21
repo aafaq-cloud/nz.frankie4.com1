@@ -1,27 +1,42 @@
 .social-sharing {
   display: inline-flex;
   line-height: 1;
+  padding-left: 10px;
+  padding-right: 10px;
 
   > a {
     text-decoration: none;
     transition: color $transition-duration;
     line-height: 1;
-
-    &:hover {
-      color: $color-body-secondary-text;
-    }
-
-    + a {
-      margin-left: 10px;
-    }
+    margin-left: 8px;
+    color: currentColor;
 
     svg {
-      width: 18px;
-      height: 18px;
+      display: block;
+      width: 14px;
+      height: 14px;
     }
 
     span {
       display: none;
+    }
+  }
+
+  &__facebook {
+    &:hover {
+      color: #4267b2;
+    }
+  }
+
+  &__twitter {
+    &:hover {
+      color: #1da1f2;
+    }
+  }
+
+  &__pinterest {
+    &:hover {
+      color: #e60023;
     }
   }
 }
