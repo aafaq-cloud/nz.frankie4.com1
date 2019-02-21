@@ -11,6 +11,7 @@ import VueResource from "vue-resource";
 import {AbstractComponent} from "../class/AbstractComponent";
 import {HeaderSection} from "../sections/header";
 import {Utility} from "../class/Utility";
+import { formatMoney } from "@shopify/theme-currency";
 
 Vue.use(VueResource);
 
@@ -44,12 +45,23 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                         <img v-if="image" class="result-item-image cell shrink" :src=" image" />
                         <div class="details">
                             <h5 class="m-0">{{ title }}</h5>
-                            <span v-if="price" class="text-small color-secondary-text">{{ price }}</span>
+                            <span v-if="price" class="text-small color-secondary-text" v-html="formatMoneyValue(price)"></span>
                         </div>
                     </a>
                 </li>
                 `,
-      props: ["title", "image", "url", "brand", "price"]
+      props: ["title", "image", "url", "brand", "price"],
+      methods: {
+        formatMoneyValue(value) {
+          console.log(theme.moneyFormat);
+          console.log(formatMoney(value, theme.moneyFormat));
+          if (!value) {
+            return "";
+          } else {
+            return formatMoney(value, theme.moneyFormat);
+          }
+        }
+      }
     });
 
     Vue.component("result-page-item", {
@@ -212,6 +224,11 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
         updateResults: Utility.debounce(function(term) {
           if (instance.vm.resultsCache.hasOwnProperty(term)) {
             instance.vm.results = instance.vm.resultsCache[term];
+            setTimeout(() => {
+              document.body.dispatchEvent(
+                new Event("shopify-currency.refresh")
+              );
+            }, 10);
           } else {
             this.$http
               .get("/search", {
@@ -234,6 +251,12 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                     JSON.stringify(instance.vm.resultsCache)
                   );
                   instance.vm.results = results;
+
+                  setTimeout(() => {
+                    document.body.dispatchEvent(
+                      new Event("shopify-currency.refresh")
+                    );
+                  }, 10);
                 },
                 response => {
                   // error callback

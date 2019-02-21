@@ -3,7 +3,19 @@
   .search-results-section {
 
     + .search-results-section {
-      margin-top: 40px;
+      margin-top: 60px;
+    }
+
+    &__title {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $color-border;
+    }
+  }
+
+  .search-box {
+
+    input {
+      border: 1px solid $color-border;
     }
   }
 }

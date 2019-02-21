@@ -90,7 +90,7 @@
                 </div>
             {% endunless %}
 
-            <div class="product-images cell small-12 medium-7 large-auto">
+            <div class="product-images cell small-12 {% unless is_quickview %}medium-7{% else %}medium-6{% endunless %} large-auto">
 
                 {% include 'product-stickers' with product:product limit:1 %}
 
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="product-details cell medium-5">
+            <div class="product-details cell {% unless is_quickview %}medium-5{% else %}medium-6{% endunless %}">
 
                 <div class="show-for-medium">
                     {% include 'product-stickers' with product:product %}
@@ -384,42 +384,41 @@
 
                     <div class="product-information mt-40">
                         {% if product.description %}
-                            <h6 class="mb-20">Features</h6>
                             <div class="rte">
                                 {{ product.description }}
                             </div>
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_1 != blank %}
-                            <h6 class="mt-40 mb-20">{{ section.settings.product_accordion_title_1 }}</h6>
+                            <h6 class="mt-40">{{ section.settings.product_accordion_title_1 }}</h6>
                             <div class="rte">
                                 {{ section.settings.product_accordion_content_1 }}
                             </div>
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_2 != blank %}
-                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_2 }}</h6>
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_2 }}</h6>
                             <div class="rte">
                                 {{ section.settings.product_accordion_content_2 }}
                             </div>
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_3 != blank %}
-                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_3 }}</h6>
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_3 }}</h6>
                             <div class="rte">
                                 {{ section.settings.product_accordion_content_3 }}
                             </div>
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_4 != blank %}
-                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_4 }}</h6>
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_4 }}</h6>
                             <div class="rte">
                                 {{ section.settings.product_accordion_content_4 }}
                             </div>
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_5 != blank %}
-                            <h6 class="mt-30 mb-20">{{ section.settings.product_accordion_title_5 }}</h6>
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_5 }}</h6>
                             <div class="rte">
                                 {{ section.settings.product_accordion_content_5 }}
                             </div>

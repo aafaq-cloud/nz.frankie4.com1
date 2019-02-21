@@ -26,7 +26,7 @@
                 {% if product_count > 0 %}
 
                     <div class="search-results-section">
-                        <h3 class="mb-40">{{ 'general.search.search_title_product' | t }}</h3>
+                        <h3 class="search-results-section__title mb-40">{{ 'general.search.search_title_product' | t }}</h3>
                         <div class="grid-x grid-margin-x grid-margin-y">
                             {% for item in search.results %}
 
@@ -49,7 +49,7 @@
 
                     <div class="search-results-section">
 
-                        <h3 class="mb-40">{{ 'general.search.search_title_article' | t }}</h3>
+                        <h3 class="search-results-section__title mb-40">{{ 'general.search.search_title_article' | t }}</h3>
                         <div class="grid-x grid-margin-x grid-margin-y">
                             {% for item in search.results %}
 
@@ -71,14 +71,14 @@
 
                     <div class="search-results-section">
 
-                        <h3 class="mb-40">{{ 'general.search.search_title_page' | t }}</h3>
+                        <h3 class="search-results-section__title mb-40">{{ 'general.search.search_title_page' | t }}</h3>
                         <div class="grid-x grid-margin-x grid-margin-y">
                             {% for item in search.results %}
 
                                 {% if item.object_type == 'page' %}
                                     <div class="cell small-12 medium-6 large-3">
                                         {%- assign page = item -%}
-                                        {% include 'page-item' %}
+                                        {% include 'page-tile' %}
                                     </div>
                                 {% endif %}
 

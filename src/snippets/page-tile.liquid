@@ -1,0 +1,12 @@
+<article class="page-tile">
+
+    <a href="{{ page.url }}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
+
+    <div class="page-tile__body">
+
+        <h3>{{ page.title }}</h3>
+
+        <p class="mb-0">{{ page.content | strip_html | truncatewords: 20 }}</p>
+    </div>
+
+</article>
