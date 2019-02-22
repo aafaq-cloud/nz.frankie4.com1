@@ -1,0 +1,243 @@
+$order-layout-background: #fff;
+
+.column-layout {
+    background: $order-layout-background;
+    padding: 50px 30px;
+    float: none;
+
+    @include breakpoint(large) {
+        padding: 80px;
+    }
+
+    .section {
+
+        @include breakpoint(large) {
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            padding-top: 4em;
+        }
+
+        &__hanging-icon {
+            position: relative;
+            display: block;
+            left: auto;
+            right: auto;
+            margin: 0 auto 20px;
+        }
+    }
+
+    .section--page-title,
+    .section__header {
+        margin-bottom: 2.3em;
+
+        .section__title {
+            display: block;
+            width: 100%;
+            padding: 0;
+            letter-spacing: 0;
+            text-align: left;
+            font-size: 30px;
+            text-transform: capitalize;
+        }
+
+        p {
+            width: 100%;
+            margin: 4px 0 0;
+            text-align: left;
+            font-size: 12px;
+            color: $color-body-text;
+            letter-spacing: 0;
+
+            a {
+                color: $color-body-text;
+            }
+        }
+    }
+
+    .content-box {
+        border-radius: 0;
+
+        &__hr {
+            border: none !important;
+        }
+    }
+
+    .step__footer {
+        flex-wrap: wrap;
+        margin-top: 40px;
+
+        @include breakpoint(large) {
+            margin-top: 60px;
+        }
+
+        button,
+        input[type="submit"] {
+            width: 100%;
+        }
+
+        a {
+            margin: 10px auto 0;
+
+            &:not(:hover) {
+                color: $color-body-text;
+            }
+
+            svg {
+                color: currentColor !important;
+                fill: currentColor;
+            }
+
+            span {
+                color: currentColor;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
+// Order Complete
+// -------------------------
+
+.os-header {
+    margin: 0 !important;
+
+    &__hanging-icon {
+        position: relative;
+        display: block;
+        left: auto;
+        right: auto;
+        margin: 0 16px 0 0;
+        top: 0;
+        transform: none;
+
+        @include breakpoint(small down) {
+            margin: 0 auto 12px;
+        }
+    }
+
+    &__heading {
+
+        @include breakpoint(small down) {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+
+// Stock Problems
+// -------------------------
+
+.stock-problems-table {
+    width: calc(100% - 35px); // Account for cross button
+
+    thead {
+
+        th {
+            padding: 0.5rem 0.625rem 0.625rem;
+            font-weight: bold;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 12px;
+        }
+    }
+
+    tbody {
+        td:first-child {
+            padding-left: 0.625rem;
+        }
+        td:last-child {
+            padding-right: 0.625rem;
+        }
+    }
+
+    // Product
+    .product {
+
+        td {
+            padding-bottom: 10px;
+        }
+
+        &__image {
+            vertical-align: top;
+        }
+
+        &__description {
+            vertical-align: top;
+
+            &__name {
+                //@include primary-font(bold);
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                font-size: 12px;
+                line-height: 1.2;
+            }
+
+            &__property {
+                display: block;
+                margin: 4px 0 0;
+                padding: 6px 10px 2px;
+                background: #F4F4F4;
+                //@include primary-font(semibold);
+                font-size: 10px;
+
+                + .product__description__property {
+                    padding-top: 2px;
+                    margin: 0;
+                }
+
+                &:last-of-type {
+                    padding-bottom: 6px;
+                }
+            }
+        }
+
+        &__price {
+            span {
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                font-size: 12px;
+            }
+        }
+
+        &__clear-btn {
+            display: block !important;
+            cursor: pointer;
+        }
+    }
+
+    .product-thumbnail {
+        height: auto;
+        &::after {
+            display: none !important;
+        }
+
+        &__wrapper {
+            border-radius: 0;
+            height: auto;
+        }
+
+        &__image {
+            position: relative;
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        &__quantity {
+            background-color: $color-body-text;
+            padding: 0 3px;
+            border-radius: 50%;
+            height: 18px;
+            min-width: 18px;
+            font-size: 11px;
+            text-align: center;
+            line-height: 20px;
+        }
+    }
+}

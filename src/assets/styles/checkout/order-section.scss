@@ -1,0 +1,10 @@
+.order-section {
+    width: 100%;
+    padding-top: 34px;
+    padding-bottom: 34px;
+
+    @include breakpoint(small down) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

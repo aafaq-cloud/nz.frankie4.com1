@@ -1,0 +1,42 @@
+
+// Button
+// -----------------------------------------------------
+.btn {
+    padding: 16px 30px;
+    cursor: pointer;
+    border-radius: 0;
+    border: 1px solid transparent;
+    outline: none;
+
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-decoration: none !important;
+    text-transform: uppercase;
+
+    transition: background 200ms, color 200ms, border 200ms;
+
+    &:disabled {
+        cursor: default;
+    }
+
+    // Theme
+    border-color: $dark-grey !important;
+    box-shadow: none !important;
+    color: $dark-grey !important;
+    background: transparent !important;
+
+    &.btn--loading {
+        background: transparent !important;
+        border-color: $dark-grey !important;
+        color: $dark-grey !important;
+    }
+
+    &:hover:not(:disabled) {
+        background: $dark-grey !important;
+        color: #FFFFFF !important;
+    }
+
+    &:disabled {
+        border-color: grey !important;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {% include 'social-meta-tags' %}
+    {{ content_for_header }}
+    {% include 'css-variables' %}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+</head>
+<body>
+{{ skip_to_content_link }}
+
+
+<header class="checkout-header">
+    <div class="grid-container">
+        {{ content_for_logo }}
+    </div>
+</header>
+<div class="grid-container w-100">
+{{ breadcrumb }}
+</div>
+<div class="grid-container">
+    {{ alternative_payment_methods }}
+</div>
+
+<div class="order-section grid-container">
+    <div class="grid-x grid-margin-x grid-margin-y align-top">
+        <div class="column-order-summary sidebar cell small-12 large-shrink">
+
+            {{ order_summary_toggle }}
+
+            <div class="bag-status show-for-large">
+                {% assign item_count = checkout.line_items.size %}
+
+                {% if item_count == 1 %}
+                    <strong>{{ item_count }} item</strong>
+                {% else %}
+                    <strong>{{ item_count }} items</strong>
+                {% endif %}
+                in <br> your {{ 'cart.general.title' | t }}
+            </div>
+
+            {{ content_for_order_summary }}
+
+            <div class="show-for-large">
+                {% include 'cart-message' %}
+            </div>
+
+        </div>
+        <div role="main" class="column-layout main cell small-12 large-auto">
+            {{ content_for_layout }}
+        </div>
+    </div>
+
+    {{ tracking_code }}
+
+    {% include 'script-tags', layout: 'checkout' %}
+</body>
+</html>
