@@ -76,7 +76,8 @@ export class Product extends EventEmitter {
   initVariantSelectors() {
     this.variantSelectors = [];
 
-    if (this.product.options.length === 1 && this.product.options[0] === 'Title') {
+    // If there are no variants for this product
+    if (this.product.options.length === 1 && this.product.options[0] === 'Title' && this.product.variants.length === 1) {
       this.updateSelectedVariant();
       return;
     }
