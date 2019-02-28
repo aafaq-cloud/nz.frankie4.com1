@@ -1,0 +1,13 @@
+.section-text {
+
+  background: $pale-blue;
+
+  .text-container {
+    padding: 30px 0;
+
+    @include breakpoint(medium) {
+      padding: 70px 0;
+    }
+  }
+
+}
