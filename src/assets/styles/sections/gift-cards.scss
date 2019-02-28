@@ -1,0 +1,70 @@
+.section-gift-cards {
+
+  .gift-card-container {
+
+    .gift-card-text-container {
+
+      padding: 30px 0;
+
+      @include breakpoint(medium) {
+        padding: 140px 0 140px 30px;
+      }
+
+    }
+
+    .gift-card-image-container {
+      position: relative;
+      height: 100%;
+
+      display: none;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+
+      img {
+        position: relative;
+
+        @include breakpoint(medium) {
+          padding: 50px 0;
+        }
+      }
+
+
+      .gift-card-background {
+        width: 80%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: auto;
+        left: 0;
+        background: $green;
+
+      }
+
+    }
+
+    &:nth-child(even) {
+
+      .gift-card-background {
+        right: 0;
+        top: 0;
+        left: auto;
+        background: $light-pink;
+
+      }
+
+      .gift-card-text-container {
+        @include breakpoint(medium) {
+          padding: 140px 30px 140px 0;
+        }
+      }
+
+
+    }
+
+  }
+
+}
+

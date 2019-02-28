@@ -1,0 +1,102 @@
+<div class="section section-gift-cards">
+    <div class="grid-container">
+
+        <div class="grid-x">
+
+            <div class="cell medium-9 medium-offset-3">
+
+                <div class="title-block">
+                    <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
+                </div>
+
+                {% if section.blocks !=  blank %}
+
+                    {% for block in section.blocks %}
+
+                        {% assign even = forloop.index | modulo:2  %}
+
+                        <div class="grid-x grid-margin-x gift-card-container">
+
+                            <div class="cell medium-6{% if even == 0 %} medium-order-2{% endif %}">
+                                <div class="gift-card-text-container">
+                                    <div class="title-block">
+                                        <h2 class="m-0">{{ block.settings.title }}</h2>
+                                        <p class="lead">{{ block.settings.content }}</p>
+                                    </div>
+                                    <a class="button button-primary mt-10" href="{{ block.settings.link }}">{{ block.settings.button_text }}</a>
+                                </div>
+                            </div>
+
+                            <div class="cell medium-6{% if even == 0 %} medium-order-1{% endif %}">
+                                <div class="gift-card-image-container flex-container align-middle">
+                                    <div class="gift-card-background"></div>
+                                    <img class="lazyload" data-src="{{block.settings.image | img_url: 'master'}}">
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% schema %}
+    {
+        "name": "Gift Cards",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "content_block",
+                "name": "Content Block",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label":"Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "content",
+                        "label":"Content"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label":"Image"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
