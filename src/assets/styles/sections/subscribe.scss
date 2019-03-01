@@ -10,4 +10,18 @@
   .button {
     min-width: 140px;
   }
+
+
+  &.green {
+    background: $green;
+    color: $color-body-text;
+  }
+  &.blue {
+    background: $pale-blue;
+    color: $color-body-text;
+  }
+  &.grey {
+    background: $darker-grey;
+  }
+
 }
