@@ -33,6 +33,24 @@ footer {
     }
   }
 
+  .contact-details {
+    svg {
+      height: 12px;
+      width: 12px;
+      margin-right: 10px;
+    }
+
+    > div {
+      margin-bottom: 15px;
+    }
+
+    .trading-hours a{
+      font-size: rem-calc(11);
+      color:#7D8488;
+      text-decoration: none;
+    }
+  }
+
   // Socials
   .social-icons {
     &-container {

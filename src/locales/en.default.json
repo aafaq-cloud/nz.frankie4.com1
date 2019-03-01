@@ -307,7 +307,7 @@
       "print": "Print",
       "remaining_html": "{{ balance }} left",
       "add_to_apple_wallet": "Add to Apple Wallet",
-      "initial_value": "Gift card value: {{ value }}"
+      "initial_value": "{{ value }}"
     }
   },
   "date_formats": {

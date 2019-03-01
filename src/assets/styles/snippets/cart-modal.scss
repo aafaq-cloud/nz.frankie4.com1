@@ -106,6 +106,8 @@
 .js-toggle-cart-modal {
   text-decoration: none;
   position: relative;
+  display: flex;
+  justify-content: center;
 
   &.active {
     color: $color-accent;

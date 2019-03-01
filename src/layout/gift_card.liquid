@@ -19,11 +19,22 @@
   <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
 
   {{ content_for_header }}
+    {% include 'style-tags', layout: 'gift_card' %}
+
 </head>
 
 <body class="template-giftcard">
   <main role="main" id="MainContent">
-    {{ content_for_layout }}
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell text-center">
+            {{ content_for_layout }}
+        </div>
+      </div>
+
+    </div>
   </main>
+
+  {% include 'script-tags', layout: 'gift_card' %}
 </body>
 </html>

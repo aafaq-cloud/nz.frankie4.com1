@@ -3,6 +3,7 @@
  * ------------------------------------------------------------------------------
  * A file that contains scripts highly couple code to the Gift Card template.
  */
+import "../../styles/gift_card.scss";
 
 import $ from "jquery";
 

@@ -136,9 +136,10 @@ body {
 
   .cart-quantity {
     position: absolute;
-    left: 19px;
+    font-size: rem-calc(9);
+    letter-spacing: rem-calc(-1);
     top: 50%;
-    transform: translateY(calc(-50% + -8px));
+    transform: translateY(calc(50% - 14px));
   }
 }
 
