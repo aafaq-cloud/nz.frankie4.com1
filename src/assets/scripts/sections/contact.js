@@ -20,7 +20,7 @@ export class ContactSection extends AbstractComponent {
     const results = this.component.querySelector(".results-container");
 
     const url = '/search.json';
-    const defaultParams = 'type=page&view=json&q=handle:support+body:';
+    const defaultParams = 'type=page&view=json&q=handle:support+body:<query>+OR+title:<query>';
 
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -52,7 +52,8 @@ export class ContactSection extends AbstractComponent {
     // Update page listing on search input
     searchInput.addEventListener("keyup", () => {
       if (searchInput.value.length >= 5) {
-        xhr.open('GET', url + '?' + defaultParams + searchInput.value);
+        let defaultParamsReplace = defaultParams.replace(new RegExp('<query>', 'g'),  searchInput.value);
+        xhr.open('GET', url + '?' + defaultParamsReplace);
         xhr.send();
       }
     });
