@@ -28,7 +28,7 @@
                         <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
                     {% endif %}
 
-                    {% if block.settings.title or block.settings.link_text %}
+                    {% if block.settings.title != blank or block.settings.link_text != blank %}
                         <div class="media-block-content-wrapper grid-y align-right align-middle h-100">
                             <div class="media-block-content cell text-center">
                                 {% if block.settings.title != blank %}
