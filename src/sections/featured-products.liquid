@@ -8,25 +8,27 @@
             <a href="{{collections[section.settings.collection].url}}" class="arrow-link color-secondary-text mt-20">More {% include 'icon-chevron-right' %}</a>
         </div>
 
-        <div class="grid-x grid-margin-x">
-            <div data-autoload-class="ComponentCarousel" class="carousel cell">
-                <div class="glide">
-                    <div data-glide-el="track" class="glide__track">
-                      <div class="glide__slides">
-                       {% for product in collections[section.settings.collection].products limit:9 %}
-                            <div class="glide__slide">
-                                  {% include 'product-tile' %}
+        {% unless collections[section.settings.collection].products_count == 0 %}
+            <div class="grid-x grid-margin-x">
+                <div data-autoload-class="ComponentCarousel" class="carousel cell">
+                    <div class="glide">
+                        <div data-glide-el="track" class="glide__track">
+                            <div class="glide__slides">
+                                {% for product in collections[section.settings.collection].products limit:9 %}
+                                    <div class="glide__slide">
+                                        {% include 'product-tile' %}
+                                    </div>
+                                {% endfor %}
                             </div>
-                       {% endfor %}
-                      </div>
-                    </div>
-                    <div class="glide__arrows" data-glide-el="controls">
-                      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
-                      <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endunless %}
 
     </div>
 </div>
