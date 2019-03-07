@@ -1,6 +1,25 @@
 .product-tile {
   position: relative;
 
+  &-image {
+    &.secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 600ms;
+    }
+  }
+  &:hover {
+    .product-tile-image.secondary {
+      opacity: 1;
+    }
+  }
+
+
   &__title {
     flex-grow: 1;
   }

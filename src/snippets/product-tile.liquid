@@ -1,7 +1,17 @@
+{% assign secondary_image = '' %}
+
+{% for image in product.images %}
+    {%  if image != product.featured_image %}
+        {% assign secondary_image = image %}
+        {% break %}
+    {%  endif %}
+{%  endfor %}
+
 <article class="product-tile text-center grid-y" data-handle="{{product.handle}}">
   <a href="{{product.url | within: collection}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
   <div class="cell product-tile__image-container">
     <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
+    <img data-src="{{secondary_image | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image secondary">
 
     <button data-product-quickview data-product-url="{{ product.url }}" class="product-tile__quickview button button-secondary button-small">{{ 'products.product.quickview' | t }}</button>
   </div>
