@@ -1,0 +1,28 @@
+.section-instagram {
+
+  .ssw-instagram-slide-title {
+    display: none;
+  }
+
+  // Slider
+
+  @include breakpoint(medium) {
+    .ssw-slider {
+
+      .ssw-viewport {
+        margin: 0 40px;
+      }
+
+      .ssw-direction-nav a {
+        background: none;
+        color: #010101 !important;
+        text-shadow: none;
+      }
+      .ssw-control-nav {
+        display: none;
+      }
+
+    }
+  }
+
+}
