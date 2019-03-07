@@ -56,8 +56,11 @@
   {% endif %}
 
   {{ content_for_header }}
+  {%- include 'bold-common' -%}
 
   {% include 'header-includes' %}
+
+  {% include 'shogun-head' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
