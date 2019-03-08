@@ -1,0 +1,37 @@
+<div class="section section-store-locator">
+
+    <div class="grid-container">
+        <div class="title-block mb-30">
+            <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <!-- Start Stockist.co widget -->
+        <div data-stockist-widget-tag="u3767">Loading store locator
+            from <a href="http://stockist.co">Stockist store locator</a>...</div>
+        <script>
+          (function(s,t,o,c,k){c=s.createElement(t);c.src=o;c.async=1;
+            k=s.getElementsByTagName(t)[0];k.parentNode.insertBefore(c,k);
+          })(document,'script','//stockist.co/embed/v1/widget.min.js');
+        </script>
+        <!-- End Stockist.co widget -->
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Store Locator",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            }
+        ]
+    }
+{% endschema %}
