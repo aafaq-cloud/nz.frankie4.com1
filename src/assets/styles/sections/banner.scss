@@ -11,6 +11,45 @@
       height: 740px;
     }
   }
+
+
+  .slide {
+    &__arrow {
+
+
+      position: absolute;
+      display: block;
+      top: 50%;
+      z-index: 2;
+      color: white;
+      padding: 9px 12px;
+      background-color: transparent;
+      cursor: pointer;
+      transform: translateY(-50%);
+      line-height: 1;
+
+      svg {
+        transform: rotate(90deg);
+        height: 4rem;
+        width: 4rem;
+
+        polygon {
+          fill: #fff;
+        }
+      }
+
+      &--right {
+
+        right: 0;
+
+        svg {
+          transform: rotate(270deg);
+
+        }
+      }
+    }
+  }
+
 }
 
 
@@ -76,7 +115,7 @@
   @include breakpoint(xlarge) {
     font-size: rem-calc(100);
   }
-  
+
 }
 
 

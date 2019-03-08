@@ -1,74 +1,111 @@
-<div class="section section-banner no-margin">
+<div data-autoload-class="BannerSection" class="section section-banner no-margin">
 
-    {% if section.settings.video != blank %}
-        <div class="banner-video">
-            <div class="component-video" data-autoload-class="ComponentVideo">
-                <video autoplay="" loop="" muted="" plays-inline="" width="1280" height="720">
-                    <source src="{{ section.settings.video }}" type="video/mp4">
-                </video>
+
+    <div class="slider">
+
+        <div data-glide-el="track" class="glide__track">
+            <div class="glide__slides">
+
+
+                {% for block in section.blocks %}
+
+                    <div class="glide__slide" style="position: relative">
+
+                        {% if block.settings.video != blank %}
+                            <div class="banner-video">
+                                <div class="component-video" data-autoload-class="ComponentVideo">
+                                    <video autoplay="" loop="" muted="" plays-inline="" width="1280" height="720">
+                                        <source src="{{ block.settings.video }}" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        {% else %}
+                            {% if block.settings.mobile_image %}
+                                <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.mobile_image | img_url: '1400x'}} 1400w, {{block.settings.mobile_image | img_url: '1100x'}} 1100w, {{block.settings.mobile_image | img_url: '800x'}} 800w, {{block.settings.mobile_image | img_url: '450x'}} 450w" class="mobile-banner-image banner-image">
+                            {% endif %}
+                            <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="banner-image">
+                        {% endif %}
+
+
+                        <div class="banner-content-wrapper">
+                            <div class="grid-container text-center">
+                                <h1 class="banner-title m-0">{{block.settings.title}}</h1>
+                                {% if block.settings.subtitle != blank %}
+                                    <p class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</p>
+                                {% endif %}
+                                {% if block.settings.button-text != blank %}
+                                    <a class="button button-secondary mt-30" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        {% if block.settings.button-text == blank and block.settings.link != blank %}
+                            <a class="cover-link" href="{{block.settings.link}}"></a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
-    {% else %}
-        {% if section.settings.mobile_image %}
-            <img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.mobile_image | img_url: '1400x'}} 1400w, {{section.settings.mobile_image | img_url: '1100x'}} 1100w, {{section.settings.mobile_image | img_url: '800x'}} 800w, {{section.settings.mobile_image | img_url: '450x'}} 450w" class="mobile-banner-image banner-image">
-        {% endif %}
-        <img src="{{section.settings.image | img_url: '1400x'}}" srcset="{{section.settings.image | img_url: '1400x'}} 1400w, {{section.settings.image | img_url: '1100x'}} 1100w, {{section.settings.image | img_url: '800x'}} 800w, {{section.settings.image | img_url: '450x'}} 450w" class="banner-image">
-    {% endif %}
 
+        {% if section.blocks.size > 1 %}
+        <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]">
+            {% for block in section.blocks %}
+                <button class="slider__bullet glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+            {% endfor %}
 
-    <div class="banner-content-wrapper">
-      <div class="grid-container text-center">
-        <h1 class="banner-title m-0">{{section.settings.title}}</h1>
-        {% if section.settings.subtitle != blank %}
-            <p class="banner-subtitle mt-10 mb-0">{{section.settings.subtitle}}</p>
+        </div>
         {% endif %}
-        {% if section.settings.button-text != blank %}
-            <a class="button button-secondary mt-30" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
-        {% endif %}
-      </div>
+
     </div>
 </div>
+
 
 {% schema %}
     {
         "name": "Banner",
-        "settings": [
-          {
-            "id": "image",
-            "type": "image_picker",
-            "label": "Image"
-          },
-          {
-            "id": "mobile_image",
-            "type": "image_picker",
-            "label": "Mobile Image"
-          },
-          {
-            "id": "video",
-            "type": "text",
-            "label": "Video",
-            "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
-          },
-          {
-            "id": "title",
-            "type": "text",
-            "label": "Title"
-          },
-          {
-            "id": "subtitle",
-            "type": "text",
-            "label": "Subtitle"
-          },
-          {
-            "id": "button-text",
-            "type": "text",
-            "label": "Button Text"
-          },
-          {
-            "id": "link",
-            "type": "url",
-            "label": "Button Link"
-          }
+        "blocks": [
+            {
+                "type": "banner_slide",
+                "name": "Banner Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "mobile_image",
+                        "type": "image_picker",
+                        "label": "Mobile Image"
+                    },
+                    {
+                        "id": "video",
+                        "type": "text",
+                        "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "button-text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
         ],
         "presets": [
             {

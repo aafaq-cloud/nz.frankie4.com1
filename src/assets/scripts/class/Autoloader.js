@@ -20,6 +20,8 @@ import {ArticleListingSection} from "../sections/article-listing";
 import {FeaturedProductsSection} from "../sections/featured-products";
 import {ContactSection} from "../sections/contact";
 import {ContactFormSection} from "../sections/contact-form";
+import {BannerSection} from "../sections/banner";
+
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -45,7 +47,8 @@ export class Autoloader {
       ArticleListingSection,
       FeaturedProductsSection,
       ContactSection,
-      ContactFormSection
+      ContactFormSection,
+      BannerSection
     };
 
     for (const key in autoloadClasses) {
