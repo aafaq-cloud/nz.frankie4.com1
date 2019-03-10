@@ -21,13 +21,34 @@
   padding: 20px;
   width: 100%;
   background-color: $color-primary;
-  background-size: cover;
-  background-position: center;
   color: #fff;
+  position: relative;
 
   @include breakpoint(medium) {
     height: 340px;
     padding: 0 90px;
+  }
+
+  &-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    background-size: cover;
+    background-position: center;
+  }
+  &-overlay {
+    background: linear-gradient(to right, rgba(208, 208, 216, 0) 0%, #d0d0d8 45%, #d0d0d8 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 100%;
   }
 }
 
