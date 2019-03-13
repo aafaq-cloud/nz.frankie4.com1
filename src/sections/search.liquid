@@ -12,9 +12,9 @@
 
                 {% for item in search.results %}
                     {% if item.object_type == 'product' %}
-                        {% if item.available %}
-                            {% assign product_count = product_count | plus: 1 %}
-                        {% endif %}
+
+                        {% assign product_count = product_count | plus: 1 %}
+
                     {% elsif item.object_type == 'page' %}
                         {% assign page_count = page_count | plus: 1 %}
                     {% elsif item.object_type == 'article' %}
@@ -31,12 +31,12 @@
                             {% for item in search.results %}
 
                                 {% if item.object_type == 'product' %}
-                                    {% if item.available %}
+
                                         {% assign product = item %}
                                         <div class="cell small-6 medium-4 large-3">
                                             {% include 'product-tile' %}
                                         </div>
-                                    {% endif %}
+
                                 {% endif %}
 
                             {% endfor %}

@@ -53,8 +53,6 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
       props: ["title", "image", "url", "brand", "price"],
       methods: {
         formatMoneyValue(value) {
-          console.log(theme.moneyFormat);
-          console.log(formatMoney(value, theme.moneyFormat));
           if (!value) {
             return "";
           } else {
