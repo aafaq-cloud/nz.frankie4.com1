@@ -13,7 +13,7 @@
                     </div>
 
                      <div class="cell large-7 large-offset-1 accordion-quick-links">
-                        <h5>Jump to Category</h5>
+                        <h5>Jump to a Category</h5>
                         {% for block in section.blocks %}
                             {% if block.type == 'category_title' %}
                                 <a href="#accordion-group-{{ forloop.index }}">{{ block.settings.title }}</a>

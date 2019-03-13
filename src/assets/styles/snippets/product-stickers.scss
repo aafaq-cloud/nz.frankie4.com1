@@ -31,13 +31,13 @@
 
   &__sale {
     &::after {
-      background-color: $pink;
+      background-color: $beige;
     }
   }
 
   &__new {
     &::after {
-      background-color: $green;
+      background-color: $mid-blue;
     }
   }
 }
