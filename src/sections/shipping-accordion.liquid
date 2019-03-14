@@ -1,0 +1,70 @@
+<div class="section section-shipping-accordion large-margin">
+    <div class="grid-container">
+
+    {% if section.blocks !=  blank %}
+
+        <div class="grid-x">
+            <div class="cell large-9 large-offset-3">
+
+                <div class="shipping-accordion">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'category_title' %}
+                            <h4 class="accordion-title" id="accordion-group-{{ forloop.index }}">{{ block.settings.title }}</h4>
+                        {% endif %}
+
+                        {% if block.type == 'accordion_item' %}
+                            <div aria-controls="accordion-item-{{ forloop.index }}" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+                                <h6 class="accordion-toggle-title">{{block.settings.title}}</h6>
+                                <span class="open-icon">{% include 'icon-plus' %}</span>
+                                <span class="close-icon">{% include 'icon-minus' %}</span>
+                            </div>
+                            <div class="grid-x accordion accordion-body rte" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
+                                {{ block.settings.content }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% schema %}
+     {
+         "name": "Shipping Accordion",
+         "settings": [
+         ],
+         "blocks": [
+             {
+                 "type": "category_title",
+                 "name": "Category Title",
+                 "settings": [
+                     {
+                         "type": "text",
+                         "id": "title",
+                         "label":"Title"
+                     }
+                 ]
+             },
+             {
+                  "type": "accordion_item",
+                  "name": "Accordion Item",
+                  "settings": [
+                      {
+                          "type": "text",
+                          "id": "title",
+                          "label":"Item Title"
+                      },
+                      {
+                        "type": "richtext",
+                        "id": "content",
+                        "label":"Item Content"
+                      }
+                  ]
+              }
+         ]
+     }
+ {% endschema %}
