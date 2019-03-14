@@ -16,16 +16,20 @@
 
   .tabs {
     display: flex;
+    flex-wrap: wrap;
 
     > .tabs-title {
       flex: 0 1 auto;
       position: relative;
-      padding: 5px 20px;
+      padding: 5px 10px;
       cursor: pointer;
       z-index: 1;
       display: inline-block;
       text-decoration: none;
 
+      @include breakpoint(medium) {
+        padding: 5px 20px;
+      }
 
       &.active {
 
@@ -53,18 +57,16 @@
   .tabs-content {
 
     .tabs {
-      padding: 0 20px 20px 20px;
+      @include breakpoint(medium) {
+        padding: 0 20px 20px 20px;
+      }
+
     }
 
     .tabs-panel:not(.active) {
       display: none;
     }
 
-    .responsive-table {
-      td {
-        text-align: left;
-      }
-    }
 
   }
 
