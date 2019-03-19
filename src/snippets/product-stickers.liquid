@@ -14,6 +14,8 @@
         {% assign restocked = true %}
     {% elsif tag == 'last_sizes' %}
         {% assign last_sizes = true %}
+    {% elsif tag == 'preorder' %}
+        {% assign preorder = true %}
     {% endif %}
 {% endfor %}
 
@@ -38,6 +40,11 @@
         {% if last_sizes %}
             <div class="product-sticker product-sticker__last-sizes">
                 <strong class="text-small">Last Sizes</strong>
+            </div>
+        {% endif %}
+        {% if preorder %}
+            <div class="product-sticker product-sticker__preorder">
+                <strong class="text-small">Pre-Order</strong>
             </div>
         {% endif %}
     {% else %}

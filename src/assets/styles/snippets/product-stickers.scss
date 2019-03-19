@@ -40,4 +40,10 @@
       background-color: $mid-blue;
     }
   }
+
+  &__preorder {
+    &::after {
+      background-color: $grey;
+    }
+  }
 }
