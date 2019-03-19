@@ -37,7 +37,7 @@ such as 'featured' or 'all'.
             {% break %}
         {% endif %}
     {% endfor %}
-    {% if related_products_count >= 4 %}
+    {% if related_products_count >= 9 %}
         {% break %}
     {% endif %}
 {% endfor %}
@@ -61,7 +61,7 @@ such as 'featured' or 'all'.
                     <div class="glide">
                         <div data-glide-el="track" class="glide__track">
                           <div class="glide__slides">
-                           {% for related_product_handle in related_products limit:9 %}
+                           {% for related_product_handle in related_products %}
                                 {%- assign product = all_products[related_product_handle] -%}
                                 <div class="glide__slide">
                                       {% include 'product-tile' %}
