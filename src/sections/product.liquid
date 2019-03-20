@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="yotpo bottomLine"
-                             data-appkey="Z0muyyeFN5ulVQUg01mn0wx9APizAX96D4Kz7gBe"
+                             data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                              data-domain="{{shop.permanent_domain | escape }}"
                              data-product-id="{{ product.id }}"
                              data-product-models="{{ product.id }}"
@@ -213,54 +213,56 @@
                             {% unless product.has_only_default_variant %}
 
                                 {% for option in product.options_with_values %}
-                                    <div class="mb-20">
+                                    {% unless option.name == 'Color' %}
+                                        <div class="mb-20">
 
-                                        <label class="option-label hide">{{ option.name }}</label>
+                                            <label class="option-label hide">{{ option.name }}</label>
 
-                                        {% if option.name == 'Size' %}
+                                            {% if option.name == 'Size' %}
 
-                                            <div class="radio-select">
+                                                <div class="radio-select">
 
-                                                {%- assign selector_name = forloop.index0 -%}
+                                                    {%- assign selector_name = forloop.index0 -%}
 
-                                                {% for value in option.values %}
-
-                                                    {%- assign input_id = 'variantselector-' | append: selector_name | append: forloop.index0 -%}
-
-                                                    <input id="{{ label_prefix }}{{ input_id }}"
-                                                           data-single-option-selector
-                                                           data-index="{{ option.position }}"
-                                                           name="variantselector-{{ selector_name }}[]"
-                                                           type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                                                    <label title="{{ value }}"
-                                                           class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
-                                                        <span>{{ value | escape }}</span>
-                                                    </label>
-                                                {% endfor %}
-
-                                            </div>
-
-                                        {% else %}
-
-                                            <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
-
-                                                <select id="SingleOptionSelector-{{ forloop.index0 }}"
-                                                        data-single-option-selector
-                                                        data-index="{{ option.position }}"
-                                                        {% if option.values.size < 2 %}disabled{% endif %}>
                                                     {% for value in option.values %}
-                                                        <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                                                            {{ value }}
-                                                        </option>
+
+                                                        {%- assign input_id = 'variantselector-' | append: selector_name | append: forloop.index0 -%}
+
+                                                        <input id="{{ label_prefix }}{{ input_id }}"
+                                                               data-single-option-selector
+                                                               data-index="{{ option.position }}"
+                                                               name="variantselector-{{ selector_name }}[]"
+                                                               type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                                                        <label title="{{ value }}"
+                                                               class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
+                                                            <span>{{ value | escape }}</span>
+                                                        </label>
                                                     {% endfor %}
-                                                </select>
 
-                                                {% include 'icon-chevron-down-bold' %}
+                                                </div>
 
-                                            </div>
+                                            {% else %}
 
-                                        {% endif %}
-                                    </div>
+                                                <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
+
+                                                    <select id="SingleOptionSelector-{{ forloop.index0 }}"
+                                                            data-single-option-selector
+                                                            data-index="{{ option.position }}"
+                                                            {% if option.values.size < 2 %}disabled{% endif %}>
+                                                        {% for value in option.values %}
+                                                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                                                                {{ value }}
+                                                            </option>
+                                                        {% endfor %}
+                                                    </select>
+
+                                                    {% include 'icon-chevron-down-bold' %}
+
+                                                </div>
+
+                                            {% endif %}
+                                        </div>
+                                    {% endunless %}
                                 {% endfor %}
                             {% endunless %}
 
