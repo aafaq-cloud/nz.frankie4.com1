@@ -213,8 +213,8 @@
                             {% unless product.has_only_default_variant %}
 
                                 {% for option in product.options_with_values %}
-                                    {% unless option.name == 'Color' %}
-                                        <div class="mb-20">
+
+                                        <div class="mb-20" {% if option.values.size < 2 %} style="display: none;" {%  endif %}>
 
                                             <label class="option-label hide">{{ option.name }}</label>
 
@@ -262,7 +262,6 @@
 
                                             {% endif %}
                                         </div>
-                                    {% endunless %}
                                 {% endfor %}
                             {% endunless %}
 

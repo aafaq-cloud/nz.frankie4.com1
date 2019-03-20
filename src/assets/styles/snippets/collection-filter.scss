@@ -33,7 +33,6 @@
       position: relative;
       z-index: 1;
 
-
       a,
       label {
         position: relative;
@@ -59,6 +58,17 @@
           transform-origin: left;
           opacity: 0.6;
         }
+
+        // Hover State
+        // The hover is on the anchor so that scrolling can occur on mobile without hover effect
+        &:hover {
+          font-weight: bold;
+
+          &::before {
+            transform: translateY(-50%) scaleX(1);
+          }
+        }
+
       }
 
       input[type='radio'] {
@@ -80,17 +90,16 @@
         font-size: rem-calc(10);
       }
 
-      // Active and Hover State
-      &.active,
-      &:hover {
+      // Active State
+      &.active {
         a,
         input[type="radio"]:not(:disabled) + label {
           font-weight: bold;
 
           &::before {
             transform: translateY(-50%) scaleX(1);
-
           }
+
         }
 
       }

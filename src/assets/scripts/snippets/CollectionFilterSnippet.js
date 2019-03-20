@@ -27,7 +27,7 @@ export class CollectionFilterSnippet extends AbstractComponent {
     // Ensure it runs on load
     this.resizeHandler();
     // Bind resize handler to window resize
-    throttledResize.add(() => this.resizeHandler());
+    //throttledResize.add(() => this.resizeHandler());
 
   }
 

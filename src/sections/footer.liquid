@@ -52,11 +52,11 @@
 
           <div class="flex-container">
             <div class="shrink">{% include "icon-phone" %}</div>
-            <div class="auto">{{ section.settings.phone }}</div>
+              <div class="auto"><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></div>
           </div>
           <div class="flex-container">
             <div class="shrink">{% include "icon-email" %}</div>
-            <div class="auto">{{ section.settings.email }}</div>
+              <div class="auto"><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></div>
           </div>
 
             {% if section.blocks !=  blank %}
@@ -91,7 +91,7 @@
           {% for link in linklists[section.settings.footer_legal_linklist].links %}
             <li><a href="{{link.url}}">{{link.title}}</a></li>
           {% endfor %}
-          <li><a href="https://lambagency.com.au/" target="_blank" rel="nofollow noopener">Website by Lamb Agency</a></li>
+          <li><a href="https://www.lambagency.com.au/shopify-brisbane" target="_blank" rel="nofollow noopener">Website by Lamb Agency</a></li>
         </ul>
       </div>
 
