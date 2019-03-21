@@ -3,17 +3,13 @@
   padding-left: 10px;
   padding-right: 10px;
 
-  > a {
-    text-decoration: none;
-    transition: color $transition-duration;
-    line-height: 1;
-    margin-left: 8px;
-    color: currentColor;
+  > div {
+    margin-left: 10px;
 
     svg {
       display: block;
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
     }
 
     span {
@@ -21,21 +17,11 @@
     }
   }
 
-  &__facebook {
-    &:hover {
+  &:hover {
+    .social-sharing__facebook {
       color: #4267b2;
     }
+
   }
 
-  &__twitter {
-    &:hover {
-      color: #1da1f2;
-    }
-  }
-
-  &__pinterest {
-    &:hover {
-      color: #e60023;
-    }
-  }
 }
