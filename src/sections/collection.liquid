@@ -18,7 +18,9 @@
                     <div class="grid-x align-middle align-right h-100 collection-banner-text">
                         <div class="cell large-4">
                             <h1>{{collection.title}}</h1>
+                            {%  if collection.description != '' %}
                             <p class="semibold">{{collection.description}}</p>
+                            {%  endif %}
                         </div>
                     </div>
                 </div>
