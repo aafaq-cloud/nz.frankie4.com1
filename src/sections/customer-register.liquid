@@ -40,8 +40,18 @@
                         <input type="password"
                            name="customer[password]"
                            id="CreatePassword"
-                           class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                           class="mb-20 {% if form.errors contains 'password' %}input-error{% endif %}"
                            placeholder="{{ 'customer.register.password' | t }}">
+
+                        <div class="checkbox-wrap {% if form.errors contains 'newsletter' %}input-error{% endif %}">
+                            <input type="checkbox"
+                                   name="customer[accepts_marketing]"
+                                   value="true"
+                                   id="Newsletter">
+                            <label for="Newsletter">
+                                {{ 'customer.register.newsletter' | t }}
+                            </label>
+                        </div>
 
                         {{ form.errors | default_errors }}
 
