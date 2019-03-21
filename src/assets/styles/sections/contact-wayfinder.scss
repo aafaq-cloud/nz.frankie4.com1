@@ -5,8 +5,12 @@
   .wayfinder-tile {
     position: relative;
     background: #F6F6F6;
-    padding: 50px 40px;
+    padding: 25px 20px;
     height: 100%;
+
+    @include breakpoint(medium) {
+      padding: 50px 40px;
+    }
   }
 
 }
