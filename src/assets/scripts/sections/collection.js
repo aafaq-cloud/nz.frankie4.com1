@@ -169,6 +169,9 @@ export class CollectionSection extends AbstractComponent {
           document.dispatchEvent(
             new Event("products.refresh"),
           );
+          document.body.dispatchEvent(
+            new Event("shopify-currency.refresh")
+          );
         },
         complete() {
           instance.collectionLoading = false;
