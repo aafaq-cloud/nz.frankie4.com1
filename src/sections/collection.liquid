@@ -12,9 +12,11 @@
 
             <!-- Header -->
             <div class="collection-header">
-                <div class="collection-banner" {%  if collection.image %}style="background-image:url('{{collection.image | img_url: '1200x'}}')" {%  endif %}>
-                    <div class="grid-x align-middle align-right h-100">
-                        <div class="cell large-3">
+                <div class="collection-banner{% if section.settings.overlay_enable %} has-overlay{% endif %}" {%  if collection.image %}style="background-image:url('{{collection.image | img_url: '1200x'}}')" {%  endif %}>
+                    <div class="collection-banner-overlay"></div>
+
+                    <div class="grid-x align-middle align-right h-100 collection-banner-text">
+                        <div class="cell large-4">
                             <h1>{{collection.title}}</h1>
                             <p class="semibold">{{collection.description}}</p>
                         </div>
@@ -140,6 +142,15 @@
 {
   "name": "Collection",
   "settings": [
+    {
+        "type": "header",
+        "content": "Banner Overlay"
+    },
+    {
+        "type": "checkbox",
+        "id": "overlay_enable",
+        "label": "Enable banner overlay"
+    },
     {
       "type": "header",
       "content": "Collection infinite scroll"

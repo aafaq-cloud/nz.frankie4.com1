@@ -29,6 +29,25 @@
   @include breakpoint(medium) {
     height: 340px;
     padding: 0 90px;
+
+  }
+
+  &:not(.has-overlay) {
+    .collection-banner-overlay {
+      display: none;
+    }
+  }
+
+  &-text {
+    position: relative;
+  }
+  &-overlay {
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
   }
 }
 
