@@ -296,24 +296,10 @@
   .video-wrapper {
     position: relative;
 
-    @include breakpoint(small down) {
-      overflow: hidden;
-      width: 100%;
-      padding-top: 100%;
-    }
-
     video {
       display: block;
       width: 100%;
       height: auto;
-
-      @include breakpoint(small down) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: auto;
-      }
 
     }
   }
