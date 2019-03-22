@@ -1,0 +1,69 @@
+<div class="section section-faq-wayfinder">
+    <div class="grid-container">
+
+    {% assign faq_page = section.settings.url %}
+
+    {% if section.blocks !=  blank %}
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+
+                {% for block in section.blocks %}
+
+                    {%  assign anchor = block.settings.title | downcase | replace: ' & ', '-' | replace: ' ', '-' | prepend: '#' %}
+
+                    <div class="cell small-6 large-4">
+                        <div class="wayfinder-tile">
+
+                            <a class="cover-link" href="{{ faq_page | append : anchor }}"></a>
+
+                            {% if block.settings.icon %}
+                                <img src="{{ block.settings.icon | img_url: "medium" }}"/>
+                            {% endif %}
+
+                            <h5>{{ block.settings.title }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% schema %}
+     {
+         "name": "FAQ Wayfinder Tiles",
+         "settings": [
+            {
+                "type": "url",
+                "id": "url",
+                "label":"FAQ Page"
+            }
+         ],
+         "blocks": [
+            {
+                "type": "wayfinder_tile",
+                "name": "Wayfinder Tile",
+                "settings": [
+                    {
+                      "type": "text",
+                      "id": "title",
+                      "label":"Item Title"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label":"Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "anchor",
+                        "label":"Anchor ID"
+                    }
+                ]
+            }
+        ]
+     }
+ {% endschema %}

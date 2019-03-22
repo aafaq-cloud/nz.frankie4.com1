@@ -19,6 +19,7 @@ import {CartSection} from "../sections/cart";
 import {ArticleListingSection} from "../sections/article-listing";
 import {FeaturedProductsSection} from "../sections/featured-products";
 import {ContactSection} from "../sections/contact";
+import {FAQSearchSection} from "../sections/faq-search";
 import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
@@ -47,6 +48,7 @@ export class Autoloader {
       ArticleListingSection,
       FeaturedProductsSection,
       ContactSection,
+      FAQSearchSection,
       ContactFormSection,
       BannerSection,
       ShippingSection

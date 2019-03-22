@@ -16,7 +16,7 @@
                         <h5>Jump to a Category</h5>
                         {% for block in section.blocks %}
                             {% if block.type == 'category_title' %}
-                                <a href="#accordion-group-{{ forloop.index }}">{{ block.settings.title }}</a>
+                                <a href="#{{ block.settings.title | downcase | replace: ' & ', '-' | replace: ' ', '-'}}">{{ block.settings.title }}</a>
                             {% endif %}
                         {% endfor %}
                      </div>
@@ -24,18 +24,21 @@
 
                 <div class="faq-listing">
                     {% for block in section.blocks %}
+
                         {% if block.type == 'category_title' %}
-                            <h4 class="accordion-title" id="accordion-group-{{ forloop.index }}">{{ block.settings.title }}</h4>
+                            <div class="faq-anchor" id="{{ block.settings.title | downcase | replace: ' & ', '-' | replace: ' ', '-' }}"></div>
+                            <h4 class="accordion-title" id="">{{ block.settings.title }}</h4>
                         {% endif %}
 
                         {% if block.type == 'accordion_item' %}
+                            {% assign faq_page = pages[block.settings.faq_page] %}
                             <div aria-controls="accordion-item-{{ forloop.index }}" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
-                                <h6 class="accordion-toggle-title">{{block.settings.title}}</h6>
+                                <h6 class="accordion-toggle-title">{{faq_page.title}}</h6>
                                 <span class="open-icon">{% include 'icon-plus' %}</span>
                                 <span class="close-icon">{% include 'icon-minus' %}</span>
                             </div>
                             <div class="grid-x accordion accordion-body rte" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
-                                {{ block.settings.content }}
+                                {{ faq_page.content }}
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -70,14 +73,9 @@
                   "name": "Accordion Item",
                   "settings": [
                       {
-                          "type": "text",
-                          "id": "title",
-                          "label":"Item Title"
-                      },
-                      {
-                        "type": "richtext",
-                        "id": "content",
-                        "label":"Item Content"
+                          "type": "page",
+                          "id": "faq_page",
+                          "label":"FAQ Page"
                       }
                   ]
               }

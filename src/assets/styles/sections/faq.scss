@@ -1,7 +1,10 @@
 .section-faq {
 
   .faq-header {
-    margin-top: 30px;
+
+    @include breakpoint(medium) {
+      margin-top: 30px;
+    }
 
     .accordion-quick-links {
 
@@ -18,4 +21,25 @@
     margin-top: 60px;
   }
 
+  .faq-anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -($toolbar-height-for-small);
+
+    @include breakpoint($nav-switch-breakpoint) {
+      top: -($toolbar-height-for-large + (map_get($header-height, large) - 80px));
+    }
+
+    body.has-promo-strip & {
+      top: -($toolbar-height-for-small + $promo-strip-height);
+
+      @include breakpoint($nav-switch-breakpoint) {
+        top: -($toolbar-height-for-large + (map_get($header-height, large) - 80px) + $promo-strip-height);
+      }
+    }
+
+  }
+
 }
+
