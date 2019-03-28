@@ -241,5 +241,22 @@ export class CartModalSnippet extends AbstractComponent {
       }
       // }
     });
+
+
+    // Oepn cart modal when product is added to cart
+    AppShopifyCart.on('cart.add', function() {
+
+      instance.jsCartToggles.removeClass('active');
+
+      if (!instance.isCartOpen()) {
+        instance.openCart();
+        instance.jsCartToggles.addClass('active');
+      }
+      else {
+        instance.closeCart();
+      }
+    });
+
+
   }
 }

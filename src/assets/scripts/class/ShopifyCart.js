@@ -281,6 +281,7 @@ export class ShopifyCart extends EventEmitter {
         instance.getCartAction().then(
           () => {
             defer.resolve();
+            instance.emit('cart.add');
           },
           () => {
             defer.reject();
