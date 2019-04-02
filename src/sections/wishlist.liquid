@@ -11,7 +11,14 @@
             <div class="collection-products grid-x grid-margin-x grid-margin-y">
 
                 {% for product_handle in product_handles %}
-                    {%- assign product = all_products[product_handle] -%}
+                    {% if product_handle contains "_variant_" %}
+                        {% assign pieces = product_handle | split: "_variant_" %}
+                        {%- assign product = all_products[pieces[0]] -%}
+                        {%- assign product_variant = pieces[1] -%}
+                    {% else %}
+                        {%- assign product_variant = "" -%}
+                        {%- assign product = all_products[product_handle] -%}
+                    {% endif %}
 
                     {% unless product == blank  %}
                     {% assign wishlist_product_counter = wishlist_product_counter | plus: 1 %}
@@ -20,6 +27,7 @@
                         </div>
                     {% endunless %}
                 {% endfor %}
+                {%- assign product_variant = "" -%}
 
                 {% if wishlist_product_counter == 0 %}
                     <div class="cell">

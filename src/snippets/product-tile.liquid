@@ -7,17 +7,43 @@
     {%  endif %}
 {%  endfor %}
 
+{% assign product_url = product.url | within: collection %}
+{% assign product_name = product.handle  %}
+{% if product_variant != blank %}
+    {% assign product_url = product_url | append: "?variant=" | append: product_variant %}
+    {% assign product_name = product_name | append: "_variant_" | append: product_variant %}
+
+    {% assign product_variant_label = "" %}
+    {% for variant in product.variants %}
+        {% assign product_variant = product_variant | plus: 0 %}
+        {% if variant.id == product_variant %}
+            {% for option in product.options %}
+                {% assign optionIndex = forloop.index0 %}
+                {% if option != "Title" %}
+                    {% assign product_variant_label = product_variant_label | append: option | append: ": " | append: variant.options[optionIndex] %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script>console.log({{ product | json  }});</script>
 <article class="product-tile text-center grid-y" data-handle="{{product.handle}}">
-  <a href="{{product.url | within: collection}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
+  <a href="{{product_url}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
   <div class="cell product-tile__image-container">
     <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
     <img data-src="{{secondary_image | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image secondary">
 
-    <button data-product-quickview data-product-url="{{ product.url }}" class="product-tile__quickview button button-secondary button-small">{{ 'products.product.quickview' | t }}</button>
+    <button data-product-quickview data-product-url="{{ product_url }}" class="product-tile__quickview button button-secondary button-small">{{ 'products.product.quickview' | t }}</button>
   </div>
   <div class="cell product-tile__body grid-y">
     <h5 class="product-tile__title grid-x align-middle align-center">{{ product.title }}</h5>
     <div class="product-tile__info">
+
+        {% if product_variant_label != blank %}
+            <p class="color-secondary-text m-0 mb-10 text-small">{{ product_variant_label }}</p>
+        {% endif %}
+
       <span class="product-tile__price color-secondary-text">
         {{ product.price_max | money }}
       </span>
@@ -37,7 +63,7 @@
   {% include 'product-stickers' with product:product limit: 1 %}
 
   {% if customer %}
-      <a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}">
+      <a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product_name }}">
           {% include 'icon-heart' %}
       </a>
   {% else %}
