@@ -25,6 +25,9 @@
                             </video>
                         </div>
                     {% elsif block.settings.image != blank %}
+                        {% if block.settings.mobile_image %}
+                            <img src="{{block.settings.mobile_image | img_url: '1000x'}}" srcset="{{block.settings.mobile_image | img_url: '1000x'}} 1400w, {{block.settings.mobile_image | img_url: '1100x'}} 1100w, {{block.settings.mobile_image | img_url: '800x'}} 800w, {{block.settings.mobile_image | img_url: '450x'}} 450w" class="media-block-image mobile-media-block-image">
+                        {% endif %}
                         <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
                     {% endif %}
 
@@ -79,6 +82,11 @@
                         "type": "image_picker",
                         "id": "image",
                         "label": "Background Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "mobile_image",
+                        "label": "Mobile Background Image"
                     },
                     {
                         "type": "text",

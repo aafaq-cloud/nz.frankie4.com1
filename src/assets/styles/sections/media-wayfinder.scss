@@ -25,6 +25,19 @@
       object-fit: cover;
       height: 100%;
       width: 100%;
+
+      &.mobile-media-block-image {
+
+        @include breakpoint(small down) {
+          + .media-block-image {
+            display: none;
+          }
+        }
+
+        @include breakpoint(medium) {
+          display: none;
+        }
+      }
     }
 
     &-content {
