@@ -35,6 +35,16 @@ export class ProductSection extends AbstractComponent {
 
     // Create a new product this which handles all our variant logic
     this.product = new Product(options);
+
+    // wishlist update
+    let wishlistAdd = this.component.querySelector("[data-shopify-wishlist-add]");
+    this.product.on('variant-change', (variant) => {
+      let wishlistHandle = options.product.handle + '_variant_' + variant.id;
+      wishlistAdd.setAttribute('data-shopify-wishlist-product-handle', wishlistHandle);
+      if (typeof window.ShopifyWishlistInstace != 'undefined') {
+          window.ShopifyWishlistInstace.updateAddToWishlistButtons();
+      }
+    });
   }
 
 

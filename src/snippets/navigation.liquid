@@ -14,6 +14,8 @@ Navigation to display on large viewports
             {% endif %}
             {% if link.title == section.settings.mega_menu_handle %}
                 {% assign menu_class = menu_class | append: " mega-menu" | strip %}
+            {% elsif link.title == section.settings.mega_menu_2_handle %}
+                {% assign menu_class = menu_class | append: " mega-menu" | strip %}
             {% endif %}
 
             <li{% if menu_class != blank %} class="{{ menu_class }}"{% endif %}>
@@ -47,20 +49,68 @@ Navigation to display on large viewports
 
 
                 {% if link.title == section.settings.mega_menu_handle %}
-                    <div class="main-nav-mega-menu grid-x">
-                        <div class="main-nav-mega-menu-links cell">
+                    <div class="main-nav-mega-menu main-nav-mega-menu-1 grid-x">
+                        <div class="main-nav-mega-menu-1-links cell">
                             {{ link_list }}
                         </div>
-                        <div class="main-nav-mega-menu-image cell auto">
+                        <div class="main-nav-mega-menu-1-image cell auto">
                             {% if section.settings.mega_menu_image_url_1 %}<a href="{{ section.settings.mega_menu_image_url_1 }}">{% endif %}
                                 <img src="{{section.settings.mega_menu_image_1 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_1 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_1 | img_url: '450x'}} 450w">
                             {% if section.settings.mega_menu_image_url_1 %}</a>{% endif %}
                         </div>
-                        <div class="main-nav-mega-menu-image cell auto">
+                        <div class="main-nav-mega-menu-1-image cell auto">
                             {% if section.settings.mega_menu_image_url_2 %}<a href="{{ section.settings.mega_menu_image_url_2 }}">{% endif %}
                                 <img src="{{section.settings.mega_menu_image_2 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_2 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_2 | img_url: '450x'}} 450w">
                             {% if section.settings.mega_menu_image_url_2 %}</a>{% endif %}
                         </div>
+                    </div>
+                {% elsif link.title == section.settings.mega_menu_2_handle %}
+                    <div class="main-nav-mega-menu main-nav-mega-menu-2">
+                        <div class="grid-x main-nav-mega-menu-2-blocks align-top">
+                            {% if section.settings.mega_menu_2_image_url_1 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_1 %}<a href="{{ section.settings.mega_menu_2_image_url_1 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_1 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_1 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_1 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_1 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_2_image_url_2 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_2 %}<a href="{{ section.settings.mega_menu_2_image_url_2 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_2 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_2 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_2 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_2 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_2_image_url_3 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_3 %}<a href="{{ section.settings.mega_menu_2_image_url_3 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_3 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_3 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_3 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_3 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_2_image_url_4 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_4 %}<a href="{{ section.settings.mega_menu_2_image_url_4 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_4 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_4 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_4 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_4 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_2_image_url_5 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_5 %}<a href="{{ section.settings.mega_menu_2_image_url_5 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_5 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_5 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_5 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_5 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_2_image_url_6 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-4">
+                                    {% if section.settings.mega_menu_2_image_url_6 %}<a href="{{ section.settings.mega_menu_2_image_url_6 }}">{% endif %}
+                                        <img src="{{section.settings.mega_menu_2_image_6 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_2_image_6 | img_url: '800x'}} 800w, {{section.settings.mega_menu_2_image_6 | img_url: '450x'}} 450w">
+                                        {% if section.settings.mega_menu_2_image_url_6 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+
                     </div>
                 {% elsif link_list != blank %}
                     <div class="main-nav-dropdown">
