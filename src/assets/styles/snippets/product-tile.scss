@@ -1,5 +1,7 @@
 .product-tile {
   position: relative;
+  // IE doesn't constrain the width of the tile at 100% :shrug
+  max-width: 99.99%;
 
   &-image {
     &.secondary {

@@ -260,10 +260,6 @@ export class Product extends EventEmitter {
     this.updateHistoryState();
 
     this.emit("variant-change", this.selectedVariant);
-
-    document.body.dispatchEvent(
-      new Event("shopify-currency.refresh")
-    );
   }
 
   /**
