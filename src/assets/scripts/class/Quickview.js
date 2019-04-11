@@ -53,7 +53,7 @@ export class QuickView {
             url,
             dataType: "html",
             data: {
-              view: "quickview",
+              view: "quickview"
             },
             success(response) {
               instance.loading = false;
@@ -64,13 +64,12 @@ export class QuickView {
             complete() {
               setTimeout(() => {
                 // Trigger an event for the binding of the wishlist
-                $("body")[0].dispatchEvent(
-                  new Event("shopify-wishlist.refresh"),
-                );
-
-                document.dispatchEvent(
-                  new Event("products.refresh"),
-                );
+                const event = document.createEvent("Event");
+                event.initEvent("shopify-wishlist.refresh", null, null);
+                document.body.dispatchEvent(event);
+                const event2 = document.createEvent("Event");
+                event.initEvent("products.refresh", null, null);
+                document.dispatchEvent(event2);
 
                 // Refresh Quickview
                 AppQuickview.initQuickViewButtons();
@@ -80,7 +79,7 @@ export class QuickView {
                 instance.loading = false;
                 button.removeClass("js-loading");
               }, 200);
-            },
+            }
           });
         }
       });

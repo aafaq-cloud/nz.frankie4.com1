@@ -1,10 +1,9 @@
-import {VariantSelector} from "./VariantSelector";
 import {formatMoney} from "@shopify/theme-currency";
 import EventEmitter from "event-emitter-es6";
 import $ from "jquery";
+import {VariantSelector} from "./VariantSelector";
 
 export class Product extends EventEmitter {
-
   /**
    * Product constructor
    *
@@ -43,14 +42,14 @@ export class Product extends EventEmitter {
       form: "[data-product-form]",
       productID: "[data-product-id]",
       productPrice: "[data-product-price]",
-      properties: "[name^=\"properties\"]",
+      properties: "[name^=\"properties\"]"
     };
 
     const selectorsSingle = {
       addToCart: "[data-add-to-cart]",
       addToCartText: "[data-add-to-cart-text]",
       quantitySelector: "[data-quantity-selector]",
-      errorMessage: "[data-add-to-cart-error]",
+      errorMessage: "[data-add-to-cart-error]"
     };
 
     this.selectors = {};
@@ -65,7 +64,9 @@ export class Product extends EventEmitter {
 
     for (const key in selectorsSingle) {
       if (selectorsSingle.hasOwnProperty(key)) {
-        this.selectorsSingle[key] = this.container.querySelector(selectorsSingle[key]);
+        this.selectorsSingle[key] = this.container.querySelector(
+          selectorsSingle[key]
+        );
       }
     }
   }
@@ -77,7 +78,11 @@ export class Product extends EventEmitter {
     this.variantSelectors = [];
 
     // If there are no variants for this product
-    if (this.product.options.length === 1 && this.product.options[0] === 'Title' && this.product.variants.length === 1) {
+    if (
+      this.product.options.length === 1 &&
+      this.product.options[0] === "Title" &&
+      this.product.variants.length === 1
+    ) {
       this.updateSelectedVariant();
       return;
     }
@@ -108,24 +113,24 @@ export class Product extends EventEmitter {
 
     if (this.product.variants.length === 1) {
       found = this.product.variants[0];
-    }
-    else {
+    } else {
       // Loop through each variant and find a match
       for (let v = 0; v < this.product.variants.length; v++) {
-        let variant = this.product.variants[v];
+        const variant = this.product.variants[v];
 
         let satisfied = false;
 
         // Loop through the variant options
         for (let i = 0; i < variant.options.length; ++i) {
-
           satisfied = false;
 
           // Loop through the variant selectors
           for (let j = 0; j < this.variantSelectors.length; ++j) {
-
             // Check if the variant select value matches the variant option
-            if (String(variant.options[i]) === String(this.variantSelectors[j].getValue())) {
+            if (
+              String(variant.options[i]) ===
+              String(this.variantSelectors[j].getValue())
+            ) {
               satisfied = true;
               break;
             }
@@ -215,11 +220,14 @@ export class Product extends EventEmitter {
           if (variant.available) {
             this.variantGroups[variantOption].available = true;
           }
-        // Second Level
+          // Second Level
         } else if (i === 1) {
-
           // Add this option to the root options if it isn't already
-          if (!this.variantGroups[variant.options[0]].options.hasOwnProperty(variantOption)) {
+          if (
+            !this.variantGroups[variant.options[0]].options.hasOwnProperty(
+              variantOption
+            )
+          ) {
             this.variantGroups[variant.options[0]].options[variantOption] = {
               available: false,
               options: {}
@@ -227,21 +235,30 @@ export class Product extends EventEmitter {
           }
 
           if (variant.available) {
-            this.variantGroups[variant.options[0]].options[variantOption].available = true;
+            this.variantGroups[variant.options[0]].options[
+              variantOption
+            ].available = true;
           }
-        // Third Level
+          // Third Level
         } else if (i === 2) {
-
           // Add this option to the root options if it isn't already
-          if (!this.variantGroups[variant.options[0]].options[variant.options[1]].options.hasOwnProperty(variantOption)) {
-            this.variantGroups[variant.options[0]].options[variant.options[1]].options[variantOption] = {
+          if (
+            !this.variantGroups[variant.options[0]].options[
+              variant.options[1]
+            ].options.hasOwnProperty(variantOption)
+          ) {
+            this.variantGroups[variant.options[0]].options[
+              variant.options[1]
+            ].options[variantOption] = {
               available: false,
               options: {}
             };
           }
 
           if (variant.available) {
-            this.variantGroups[variant.options[0]].options[variant.options[1]].options[variantOption].available = true;
+            this.variantGroups[variant.options[0]].options[
+              variant.options[1]
+            ].options[variantOption].available = true;
           }
         }
       }
@@ -260,6 +277,10 @@ export class Product extends EventEmitter {
     this.updateHistoryState();
 
     this.emit("variant-change", this.selectedVariant);
+
+    const event = document.createEvent("Event");
+    event.initEvent("shopify-currency.refresh", null, null);
+    document.body.dispatchEvent(event);
   }
 
   /**
@@ -267,13 +288,11 @@ export class Product extends EventEmitter {
    * Traverses the selectors to change options based on parent selectors
    */
   updateVariantSelectorOptions() {
-
     let availableOptionsMap = this.variantGroups;
     let availableOptions = [];
 
     // Loop through variant selectors to honour hierarchy
     for (let i = 0; i < this.variantSelectors.length; ++i) {
-
       availableOptions = {};
 
       for (const key in availableOptionsMap) {
@@ -286,7 +305,8 @@ export class Product extends EventEmitter {
       this.variantSelectors[i].setAvailableValues(availableOptions);
 
       // Let's point the available options map to the options for the current option selected
-      availableOptionsMap = availableOptionsMap[this.variantSelectors[i].getValue()].options;
+      availableOptionsMap =
+        availableOptionsMap[this.variantSelectors[i].getValue()].options;
     }
   }
 
@@ -307,14 +327,12 @@ export class Product extends EventEmitter {
    * Update the DOM prices for the active variant
    */
   updateProductPrices() {
-
     for (let i = 0; i < this.selectors.productPrice.length; ++i) {
       const productPriceSelector = this.selectors.productPrice[i];
 
       if (!this.selectedVariant) {
         productPriceSelector.classList.add("invisible");
         if (this.selectors.comparePrice) {
-
           for (let j = 0; j < this.selectors.comparePrice.length; j++) {
             this.selectors.comparePrice[j].classList.add("hide");
           }
@@ -324,13 +342,15 @@ export class Product extends EventEmitter {
         productPriceSelector.classList.remove("invisible");
       }
 
+      const divider = productPriceSelector.getAttribute(
+        "data-product-price-divide"
+      )
+        ? productPriceSelector.getAttribute("data-product-price-divide")
+        : 1;
 
-      const divider = productPriceSelector.getAttribute("data-product-price-divide")
-          ? productPriceSelector.getAttribute("data-product-price-divide")
-          : 1;
-
-      productPriceSelector.innerHTML = (
-        formatMoney(this.selectedVariant.price / divider, theme.moneyFormat)
+      productPriceSelector.innerHTML = formatMoney(
+        this.selectedVariant.price / divider,
+        theme.moneyFormat
       );
     }
 
@@ -338,8 +358,9 @@ export class Product extends EventEmitter {
     if (this.selectors.comparePrice) {
       if (this.selectedVariant.compare_at_price > this.selectedVariant.price) {
         for (let j = 0; j < this.selectors.comparePrice.length; ++j) {
-          this.selectors.comparePrice[j].innerHTML = (
-            formatMoney(this.selectedVariant.compare_at_price, theme.moneyFormat)
+          this.selectors.comparePrice[j].innerHTML = formatMoney(
+            this.selectedVariant.compare_at_price,
+            theme.moneyFormat
           );
           this.selectors.comparePrice[j].classList.remove("hide");
         }
@@ -365,17 +386,18 @@ export class Product extends EventEmitter {
    * Update the url when a variant is selected
    */
   updateHistoryState() {
-    if (!history.replaceState || this.quickview || !this.selectedVariant || this.product.variants.length < 2) {
+    if (
+      !history.replaceState ||
+      this.quickview ||
+      !this.selectedVariant ||
+      this.product.variants.length < 2
+    ) {
       return;
     }
 
-    const newurl =
-      `${window.location.protocol
-      }//${
-        window.location.host
-      }${window.location.pathname
-      }?variant=${
-        this.selectedVariant.id}`;
+    const newurl = `${window.location.protocol}//${window.location.host}${
+      window.location.pathname
+    }?variant=${this.selectedVariant.id}`;
     window.history.replaceState({path: newurl}, "", newurl);
   }
 
@@ -388,13 +410,13 @@ export class Product extends EventEmitter {
     let formSubmitting = false;
     let clearErrorTimeout = null;
 
-    let form = this.selectors.form.length ? this.selectors.form[0] : false;
+    const form = this.selectors.form.length ? this.selectors.form[0] : false;
 
     if (!form) {
       return;
     }
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", e => {
       // Let's intercept the form submission and add the item to the cart via ajax
       e.preventDefault();
 
@@ -406,12 +428,14 @@ export class Product extends EventEmitter {
 
       const variantID = this.selectors.productID.value;
       const quantity = this.selectorsSingle.quantitySelector.value;
-      let properties = {};
+      const properties = {};
 
       if (this.selectors.properties.length) {
         for (let i = 0; i < this.selectors.properties.length; i++) {
           if (this.selectors.properties[i].value) {
-            const key = this.selectors.properties[i].getAttribute("name").replace(/.*\[|\]/gi, "");
+            const key = this.selectors.properties[i]
+              .getAttribute("name")
+              .replace(/.*\[|\]/gi, "");
             properties[key] = this.selectors.properties[i].value;
           }
         }
@@ -424,7 +448,8 @@ export class Product extends EventEmitter {
       this.selectorsSingle.addToCartText.innerHTML = "Adding to bag";
 
       // Trigger an add to cart ajax function
-      AppShopifyCart.addItem(variantID, quantity, properties).then(() => {
+      AppShopifyCart.addItem(variantID, quantity, properties).then(
+        () => {
           // If we successfully added the item to cart we will show a success message
           this.selectorsSingle.addToCart.classList.remove("js-loading");
           this.selectorsSingle.addToCart.classList.add("added");
@@ -432,7 +457,10 @@ export class Product extends EventEmitter {
 
           // Clear the success button styles
           setTimeout(() => {
-            this.selectorsSingle.addToCart.classList.remove("added", "no-hover");
+            this.selectorsSingle.addToCart.classList.remove(
+              "added",
+              "no-hover"
+            );
             this.updateAddToCartState();
             formSubmitting = false;
           }, 3000);
@@ -447,7 +475,10 @@ export class Product extends EventEmitter {
             this.selectorsSingle.errorMessage.classList.add("visible");
           }
 
-          this.selectorsSingle.addToCart.classList.remove("js-loading", "no-hover");
+          this.selectorsSingle.addToCart.classList.remove(
+            "js-loading",
+            "no-hover"
+          );
           this.updateAddToCartState();
           formSubmitting = false;
 
@@ -455,7 +486,7 @@ export class Product extends EventEmitter {
           clearErrorTimeout = setTimeout(() => {
             this.clearErrorMessage();
           }, 5000);
-        },
+        }
       );
     });
   }
