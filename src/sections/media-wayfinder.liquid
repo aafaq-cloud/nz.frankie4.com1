@@ -18,6 +18,11 @@
 
                 <div class="cell media-block {{ cell_class }}">
 
+                    {% comment %} Added by PSFED @ Shopify - April 12 2019 {% endcomment %}
+                    {% if block.settings.link != blank and block.settings.link_text == blank %}
+                      <a href="{{ block.settings.link }}">
+                    {% endif %}
+
                     {% if block.settings.video != blank %}
                         <div class="component-video" data-autoload-class="ComponentVideo">
                             <video autoplay="" loop="" muted="" plays-inline="" playsinline width="1280" height="720">
@@ -48,6 +53,10 @@
                                 {% endif %}
                             </div>
                         </div>
+                    {% endif %}
+                    {% comment %} Added by PSFED @ Shopify - April 12 2019 {% endcomment %}
+                    {% if block.settings.link != blank and block.settings.link_text == blank %}
+                      </a>
                     {% endif %}
                 </div>
 

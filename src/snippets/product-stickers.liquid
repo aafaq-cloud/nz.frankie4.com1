@@ -24,7 +24,7 @@
     {% if limit != 1 %}
         {% if sale %}
             <div class="product-sticker product-sticker__sale">
-                <strong class="text-small">Sale</strong>
+                <strong class="text-small">{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}% off</strong>
             </div>
         {% endif %}
         {% if new %}
