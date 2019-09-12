@@ -15,7 +15,7 @@
                 <div class="collection-banner{% if section.settings.overlay_enable %} has-overlay{% endif %}" {%  if collection.image %}style="background-image:url('{{collection.image | img_url: '1200x'}}')" {%  endif %}>
                     <div class="collection-banner-overlay"></div>
 
-                    <div class="grid-x align-middle align-right h-100 collection-banner-text">
+                    <div class="grid-x align-middle align-right text-right h-100 collection-banner-text">
                         <div class="cell large-4 rte">
                             <h1>{{collection.title}}</h1>
                             {%  if collection.description != '' %}
