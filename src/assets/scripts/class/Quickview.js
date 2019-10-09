@@ -68,7 +68,7 @@ export class QuickView {
                 event.initEvent("shopify-wishlist.refresh", null, null);
                 document.body.dispatchEvent(event);
                 const event2 = document.createEvent("Event");
-                event.initEvent("products.refresh", null, null);
+                event2.initEvent("products.refresh", null, null);
                 document.dispatchEvent(event2);
 
                 // Refresh Quickview
@@ -77,7 +77,9 @@ export class QuickView {
 
               setTimeout(() => {
                 instance.loading = false;
-                button.removeClass("js-loading");
+                if (button) {
+                  button.removeClass("js-loading");
+                }
               }, 200);
             }
           });
