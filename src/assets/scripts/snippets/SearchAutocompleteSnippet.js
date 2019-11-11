@@ -38,7 +38,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                     <a :href="url"
                       @keydown="$emit('result-key-down', $event)"
                       @blur="$emit('result-blur', $event)"
-                      @click="$emit('result-click', {event: $event, url})"
+                      @click="$emit('result-click', {event: $event,  url: url})"
                       ref="result-link"
                       tabindex="-1"
                       :aria-label="title">
@@ -68,7 +68,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                     <a :href="url"
                       @keydown="$emit('result-key-down', $event)"
                       @blur="$emit('result-blur', $event)"
-                      @click="$emit('result-click', {event: $event, url})"
+                      @click="$emit('result-click', {event: $event, url: url})"
                       ref="result-link"
                       tabindex="-1"
                       :aria-label="title">
@@ -88,7 +88,7 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
                     <a :href="url"
                       @keydown="$emit('result-key-down', $event)"
                       @blur="$emit('result-blur', $event)"
-                      @click="$emit('result-click', {event: $event, url})"
+                      @click="$emit('result-click', {event: $event,  url: url})"
                       ref="result-link"
                       tabindex="-1"
                       :aria-label="title">
