@@ -59,6 +59,21 @@
 }
 
 .collection-toolbar {
+
+  #bc-sf-filter-top-sorting-select {
+    position: relative;
+    padding: 15px 40px 15px 20px;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    z-index: 1;
+  }
+
   .select-wrap {
     border: 0;
 

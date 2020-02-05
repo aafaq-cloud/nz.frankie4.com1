@@ -61,6 +61,7 @@
   {% include 'header-includes' %}
 
   {% include 'shogun-head' %}
+  {% include 'bc-sf-filter-style' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
@@ -83,5 +84,6 @@
   {% include 'shopify-wishlist' %}
   {% include 'currencies' %}
   {% include 'back-in-stock-helper' %}
+  {% include 'bc-sf-filter' %}
 </body>
 </html>

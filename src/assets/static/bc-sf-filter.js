@@ -16,20 +16,33 @@ var bcSfFilterTemplate = {
     'vendorHtml': '<div>{{itemVendorLabel}}</div>',
 
     // Grid Template
-    'productGridItemHtml': '<div class="grid__item wide--one-fifth large--one-quarter medium-down--one-half">' +
-                                '<div class="{{soldOutClass}} {{saleClass}}">' +
-                                    '<a href="{{itemUrl}}" class="grid-link">' +
-                                        '<span class="grid-link__image {{imageSoldOutClass}} grid-link__image--product">' +
-                                            '{{itemSaleLabel}}' +
-                                            '{{itemSoldOutLabel}}' +
-                                            '<span class="grid-link__image-centered"><img src="{{imageUrl}}" alt="{{itemTitle}}" /></span>' +
-                                        '</span>' +
-                                        '<p class="grid-link__title">{{itemTitle}}</p>' +
-                                        '{{itemVendor}}' +
-                                        '{{itemPrice}}' +
-                                    '</a>' +
-                                '</div>' +
-                            '</div>',
+    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch">' +
+        '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
+        '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
+        '<div class="cell product-tile__image-container">' +
+        '{{itemImages}}' +
+        '<button data-product-quickview data-product-url="{{itemUrl}}" class="product-tile__quickview button button-secondary button-small">Quickview</button>' +
+
+        '</div>' +
+
+        '<div class="cell product-tile__body grid-y">' +
+        '<h5 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h5>' +
+        '<div class="product-tile__info">' +
+
+        '{{itemPrice}}' +
+
+        '<div class="grid-x align-center">' +
+            '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
+        '</div>' +
+
+        '</div>' +
+        '</div>' +
+
+        '{{itemWishlist}}' +
+        '{{itemBadges}}' +
+
+        '</article>' +
+        '</div>',
 
     // Pagination Template
     'previousActiveHtml': '<li><a href="{{itemUrl}}">&larr;</a></li>',
@@ -40,7 +53,7 @@ var bcSfFilterTemplate = {
     'pageItemSelectedHtml': '<li><span class="active">{{itemTitle}}</span></li>',
     'pageItemRemainHtml': '<li><span>{{itemTitle}}</span></li>',
     'paginateHtml': '<ul class="pagination-custom">{{previous}}{{pageItems}}{{next}}</ul>',
-  
+
     // Sorting Template
     'sortingHtml': '<label for="bc-sf-filter-top-sorting-select" class="label--hidden">' + bcSfFilterConfig.label.sorting + '</label><select id="bc-sf-filter-top-sorting-select" class="collection-sort__input">{{sortingItems}}</select>',
 };
@@ -49,9 +62,10 @@ var bcSfFilterTemplate = {
 
 // Build Product Grid Item
 BCSfFilter.prototype.buildProductGridItem = function(data, index) {
+
     /*** Prepare data ***/
     var images = data.images_info;
-     // Displaying price base on the policy of Shopify, have to multiple by 100
+    // Displaying price base on the policy of Shopify, have to multiple by 100
     var soldOut = !data.available; // Check a product is out of stock
     var onSale = data.compare_at_price_min > data.price_min; // Check a product is on sale
     var priceVaries = data.price_min != data.price_max; // Check a product has many prices
@@ -70,37 +84,52 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
     }
     /*** End Prepare data ***/
 
-    // Get Template
+        // Get Template
     var itemHtml = bcSfFilterTemplate.productGridItemHtml;
 
     // Add Thumbnail
     var itemThumbUrl = images.length > 0 ? this.optimizeImage(images[0]['src']) : bcSfFilterConfig.general.no_image_url;
     itemHtml = itemHtml.replace(/{{itemThumbUrl}}/g, itemThumbUrl);
 
+    itemHtml = itemHtml.replace(/{{itemImages}}/g, buildImages(data));
+
     // Add Price
     var itemPriceHtml = '';
-    if (data.title != '')  {
-        itemPriceHtml += '<p class="grid-link__meta">';
-        if (onSale) {
-            itemPriceHtml += '<s class="grid-link__sale_price">' + this.formatMoney(data.compare_at_price_min) + '</s> ';
-        }
-        if (priceVaries) {
-            itemPriceHtml += (bcSfFilterConfig.label.from_price).replace(/{{ price }}/g, this.formatMoney(data.price_min));
-        } else {
-            itemPriceHtml += this.formatMoney(data.price_min);
-        }
-        itemPriceHtml += '</p>';
+
+    itemPriceHtml += '<span class="product-tile__price color-secondary-text">';
+    itemPriceHtml += bcsffilter.formatMoney(data.price_min * 100);
+    itemPriceHtml += '</span>';
+
+    if (onSale) {
+        itemPriceHtml += '<s class="product-tile__compare-price color-secondary-text text-small">';
+        itemPriceHtml += bcsffilter.formatMoney(data.compare_at_price_min * 100);
+        itemPriceHtml += '</s>';
     }
+
     itemHtml = itemHtml.replace(/{{itemPrice}}/g, itemPriceHtml);
+
+    var wishlistHTML = '';
+    if (ShopifyWishlist.customerid) {
+        wishlistHTML +=  '<a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ itemHandle }}">';
+        wishlistHTML += '<svg class="icon icon-heart icon--full-color" width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Icons-/-Basic-/-Favourites" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="fill" d="M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path><path class="outline" d="M59.8973077,18.5869231 C59.0215385,8.94769231 52.1988462,1.95423077 43.6603846,1.95423077 C37.9719231,1.95423077 32.7634615,5.01538462 29.8326923,9.92153846 C26.9284615,4.95192308 21.9334615,1.95307692 16.3361538,1.95307692 C7.79884615,1.95307692 0.975,8.94653846 0.100384615,18.5857692 C0.0311538462,19.0115385 -0.252692308,21.2523077 0.610384615,24.9065385 C1.85423077,30.1773077 4.72730769,34.9715385 8.91692308,38.7676923 L29.8188462,57.7357692 L51.0796154,38.7688462 C55.2692308,34.9715385 58.1423077,30.1784615 59.3861538,24.9065385 C60.2492308,21.2534615 59.9653846,19.0126923 59.8973077,18.5869231 Z M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Shape" fill="#2C2F35" fill-rule="nonzero"></path></g></svg>'
+        wishlistHTML += '</a>';
+    }else{
+        wishlistHTML +=  '<a class="product-tile__wishlist-add" href="/pages/wishlist">';
+        wishlistHTML += '<svg class="icon icon-heart icon--full-color" width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Icons-/-Basic-/-Favourites" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="fill" d="M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path><path class="outline" d="M59.8973077,18.5869231 C59.0215385,8.94769231 52.1988462,1.95423077 43.6603846,1.95423077 C37.9719231,1.95423077 32.7634615,5.01538462 29.8326923,9.92153846 C26.9284615,4.95192308 21.9334615,1.95307692 16.3361538,1.95307692 C7.79884615,1.95307692 0.975,8.94653846 0.100384615,18.5857692 C0.0311538462,19.0115385 -0.252692308,21.2523077 0.610384615,24.9065385 C1.85423077,30.1773077 4.72730769,34.9715385 8.91692308,38.7676923 L29.8188462,57.7357692 L51.0796154,38.7688462 C55.2692308,34.9715385 58.1423077,30.1784615 59.3861538,24.9065385 C60.2492308,21.2534615 59.9653846,19.0126923 59.8973077,18.5869231 Z M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Shape" fill="#2C2F35" fill-rule="nonzero"></path></g></svg>'
+        wishlistHTML += '</a>';
+    }
+
+    itemHtml = itemHtml.replace(/{{itemWishlist}}/g, wishlistHTML);
+    itemHtml = itemHtml.replace(/{{itemBadges}}/g, buildBadges(data));
 
     // Add soldOut class
     var soldOutClass = soldOut ? bcSfFilterTemplate.soldOutClass : '';
     itemHtml = itemHtml.replace(/{{soldOutClass}}/g, soldOutClass);
-  
+
     // Add onSale class
     var saleClass = onSale ? bcSfFilterTemplate.saleClass : '';
     itemHtml = itemHtml.replace(/{{saleClass}}/g, saleClass);
-  
+
     // Add soldOut Label
     var itemSoldOutLabelHtml = soldOut ? bcSfFilterTemplate.soldOutLabelHtml : '';
     itemHtml = itemHtml.replace(/{{itemSoldOutLabel}}/g, itemSoldOutLabelHtml);
@@ -168,6 +197,84 @@ BCSfFilter.prototype.prepareProductData = function(data) {
     }
     return data;
 };
+
+function buildImages(data) {
+    var images = data.images_info;
+
+    var html = '';
+    // Build Main Image
+    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src']) : bcSfFilterConfig.general.no_image_url;
+    html += '<img src="' + thumbUrl + '" class=" product-tile-image" />';
+    // Build Image Swap
+    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src']) : thumbUrl;
+    html += '<img src="' + flipImageUrl + '" class=" product-tile-image secondary" />';
+
+
+    return html;
+}
+
+function buildBadges(data) {
+    var sale = false;
+    var newItem = false;
+    var restocked = false;
+    var last_sizes = false;
+    var preorder = false;
+
+    var html = '';
+
+    if (data.compare_at_price_min > data.price_min) {
+        sale = true;
+    }
+    if (data.tags) {
+        for (var i = 0; i < data.tags.length; i++) {
+            var tag = data.tags[i];
+            if (tag == 'new'){
+                newItem = true;
+            }
+            if (tag == 'restocked'){
+                restocked = true;
+            }
+            if (tag == 'last_sizes'){
+                last_sizes = true;
+            }
+            if (tag == 'preorder'){
+                preorder = true;
+            }
+        }
+    }
+
+    if (sale || newItem || restocked || last_sizes){
+        html +=  '<div class="product-stickers">';
+
+        if (sale){
+            html +=  '<div class="product-sticker product-sticker__sale">';
+            html +=  '<strong class="text-small">' + data.percent_sale_min + '% off</strong>';
+            html +=  '</div>';
+        } else if(newItem) {
+            html +=  '<div class="product-sticker product-sticker__new">';
+            html +=  '<strong class="text-small">New</strong>';
+            html +=  '</div>';
+        } else if (restocked) {
+            html +=  '<div class="product-sticker product-sticker__restocked">';
+            html +=  '<strong class="text-small">Restocked</strong>';
+            html +=  '</div>';
+
+        } else if(last_sizes) {
+
+            html +=  '<div class="product-sticker product-sticker__last-sizes">';
+            html +=  '<strong class="text-small">Last Sizes</strong>';
+            html +=  '</div>';
+        } else if(preorder) {
+            html +=  '<div class="product-sticker product-sticker__preorder">';
+            html +=  '<strong class="text-small">Pre-Order</strong>';
+            html +=  '</div>';
+        }
+
+        html +=  '</div>';
+    }
+    return html;
+}
+
 
 /************************** END BUILD PRODUCT LIST **************************/
 
@@ -249,7 +356,7 @@ BCSfFilter.prototype.buildFilterSorting = function() {
 
         var sortingArr = this.getSortingList();
         if (sortingArr) {
-            // Build content 
+            // Build content
             var sortingItemsHtml = '';
             for (var k in sortingArr) {
                 sortingItemsHtml += '<option value="' + k +'">' + sortingArr[k] + '</option>';
@@ -285,4 +392,16 @@ BCSfFilter.prototype.buildFilterSorting = function() {
 BCSfFilter.prototype.buildExtrasProductList = function(data, eventType) {};
 
 // Build additional elements
-BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {};
+BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
+
+    // Refresh Quickview
+    AppQuickview.initQuickViewButtons();
+
+    document.dispatchEvent(
+        new Event("products.refresh"),
+    );
+    document.body.dispatchEvent(
+        new Event("shopify-currency.refresh")
+    );
+
+};
