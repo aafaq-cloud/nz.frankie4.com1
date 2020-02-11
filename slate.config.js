@@ -31,7 +31,17 @@ module.exports = {
                           }
                       }
                   ]
-              }
+              },
+              { // css loader for webpack
+                  test: /\.css$/,
+                  use: [
+                      {
+                          loader: 'css-loader',
+                          options: {
+                          }
+                      }
+                  ]
+              },
           ]
         }
       },
@@ -48,6 +58,17 @@ module.exports = {
                                     path.resolve("./node_modules/foundation-sites/scss"),
                                     path.resolve("./node_modules/@glidejs/glide/src/assets/sass")
                                   ],
+                              }
+                          }
+                      ]
+                  },
+                  { // css loader for webpack
+                      test: /\.css$/,
+                      use: [
+                          {
+                              loader: 'css-loader',
+                              options: {
+
                               }
                           }
                       ]

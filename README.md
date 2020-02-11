@@ -1,4 +1,4 @@
-# Lambify Theme
+# Frankie 4 on Lambify Theme
 
 The Lambify theme is built upon the Slate v1 Shopify build. The Lambify theme takes this base framework and adds a structure familiar to the Lamb Wordpress theme.
 The theme is a bare bones theme designed to be used as a base for Shopify projects and provides all the appropriate tooling for efficient Shopify development.
@@ -170,3 +170,8 @@ This special directory can be useful for files added by plugins you've installed
 `src/config`, `src/layout/theme.liquid`, `src/locales`, `src/sections`, `src/snippets`, `src/templates/*.liquid`
 
 The aforementioned [files and folders are required by Shopify](https://help.shopify.com/themes/development/templates) for any given theme.
+
+#### 13. Additional Notes
+`src/assets/static/bc-sf-filter.js` is a file from the app Product Filter & Search and this file builds a JS version of the product tile.
+
+This needs to match the `src/snippets/product-tile.liquid` file for consistency but as it is in static, any changes made will only appear on deploy.
