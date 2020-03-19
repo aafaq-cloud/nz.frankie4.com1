@@ -68,10 +68,13 @@
     background: transparent;
     cursor: pointer;
     color: inherit;
-    font-size: inherit;
+    //font-size: inherit;
     letter-spacing: inherit;
     line-height: inherit;
     z-index: 1;
+    //@include breakpoint(small) {
+      font-size: rem-calc(16);
+    //}
   }
 
   .select-wrap {
@@ -87,6 +90,20 @@
 
     &-label {
       white-space: nowrap;
+    }
+
+  }
+}
+
+#bc-sf-filter-bottom-pagination {
+  .pagination-custom {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+
+    li {
+      padding: 10px;
     }
 
   }

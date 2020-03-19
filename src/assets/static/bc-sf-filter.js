@@ -406,25 +406,25 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
     // Improve the sorting
     jQ("#bc-sf-filter-top-sorting-select").on("change", function(){
-        localStorage.setItem('sorting_changed', true);
+        //localStorage.setItem('sorting_changed', true);
     });
 
 };
 
-BCSfFilter.prototype.updateApiParams = function(url) {
-    // Get Filter params
-    var params = this.getFilterParams(url);
-    // Set default params if missing from url params
-
-    params = this.setDefaultParams(params);
-
-    var sorting_changed = localStorage.getItem('sorting_changed');
-    if(sorting_changed){
-        params.page = 1;
-        localStorage.setItem('sorting_changed', true);
-    }
-    //console.log(params);
-
-    // Set data back to queryParams
-    this.queryParams = params;
-};
+// BCSfFilter.prototype.updateApiParams = function(url) {
+//     // Get Filter params
+//     var params = this.getFilterParams(url);
+//     // Set default params if missing from url params
+//
+//     params = this.setDefaultParams(params);
+//
+//     var sorting_changed = localStorage.getItem('sorting_changed');
+//     if(sorting_changed){
+//         params.page = 1;
+//         localStorage.setItem('sorting_changed', true);
+//     }
+//     //console.log(params);
+//
+//     // Set data back to queryParams
+//     this.queryParams = params;
+// };
