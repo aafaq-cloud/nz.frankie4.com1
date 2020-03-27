@@ -161,13 +161,20 @@
                             </h4>
 
                             <div class="after-pay-info color-secondary-text text-small">
-                                <p>
+                                <div>
                                     Or 4 interest free payments of
                                     <span class="after-pay-price" data-product-price data-product-price-divide="4">{{ current_variant.price | divided_by: 4 | money }}</span>
                                     with {% include 'icon-afterpay' %}
+                                    {% comment %}
                                     <a class="icon-coloured afterpay-modal" target="_blank" href="#">learn more</a>
-                                </p>
+                                    {% endcomment %}
+                                </div>
                             </div>
+
+                          {% include 'zip-widget' %}
+                          <div class="zip-pay-info color-secondary-text text-small">
+                            <span data-zm-widget="popup" data-zm-popup-asset="termsdialog" title="Own it now, pay later.">Nothing upfront. Repayments from just $10/week {% include 'icon-zippay' %}</span>
+                          </div>
 
                         </div>
 

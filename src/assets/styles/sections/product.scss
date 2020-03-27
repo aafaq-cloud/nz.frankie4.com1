@@ -51,6 +51,8 @@
 
   .after-pay-info {
 
+    margin-bottom: 5px;
+
     svg {
       display: inline;
       height: 1.2em;
@@ -59,6 +61,25 @@
 
       path {
         fill: $color-body-text;
+      }
+    }
+  }
+
+  .zip-pay-info {
+
+    margin-bottom: 25px;
+    cursor: pointer;
+
+    svg {
+      display: inline;
+      height: 1.2em;
+      width: auto;
+      vertical-align: middle;
+      margin-left: 5px;
+      filter: grayscale(100%);
+
+      path, ellipse {
+        //fill: $color-body-text;
       }
     }
   }
