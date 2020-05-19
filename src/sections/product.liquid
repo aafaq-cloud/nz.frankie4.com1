@@ -398,9 +398,7 @@
 
                     <div class="product-information mt-40">
                         {% if product.description %}
-                            <div class="rte">
-                                {{ product.description }}
-                            </div>
+                          {% render "product-accordion" %}
                         {% endif %}
 
                         {% if section.settings.product_accordion_title_1 != blank %}

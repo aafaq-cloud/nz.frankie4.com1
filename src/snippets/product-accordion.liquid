@@ -1,0 +1,29 @@
+{% assign description_sections = product.description | replace: '<meta charset="utf-8">', '' | strip | split: '<h2>' %}
+{% assign first_section = description_sections | first %}
+<div class="product-information">
+
+  {{ first_section }}
+
+  {% for s in description_sections %}
+    {% unless forloop.first %}
+      {% if s == blank %}
+        {% continue %}
+      {% endif %}
+      {% if s contains "</h2>" %}
+        {% assign s_title = s | split: '</h2>' | first | strip_html %}
+      {% else %}
+        {% assign s_title = "About" %}
+      {% endif %}
+      <div aria-controls="accordion-item-{{ forloop.index }}" data-autoload-class="ComponentAccordionItem" class="accordion-toggle">
+          <h6 class="accordion-toggle-title">
+            {{ s_title }}
+          </h6>
+          <span class="open-icon">{% render 'icon-plus' %}</span>
+          <span class="close-icon">{% render 'icon-minus' %}</span>
+      </div>
+      <div class="grid-x accordion accordion-body rte" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
+        {{ s | split: "</h2>" | last }}
+      </div>
+    {% endunless %}
+  {% endfor %}
+</div>
