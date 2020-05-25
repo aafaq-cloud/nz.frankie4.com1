@@ -1,0 +1,59 @@
+{% capture all_tags %}
+  {{ product.tags | join: ' ' }}
+{% endcapture %}
+
+{% assign feature_tags = '' %}
+
+{% for tag in product.tags %}
+  {% if tag contains 'feature_' %}
+    {% assign feature_tag = tag | replace: "feature_", "" %}
+    {% assign feature_tags = feature_tags | append: feature_tag | append: ',' %}
+  {% endif %}
+
+{% endfor %}
+
+{% assign feature_tags_array = feature_tags | split: "," %}
+
+<div class="product-features mb-40">
+  {% for feature in features %}
+    {% if feature_tags_array contains feature.settings.title %}
+      <div class="product-features-item" data-open="feature-{{ forloop.index0 }}">
+
+        {% unless feature.settings.icon == blank %}
+          <img src="{{feature.settings.icon | img_url: '60x60' }}" class="mr-10" alt="{{ feature.settings.title }}"/>
+        {% endunless %}
+        {{ feature.settings.title }}
+
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% for feature in features %}
+  {% if feature_tags_array contains feature.settings.title %}
+    <div class="reveal large feature-modal" id="feature-{{ forloop.index0 }}" data-reveal>
+      <a class="close-button" data-close aria-label="Close Feature Modal">
+        <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
+          <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
+                                                            38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
+                                                            0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
+        </svg>
+      </a>
+      <div class="modal-content grid-x grid-margin-x align-middle">
+        {% if feature.settings.image %}
+          <div class="cell medium-6 hide-for-small-only">
+            <img src="{{feature.settings.image | img_url: '500x'}}" class="lazyload">
+          </div>
+        {% endif %}
+        <div class="cell auto">
+          <div class="modal-content-text">
+              <h2>{{ feature.settings.title }}</h2>
+              <div class="rte">
+                {{ feature.settings.content }}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

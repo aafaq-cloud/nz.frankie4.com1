@@ -1,0 +1,57 @@
+.product-features {
+  position: relative;
+  width: 100%;
+  border-color: $color-border;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &-item {
+    background-color: lighten($color-border, 5);
+    border-color: $color-border;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 10px;
+    font-size: rem-calc(12);
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 200ms linear;
+
+    img {
+      width: 30px;
+    }
+
+    @include breakpoint(medium) {
+
+      &:hover {
+        background-color: $color-border;
+      }
+
+    }
+    @include breakpoint(large) {
+      flex: 1 1 33.333%;
+
+      &:hover {
+        background-color: $color-border;
+      }
+
+    }
+
+  }
+
+}
+
+
+.feature-modal {
+  .modal-content-text {
+    padding: 30px;
+  }
+
+  @include breakpoint(small down) {
+    top: 0 !important
+  }
+}

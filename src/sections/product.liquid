@@ -397,6 +397,9 @@
                 {% unless is_quickview %}
 
                     <div class="product-information mt-40">
+
+                        {% render "product-features", product: product, features: section.blocks %}
+
                         {% if product.description %}
                           {% render "product-accordion" %}
                         {% endif %}
@@ -549,6 +552,34 @@
         "type": "url",
         "id": "size_guide_button_link",
         "label": "Button Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "features",
+        "name": "Feature",
+        "settings": [
+          {
+            "id": "icon",
+            "type": "image_picker",
+            "label": "Icon"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "content",
+            "type": "richtext",
+            "label": "Content"
+          },
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
       }
     ]
   }
