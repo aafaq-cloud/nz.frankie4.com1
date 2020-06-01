@@ -15,7 +15,7 @@
     border-width: 0 1px 1px 0;
     padding: 10px;
     font-size: rem-calc(12);
-    flex: 1 1 50%;
+    flex: 1 1 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -47,6 +47,15 @@
 
 
 .feature-modal {
+
+  .modal-content-image-cell {
+
+    @include breakpoint(small down) {
+      order: 2;
+    }
+
+  }
+
   .modal-content-text {
     padding: 30px;
   }

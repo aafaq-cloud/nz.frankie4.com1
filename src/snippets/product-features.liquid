@@ -41,11 +41,11 @@
       </a>
       <div class="modal-content grid-x grid-margin-x align-middle">
         {% if feature.settings.image %}
-          <div class="cell medium-6 hide-for-small-only">
+          <div class="cell medium-6 modal-content-image-cell">
             <img src="{{feature.settings.image | img_url: '500x'}}" class="lazyload">
           </div>
         {% endif %}
-        <div class="cell auto">
+        <div class="cell auto modal-content-text-cell">
           <div class="modal-content-text">
               <h2>{{ feature.settings.title }}</h2>
               <div class="rte">

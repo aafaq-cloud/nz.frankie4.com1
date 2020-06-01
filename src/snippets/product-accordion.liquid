@@ -22,7 +22,9 @@
           <span class="close-icon">{% render 'icon-minus' %}</span>
       </div>
       <div class="grid-x accordion accordion-body rte" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
-        {{ s | split: "</h2>" | last }}
+        <div class="cell">
+          {{ s | split: "</h2>" | last }}
+        </div>
       </div>
     {% endunless %}
   {% endfor %}
