@@ -1,11 +1,17 @@
-<div class="section section-shipping-accordion large-margin">
+<div class="section section-shipping-accordion no-margin-top">
+
+    <div class="heading-container" style="background: url({{ section.settings.heading_image | img_url: '1000x'}})">
+        <div>
+           {{ section.settings.heading_title }}
+        </div>
+    </div>
+
     <div class="grid-container">
 
     {% if section.blocks !=  blank %}
 
-        <div class="grid-x">
-            <div class="cell large-9 large-offset-3">
-
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-7 large-8">
                 <div class="shipping-accordion">
                     {% for block in section.blocks %}
                         {% if block.type == 'category_title' %}
@@ -24,8 +30,35 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+            </div>
+
+          <div class="cell medium-5 large-4">
+
+            <div class="contact-details">
+              <h5>Still have any questions</h5>
+
+
+              <div class="flex-container">
+                <div class="shrink">{% include "icon-phone" %}</div>
+                <div class="auto"><a href="tel:1300 721 898">1300 721 898</a></div>
+              </div>
+
+              <div class="flex-container">
+                <div class="shrink">{% include "icon-email" %}</div>
+                <div class="auto"><a href="mailto:info@frankie4.com.au">info@frankie4.com.au</a></div>
+              </div>
+
+              <div class="flex-container">
+                <div class="shrink">{% include "icon-user" %}</div>
+                <div class="auto">Online chat - click bottom right corner</div>
+              </div>
+
+
 
             </div>
+
+
+          </div>
         </div>
         {% endif %}
     </div>
@@ -36,6 +69,16 @@
      {
          "name": "Shipping Accordion",
          "settings": [
+          {
+          "id": "heading_title",
+          "type": "text",
+          "label": "Page Heading"
+          },
+          {
+          "id": "heading_image",
+          "type": "image_picker",
+          "label": "Feature Image"
+          }
          ],
          "blocks": [
              {
