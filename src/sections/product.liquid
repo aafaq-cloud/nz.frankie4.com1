@@ -318,11 +318,14 @@
                                 {% endif %}
 
 
-                                <a class="icon-link ml-10 mb-20" id="BIS_trigger">
-                                    {% include 'icon-cant-find' %}
-                                    Can't find your size?
-                                </a>
+                                {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
 
+                                {% unless product.tags contains 'bis-hidden' %}
+                                  <a class="icon-link ml-10 mb-20" id="BIS_trigger">
+                                      {% include 'icon-cant-find' %}
+                                      Can't find your size?
+                                  </a>
+                                {% endunless %}
                             {% endunless %}
 
                             <div class="grid-x grid-buttons">
