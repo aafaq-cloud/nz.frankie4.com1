@@ -42,6 +42,9 @@
   {% include 'style-tags', layout: 'theme' %}
   {% include 'css-variables' %}
 
+  {% assign cdn_path_basis = '?' | file_url %}
+  {% assign no_image = 'no-image.png' | asset_url %}
+  {%- assign cdn_base = cdn_path_basis | split: '?' | first -%}
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', '');
 
@@ -51,7 +54,9 @@
         soldOut: {{ 'products.product.sold_out' | t | json }},
         unavailable: {{ 'products.product.unavailable' | t | json }}
       },
-      moneyFormat: {{ shop.money_format | json }}
+      moneyFormat: {{ shop.money_format | json }},
+      cdnBase: {{ cdn_base | json }},
+      noImageUrl: {{ no_image | json }}
     };
   </script>
 

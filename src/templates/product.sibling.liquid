@@ -1,0 +1,26 @@
+{% layout none %}
+
+{% assign related_products = '' %}
+{% for unclean_tag in product.tags %}
+  {% if unclean_tag contains 'variant_' %}
+    {% assign tag = unclean_tag | remove: 'variant_' %}
+    {% assign prod = all_products[tag] %}
+    {% if prod != blank %}
+      {% if related_products != blank %}
+        {% assign related_products = related_products | append: ',' %}
+      {% endif %}
+      {% assign related_products = related_products | append: tag %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign related_products = related_products | split: ',' %}
+{
+"products"    : [
+{{ product | json }}{% unless related_products == blank %},{% endunless %}
+ {%- for related_product in related_products -%}
+   {%- assign related_product_object = all_products[related_product] -%}
+   {%- if related_product_object != blank -%}
+   {{ related_product_object | json }}{% unless forloop.last == true %},{% endunless %}
+   {%- endif -%}
+ {%- endfor -%}
+]}

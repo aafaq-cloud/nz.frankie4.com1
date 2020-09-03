@@ -16,6 +16,7 @@ import {ShopifyCart} from "../class/ShopifyCart";
 import MicroModal from 'micromodal';
 import {QuickView} from "../class/Quickview";
 import {ShopifyCurrency} from "../class/Currency";
+import {ProductList} from "../class/ProductList";
 
 window.slate = window.slate || {};
 window.theme = window.theme || {};
@@ -28,6 +29,7 @@ $(document).ready(() => {
   window.AppCurrency = new ShopifyCurrency();
   window.AppShopifyCart = new ShopifyCart();
   window.AppQuickview = new QuickView();
+  window.AppProductList = new ProductList();
 
   // Autoload Classes
   Autoloader.registerAutoloadClasses();

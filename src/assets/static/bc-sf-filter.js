@@ -18,10 +18,10 @@ var bcSfFilterTemplate = {
     'vendorHtml': '<div>{{itemVendorLabel}}</div>',
 
     // Grid Template
-    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch">' +
+    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch test">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
-        '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
         '<div class="cell product-tile__image-container">' +
+        '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
         '{{itemImages}}' +
         '<button data-product-quickview data-product-url="{{itemUrl}}" class="product-tile__quickview button button-secondary button-small">Quickview</button>' +
 
@@ -29,12 +29,13 @@ var bcSfFilterTemplate = {
 
         '<div class="cell product-tile__body grid-y">' +
         '<h5 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h5>' +
+        '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
         '<div class="product-tile__info">' +
 
         '{{itemPrice}}' +
 
         '<div class="grid-x align-center">' +
-            '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
+        '{{itemSwatches}}' +
         '</div>' +
 
         '</div>' +
@@ -42,6 +43,8 @@ var bcSfFilterTemplate = {
 
         '{{itemWishlist}}' +
         '{{itemBadges}}' +
+
+        '<div class="variant-container"></div>' +
 
         '</article>' +
         '</div>',
@@ -94,6 +97,8 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
     itemHtml = itemHtml.replace(/{{itemThumbUrl}}/g, itemThumbUrl);
 
     itemHtml = itemHtml.replace(/{{itemImages}}/g, buildImages(data));
+
+    itemHtml = itemHtml.replace(/{{itemSwatches}}/g, buildSwatches(data));
 
     // Add Price
     var itemPriceHtml = '';
@@ -205,12 +210,68 @@ function buildImages(data) {
 
     var html = '';
     // Build Main Image
-    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src']) : bcSfFilterConfig.general.no_image_url;
+    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '335x400_crop_center') : bcSfFilterConfig.general.no_image_url;
     html += '<img src="' + thumbUrl + '" class=" product-tile-image" />';
     // Build Image Swap
     var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src']) : thumbUrl;
-    html += '<img src="' + flipImageUrl + '" class=" product-tile-image secondary" />';
+    //html += '<img src="' + flipImageUrl + '" class=" product-tile-image secondary" />';
 
+
+    return html;
+}
+
+function buildSwatches(data) {
+
+    var html = '';
+    html += '<div class="product-tile__swatches">';
+
+    let colourCount = 1;
+
+    if (data.tags) {
+
+        for (var i = 0; i < data.tags.length; i++) {
+            var tag = data.tags[i];
+            if(tag.includes("group_")){
+                var group = tag.replace("group_", "");
+            }
+        }
+        var colour = data.handle.replace(group + '-', "");
+        html += '<div class="color-swatch color-swatch--tile"><input checked type="radio" name="colors--'+ data.id +'" id="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" class="color-swatch__input" value="'+ data.handle +'"> <label for="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" title="TAUPE" aria-label="'+ data.handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="' + window.theme.cdnBase + colour +'.png"/></label></div>';
+
+
+        for (var i = 0; i < data.tags.length; i++) {
+
+            if (colourCount >= 4) {break;}
+            var tag = data.tags[i];
+
+            if(tag.includes("variant_")){
+
+                var handle = tag.replace("variant_", "");
+                var colour = handle.replace(group + '-', "");
+
+                //html += '<div class="swatch" data-handle="' + handle + '"></div>';
+
+                html += '<div class="color-swatch color-swatch--tile"><input type="radio" name="colors--'+ data.id +'" id="'+ handle +'--'+ data.id +'--'+ handle +'" class="color-swatch__input" value="'+ handle +'"> <label for="'+ handle +'--'+ data.id +'--'+ handle +'" title="' + colour + '" aria-label="'+ handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="'+ window.theme.cdnBase + colour +'.png"/></label></div>';
+                colourCount++;
+//               html += '<div class="color-swatch color-swatch--tile">';
+//               html += '<input type="radio" name="' + data.id + '" id="' + data.id + '-' + handle + '" class="color-swatch__input" value="' + handle + '">';
+//               html += '<label for="' + handle +'--' + data.id '" title="'+handle+'" class="color-swatch__label"></label>';
+//               html += '</div>';
+
+                //html += '<div class="swatch" data-handle="' + handle + '"></div>';
+
+
+            }
+
+
+        }
+        if (colourCount > 2){
+            html += '<div class="more-colours">';
+            html += '<a href="{{itemUrl}}">+</a>';
+            html += '</div>';
+        }
+    }
+    html += '</div>';
 
     return html;
 }
@@ -398,6 +459,9 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
 
     // Refresh Quickview
     AppQuickview.initQuickViewButtons();
+    AppProductList.initProductList();
+
+    //console.log(data);
 
     document.dispatchEvent(
         new Event("products.refresh"),

@@ -9,6 +9,20 @@
         </div>
 
         {% unless collections[section.settings.collection].products_count == 0 %}
+            <div class="grid-x grid-margin-x grid-margin-y">
+
+                {% for product in collections[section.settings.collection].products limit:4 %}
+                    <div class="cell small-6 large-3">
+                        {% include 'product-tile' %}
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endunless %}
+
+
+        {% comment %}
+        {% unless collections[section.settings.collection].products_count == 0 %}
             <div class="grid-x grid-margin-x">
                 <div data-autoload-class="ComponentCarousel" class="carousel cell">
                     <div class="glide">
@@ -29,6 +43,8 @@
                 </div>
             </div>
         {% endunless %}
+
+        {% endcomment %}
 
     </div>
 </div>

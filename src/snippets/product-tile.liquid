@@ -28,22 +28,22 @@
 {% endif %}
 
 <article class="product-tile text-center grid-y" data-handle="{{product.handle}}">
-  <a href="{{product_url}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
   <div class="cell product-tile__image-container">
+     <a href="{{product_url}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
     <img data-src="{{product | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image">
-    <img data-src="{{secondary_image | img_url: '335x400', crop: 'center'}}" class="lazyload product-tile-image secondary">
 
     <button data-product-quickview data-product-url="{{ product_url }}" class="product-tile__quickview button button-secondary button-small">{{ 'products.product.quickview' | t }}</button>
   </div>
   <div class="cell product-tile__body grid-y">
     <h5 class="product-tile__title grid-x align-middle align-center">{{ product.title }}</h5>
+    <div class="cell shrink yotpo bottomLine" data-product-id="{{ product.id }}"></div>
     <div class="product-tile__info">
 
         {% if product_variant_label != blank %}
             <p class="color-secondary-text m-0 mb-10 text-small">{{ product_variant_label }}</p>
         {% endif %}
 
-      <span class="product-tile__price color-secondary-text">
+      <span class="product-tile__price">
         {{ product.price_max | money }}
       </span>
       {% if product.compare_at_price_max > product.price_max %}
@@ -53,7 +53,55 @@
       {% endif %}
 
         <div class="grid-x align-center">
-            <div class="cell shrink yotpo bottomLine" data-product-id="{{ product.id }}"></div>
+
+
+          {% assign related_products = '' %}
+          {% for unclean_tag in product.tags %}
+
+            {% if unclean_tag contains 'group_' %}
+              {% assign group = unclean_tag | remove: 'group_' %}
+            {% endif %}
+            {% if unclean_tag contains 'variant_' %}
+              {% assign tag = unclean_tag | remove: 'variant_' %}
+              {% if related_products != blank %}
+                {% assign related_products = related_products | append: ',' %}
+              {% endif %}
+              {% assign related_products = related_products | append: tag %}
+            {% endif %}
+          {% endfor %}
+          {% assign related_products = related_products | split: ',' %}
+
+          <div class="product-tile__swatches">
+            {% assign colour = product.handle | remove: group | remove_first: '-' %}
+            {% assign image = colour | append: '.png' %}
+            {% assign imageUrl = image | file_url %}
+            <div class="color-swatch color-swatch--tile">
+              <input checked type="radio" name="colors--{{ product.id }}" id="{{ product.handle }}--{{ product.id }}--{{ product.handle }}" class="color-swatch__input" value="{{ product.handle }}">
+              <label for="{{ product.handle }}--{{ product.id }}--{{ product.handle }}" title="TAUPE" aria-label="{{ product.handle }}" class="color-swatch__label">
+                <img src="{{ imageUrl }}"/>
+              </label>
+            </div>
+
+          {% for product_item in related_products limit: 4 %}
+            {% assign colour = product_item | remove: group | remove_first: '-' %}
+            {% assign image = colour | append: '.png' %}
+            {% assign imageUrl = image | file_url %}
+             <div class="color-swatch color-swatch--tile">
+               <input type="radio" name="colors--{{ product.id }}" id="{{ product_item }}--{{ product.id }}--{{ product_item }}" class="color-swatch__input" value="{{ product_item }}">
+               <label for="{{ product_item }}--{{ product.id }}--{{ product_item }}" title="{{ colour }}" aria-label="{{ product_item }}" class="color-swatch__label">
+                 <img src="{{ imageUrl }}"/>
+               </label>
+             </div>
+          {% endfor %}
+
+
+            {% if related_products.size > 2 %}
+            <div class="more-colours">
+              <a href="{{ product.url }}">+</a>
+            </div>
+            {% endif %}
+
+          </div>
         </div>
 
     </div>
@@ -61,6 +109,7 @@
 
   {% include 'product-stickers' with product:product limit: 1 %}
 
+  {% comment %}
   {% if customer %}
       <a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product_name }}">
           {% include 'icon-heart' %}
@@ -70,5 +119,6 @@
           {% include 'icon-heart' %}
       </a>
   {% endif %}
+  {% endcomment %}
 
 </article>
