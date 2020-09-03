@@ -10,15 +10,16 @@
     position: relative;
     margin-bottom: 50px;
     background-size: cover;
+    background-position: center;
     text-transform: uppercase;
 
     @include breakpoint(medium) {
-      height: 300px;
+      height: 250px;
     }
 
     &:before {
       background: #000000;
-      opacity: 0.4;
+      opacity: 0.5;
       position: absolute;
       content: '';
       display: block;
