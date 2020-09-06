@@ -1,6 +1,6 @@
-{%- comment -%} Check if template is collection page {%- endcomment -%}
+{%- comment -%} Check if template is collection or search page {%- endcomment -%}
 {%- assign bcsffilter_is_initfilter = false -%}
-{%- if template contains 'collection' -%}
+{%- if request.page_type == 'collection' -%}
   {%- unless template contains 'bc-original' -%}
     {%- assign bcsffilter_is_initfilter = true -%}
   {%- endunless -%}
@@ -43,6 +43,12 @@
         {%- endfor -%}
       ],
       current_currency: {{- cart.currency.iso_code | json -}},
+      published_locales: {
+      {%- for locale in shop.published_locales -%}
+      {{- locale.iso_code | json -}}:{{- locale.primary | json -}}{%- if forloop.last != true -%},{%- endif -%}
+      {%- endfor -%}
+      },
+      current_locale: {{- request.locale.iso_code | json -}},
       isInitFilter: {{- bcsffilter_is_initfilter | json -}}
     },
     {% if shop.metafields.bc-sf-filter.settings != blank %}
@@ -64,6 +70,8 @@
 
 <!-- Include Resources -->
 <script defer src="{{'bc-sf-filter-lib.js' | asset_url }}"></script>
+<script defer src="{{'bc-sf-search.js' | asset_url }}"></script>
+
 {%- if bcsffilter_is_initfilter == true -%}
   <script defer src="{{'bc-sf-filter.js' | asset_url }}"></script>
 {%- endif -%}
