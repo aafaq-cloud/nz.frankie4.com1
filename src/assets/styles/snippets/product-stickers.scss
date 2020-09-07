@@ -10,26 +10,31 @@ $restocked: #c7cdd1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  min-width: 40px;
-  margin-right: 6px;
+  //height: 40px;
+  //min-width: 40px;
+  //margin-right: 6px;
 
-  &::after {
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    content: "";
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: $restocked;
-  }
+  transform: rotate(90deg);
+  transform-origin: top left;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  //&::after {
+  //  position: absolute;
+  //  z-index: -1;
+  //  left: 50%;
+  //  top: 50%;
+  //  transform: translate(-50%, -50%);
+  //  content: "";
+  //  display: block;
+  //  width: 40px;
+  //  height: 40px;
+  //  border-radius: 50%;
+  //  background-color: $restocked;
+  //}
 
   strong {
-    font-weight: 800;
+    font-weight: bold;
   }
 
   &__sale {

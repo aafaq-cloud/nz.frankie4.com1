@@ -41,7 +41,6 @@ var bcSfFilterTemplate = {
         '</div>' +
         '</div>' +
 
-        '{{itemWishlist}}' +
         '{{itemBadges}}' +
 
         '<div class="variant-container"></div>' +
@@ -103,7 +102,7 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
     // Add Price
     var itemPriceHtml = '';
 
-    itemPriceHtml += '<span class="product-tile__price color-secondary-text">';
+    itemPriceHtml += '<span class="product-tile__price">';
     itemPriceHtml += bcsffilter.formatMoney(data.price_min * 100);
     itemPriceHtml += '</span>';
 
@@ -456,6 +455,14 @@ BCSfFilter.prototype.buildExtrasProductList = function(data, eventType) {};
 
 // Build additional elements
 BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
+
+    var _this = this;
+    var totalProduct = data.total_product + '<span> ' + bcSfFilterConfig.label.items_with_count_other + '</span>';
+    if (data.total_product == 1) {
+        totalProduct = data.total_product + '<span> ' + bcSfFilterConfig.label.items_with_count_one + '</span>';
+    }
+    totalProduct = jQ.parseHTML(totalProduct);
+    jQ('#bc-sf-filter-total-product').html(totalProduct);
 
     // Refresh Quickview
     AppQuickview.initQuickViewButtons();

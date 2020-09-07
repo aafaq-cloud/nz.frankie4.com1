@@ -82,7 +82,7 @@
               </label>
             </div>
 
-          {% for product_item in related_products limit: 4 %}
+          {% for product_item in related_products limit: 3 %}
             {% assign colour = product_item | remove: group | remove_first: '-' %}
             {% assign image = colour | append: '.png' %}
             {% assign imageUrl = image | file_url %}

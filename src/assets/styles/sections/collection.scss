@@ -112,3 +112,26 @@
 
   }
 }
+
+
+#bc-sf-filter-tree-h {
+  //display: flex;
+  //justify-content: center;
+  text-align: center;
+
+  .bc-sf-filter-block-content {
+    text-align: left;
+  }
+
+  .bc-sf-filter-option-block .bc-sf-filter-block-title a {
+    border-width: 0 0 1px 0;
+  }
+}
+
+.bc-sf-filter-toolbar-count {
+  text-align: center;
+}
+
+.collection-description {
+  text-align: center;
+}

@@ -19,31 +19,31 @@
   </div>
 
 
-
   <div class="grid-container">
+
+    <div class="grid-x grid-padding-x grid-margin-y align-center">
+      <div class="small-12 medium-12 large-7 cell">
+
+        <div class="collection-description">
+          <h1>{{collection.title}}</h1>
+          {%  if collection.description != '' %}
+            <p class="semibold">{{collection.description}}</p>
+          {%  endif %}
+        </div>
+
+        <!-- Filter Desktop -->
+        <div id="bc-sf-filter-tree-h"></div>
+        <div class="bc-sf-filter-toolbar-item bc-sf-filter-toolbar-count">
+          <span id="bc-sf-filter-total-product"></span>
+        </div>
+
+      </div>
+    </div>
 
      <div class="grid-x grid-padding-x grid-margin-y">
 
+
         <div class="small-12 medium-12 large-12 cell">
-
-            <!-- Header Desktop -->
-            <div class="collection-header hide-for-small-only">
-                <div class="collection-banner{% if section.settings.overlay_enable %} has-overlay{% endif %}" {%  if collection.image %}style="background-image:url('{{collection.image | img_url: '1200x'}}')" {%  endif %}>
-                    <div class="collection-banner-overlay"></div>
-
-                    <div class="grid-x align-middle align-right text-right h-100 collection-banner-text">
-                        <div class="cell large-4 rte">
-                            <h1>{{collection.title}}</h1>
-                            {%  if collection.description != '' %}
-                            <p class="semibold">{{collection.description}}</p>
-                            {%  endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-          <!-- Filter Desktop -->
-          <div id="bc-sf-filter-tree-h"></div>
 
           <div class="bc-sf-filter-mobile">
             <div id="bc-sf-filter-tree-mobile"></div>
@@ -53,8 +53,6 @@
             <!-- Sorting -->
             <div class="collection-toolbar">
               <div class="cell auto grid-x grid-margin-x align-middle align-justify">
-                <div class="collection-toolbar__count cell shrink">
-                </div>
                 <div class="collection-toolbar__sort cell shrink flex-container align-middle">
                   <div id="bc-sf-filter-top-sorting"></div>
                </div>
@@ -107,8 +105,8 @@
             sold_out: {{ 'products.product.sold_out' | t | json }},
             vendor: {{ 'products.product.vendor' | t |json }},
             regular_price: {{ 'products.product.regular_price' | t | json }},
-            items_with_count_one: {{ 'collections.general.items_with_count.one' | t | json}},
-            items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }},
+            items_with_count_one: "product",
+            items_with_count_other: "Products",
             current_page: {{ 'general.pagination.current_page' | t | json }},
         },
         custom: {

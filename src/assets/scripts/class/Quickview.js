@@ -42,7 +42,8 @@ export class QuickView {
           return false;
         }
 
-        const url = $(this).data("product-url");
+        //const url = $(this).data("product-url");
+        const url = $(this).attr("data-product-url");
 
         if (url) {
           instance.loading = true;
