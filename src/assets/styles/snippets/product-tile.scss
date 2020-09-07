@@ -38,7 +38,8 @@
     .yotpo-stars {
       //display: none;
     }
-    &.bottomLine .yotpo-bottomline .yotpo-icon-star {
+    &.bottomLine .yotpo-bottomline .yotpo-icon-star,
+    &.bottomLine .yotpo-bottomline .yotpo-icon-half-star{
       font-size: 12px;
       color: #919191;
     }
