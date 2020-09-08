@@ -285,7 +285,7 @@ export class Product extends EventEmitter {
     this.updateHistoryState();
 
 
-    //this.updateSwatches();
+    this.updateSwatches();
 
 
     this.emit("variant-change", this.selectedVariant);
