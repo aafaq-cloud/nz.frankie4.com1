@@ -7,6 +7,11 @@
 
 {% assign related_products = '' %}
 {% for unclean_tag in product.tags %}
+
+    {% if unclean_tag contains 'group_' %}
+      {% assign group = unclean_tag | remove: 'group_' %}
+    {% endif %}
+
     {% if unclean_tag contains 'variant_' %}
         {% assign tag = unclean_tag | remove: 'variant_' %}
         {% if related_products != blank %}
@@ -193,8 +198,43 @@
 
                         <div class="variant-wrapper mt-40">
 
+
+                          <div class="mb-20">
+                            <label class="option-label">Core Colours</label>
+
+                            <div class="product-swatches">
+                              {% assign colour = product.handle | remove: group | remove_first: '-' %}
+                              {% assign image = colour | append: '.png' %}
+                              {% assign imageUrl = image | file_url %}
+
+                              <a class="product-swatches__product active" data-product-handle="{{ product.handle }}" title="{{ colour | replace: '-', ' ' | capitalize  }}" data-product-id="{{ product.id }}">
+                                 {% include 'icon-disabled-swatch' %}
+                                <img src="{{ imageUrl }}"/>
+                              </a>
+
+                              {% for product_item in related_products %}
+                                {% assign productItem = all_products[product_item] %}
+                                {% assign colour = product_item | remove: group | remove_first: '-' %}
+                                {% assign image = colour | append: '.png' %}
+                                {% assign imageUrl = image | file_url %}
+
+                                {% if is_quickview %}
+                                    <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                {% else %}
+                                    <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                {% endif %}
+                                    {% include 'icon-disabled-swatch' %}
+                                    <img src="{{ imageUrl }}"/>
+                                  </a>
+
+                              {% endfor %}
+                            </div>
+                          </div>
+
+
+
                             {% if related_products != blank %}
-                                <div class="mb-20">
+                                <div class="mb-20 hide">
                                     <label class="option-label">{{ 'products.product.related_products_select_label' | t }}</label>
 
                                     <div class="related-products">
@@ -450,7 +490,22 @@
                     <script type="application/json" data-product-json>
                         {{ product | json }}
                     </script>
+
+                  <script type="application/json" data-related-products-json>
+                      {
+                      "products"    : [
+                      {{ product | json }}{% unless related_products == blank %},{% endunless %}
+                      {%- for related_product in related_products -%}
+                        {%- assign related_product_object = all_products[related_product] -%}
+                        {%- if related_product_object != blank -%}
+                          {{ related_product_object | json }}{% unless forloop.last == true %},{% endunless %}
+                        {%- endif -%}
+                      {%- endfor -%}
+                      ]}
+                    </script>
+
                 {% endunless %}
+
 
             </div>
         </div>

@@ -77,7 +77,7 @@
             {% assign imageUrl = image | file_url %}
             <div class="color-swatch color-swatch--tile">
               <input checked type="radio" name="colors--{{ product.id }}" id="{{ product.handle }}--{{ product.id }}--{{ product.handle }}" class="color-swatch__input" value="{{ product.handle }}">
-              <label for="{{ product.handle }}--{{ product.id }}--{{ product.handle }}" title="TAUPE" aria-label="{{ product.handle }}" class="color-swatch__label">
+              <label for="{{ product.handle }}--{{ product.id }}--{{ product.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product.handle }}" class="color-swatch__label">
                 <img src="{{ imageUrl }}"/>
               </label>
             </div>
@@ -88,7 +88,7 @@
             {% assign imageUrl = image | file_url %}
              <div class="color-swatch color-swatch--tile">
                <input type="radio" name="colors--{{ product.id }}" id="{{ product_item }}--{{ product.id }}--{{ product_item }}" class="color-swatch__input" value="{{ product_item }}">
-               <label for="{{ product_item }}--{{ product.id }}--{{ product_item }}" title="{{ colour }}" aria-label="{{ product_item }}" class="color-swatch__label">
+               <label for="{{ product_item }}--{{ product.id }}--{{ product_item }}" title="{{ colour | replace: '-', ' ' | capitalize  }}" aria-label="{{ product_item }}" class="color-swatch__label">
                  <img src="{{ imageUrl }}"/>
                </label>
              </div>

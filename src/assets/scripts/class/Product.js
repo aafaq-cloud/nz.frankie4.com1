@@ -22,6 +22,9 @@ export class Product extends EventEmitter {
       this.product = options.product;
     }
 
+    this.products = [];
+    this.setProducts();
+
     // We will only initialise the variant bindings if we have a product container and product data
     if (this.hasOwnProperty("container") && this.hasOwnProperty("product")) {
       this.quickview = false; // TODO: fix this
@@ -31,6 +34,11 @@ export class Product extends EventEmitter {
       this.updateSelectedVariant();
       this.initAddToCart();
     }
+  }
+
+  setProducts() {
+    const instance = this;
+    instance.products = JSON.parse(instance.container.querySelector("[data-related-products-json]").innerHTML).products;
   }
 
   /**
@@ -276,11 +284,65 @@ export class Product extends EventEmitter {
     this.updateProductID();
     this.updateHistoryState();
 
+
+    //this.updateSwatches();
+
+
     this.emit("variant-change", this.selectedVariant);
 
     const event = document.createEvent("Event");
     event.initEvent("shopify-currency.refresh", null, null);
     document.body.dispatchEvent(event);
+  }
+
+  /**
+   * Update the product swatch availablity and href/data-product-url
+   */
+  updateSwatches(){
+    //console.log(this.selectedVariant, 'selected variant');
+    // Get which index of the selected variant is Size
+    let options = this.product.options;
+    let sizeIndex = 0;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i] == 'Size') {
+        sizeIndex = i;
+      }
+    }
+    //console.log(this.selectedVariant.options[sizeIndex],'current size');
+    //console.log(this.getSelectedProducts(this.selectedVariant.options[sizeIndex]));
+
+    // array of variants of active size with product id as key
+    let relatedVariants = this.getSelectedProducts(this.selectedVariant.options[sizeIndex]);
+
+    // dom element of swatches
+    let swatches = this.container.querySelectorAll('.product-swatches__product');
+
+    // loop through swatches to update disabled state and update href/data-product-url
+    for (let i = 0; i < swatches.length; i++) {
+      let swatch = swatches[i];
+      //console.log(swatch.getAttribute('data-product-id'));
+      let currentVariant = relatedVariants[swatch.getAttribute('data-product-id')];
+
+      if (currentVariant != undefined) {
+        if (currentVariant.available){
+          swatch.classList.remove('disabled');
+          if (swatch.hasAttribute('data-product-quickview')) {
+            swatch.setAttribute('data-product-url','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
+          } else {
+            swatch.setAttribute('href','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
+          }
+        } else {
+          swatch.classList.add('disabled');
+          if (swatch.hasAttribute('data-product-quickview')) {
+            swatch.setAttribute('data-product-url', '');
+          } else {
+            swatch.setAttribute('href', '#');
+          }
+        }
+      }
+
+    }
+
   }
 
   /**
@@ -489,6 +551,39 @@ export class Product extends EventEmitter {
         }
       );
     });
+  }
+
+
+  getSelectedProducts(size){
+    const instance = this;
+
+    let variantsList = [];
+
+    //console.log(instance.products);
+
+    for (let i = 0; i < instance.products.length; i++) {
+      let object = instance.products[i];
+
+      let options = object.options;
+      // get index of Size within this product's options
+      let sizeIndex = 0;
+      for (let i = 0; i < options.length; i++) {
+        if (options[i] == 'Size') {
+          sizeIndex = i;
+        }
+      }
+
+      for (let i = 0; i < object.variants.length; i++) {
+        if (object.variants[i].options[sizeIndex] == size) {
+          //variantsList.push(object.variants[i]);
+          variantsList[object.id] = object.variants[i];
+        }
+      }
+
+    }
+
+    return variantsList;
+
   }
 
   /**
