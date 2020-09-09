@@ -39,6 +39,7 @@ export class Product extends EventEmitter {
   setProducts() {
     const instance = this;
     instance.products = JSON.parse(instance.container.querySelector("[data-related-products-json]").innerHTML).products;
+
   }
 
   /**
@@ -299,20 +300,14 @@ export class Product extends EventEmitter {
    * Update the product swatch availablity and href/data-product-url
    */
   updateSwatches(){
-    //console.log(this.selectedVariant, 'selected variant');
+
     // Get which index of the selected variant is Size
     let options = this.product.options;
-    let sizeIndex = 0;
-    for (let i = 0; i < options.length; i++) {
-      if (options[i] == 'Size') {
-        sizeIndex = i;
-      }
-    }
-    //console.log(this.selectedVariant.options[sizeIndex],'current size');
-    //console.log(this.getSelectedProducts(this.selectedVariant.options[sizeIndex]));
+    let sizeIndex = options.indexOf("Size");
+    let currentSize = this.selectedVariant.options[sizeIndex];
 
     // array of variants of active size with product id as key
-    let relatedVariants = this.getSelectedProducts(this.selectedVariant.options[sizeIndex]);
+    let relatedVariants = this.getSelectedProducts(currentSize);
 
     // dom element of swatches
     let swatches = this.container.querySelectorAll('.product-swatches__product');
@@ -320,7 +315,6 @@ export class Product extends EventEmitter {
     // loop through swatches to update disabled state and update href/data-product-url
     for (let i = 0; i < swatches.length; i++) {
       let swatch = swatches[i];
-      //console.log(swatch.getAttribute('data-product-id'));
       let currentVariant = relatedVariants[swatch.getAttribute('data-product-id')];
 
       if (currentVariant != undefined) {
@@ -331,7 +325,7 @@ export class Product extends EventEmitter {
           } else {
             swatch.setAttribute('href','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
           }
-        } else {
+        } else { // If this product for the active size is not availble
           swatch.classList.add('disabled');
           if (swatch.hasAttribute('data-product-quickview')) {
             swatch.setAttribute('data-product-url', '');
@@ -554,29 +548,26 @@ export class Product extends EventEmitter {
   }
 
 
+  /**
+   * Accepts a size and loops through array of related products
+   * and constructs an array where key is the product ID and the value
+   * is the variant object of that product for the correct size
+   * @param size String of the current size (e.g. 6)
+   * @return array
+   */
   getSelectedProducts(size){
     const instance = this;
 
     let variantsList = [];
 
-    //console.log(instance.products);
-
     for (let i = 0; i < instance.products.length; i++) {
-      let object = instance.products[i];
+      let productObject = instance.products[i];
+      let options = productObject.options;
+      let sizeIndex = options.indexOf("Size");
 
-      let options = object.options;
-      // get index of Size within this product's options
-      let sizeIndex = 0;
-      for (let i = 0; i < options.length; i++) {
-        if (options[i] == 'Size') {
-          sizeIndex = i;
-        }
-      }
-
-      for (let i = 0; i < object.variants.length; i++) {
-        if (object.variants[i].options[sizeIndex] == size) {
-          //variantsList.push(object.variants[i]);
-          variantsList[object.id] = object.variants[i];
+      for (let i = 0; i < productObject.variants.length; i++) {
+        if (productObject.variants[i].options[sizeIndex] == size) {
+          variantsList[productObject.id] = productObject.variants[i];
         }
       }
 

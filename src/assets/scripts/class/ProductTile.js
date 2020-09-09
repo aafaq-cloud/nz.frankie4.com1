@@ -36,7 +36,8 @@ export class ProductTile extends EventEmitter {
     setSelectors() {
         const selectors = {
             image: ".product-tile-image",
-            quickview: "[data-product-quickview]"
+            quickview: "[data-product-quickview]",
+            title: ".product-tile__title"
         };
 
         this.selectors = {};
@@ -75,6 +76,7 @@ export class ProductTile extends EventEmitter {
         if (product != undefined) {
             let image = product.featured_image !== undefined ? product.featured_image : window.theme.noImageUrl
 
+            instance.selectors.title.innerHTML = product.title;
             instance.selectors.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
             instance.selectors.quickview.setAttribute('data-product-url', '/products/' + product.handle);
         }
