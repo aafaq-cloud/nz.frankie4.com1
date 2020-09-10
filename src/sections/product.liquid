@@ -6,7 +6,7 @@
 {% assign current_variant_id = product.selected_or_first_available_variant.id %}
 
 {% assign related_products = '' %}
-{% assign related_products_seasonal = '' %}
+
 {% for unclean_tag in product.tags %}
 
     {% if unclean_tag contains 'group_' %}
@@ -21,19 +21,9 @@
         {% assign related_products = related_products | append: tag %}
     {% endif %}
 
-    {% if unclean_tag contains 'variant-seasonal_' %}
-      {% assign tag = unclean_tag | remove: 'variant-seasonal_' %}
-      {% if related_products_seasonal != blank %}
-        {% assign related_products_seasonal = related_products_seasonal | append: ',' %}
-      {% endif %}
-      {% assign related_products_seasonal = related_products_seasonal | append: tag %}
-    {% endif %}
-
 {% endfor %}
 
 {% assign related_products = related_products | split: ',' %}
-{% assign related_products_seasonal = related_products_seasonal | split: ',' %}
-{% assign all_related_products = related_products | concat: related_products_seasonal | uniq %}
 
 {% assign video = product.metafields.frankie4.video %}
 {% assign slide_count = product.images | size %}
@@ -204,69 +194,81 @@
 
 
                           <div class="mb-20">
+
+                            {% assign colourCurrent = product.handle | remove: group | remove_first: '-' %}
+                            {% assign imageCurrent = colourCurrent | append: '.png' %}
+                            {% assign imageUrlCurrent = imageCurrent | file_url %}
+
+                            {% if product.tags contains 'seasonal' %}
+                              {%- capture related_products_seasonal_liquid -%}
+                                <a class="product-swatches__product active" data-product-handle="{{ product.handle }}" title="{{ colourCurrent | replace: '-', ' ' | capitalize  }}" data-product-id="{{ product.id }}">
+                                  {% include 'icon-disabled-swatch' %}
+                                  <img data-src="{{imageUrlCurrent}}" class="lazyload">
+                                </a>
+                              {%- endcapture -%}
+                            {% else %}
+                              {%- capture related_products_liquid -%}
+                                <a class="product-swatches__product active" data-product-handle="{{ product.handle }}" title="{{ colourCurrent | replace: '-', ' ' | capitalize  }}" data-product-id="{{ product.id }}">
+                                  {% include 'icon-disabled-swatch' %}
+                                  <img data-src="{{imageUrlCurrent}}" class="lazyload">
+                                </a>
+                              {%- endcapture -%}
+                            {% endif %}
+
+
+                            <!-- Loop through Colours -->
+                            {% for product_item in related_products %}
+                              {% assign productItem = all_products[product_item] %}
+                              {% if productItem != blank %}
+                                {% assign colour = product_item | remove: group | remove_first: '-' %}
+                                {% assign image = colour | append: '.png' %}
+                                {% assign imageUrl = image | file_url %}
+
+                                {% if productItem.tags contains 'seasonal' %}
+
+                                  {%- capture related_products_seasonal_liquid -%}
+                                    {{ related_products_seasonal_liquid }}
+                                    {%- if is_quickview -%}
+                                      <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                    {%- else -%}
+                                      <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                    {%- endif -%}
+                                        {%- render 'icon-disabled-swatch' -%}
+                                        <img data-src="{{imageUrl}}" class="lazyload">
+                                      </a>
+                                  {%- endcapture -%}
+
+                                {% else %}
+
+                                    {%- capture related_products_liquid -%}
+                                      {{ related_products_liquid }}
+                                      {%- if is_quickview -%}
+                                        <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                      {%- else -%}
+                                        <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                      {%- endif -%}
+                                          {%- render 'icon-disabled-swatch' -%}
+                                          <img data-src="{{imageUrl}}" class="lazyload">
+                                       </a>
+                                    {%- endcapture -%}
+
+                                  {% endif %}
+
+                                {% endif %}
+                            {% endfor %}
+
+
                             <div class="product-swatches">
-
-                              {% assign colourCurrent = product.handle | remove: group | remove_first: '-' %}
-                              {% assign imageCurrent = colourCurrent | append: '.png' %}
-                              {% assign imageUrlCurrent = imageCurrent | file_url %}
-
                               <!-- Core Colours -->
                               <label class="option-label">Core Colours</label>
                               <div class="flex-container align-middle">
-                                <!-- Place current product if core -->
-                                {% unless product.tags contains 'seasonal' %}
-                                  <a class="product-swatches__product active" data-product-handle="{{ product.handle }}" title="{{ colourCurrent | replace: '-', ' ' | capitalize  }}" data-product-id="{{ product.id }}">
-                                    {% include 'icon-disabled-swatch' %}
-                                    <img data-src="{{imageUrlCurrent}}" class="lazyload">
-                                  </a>
-                                {% endunless %}
-                                <!-- Loop through Core Colours -->
-                                {% for product_item in related_products %}
-                                  {% assign productItem = all_products[product_item] %}
-                                  {% if productItem != blank %}
-                                    {% assign colour = product_item | remove: group | remove_first: '-' %}
-                                    {% assign image = colour | append: '.png' %}
-                                    {% assign imageUrl = image | file_url %}
-                                    {% if is_quickview %}
-                                      <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
-                                    {% else %}
-                                      <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
-                                    {% endif %}
-                                        {% include 'icon-disabled-swatch' %}
-                                        <img data-src="{{imageUrl}}" class="lazyload">
-                                      </a>
-                                    {% endif %}
-                                {% endfor %}
+                                {{ related_products_liquid }}
                               </div>
 
                               <!-- Seasonal Colours -->
                               <label class="option-label mt-20">Seasonal Colours</label>
                               <div class="flex-container align-middle">
-                                <!-- Place current product if seasonal -->
-                                {% if product.tags contains 'seasonal' %}
-                                  <a class="product-swatches__product active" data-product-handle="{{ product.handle }}" title="{{ colourCurrent | replace: '-', ' ' | capitalize  }}" data-product-id="{{ product.id }}">
-                                    {% include 'icon-disabled-swatch' %}
-                                    <img data-src="{{imageUrlCurrent}}" class="lazyload">
-                                  </a>
-                                {% endif %}
-                                <!-- Loop through Seasonal Colours -->
-                                {% for product_item in related_products_seasonal %}
-                                  {% assign productItem = all_products[product_item] %}
-                                  {% if productItem != blank %}
-
-                                    {% assign colour = product_item | remove: group | remove_first: '-' %}
-                                    {% assign image = colour | append: '.png' %}
-                                    {% assign imageUrl = image | file_url %}
-                                    {% if is_quickview %}
-                                      <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
-                                    {% else %}
-                                      <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
-                                    {% endif %}
-                                        {% include 'icon-disabled-swatch' %}
-                                        <img data-src="{{imageUrl}}" class="lazyload">
-                                      </a>
-                                  {% endif %}
-                                {% endfor %}
+                                {{ related_products_seasonal_liquid }}
                               </div>
 
                             </div> <!-- end .product-swatches -->
@@ -516,8 +518,8 @@
                   <script type="application/json" data-related-products-json>
                       {
                       "products"    : [
-                      {{ product | json }}{% unless all_related_products == blank %},{% endunless %}
-                      {%- for related_product in all_related_products -%}
+                      {{ product | json }}{% unless related_products == blank %},{% endunless %}
+                      {%- for related_product in related_products -%}
                         {%- assign related_product_object = all_products[related_product] -%}
                         {%- if related_product_object != blank -%}
                           {{ related_product_object | json }}{% unless forloop.last == true %},{% endunless %}

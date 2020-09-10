@@ -1,7 +1,6 @@
 {% layout none %}
 
 {% assign related_products = '' %}
-{% assign related_products_seasonal = '' %}
 {% for unclean_tag in product.tags %}
   {% if unclean_tag contains 'variant_' %}
     {% assign tag = unclean_tag | remove: 'variant_' %}
@@ -13,21 +12,12 @@
       {% assign related_products = related_products | append: tag %}
     {% endif %}
   {% endif %}
-  {% if unclean_tag contains 'variant-seasonal_' %}
-    {% assign tag = unclean_tag | remove: 'variant-seasonal_' %}
-    {% if related_products_seasonal != blank %}
-      {% assign related_products_seasonal = related_products_seasonal | append: ',' %}
-    {% endif %}
-    {% assign related_products_seasonal = related_products_seasonal | append: tag %}
-  {% endif %}
 {% endfor %}
 {% assign related_products = related_products | split: ',' %}
-{% assign related_products_seasonal = related_products_seasonal | split: ',' %}
-{% assign all_related_products = related_products | concat: related_products_seasonal | uniq %}
 {
 "products"    : [
-{{ product | json }}{% unless all_related_products == blank %},{% endunless %}
- {%- for related_product in all_related_products -%}
+{{ product | json }}{% unless related_products == blank %},{% endunless %}
+ {%- for related_product in related_products -%}
    {%- assign related_product_object = all_products[related_product] -%}
    {%- if related_product_object != blank -%}
    {{ related_product_object | json }}{% unless forloop.last == true %},{% endunless %}
