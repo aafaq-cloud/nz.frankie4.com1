@@ -1,14 +1,11 @@
 {% if settings.share_facebook %}
-<a class="social-sharing button button-hollow button-expanded" target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
-
- {{ 'general.social.share_label' | t }}
+<a class="social-sharing" target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
 
     <div class="social-sharing__facebook">
-      {% include 'icon-facebook' %}
+      {% include 'icon-facebook-alt' %}
       <span aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
       <span class="visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
     </div>
-
 
 </a>
 {% endif %}

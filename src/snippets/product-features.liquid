@@ -20,7 +20,7 @@
       <div class="product-features-item cell small-6" data-open="feature-{{ forloop.index0 }}">
 
         {% unless feature.settings.icon == blank %}
-          <img src="{{feature.settings.icon | img_url: '60x60' }}" class="mb-20" alt="{{ feature.settings.title }}"/>
+          <img src="{{feature.settings.icon | img_url: '60x60' }}" class="mr-10" alt="{{ feature.settings.title }}"/>
         {% endunless %}
         {{ feature.settings.title }}
 

@@ -12,10 +12,13 @@ export class ProductTile extends EventEmitter {
         //console.log(this.container);
         this.productHandle = this.container.getAttribute('data-handle');
         this.products = [];
+        console.log('tile');
 
         this.setSelectors();
-        this.setProducts();
-        this.initSwatches();
+        if (this.selectors.swatches){
+            this.setProducts();
+
+        }
     }
 
     setProducts() {
@@ -29,12 +32,16 @@ export class ProductTile extends EventEmitter {
             },
             success(response) {
                 instance.products = JSON.parse(response).products;
+                instance.initSwatches();
             }
         });
     }
 
     setSelectors() {
         const selectors = {
+            swatches: ".color-swatch__input"
+        };
+        const selectorsSingle = {
             image: ".product-tile-image",
             quickview: "[data-product-quickview]",
             title: ".product-tile__title"
@@ -44,8 +51,16 @@ export class ProductTile extends EventEmitter {
 
         for (const key in selectors) {
             if (selectors.hasOwnProperty(key)) {
-                this.selectors[key] = this.container.querySelector(
-                    selectors[key]
+                this.selectors[key] = this.container.querySelectorAll(selectors[key]);
+            }
+        }
+
+        this.selectorsSingle = {};
+
+        for (const key in selectorsSingle) {
+            if (selectorsSingle.hasOwnProperty(key)) {
+                this.selectorsSingle[key] = this.container.querySelector(
+                    selectorsSingle[key]
                 );
             }
         }
@@ -55,7 +70,7 @@ export class ProductTile extends EventEmitter {
 
         const instance = this;
 
-        let swatchesRadio = instance.container.querySelectorAll('.color-swatch__input');
+        let swatchesRadio = instance.selectors.swatches;
 
         $(swatchesRadio)
             .unbind("change.swatch")
@@ -74,11 +89,11 @@ export class ProductTile extends EventEmitter {
         const instance = this;
 
         if (product != undefined) {
-            let image = product.featured_image !== undefined ? product.featured_image : window.theme.noImageUrl
+            let image = product.featured_image !== undefined ? product.featured_image : window.theme.noImageUrl;
 
-            instance.selectors.title.innerHTML = product.title;
-            instance.selectors.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
-            instance.selectors.quickview.setAttribute('data-product-url', '/products/' + product.handle);
+            instance.selectorsSingle.title.innerHTML = product.title;
+            instance.selectorsSingle.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
+            instance.selectorsSingle.quickview.setAttribute('data-product-url', '/products/' + product.handle);
         }
 
 

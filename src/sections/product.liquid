@@ -276,50 +276,58 @@
 
 
                           {% unless is_quickview %}
-                            {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
 
-                            {% unless product.tags contains 'bis-hidden' %}
-                              <a class="icon-link ml-10 mb-20" id="BIS_trigger">
-                                {% include 'icon-cant-find' %}
-                                Can't find your size?
-                              </a>
-                            {% endunless %}
+                            <div class="grid-x grid-margin-x align-right align-middle mb-20">
 
-                            {% if section.settings.display_size_guide %}
-                              <a class="icon-link" data-open="size-guide-modal">
-                                {% include 'icon-size-guide' %}
-                                Size Guide
-                              </a>
+                              <div class="cell shrink">
+                                {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
+                                {% unless product.tags contains 'bis-hidden' %}
+                                  <a class="icon-link" id="BIS_trigger">
+                                    Can't find your size?
+                                  </a>
+                                {% endunless %}
+                              </div>
+                              {% if section.settings.display_size_guide %}
+                                <div class="cell shrink">
+                                  <a class="size-guide" data-open="size-guide-modal">
+                                    {% include 'icon-size-guide' %}
+                                    Size Guide
+                                  </a>
+                                </div>
 
-                              <div class="reveal modal-size-guide" id="size-guide-modal" data-reveal>
-                                <a class="close-button" data-close aria-label="Close Quick View">
-                                  <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
-                                    <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
+                                <div class="reveal modal-size-guide" id="size-guide-modal" data-reveal>
+                                  <a class="close-button" data-close aria-label="Close Quick View">
+                                    <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
+                                      <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
                                                         38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
                                                         0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
-                                  </svg>
-                                </a>
-                                <div class="modal-content">
-                                  <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+                                    </svg>
+                                  </a>
+                                  <div class="modal-content">
+                                    <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
 
-                                  <div class="modal-content-text">
-                                    {% if section.settings.size_guide_content %}
-                                      <div class="rte">
-                                        {{ section.settings.size_guide_content }}
-                                      </div>
-                                    {% endif %}
-                                    {% if section.settings.size_guide_button_text %}
-                                      <div class="text-right">
-                                        <a class="arrow-link color-secondary-text mt-20" href="{{ section.settings.size_guide_button_link }}">
-                                          {{ section.settings.size_guide_button_text }}
-                                          {% include 'icon-chevron-right' %}
-                                        </a>
-                                      </div>
-                                    {% endif %}
+                                    <div class="modal-content-text">
+                                      {% if section.settings.size_guide_content %}
+                                        <div class="rte">
+                                          {{ section.settings.size_guide_content }}
+                                        </div>
+                                      {% endif %}
+                                      {% if section.settings.size_guide_button_text %}
+                                        <div class="text-right">
+                                          <a class="arrow-link color-secondary-text mt-20" href="{{ section.settings.size_guide_button_link }}">
+                                            {{ section.settings.size_guide_button_text }}
+                                            {% include 'icon-chevron-right' %}
+                                          </a>
+                                        </div>
+                                      {% endif %}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            {% endif %}
+                              {% endif %}
+                            </div>
+
+
+
                           {% endunless %}
 
 
@@ -388,9 +396,9 @@
                                 {% endfor %}
                             </select>
 
-                            <div class="grid-x grid-margin-y">
+                            <div class="grid-x grid-margin-x grid-margin-y">
 
-                                <div class="cell medium-6">
+                                <div class="cell medium-5">
 
                                   <label class="option-label show-for-sr" for="{{ label_prefix }}Quantity">
                                     {{ 'products.product.quantity' | t }}
@@ -416,7 +424,7 @@
 
                                 </div>
 
-                                <div class="cell medium-6">
+                                <div class="cell medium-7">
 
                                     <button type="submit"
                                             class="add-to-cart button button-primary button-expanded has-icon-absolute"
@@ -495,17 +503,16 @@
 
                 {% endunless %}
 
-                <div class="grid-x grid-buttons mt-20">
+                <div class="grid-x grid-margin-x align-right align-middle mt-20">
 
-                  <div class="cell">
-                    <a class="add-to-wishlist button button-hollow button-expanded has-icon" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}_variant_{{ current_variant.id }}">
-                      <span data-shopify-wishlist-label data-shopify-wishlist-text-add="Add to Wishlist" data-shopify-wishlist-text-added="Added to Wishlist">Add to Wishlist</span>
+                  <div class="cell shrink">
+                    <a class="add-to-wishlist" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}_variant_{{ current_variant.id }}">
                       <i>
                         {% include 'icon-heart' %}
                       </i>
                     </a>
                   </div>
-                  <div class="cell">
+                  <div class="cell shrink">
                     {% include 'social-sharing', share_permalink: product.url %}
                   </div>
                 </div>
