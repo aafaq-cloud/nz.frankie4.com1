@@ -13,3 +13,9 @@ html {
   height: 100%;
   background-color: $color-body;
 }
+
+body.fixed-scroll {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}

@@ -53,15 +53,15 @@ export class CartModalSnippet extends AbstractComponent {
       template: `
         <li class="popup-product grid-x align-top" :class="{ loading: loading }">
           <div v-if="product.image" class="popup-product-image">
-            <a :href="product.url" aria-hidden="true" tabindex="-1"><img :src="product.image | formatImageSize('80x75')"></a>
+            <a :href="product.url" aria-hidden="true" tabindex="-1"><img :src="product.image | formatImageSize('100x100')"></a>
           </div>
           <div class="product-details grid-y flex-child-auto">
-            <h3 class="color-secondary-text text-small m-0"><span class="visually-hidden">Brand: </span>{{product.vendor}}</h3>
-            <h2 class="h6"><a :href="product.url">{{ product.product_title }}</a></h2>
-            <div class="text-small color-secondary-text">QTY: {{ product.quantity }} <template v-if="product.variant_title != null">| <template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template></template></div>
+            <h6 class="mb-10 semibold" v-html="formatMoneyValue(product.line_price)"></h6>
+            <div><a :href="product.url">{{ product.product_title }}</a></div>
+            <div class="text-small color-secondary-text"><template v-if="product.variant_title != null"><template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template></template></div>
           </div>
           <div class="popup-product-right">
-            <div class="semibold color-secondary-text" v-html="formatMoneyValue(product.line_price)"></div>
+        
             <button class="popup-product-edit text-small" @click="remove" :aria-label="'Remove' + product.product_title + 'from shopping cart'">
               <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
                 <path d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
@@ -69,10 +69,27 @@ export class CartModalSnippet extends AbstractComponent {
                 0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
               </svg>
             </button>
+            
+            <label class="show-for-small-only">Quantity:</label>
+            <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
+      
+              <button type="button" :disabled="loading ? true : false" class="js-quantity-remove" @click="subtract">-</button>
+              <input data-quantity-selector
+              type="number"
+              :id="'updates_' + line_id"
+              name="updates[]"
+              :value="product.quantity"
+              min="0"
+              aria-label="Item Quantity"
+              v-if="!loading">
+              <spinner v-if="loading" size="24px" />
+              <button type="button" :disabled="loading" class="js-quantity-add" @click="add">+</button>
+            </div>
+            
             </div>
         </li>
       `,
-      props: ["product"],
+      props: ["product", "id", "line_id"],
       data() {
         return {
           loading: false
@@ -98,7 +115,39 @@ export class CartModalSnippet extends AbstractComponent {
           } else {
             return formatMoney(value, theme.moneyFormat);
           }
-        }
+        },
+        add() {
+          if (this.loading) {
+            return;
+          }
+          this.loading = true;
+          window.AppShopifyCart.addItem(this.id, 1, {}).then(() => {
+            this.loading = false;
+          }).catch((error) => {
+            this.loading = false;
+            let self = this;
+            // this.errorMessage = error.description;
+            this.errorMessage = error.description;
+            setTimeout(()=> {   self.errorMessage = '';
+
+            }, 3000);
+
+          });
+        },
+        subtract() {
+          this.errorMessage = '';
+
+          if (this.loading) {
+            return;
+          }
+          this.loading = true;
+          window.AppShopifyCart.updateItem(this.id, this.product.quantity - 1).then(
+              () => {
+                this.loading = false;
+              },
+          );
+        },
+
       }
     });
 
@@ -111,16 +160,26 @@ export class CartModalSnippet extends AbstractComponent {
       },
       template: `
         <div class="cart-modal-view" :class="{open: open}" ref="top">
+         <div v-if="open" tabindex="0" @focus="() => $refs['checkout-button'].focus()"></div>
+         <form action="/cart" method="post" ref="form">
           <div class="inside">
+            <div class="grid-x align-justify">
+                <div class="cell shrink">
+                    <h4>My Bag</h4>
+                </div> 
+                 <div class="cell shrink">
+                    <button type="button" @click="close" class="cart-modal-close" ref="close-button">
+                      <span class="show-for-sr">Close cart popup</span>
+                       <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross"><path d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50 38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401 0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/></svg>
+                    </button>
+                </div>
+            </div>
+       
             <div v-if="cart.items.length > 0">
             <div class="totals">
               <div class="total-row grid-x align-justify">
                 <h3 class="h6" v-html="formatTotalMoneyValue(cart.total_price)"></h3>
               </div>
-            </div>
-
-            <div class="button-group stacked">
-              <a class="button button-primary button-expanded" href="/cart">Checkout</a>
             </div>
 
           </div>
@@ -130,6 +189,9 @@ export class CartModalSnippet extends AbstractComponent {
               v-for="(item, index) in cart.items"
               :key="item.key"
               :product="item"
+              :line_id="index + 1"     
+              :id="item.id" 
+              
               />
 
             </ul>
@@ -139,10 +201,22 @@ export class CartModalSnippet extends AbstractComponent {
               <div v-if="cart.items.length == 0">
                 <h5 class="text-center cart-modal-empty mt-40 mb-20">{{ emptyText }}</h5>
               </div>
+              
+              <div class="grid-x grid-margin-x grid-margin-y">
+                <div class="cell medium-6">
+                 <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>
+                </div>
+                <div class="cell medium-6">
+                
+                   <button type="submit" name="checkout" class="button button-primary button-expanded" ref="checkout-button">Checkout</button>
+                </div>
+              </div>
 
-              <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>
+              
             </div>
           </div>
+          </form>
+          <div class="cart-modal-overlay" @click="close" @focus="() => $refs['close-button'].focus()" tabindex="0"/>
         </div>
       `,
       methods: {
@@ -185,6 +259,7 @@ export class CartModalSnippet extends AbstractComponent {
   openCart() {
     this.vm.open = true;
     this.vm.$refs.top.focus();
+    document.body.classList.add("fixed-scroll");
 
     // Create a click event on the body to close the js selector if user
     // clicks outside js selector element container
@@ -212,6 +287,7 @@ export class CartModalSnippet extends AbstractComponent {
     const instance = this;
 
     instance.vm.open = false;
+    document.body.classList.remove("fixed-scroll");
 
     instance.jsCartToggles.removeClass("active");
 
@@ -246,14 +322,14 @@ export class CartModalSnippet extends AbstractComponent {
     // Oepn cart modal when product is added to cart
     AppShopifyCart.on('cart.add', function() {
 
-      instance.jsCartToggles.removeClass('active');
+      //instance.jsCartToggles.removeClass('active');
 
       if (!instance.isCartOpen()) {
         instance.openCart();
         instance.jsCartToggles.addClass('active');
       }
       else {
-        instance.closeCart();
+        //instance.closeCart();
       }
     });
 
