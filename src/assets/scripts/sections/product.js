@@ -77,7 +77,9 @@ export class ProductSection extends AbstractComponent {
 
   mountGlide() {
     if (!this.glideActive) {
-      this.glide = new Glide(this.glideElement).mount();
+      this.glide = new Glide(this.glideElement,{
+        peek: {before: 0, after: 70},
+      }).mount();
       this.glideActive = true;
     }
   }

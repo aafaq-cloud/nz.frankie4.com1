@@ -1,4 +1,4 @@
-import {getSizedImageUrl} from "@shopify/theme-images"
+import {getSizedImageUrl} from "@shopify/theme-images";
 import EventEmitter from "event-emitter-es6";
 import $ from "jquery";
 
@@ -9,10 +9,8 @@ export class ProductTile extends EventEmitter {
         super();
 
         this.container = container;
-        //console.log(this.container);
         this.productHandle = this.container.getAttribute('data-handle');
         this.products = [];
-        console.log('tile');
 
         this.setSelectors();
         if (this.selectors.swatches){
@@ -44,7 +42,8 @@ export class ProductTile extends EventEmitter {
         const selectorsSingle = {
             image: ".product-tile-image",
             quickview: "[data-product-quickview]",
-            title: ".product-tile__title"
+            title: ".product-tile__title",
+            link: ".cover-link"
         };
 
         this.selectors = {};
@@ -94,6 +93,7 @@ export class ProductTile extends EventEmitter {
             instance.selectorsSingle.title.innerHTML = product.title;
             instance.selectorsSingle.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
             instance.selectorsSingle.quickview.setAttribute('data-product-url', '/products/' + product.handle);
+            instance.selectorsSingle.link.setAttribute('href', '/products/' + product.handle);
         }
 
 

@@ -43,10 +43,20 @@
 
   .price-wrapper {
     font-weight: normal;
+    font-size: rem-calc(16);
   }
 
   .price-compare {
     opacity: 0.5;
+  }
+
+  .price-discount {
+    color: #F45C00;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: rem-calc(12);
+    margin-left: 10px;
+    font-weight: bold;
   }
 
   .after-pay-info {
@@ -92,7 +102,7 @@
     display: flex;
     //justify-content: center;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 14px;
 
     .yotpo-stars {
@@ -111,11 +121,17 @@
 
   .product-swatches {
 
+    &__container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     &__product {
       position: relative;
       cursor: default;
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       margin: 5px;
       background-color: #FFFFFF;
@@ -125,11 +141,22 @@
       align-items: center;
       justify-content: center;
 
+      @include breakpoint(medium) {
+        width: 20px;
+        height: 20px;
+      }
+
       svg {
         position: absolute;
-        width: 16px;
-        height: 16px;
+        width: 28px;
+        height: 28px;
         display: none;
+
+        @include breakpoint(medium) {
+          width: 16px;
+          height: 16px;
+        }
+
       }
 
       img {
@@ -141,9 +168,14 @@
       }
 
       &.active {
-        width: 28px;
-        height: 28px;
+        width: 48px;
+        height: 48px;
         border: 4px solid transparent;
+
+        @include breakpoint(medium) {
+          width: 28px;
+          height: 28px;
+        }
       }
 
       &.disabled {
@@ -328,7 +360,7 @@
     input {
       width: auto;
       height: auto;
-      padding: 14px 26px 13px;
+      padding: 14px 10px 13px;
       font-size: 1rem;
       line-height: (18 / 14);
     }
@@ -436,6 +468,17 @@
     &__slide {
       img {
         width: 100%;
+      }
+    }
+    &__bullet {
+      border: 2px solid black;
+      background: black;
+      width: 10px;
+      height: 10px;
+      box-shadow: none;
+
+      &--active {
+        background: #FFFFFF;
       }
     }
   }

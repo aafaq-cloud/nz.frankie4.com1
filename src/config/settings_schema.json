@@ -212,6 +212,49 @@
         "id": "cart_message",
         "label": "Message",
         "default": "Fast delivery. Fully Tracked"
+      },
+      {
+        "type": "header",
+        "content": "Cart Shipping Info"
+      },
+       {
+        "type": "richtext",
+        "id": "cart_shipping_info",
+        "label": "Shipping Info"
+      },
+      {
+        "type": "header",
+        "content": "Cart Promos"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_1",
+        "label": "Content 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_2",
+        "label": "Content 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_3",
+        "label": "Image 3"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_3",
+        "label": "Content 3"
       }
     ]
   },

@@ -5,7 +5,8 @@ var bcSfFilterSettings = {
         /* Optional */
         // loadProductFirst: true,
         paginationType: "infinite",
-        paginationTypeAdvanced: 0
+        paginationTypeAdvanced: 0,
+        filterTreeMobileStyle: "style3"
     }
 };
 

@@ -43,21 +43,79 @@
     transition: transform 0.3s ease-out;
 
   }
+
+  .cart-heading {
+    position: sticky;
+    background: white;
+    z-index: 1;
+    margin: -20px -20px 0px -20px;
+    padding: 20px 20px;
+    top: -20px;
+  }
+
+  .cart-modal-close {
+    cursor: pointer;
+    .icon {
+      font-size: 14px;
+    }
+  }
+
+
 }
+
+.cart-shipping-message {
+  background: #F1F1F1;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: rem-calc(12);
+
+  p {
+    margin: 0;
+    display: block;
+  }
+
+}
+.cart-feature-strip {
+  background: #E4EAED;
+  padding: 15px;
+  text-align: center;
+  font-size: rem-calc(12);
+
+  img {
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
 .popup-products {
   //margin: 10px 0;
   //margin: 0 -20px;
   //width: calc(100% + 40px);
   list-style: none;
-  overflow-y: auto;
+  //overflow-y: auto;
   //max-height: 400px;
-  flex-grow: 0;
+  //flex-grow: 0;
+
+  //margin: 0 -20px;
   padding: 0;
+
 }
 
 .popup-product {
   flex-wrap: nowrap;
   margin: 10px 0;
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid #F1F1F1;
+
+  .error {
+    padding: 10px 0;
+    color: red;
+    width: 100%;
+  }
 
   a {
     text-decoration: none;
@@ -99,14 +157,86 @@
   }
   &-right {
     display: flex;
-    margin-top: 1em;
-    margin-left: 1em;
+    //margin-top: 1em;
+    //margin-left: 1em;
+    position: absolute;
+    right: 0;
+
+
   }
   &-edit {
     cursor: pointer;
     padding: 1px 10px;
     .icon {
       font-size: inherit;
+    }
+  }
+
+  .product-details-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      @include breakpoint(medium){
+        flex-direction: row;
+        align-items: center;
+      }
+  }
+
+  .product-quantity-selector-container {
+    flex-grow: 0;
+    //@include breakpoint(medium){
+    //  align-items: flex-end;
+    //}
+  }
+
+  .component-quantity-selector {
+    margin: 10px 0;
+
+    input {
+      height: 32px;
+    }
+  }
+
+}
+
+
+.product-recommendations {
+
+  background: #F1F1F1;
+  padding: 20px;
+
+  h5 {
+    padding-right: 70px;
+  }
+
+  .recommended-product {
+    background: #FFFFFF;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    //margin: 10px 0;
+    text-decoration: none;
+  }
+
+  .prev {
+    transform: scaleX(-1);
+
+  }
+
+  div[data-glide-el="controls"] {
+    position: absolute;
+    top: -40px;
+    right: 0;
+
+    > button {
+      cursor: pointer;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

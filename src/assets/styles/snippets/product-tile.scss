@@ -1,10 +1,15 @@
 .product-tile {
   position: relative;
+  overflow: hidden;
   // IE doesn't constrain the width of the tile at 100% :shrug
   max-width: 99.99%;
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 10px;
   height: 100%;
+
+  @include breakpoint(medium) {
+    padding: 20px;
+  }
 
   &-image {
     &.secondary {
@@ -18,12 +23,6 @@
       transition: opacity 600ms;
     }
   }
-  //&:hover {
-  //  .product-tile-image.secondary {
-  //    opacity: 1;
-  //  }
-  //}
-
 
   .yotpo {
     text-align: center;
@@ -34,6 +33,12 @@
     margin-top: 0;
     margin-bottom: 10px;
     line-height: 14px;
+
+    @include breakpoint(small down) {
+      flex-direction: column;
+      align-items: center;
+
+    }
 
     .yotpo-stars {
       //display: none;
@@ -105,6 +110,7 @@
         color:#FFFFFF;
         text-decoration: none;
         border: 3px solid #f1f1f1;
+
       }
     }
     
