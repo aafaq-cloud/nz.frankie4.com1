@@ -12,11 +12,9 @@ Navigation to display on large viewports
             {% if link.links != blank %}
                 {% assign menu_class = " has-children" | strip %}
             {% endif %}
-            {% if link.title == section.settings.mega_menu_handle %}
-                {% assign menu_class = menu_class | append: " mega-menu" | strip %}
-            {% elsif link.title == section.settings.mega_menu_2_handle %}
-                {% assign menu_class = menu_class | append: " mega-menu" | strip %}
-            {% endif %}
+
+
+            {% assign menu_class = menu_class | append: " mega-menu" | strip %}
 
             <li{% if menu_class != blank %} class="{{ menu_class }}"{% endif %}>
                 <a href="{{ link.url }}">
@@ -113,9 +111,25 @@ Navigation to display on large viewports
 
                     </div>
                 {% elsif link_list != blank %}
-                    <div class="main-nav-dropdown">
-                        {{ link_list }}
+                  <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
+
+                    {% if link.type == 'collection_link' %}
+                      <div class="cell medium-3">
+                        <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
+                          <div class="main-nav-mega-menu-title">Shop All {{ link.object.title }}</div>
+                          <img src="{{ link.object.image | img_url: '300x230', crop: 'center' }}"/>
+                        </a>
+                      </div>
+                    {% endif %}
+                    <div class="cell medium-8">
+                    {{ link_list }}
                     </div>
+                  </div>
+                      {% comment %}
+                        <div class="main-nav-dropdown">
+                            {{ link_list }}
+                        </div>
+                      {% endcomment %}
                 {% endif %}
             </li>
         {% endfor %}

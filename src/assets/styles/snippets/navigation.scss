@@ -53,6 +53,8 @@
     }
 
     &-child-links {
+      column-count: 3;
+
       a {
         display: inline-block;
         padding: 2px 0;
@@ -79,6 +81,24 @@
       right: 0;
       top: 100%;
       background: white;
+      padding: 20px 20px 20px 40px;
+
+
+      &-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-title {
+        position: absolute;
+        background: rgba(255,255,255,0.8);
+        padding: 10px 15px;
+        font-size: rem-calc(20);
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+
 
       // Menu 1
       &-1 {

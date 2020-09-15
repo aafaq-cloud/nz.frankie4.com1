@@ -13,6 +13,28 @@ $payment-icons-spacing: 10px;
 footer {
   padding: 60px 0;
 
+  .footer-links {
+
+    a {
+      display: block;
+      text-decoration: none;
+      transition: transform 200ms;
+
+      &:hover {
+        transform: translateX(10px);
+      }
+
+    }
+
+    h5 {
+      @include breakpoint(small down) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
   // Navigation
   .menu {
     list-style: none;
@@ -22,16 +44,61 @@ footer {
     a {
       text-decoration: none;
     }
+
+    li {
+      break-inside: avoid;
+    }
+
+    @include breakpoint(medium) {
+      column-count: 2;
+    }
+
+    @include breakpoint(medium) {
+      column-count: 4;
+    }
+
+    @include breakpoint(small down) {
+      .accordion-toggle {
+        padding: 0;
+        border: 0;
+
+
+        .accordion-toggle-title {
+          font-weight: 700;
+        }
+
+        .close-icon {
+          transform: rotate(180deg);
+        }
+
+        svg {
+          display: block;
+        }
+
+      }
+
+      .accordion-body {
+        border: 0;
+        margin-top: 10px;
+        font-size: rem-calc(14);
+      }
+
+
+    }
+
   }
 
   .sub-menu {
     padding: 0;
     list-style: none;
+    font-size: rem-calc(12);
+    line-height: rem-calc(28);
 
     li {
       padding: 0;
     }
   }
+
 
   .contact-details {
     svg {

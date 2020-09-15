@@ -5,21 +5,36 @@
 
       <div class="grid-x align-middle align-justify h-100">
 
-        <nav class="toolbar-items-left toolbar-items cell shrink show-for-medium">
-          <ul class="grid-x top-nav align-middle text-small">
-            {% for link in linklists[section.settings.top_linklist].links %}
-              <li>
-                <a href="{{link.url}}">{{link.title | escape }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </nav>
+        <ul class="toolbar-items-left toolbar-items cell shrink">
+          <li class="toolbar-item">
+            <nav class="show-for-medium">
+              <ul class="grid-x top-nav align-middle text-small">
+                {% for link in linklists[section.settings.top_linklist].links %}
+                  <li>
+                    <a href="{{link.url}}">{{link.title | escape }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </li>
+
+          <li class="toolbar-item show-for-mobile-navigation">
+            <button class="toolbar-item-inner js-mobile-nav-toggle" aria-label="Open Mobile Menu">
+              {% include 'icon-hamburger' %}
+            </button>
+          </li>
+
+          <li class="toolbar-item toolbar-item-search hide-for-medium">
+            <button aria-label="{{ 'general.search.placeholder' | t }}" class="search-focusser toolbar-item-inner">{% include "icon-search" %}</button>
+          </li>
+
+        </ul>
 
         <div class="header-logo cell auto">
           <div class="header-logo-inner">
             <a href="/">
                 {% if section.settings.logo != blank %}
-                  <img src="{{ section.settings.logo | img_url: '400x200' }}" alt="logo"/>
+                  <img src="{{ section.settings.logo | img_url: 'x40' }}" alt="logo"/>
                 {% else %}
                   <span class="header-logo-text">{{ shop.name }}</span>
                 {% endif %}
@@ -32,7 +47,7 @@
             {% include 'currency-picker' %}
           </li>
           <li class="toolbar-item toolbar-item-search">
-            <button aria-label="{{ 'general.search.placeholder' | t }}" class="search-focusser toolbar-item-inner">{% include "icon-search" %}</button>
+            <button aria-label="{{ 'general.search.placeholder' | t }}" class="search-focusser toolbar-item-inner show-for-medium">{% include "icon-search" %}</button>
             {% include 'search-autocomplete' %}
           </li>
           <li class="toolbar-item">
@@ -73,11 +88,6 @@
                 {{ cart.item_count }}
                 {% endcomment %}
             </a>
-          </li>
-          <li class="toolbar-item show-for-mobile-navigation">
-            <button class="toolbar-item-inner js-mobile-nav-toggle" aria-label="Open Mobile Menu">
-                {% include 'icon-hamburger' %}
-            </button>
           </li>
         </ul>
       </div>
