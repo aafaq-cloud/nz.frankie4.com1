@@ -27,7 +27,7 @@ export class Product extends EventEmitter {
 
     // We will only initialise the variant bindings if we have a product container and product data
     if (this.hasOwnProperty("container") && this.hasOwnProperty("product")) {
-      this.quickview = false; // TODO: fix this
+      this.quickview = this.container.classList.contains('is-quickview') > -1;
       this.setVariantGroups();
       this.setSelectors();
       this.initVariantSelectors();

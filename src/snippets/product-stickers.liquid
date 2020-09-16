@@ -24,45 +24,45 @@
     {% if limit != 1 %}
         {% if sale %}
             <div class="product-sticker product-sticker__sale">
-                <strong class="text-small">{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}% off</strong>
+                <span class="text-small">{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}% off</span>
             </div>
         {% endif %}
         {% if new %}
             <div class="product-sticker product-sticker__new">
-                <strong class="text-small">New</strong>
+                <span class="text-small">New</span>
             </div>
         {% endif %}
         {% if restocked %}
             <div class="product-sticker product-sticker__restocked">
-                <strong class="text-small">Restocked</strong>
+                <span class="text-small">Restocked</span>
             </div>
         {% endif %}
         {% if last_sizes %}
             <div class="product-sticker product-sticker__last-sizes">
-                <strong class="text-small">Last Sizes</strong>
+                <span class="text-small">Last Sizes</span>
             </div>
         {% endif %}
         {% if preorder %}
             <div class="product-sticker product-sticker__preorder">
-                <strong class="text-small">Pre-Order</strong>
+                <span class="text-small">Pre-Order</span>
             </div>
         {% endif %}
     {% else %}
         {% if sale %}
             <div class="product-sticker product-sticker__sale">
-                <strong class="text-small">{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}% off</strong>
+                <span class="text-small">{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}% off</span>
             </div>
         {% elsif new %}
             <div class="product-sticker product-sticker__new">
-                <strong class="text-small">New</strong>
+                <span class="text-small">New</span>
             </div>
         {% elsif restocked %}
             <div class="product-sticker product-sticker__restocked">
-                <strong class="text-small">Restocked</strong>
+                <span class="text-small">Restocked</span>
             </div>
         {% elsif last_sizes %}
             <div class="product-sticker product-sticker__last-sizes">
-                <strong class="text-small">Last Sizes</strong>
+                <span class="text-small">Last Sizes</span>
             </div>
         {% endif %}
     {% endif %}

@@ -311,25 +311,25 @@ function buildBadges(data) {
 
         if (sale){
             html +=  '<div class="product-sticker product-sticker__sale">';
-            html +=  '<strong class="text-small">' + data.percent_sale_min + '% off</strong>';
+            html +=  '<span class="text-small">' + data.percent_sale_min + '% off</span>';
             html +=  '</div>';
         } else if(newItem) {
             html +=  '<div class="product-sticker product-sticker__new">';
-            html +=  '<strong class="text-small">New</strong>';
+            html +=  '<span class="text-small">New</span>';
             html +=  '</div>';
         } else if (restocked) {
             html +=  '<div class="product-sticker product-sticker__restocked">';
-            html +=  '<strong class="text-small">Restocked</strong>';
+            html +=  '<span class="text-small">Restocked</span>';
             html +=  '</div>';
 
         } else if(last_sizes) {
 
             html +=  '<div class="product-sticker product-sticker__last-sizes">';
-            html +=  '<strong class="text-small">Last Sizes</strong>';
+            html +=  '<span class="text-small">Last Sizes</span>';
             html +=  '</div>';
         } else if(preorder) {
             html +=  '<div class="product-sticker product-sticker__preorder">';
-            html +=  '<strong class="text-small">Pre-Order</strong>';
+            html +=  '<span class="text-small">Pre-Order</span>';
             html +=  '</div>';
         }
 
