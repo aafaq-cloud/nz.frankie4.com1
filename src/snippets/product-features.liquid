@@ -14,10 +14,10 @@
 
 {% assign feature_tags_array = feature_tags | split: "," %}
 
-<div class="product-features grid-x grid-margin-x grid-margin-y mb-40">
+<div class="product-features mb-40">
   {% for feature in features %}
     {% if feature_tags_array contains feature.settings.title %}
-      <div class="product-features-item cell small-6" data-open="feature-{{ forloop.index0 }}">
+      <div class="product-features-item" data-open="feature-{{ forloop.index0 }}">
 
         {% unless feature.settings.icon == blank %}
           <img src="{{feature.settings.icon | img_url: '60x60' }}" class="mr-10" alt="{{ feature.settings.title }}"/>

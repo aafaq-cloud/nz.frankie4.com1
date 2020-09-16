@@ -29,7 +29,7 @@ var bcSfFilterTemplate = {
         '</div>' +
 
         '<div class="cell product-tile__body grid-y">' +
-        '<h5 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h5>' +
+        '<h6 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h6>' +
         '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
         '<div class="product-tile__info">' +
 

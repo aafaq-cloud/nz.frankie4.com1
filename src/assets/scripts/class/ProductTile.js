@@ -12,11 +12,17 @@ export class ProductTile extends EventEmitter {
         this.productHandle = this.container.getAttribute('data-handle');
         this.products = [];
 
+
+
         this.setSelectors();
         if (this.selectors.swatches){
             this.setProducts();
-
         }
+
+        // Get the base url so the collection carries across to the related product urls
+        const currentUrl = this.selectorsSingle.link.getAttribute('href');
+        this.urlBase = currentUrl.substring(0, (currentUrl.lastIndexOf('/') + 1));
+
     }
 
     setProducts() {
@@ -92,8 +98,8 @@ export class ProductTile extends EventEmitter {
 
             instance.selectorsSingle.title.innerHTML = product.title;
             instance.selectorsSingle.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
-            instance.selectorsSingle.quickview.setAttribute('data-product-url', '/products/' + product.handle);
-            instance.selectorsSingle.link.setAttribute('href', '/products/' + product.handle);
+            instance.selectorsSingle.quickview.setAttribute('data-product-url', instance.urlBase + product.handle);
+            instance.selectorsSingle.link.setAttribute('href', instance.urlBase + product.handle);
         }
 
 

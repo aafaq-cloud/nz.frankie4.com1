@@ -4,8 +4,8 @@
   a {
     display: flex;
     @include flex-align(center, middle);
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     color: $color-form-element-text;
     border: 1px solid $color-form-element-border;
     cursor: pointer;
@@ -28,9 +28,9 @@
   }
 
   input {
-    min-width: 44px;
-    height: 44px;
-    width: 44px;
+    min-width: 46px;
+    height: 46px;
+    width: 46px;
 
     -webkit-appearance: none;
     outline: none;
@@ -40,7 +40,7 @@
     border-width: 1px 0;
     padding: 0 4px;
     text-align: center;
-    font-size: 12px;
+    //font-size: 12px;
     letter-spacing: 0.15em;
     -moz-appearance: textfield;
 

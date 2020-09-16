@@ -1,42 +1,28 @@
-<div class="section section-text-image large-margin">
+<div class="section section-text-image no-margin">
 
-    <div class="grid-container outer-container">
-        <div class="cell-wrapper grid-x align-middle">
-            <div class="cell-text cell large-6">
-
-                <div class="cell-text-container grid-container">
-                    <h2 class="h1 mb-20">{{ section.settings.title }}</h2>
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell medium-6 large-4">
+                <div class="cell-text-container">
+                    <h2 class="h3 mb-20">{{ section.settings.title }}</h2>
                     {{ section.settings.content }}
                     {% if section.settings.button_text != blank %}
-                        <a class="button button-secondary mt-30" href="{{section.settings.link}}">{{section.settings.button_text}}</a>
+                        <a class="button button-primary" href="{{section.settings.link}}">{{section.settings.button_text}}</a>
                     {% endif %}
                 </div>
             </div>
-            <div class="cell-image cell large-6">
-                {% if section.settings.image_4 != blank %}
-                    <div class="background-image background-image-3 show-for-large">
-                        <img src="{{section.settings.image_4 | img_url: '600x'}}" srcset=" {{section.settings.image_4 | img_url: '600x'}} 600w, {{section.settings.image_4 | img_url: '450x'}} 450w" class="banner-image_4">
-                    </div>
-                {% endif %}
+            <div class="cell-image cell medium-auto">
                 {% if section.settings.image_1 != blank %}
-                    <img src="{{section.settings.image_1 | img_url: '1400x'}}" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w" class="banner-image_1">
-                {% endif %}
-                {% if section.settings.image_3 != blank %}
-                    <div class="background-image background-image-2 show-for-large">
-                        <img src="{{section.settings.image_3 | img_url: '600x'}}" srcset=" {{section.settings.image_3 | img_url: '600x'}} 600w, {{section.settings.image_3 | img_url: '450x'}} 450w" class="banner-image_3">
-                    </div>
+                    <img src="{{section.settings.image_1 | img_url: '1400x'}}" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w">
+            {% endif %}
+        </div>
+            <div class="cell-image cell medium-auto large-shrink show-for-large">
+                {% if section.settings.image_2 != blank %}
+                    <img src="{{section.settings.image_2 | img_url: '270x'}}" srcset="{{section.settings.image_2 | img_url: '270x'}} 1400w", {{section.settings.image_1 | img_url: '100x'}} 900w, >
                 {% endif %}
             </div>
         </div>
     </div>
-
-    {% if section.settings.image_2 != blank %}
-        <div class="background-image-1-row show-for-large">
-            <div class="background-image background-image-1">
-                <img src="{{section.settings.image_2 | img_url: '1400x'}}" srcset="{{section.settings.image_2 | img_url: '1400x'}} 1400w, {{section.settings.image_2 | img_url: '1100x'}} 1100w, {{section.settings.image_2 | img_url: '800x'}} 800w, {{section.settings.image_2 | img_url: '450x'}} 450w" class="banner-image_2">
-            </div>
-        </div>
-    {% endif %}
 
 </div>
 

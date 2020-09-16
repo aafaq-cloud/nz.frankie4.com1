@@ -62,8 +62,8 @@ export class CartModalSnippet extends AbstractComponent {
             </div>
             <div class="product-details-container">
               <div class="product-details grid-y flex-child-auto">
-                <h6 class="mb-10 semibold" v-html="formatMoneyValue(product.line_price)"></h6>
-                <div><a :href="product.url">{{ product.product_title }}</a></div>
+                <h6 class="product-details-price mb-10" v-html="formatMoneyValue(product.line_price)"></h6>
+                <div class="product-details-title"><a :href="product.url">{{ product.product_title }}</a></div>
                 <div class="text-small color-secondary-text">
                   <template v-if="product.variant_title != null">
                     <template v-for="(option, index) in product.variant_options">{{index > 0 ? ' | ' : ''}}{{ option }}</template>
@@ -173,7 +173,7 @@ export class CartModalSnippet extends AbstractComponent {
            <img :src="product.featured_image | formatImageSize('100x100')">
           </div>
           <div>
-            <div class="mb-10"><strong>{{ product.title}}</strong></div>
+            <div class="mb-10">{{ product.title}}</div>
             <div v-html="formatMoneyValue(product.price)"></div>
           </div>
        
@@ -295,7 +295,7 @@ export class CartModalSnippet extends AbstractComponent {
               </div>
               
               <div class="grid-x grid-margin-x grid-margin-y">
-                <div class="cell medium-6 small-order-2">
+                <div class="cell medium-6">
                  <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>
                 </div>
                 <div class="cell medium-6">

@@ -16,7 +16,7 @@
                     {% assign cell_class = "medium-8" %}
                 {% endif %}
 
-                <div class="cell media-block {{ cell_class }}">
+                <div class="cell media-block {{ cell_class }}{% if block.settings.hide_for_mobile %} show-for-medium{% endif %}">
 
                     {% comment %} Added by PSFED @ Shopify - April 12 2019 {% endcomment %}
                     {% if block.settings.link != blank and block.settings.link_text == blank %}
@@ -96,6 +96,11 @@
                         "type": "image_picker",
                         "id": "mobile_image",
                         "label": "Mobile Background Image"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "hide_for_mobile",
+                        "label": "Hide for mobile"
                     },
                     {
                         "type": "text",

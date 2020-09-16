@@ -213,7 +213,7 @@
 
 
 
-                        <div class="variant-wrapper mt-40">
+                        <div class="variant-wrapper mt-20">
 
 
                           <div class="mb-20">
@@ -283,17 +283,17 @@
 
                             <div class="product-swatches">
                               <!-- Core Colours -->
-                              <label class="option-label">Core Colours</label>
+                              <label class="option-label"><strong>Core</strong> Colours</label>
                               <div class="product-swatches__container">
                                 {{ related_products_liquid }}
                               </div>
 
                               <!-- Seasonal Colours -->
                               {% if related_products_seasonal_liquid != blank %}
-                              <label class="option-label mt-20">Seasonal Colours</label>
-                              <div class="product-swatches__container">
-                                {{ related_products_seasonal_liquid }}
-                              </div>
+                                <label class="option-label mt-20"><strong>Seasonal</strong> Colours</label>
+                                <div class="product-swatches__container">
+                                  {{ related_products_seasonal_liquid }}
+                                </div>
                               {% endif %}
 
                             </div> <!-- end .product-swatches -->

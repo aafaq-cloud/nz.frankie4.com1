@@ -96,6 +96,10 @@ h6 {
   @extend h6;
 }
 
+b, strong {
+  font-weight: 500;
+}
+
 p {
   margin-bottom: (20 / 12) * 1em;
 }
@@ -114,8 +118,8 @@ p {
 }
 
 .text-small {
-  font-size: rem-calc(12px);
-  line-height: (15 / 12);
+  font-size: rem-calc(14);
+  line-height: (18 / 14);
 }
 
 .text-left {
