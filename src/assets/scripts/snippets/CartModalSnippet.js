@@ -228,16 +228,15 @@ export class CartModalSnippet extends AbstractComponent {
          <div v-if="open" tabindex="0" @focus="() => $refs['checkout-button'].focus()"></div>
          <form action="/cart" method="post">
           <div class="inside">
-            <div class="cart-heading grid-x align-justify">
-                <div class="cell shrink">
-                    <h4>My Bag</h4>
-                </div> 
-                 <div class="cell shrink">
+            <div class="cart-heading">
+               
+                    <h4 class="m-0">My Bag</h4>
+                
                     <button type="button" @click="close" class="cart-modal-close" ref="close-button">
                       <span class="show-for-sr">Close cart popup</span>
                        <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross"><path d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50 38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401 0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/></svg>
                     </button>
-                </div>
+               
             </div>
             
             <div class="cart-additional-information" v-html="additionalInformation"></div>
@@ -343,7 +342,7 @@ export class CartModalSnippet extends AbstractComponent {
         }
       },
 
-      created() {
+      mounted() {
         this.updateRecommendations();
       }
 
