@@ -1,0 +1,68 @@
+.section-shipping-accordion {
+
+  .heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding: 30px;
+    color: #FFFFFF;
+    position: relative;
+    margin-bottom: 50px;
+    background-size: cover;
+    background-position: center;
+    text-transform: uppercase;
+
+    @include breakpoint(medium) {
+      height: 250px;
+    }
+
+    &:before {
+      background: #000000;
+      opacity: 0.5;
+      position: absolute;
+      content: '';
+      display: block;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    > div {
+      position: relative;
+      max-width: 300px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+  }
+
+  .accordion-toggle-title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+
+  .contact-details {
+    background: $pale-blue;
+    padding: 30px;
+
+    @include breakpoint(medium) {
+      margin-left: 30px;
+    }
+
+    h5 {
+      margin-bottom: 20px;
+    }
+
+    > div {
+      margin-bottom: 15px;
+    }
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+}

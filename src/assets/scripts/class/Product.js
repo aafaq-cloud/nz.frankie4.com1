@@ -451,10 +451,34 @@ export class Product extends EventEmitter {
       return;
     }
 
-    const newurl = `${window.location.protocol}//${window.location.host}${
-      window.location.pathname
-    }?variant=${this.selectedVariant.id}`;
+    // const newurl = `${window.location.protocol}//${window.location.host}${
+    //   window.location.pathname
+    // }?variant=${this.selectedVariant.id}`;
+    const newurl = this.queryStringUrlReplacement(window.location.href.toString(),'variant',this.selectedVariant.id);
     window.history.replaceState({path: newurl}, "", newurl);
+  }
+
+  /**
+   * Adds new parameter to url if it does not exist, and replaces if it does exist
+   * @param url String The url to be modified
+   * @param key String The key to add to replace
+   * @param value String The value to assign to the key
+   */
+  queryStringUrlReplacement(url, key, value)
+  {
+    let re = new RegExp("[\\?&]" + key + "=([^&#]*)"), match = re.exec(url), delimiter, newString;
+
+    if (match === null) {
+      // append new param
+      let hasQuestionMark = /\?/.test(url);
+      delimiter = hasQuestionMark ? "&" : "?";
+      newString = url + delimiter + key + "=" + value;
+    } else {
+      delimiter = match[0].charAt(0);
+      newString = url.replace(re, delimiter + key + "=" + value);
+    }
+
+    return newString;
   }
 
   /**
