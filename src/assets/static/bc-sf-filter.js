@@ -19,7 +19,7 @@ var bcSfFilterTemplate = {
     'vendorHtml': '<div>{{itemVendorLabel}}</div>',
 
     // Grid Template
-    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch test">' +
+    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch {{itemHandle}}">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
         '<div class="cell product-tile__image-container">' +
         '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
@@ -235,8 +235,8 @@ function buildSwatches(data) {
                 var group = tag.replace("group_", "");
             }
         }
-        var colour = data.handle.replace(group + '-', "");
-        html += '<div class="color-swatch color-swatch--tile"><input checked type="radio" name="colors--'+ data.id +'" id="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" class="color-swatch__input" value="'+ data.handle +'"> <label for="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" title="TAUPE" aria-label="'+ data.handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="' + window.theme.cdnBase + colour +'.png"/></label></div>';
+        var colour = data.handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+        html += '<div class="color-swatch color-swatch--tile"><input checked type="radio" name="colors--'+ data.id +'" id="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" class="color-swatch__input" value="'+ data.handle +'"> <label for="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" title="' + colour + '" aria-label="'+ data.handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="' + window.theme.cdnBase + data.handle +'.png"/></label></div>';
 
 
         for (var i = 0; i < data.tags.length; i++) {
@@ -247,11 +247,11 @@ function buildSwatches(data) {
             if(tag.includes("variant_")){
 
                 var handle = tag.replace("variant_", "");
-                var colour = handle.replace(group + '-', "");
+                var colour = handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
 
                 //html += '<div class="swatch" data-handle="' + handle + '"></div>';
 
-                html += '<div class="color-swatch color-swatch--tile"><input type="radio" name="colors--'+ data.id +'" id="'+ handle +'--'+ data.id +'--'+ handle +'" class="color-swatch__input" value="'+ handle +'"> <label for="'+ handle +'--'+ data.id +'--'+ handle +'" title="' + colour + '" aria-label="'+ handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="'+ window.theme.cdnBase + colour +'.png"/></label></div>';
+                html += '<div class="color-swatch color-swatch--tile"><input type="radio" name="colors--'+ data.id +'" id="'+ handle +'--'+ data.id +'--'+ handle +'" class="color-swatch__input" value="'+ handle +'"> <label for="'+ handle +'--'+ data.id +'--'+ handle +'" title="' + colour + '" aria-label="'+ handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="'+ window.theme.cdnBase + handle +'.png"/></label></div>';
                 colourCount++;
 //               html += '<div class="color-swatch color-swatch--tile">';
 //               html += '<input type="radio" name="' + data.id + '" id="' + data.id + '-' + handle + '" class="color-swatch__input" value="' + handle + '">';

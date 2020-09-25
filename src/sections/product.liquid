@@ -218,7 +218,7 @@
 
                           <div class="mb-20">
 
-                            {% assign colourCurrent = product.handle | remove: group | remove_first: '-' %}
+                            {% assign colourCurrent = product.handle %}
                             {% assign imageCurrent = colourCurrent | append: '.png' %}
                             {% assign imageUrlCurrent = imageCurrent | file_url %}
 
@@ -243,8 +243,8 @@
                             {% for product_item in related_products %}
                               {% assign productItem = all_products[product_item] %}
                               {% if productItem != blank %}
-                                {% assign colour = product_item | remove: group | remove_first: '-' %}
-                                {% assign image = colour | append: '.png' %}
+                                {% assign colour = product_item %}
+                                {% assign image = product_item | append: '.png' %}
                                 {% assign imageUrl = image | file_url %}
 
                                 {% if productItem.tags contains 'seasonal' %}

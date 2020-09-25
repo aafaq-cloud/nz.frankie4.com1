@@ -118,13 +118,14 @@
   //display: flex;
   //justify-content: center;
   text-align: center;
+  margin: 20px 0;
 
   .bc-sf-filter-block-content {
     text-align: left;
   }
 
   .bc-sf-filter-option-block .bc-sf-filter-block-title a {
-    border-width: 0 0 1px 0;
+    border-width: 0 0 1px 0 !important;
   }
 }
 
@@ -152,4 +153,8 @@
 
 .collection-description {
   text-align: center;
+
+  p {
+    font-size: rem-calc(16);
+  }
 }

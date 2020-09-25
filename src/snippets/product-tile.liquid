@@ -60,9 +60,6 @@
           {% assign related_products = '' %}
           {% for unclean_tag in product.tags %}
 
-            {% if unclean_tag contains 'group_' %}
-              {% assign group = unclean_tag | remove: 'group_' %}
-            {% endif %}
             {% if unclean_tag contains 'variant_' %}
               {% assign tag = unclean_tag | remove: 'variant_' %}
               {% if related_products != blank %}
@@ -74,7 +71,7 @@
           {% assign related_products = related_products | split: ',' %}
 
           <div class="product-tile__swatches">
-            {% assign colour = product.handle | remove: group | remove_first: '-' %}
+            {% assign colour = product.handle %}
             {% assign image = colour | append: '.png' %}
             {% assign imageUrl = image | file_url %}
             <div class="color-swatch color-swatch--tile">
@@ -85,7 +82,7 @@
             </div>
 
           {% for product_item in related_products limit: 3 %}
-            {% assign colour = product_item | remove: group | remove_first: '-' %}
+            {% assign colour = product_item %}
             {% assign image = colour | append: '.png' %}
             {% assign imageUrl = image | file_url %}
              <div class="color-swatch color-swatch--tile">

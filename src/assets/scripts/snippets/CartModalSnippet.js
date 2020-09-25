@@ -327,7 +327,7 @@ export class CartModalSnippet extends AbstractComponent {
             let self = this;
             $.ajax({
               type: "get",
-              url: "/recommendations/products.js",
+              url: "/recommendations/products",
               dataType: "json",
               data: {
                 'section_id': 'product-recommendations',
