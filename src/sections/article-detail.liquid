@@ -22,30 +22,23 @@ If a comment was just submitted but requires moderation, we have an extra commen
 
         <div class="grid-x">
 
-            <div class="article__meta cell medium-12 large-2">
-               {% capture date %}{{ article.published_at | date: '%b %d, %Y' }}{% endcapture %}
-               <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
+            <div class="article__content cell medium-12 large-12">
 
-               {% if article.tags.size > 0 %}
-                   <div class="article-tile__tags text-small color-secondary-text mt-10 link">
-                       {% for tag in article.tags %}
-                           {% if forloop.index0 > 0 %}<span class="delimeter">|</span>{% endif %}
-                           <span class="article-tile__tag">{{ tag }}</span>
-                       {% endfor %}
-                   </div>
-               {% endif %}
+                <h1 class="mt-10 mb-10">{{ article.title }}</h1>
 
-            </div>
+                <div class="article__meta">
+                    {% capture date %}{{ article.published_at | date: '%b %d, %Y' }}{% endcapture %}
+                    <span class="article-tile__date text-small color-secondary-text mb-10">{{ date }}</span>
 
-            <div class="article__content cell medium-12 large-10">
+                    {% if article.tags.size > 0 %}
+                        <div class="article-tile__tags text-small color-secondary-text mt-10 link">
+                            {% for tag in article.tags %}
+                                {% if forloop.index0 > 0 %}<span class="delimeter">|</span>{% endif %}
+                                <span class="article-tile__tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
-                <div class="grid-x grid-margin-x align-middle">
-                    <div class="cell large-5">
-                        <h1 class="mt-10 mb-40">{{ article.title }}</h1>
-                    </div>
-                    <div class="cell large-6 large-offset-1">
-                        <p class="lead">{{ article.excerpt }}</p>
-                    </div>
                 </div>
 
                 <img data-src="{{article.image | img_url: '1024x', crop: 'center'}}" class="lazyload article__image">
