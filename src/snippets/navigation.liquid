@@ -19,9 +19,6 @@ Navigation to display on large viewports
             <li{% if menu_class != blank %} class="{{ menu_class }}"{% endif %}>
                 <a href="{{ link.url }}">
                   {{ link.title | escape }}
-                  {% if link.links != blank %}
-                    {% include "icon-chevron" %}
-                  {% endif %}
                 </a>
 
                 {% capture link_list %}

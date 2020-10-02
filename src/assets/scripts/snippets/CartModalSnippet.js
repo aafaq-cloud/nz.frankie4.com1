@@ -58,7 +58,7 @@ export class CartModalSnippet extends AbstractComponent {
         <li class="popup-product" :class="{ loading: loading }">
           <div class=" grid-x">
             <div v-if="product.image" class="popup-product-image">
-              <a :href="product.url" aria-hidden="true" tabindex="-1"><img :src="product.image | formatImageSize('100x100')"></a>
+              <a :href="product.url" aria-hidden="true" tabindex="-1"><img :src="product.image | formatImageSize('100x100@2x')"></a>
             </div>
             <div class="product-details-container">
               <div class="product-details grid-y flex-child-auto">
@@ -170,7 +170,7 @@ export class CartModalSnippet extends AbstractComponent {
         <a :href="product.url" class="recommended-product grid-x align-top">
          
           <div v-if="product.featured_image" class="popup-product-image">
-           <img :src="product.featured_image | formatImageSize('100x100')">
+           <img :src="product.featured_image | formatImageSize('100x100@2x')">
           </div>
           <div>
             <div class="mb-10">{{ product.title}}</div>
@@ -295,10 +295,10 @@ export class CartModalSnippet extends AbstractComponent {
               </div>
               
               <div class="grid-x grid-margin-x grid-margin-y">
-                <div class="cell medium-6">
+                <div class="cell medium-6 small-order-2 medium-order-1">
                  <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>
                 </div>
-                <div class="cell medium-6">
+                <div class="cell medium-6 small-order-1 medium-order-2">
                    <button type="submit" name="checkout" class="button button-primary button-expanded" ref="checkout-button">Checkout</button>
                 </div>
               </div>
