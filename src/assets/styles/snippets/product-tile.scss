@@ -117,6 +117,31 @@
     flex-wrap: wrap;
     margin-top: 20px;
 
+
+    @include breakpoint(small down) {
+      > .color-swatch:nth-child(n+3) {
+        display: none;
+      }
+      > div:nth-child(1):last-child,
+      > div:nth-child(2):last-child,
+      > div:nth-child(3):last-child {
+        display: none;
+      }
+    }
+    @include breakpoint(medium){
+      > .color-swatch:nth-child(n+5) {
+        display: none;
+      }
+      > div:nth-child(1):last-child,
+      > div:nth-child(2):last-child,
+      > div:nth-child(3):last-child,
+      > div:nth-child(4):last-child,
+      > div:nth-child(5):last-child {
+        display: none;
+      }
+    }
+
+
     .more-colours {
       a {
         cursor: pointer;
@@ -174,11 +199,11 @@
       box-shadow: 0 0 0 1px #b9b9b9;
     }
 
-    @include breakpoint(small down) {
-      .color-swatch:nth-child(1n + 3) {
-        display: none;
-      }
-    }
+    //@include breakpoint(small down) {
+    //  .color-swatch:nth-child(1n + 3) {
+    //    display: none;
+    //  }
+    //}
 
 
   }

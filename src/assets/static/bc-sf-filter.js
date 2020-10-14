@@ -225,7 +225,6 @@ function buildSwatches(data) {
     var html = '';
     html += '<div class="product-tile__swatches">';
 
-    let colourCount = 1;
 
     if (data.tags) {
 
@@ -241,7 +240,6 @@ function buildSwatches(data) {
 
         for (var i = 0; i < data.tags.length; i++) {
 
-            if (colourCount >= 4) {break;}
             var tag = data.tags[i];
 
             if(tag.includes("variant_")){
@@ -252,7 +250,7 @@ function buildSwatches(data) {
                 //html += '<div class="swatch" data-handle="' + handle + '"></div>';
 
                 html += '<div class="color-swatch color-swatch--tile"><input type="radio" name="colors--'+ data.id +'" id="'+ handle +'--'+ data.id +'--'+ handle +'" class="color-swatch__input" value="'+ handle +'"> <label for="'+ handle +'--'+ data.id +'--'+ handle +'" title="' + colour + '" aria-label="'+ handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="'+ window.theme.cdnBase + handle +'.png"/></label></div>';
-                colourCount++;
+
 //               html += '<div class="color-swatch color-swatch--tile">';
 //               html += '<input type="radio" name="' + data.id + '" id="' + data.id + '-' + handle + '" class="color-swatch__input" value="' + handle + '">';
 //               html += '<label for="' + handle +'--' + data.id '" title="'+handle+'" class="color-swatch__label"></label>';
@@ -265,11 +263,11 @@ function buildSwatches(data) {
 
 
         }
-        if (colourCount > 2){
-            html += '<div class="more-colours">';
-            html += '<a href="{{itemUrl}}">+</a>';
-            html += '</div>';
-        }
+
+        html += '<div class="more-colours">';
+        html += '<a href="{{itemUrl}}">+</a>';
+        html += '</div>';
+
     }
     html += '</div>';
 

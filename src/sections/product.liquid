@@ -72,7 +72,7 @@
                             {% endif %}
 
                           <div class="text-small color-secondary-text mt-10 mb-10">
-                            Payment options with Afterpay and Zip
+                            Payment options with Afterpay and ZipPay
                           </div>
 
                         </h5>
@@ -283,10 +283,12 @@
 
                             <div class="product-swatches">
                               <!-- Core Colours -->
+                              {% if related_products_liquid != blank %}
                               <label class="option-label"><strong>Core</strong> Colours</label>
                               <div class="product-swatches__container">
                                 {{ related_products_liquid }}
                               </div>
+                              {% endif %}
 
                               <!-- Seasonal Colours -->
                               {% if related_products_seasonal_liquid != blank %}

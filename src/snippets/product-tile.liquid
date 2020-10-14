@@ -81,7 +81,7 @@
               </label>
             </div>
 
-          {% for product_item in related_products limit: 3 %}
+          {% for product_item in related_products %}
             {% assign colour = product_item %}
             {% assign image = colour | append: '.png' %}
             {% assign imageUrl = image | file_url %}
