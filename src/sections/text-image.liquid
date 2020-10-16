@@ -13,9 +13,12 @@
             </div>
             <div class="cell-image cell medium-auto">
                 {% if section.settings.image_1 != blank %}
-                    <img src="{{section.settings.image_1 | img_url: '1400x'}}" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w">
-            {% endif %}
-        </div>
+                    <img src="{{section.settings.image_1 | img_url: '1400x'}}" class="show-for-large" srcset="{{section.settings.image_1 | img_url: '1400x'}} 1400w, {{section.settings.image_1 | img_url: '1100x'}} 1100w, {{section.settings.image_1 | img_url: '800x'}} 800w, {{section.settings.image_1 | img_url: '450x'}} 450w">
+                {% endif %}
+                {% if section.settings.image_3 != blank %}
+                    <img src="{{section.settings.image_3 | img_url: '600x'}}" class="hide-for-large">
+                {% endif %}
+            </div>
             <div class="cell-image cell medium-auto large-shrink show-for-large">
                 {% if section.settings.image_2 != blank %}
                     <img src="{{section.settings.image_2 | img_url: '270x'}}" srcset="{{section.settings.image_2 | img_url: '270x'}} 1400w", {{section.settings.image_1 | img_url: '100x'}} 900w, >
@@ -63,12 +66,7 @@
             {
                 "id": "image_3",
                 "type": "image_picker",
-                "label": "Background Image 2"
-            },
-            {
-                "id": "image_4",
-                "type": "image_picker",
-                "label": "Background Image 3"
+                "label": "Mobile Image"
             }
         ],
         "presets": [
