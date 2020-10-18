@@ -13,17 +13,6 @@
             <p class="color-secondary-text">{{collection.description}}</p>
           {%  endif %}
 
-          {% assign unfilteredCollection = collection.metafields.collections.related %}
-          {% assign sizeList = '6,7,8,9,10,11,12,13' | split: ',' %}
-          {% if unfilteredCollection != blank %}
-            Filter by Size:
-            <div class="flex-container align-center">
-              {% for collectionSize in sizeList %}
-                <a href="/collections/{{ unfilteredCollection }}/?_=pf&pf_opt_size={{ collectionSize }}" style="padding: 10px">{{ collectionSize }}</a>
-              {% endfor %}
-            </div>
-          {% endif %}
-
         </div>
 
         <!-- Filter Desktop -->
@@ -54,7 +43,9 @@
             </div>
 
             <!-- Listing -->
+
             <div id="bc-sf-filter-products" class="collection-products grid-x grid-margin-x grid-margin-y"
+            data-primary="{% if collection.metafields.products.primary != blank %}true{% else %}false{% endif %}"
             data-load_more_enable="{% if section.settings.plus_load_more_enabled and paginate.pages > 1 %}true{% else %}false{% endif %}">
               {% for product in collection.products %}
                 <div class="cell small-6 large-3 grid-x align-stretch">

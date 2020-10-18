@@ -1,7 +1,7 @@
 // Override Settings
 var bcSfFilterSettings = {
     general: {
-        limit: 20,
+        limit: 50,
         /* Optional */
         // loadProductFirst: true,
         paginationType: "infinite",
@@ -19,7 +19,7 @@ var bcSfFilterTemplate = {
     'vendorHtml': '<div>{{itemVendorLabel}}</div>',
 
     // Grid Template
-    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch {{itemHandle}}">' +
+    'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch {{itemHandle}} {{isPrimary}}">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
         '<div class="cell product-tile__image-container">' +
         '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
@@ -152,6 +152,10 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
     // Add main attribute (Always put at the end of this function)
     itemHtml = itemHtml.replace(/{{itemId}}/g, data.id);
     itemHtml = itemHtml.replace(/{{itemHandle}}/g, data.handle);
+
+    const isPrimary = (data.tags.indexOf('primary') != -1) ? 'primary' : '';
+    itemHtml = itemHtml.replace(/{{isPrimary}}/g, isPrimary);
+
     itemHtml = itemHtml.replace(/{{itemTitle}}/g, data.title);
     itemHtml = itemHtml.replace(/{{itemUrl}}/g, this.buildProductItemUrl(data));
 
@@ -461,7 +465,19 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
         totalProduct = data.total_product + '<span> ' + bcSfFilterConfig.label.items_with_count_one + '</span>';
     }
     totalProduct = jQ.parseHTML(totalProduct);
-    jQ('#bc-sf-filter-total-product').html(totalProduct);
+
+
+    if (this.queryParams.hasOwnProperty('pf_t_colour') || this.queryParams.hasOwnProperty('pf_opt_size')) {
+        jQ('#bc-sf-filter-products').removeClass('primary-only');
+        jQ('#bc-sf-filter-total-product').html(totalProduct);
+
+    } else {
+        if (jQ('#bc-sf-filter-products').attr('data-primary') == "true"){
+            jQ('#bc-sf-filter-products').addClass('primary-only');
+        } else {
+        jQ('#bc-sf-filter-total-product').html(totalProduct);
+        }
+    }
 
     // Refresh Quickview
     AppQuickview.initQuickViewButtons();
