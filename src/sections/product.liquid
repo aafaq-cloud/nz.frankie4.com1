@@ -252,9 +252,9 @@
                                   {%- capture related_products_seasonal_liquid -%}
                                     {{ related_products_seasonal_liquid }}
                                     {%- if is_quickview -%}
-                                      <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                      <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ productItem.title }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
                                     {%- else -%}
-                                      <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                      <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ productItem.title }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
                                     {%- endif -%}
                                         {%- render 'icon-disabled-swatch' -%}
                                         <img data-src="{{imageUrl}}" class="lazyload">
@@ -266,11 +266,11 @@
                                     {%- capture related_products_liquid -%}
                                       {{ related_products_liquid }}
                                       {%- if is_quickview -%}
-                                        <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                        <a class="product-swatches__product" {% if productItem.available %}data-product-quickview data-product-url="{{ productItem.url }}"{% endif %} data-product-handle="{{ productItem.handle }}" title="{{ productItem.title }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
                                       {%- else -%}
-                                        <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ colour | replace: '-', ' ' | capitalize }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
+                                        <a class="product-swatches__product" href="{{ productItem.url }}" data-product-handle="{{ productItem.handle }}" title="{{ productItem.title }}" aria-label="{{ product_item }}" data-product-id="{{ productItem.id }}">
                                       {%- endif -%}
-                                          {%- render 'icon-disabled-swatch' -%}
+
                                           <img data-src="{{imageUrl}}" class="lazyload">
                                        </a>
                                     {%- endcapture -%}

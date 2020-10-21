@@ -318,21 +318,13 @@ export class Product extends EventEmitter {
       let currentVariant = relatedVariants[swatch.getAttribute('data-product-id')];
 
       if (currentVariant != undefined) {
-        if (currentVariant.available){
-          swatch.classList.remove('disabled');
+
           if (swatch.hasAttribute('data-product-quickview')) {
             swatch.setAttribute('data-product-url','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
           } else {
             swatch.setAttribute('href','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
           }
-        } else { // If this product for the active size is not availble
-          swatch.classList.add('disabled');
-          if (swatch.hasAttribute('data-product-quickview')) {
-            swatch.setAttribute('data-product-url', '');
-          } else {
-            swatch.setAttribute('href', '#');
-          }
-        }
+
       }
 
     }

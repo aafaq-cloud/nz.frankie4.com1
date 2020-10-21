@@ -1,7 +1,7 @@
 // Override Settings
 var bcSfFilterSettings = {
     general: {
-        limit: 50,
+        limit: 48,
         /* Optional */
         // loadProductFirst: true,
         paginationType: "infinite",
@@ -103,6 +103,8 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
     // Add Price
     var itemPriceHtml = '';
 
+    itemPriceHtml += '<div class="product-tile__price-container">';
+
     itemPriceHtml += '<span class="product-tile__price">';
     itemPriceHtml += bcsffilter.formatMoney(data.price_min * 100);
     itemPriceHtml += '</span>';
@@ -112,6 +114,8 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
         itemPriceHtml += bcsffilter.formatMoney(data.compare_at_price_min * 100);
         itemPriceHtml += '</s>';
     }
+
+    itemPriceHtml += '</div>';
 
     itemHtml = itemHtml.replace(/{{itemPrice}}/g, itemPriceHtml);
 
@@ -232,13 +236,8 @@ function buildSwatches(data) {
 
     if (data.tags) {
 
-        for (var i = 0; i < data.tags.length; i++) {
-            var tag = data.tags[i];
-            if(tag.includes("group_")){
-                var group = tag.replace("group_", "");
-            }
-        }
-        var colour = data.handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+        //var colour = data.handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+        var colour = data.handle.charAt(0).toUpperCase() + data.handle.replace(/-/g," ").slice(1);
         html += '<div class="color-swatch color-swatch--tile"><input checked type="radio" name="colors--'+ data.id +'" id="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" class="color-swatch__input" value="'+ data.handle +'"> <label for="'+ data.handle +'--'+ data.id +'--'+ data.handle +'" title="' + colour + '" aria-label="'+ data.handle +'" class="color-swatch__label" style="--option-color:#dab5a2; --option-border-color:#dab5a2;"><img src="' + window.theme.cdnBase + data.handle +'.png"/></label></div>';
 
 
@@ -249,7 +248,8 @@ function buildSwatches(data) {
             if(tag.includes("variant_")){
 
                 var handle = tag.replace("variant_", "");
-                var colour = handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+                //var colour = handle.replace(/-/g," ").replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+                var colour = handle.charAt(0).toUpperCase() + handle.replace(/-/g," ").slice(1);
 
                 //html += '<div class="swatch" data-handle="' + handle + '"></div>';
 
@@ -284,8 +284,10 @@ function buildBadges(data) {
     var restocked = false;
     var last_sizes = false;
     var preorder = false;
+    var lastchance = false;
 
     var html = '';
+    html +=  '<div class="product-stickers">';
 
     if (data.compare_at_price_min > data.price_min) {
         sale = true;
@@ -305,11 +307,13 @@ function buildBadges(data) {
             if (tag == 'preorder'){
                 preorder = true;
             }
+            if (tag == 'lastchance'){
+                lastchance = true;
+            }
         }
     }
 
     if (sale || newItem || restocked || last_sizes){
-        html +=  '<div class="product-stickers">';
 
         if (sale){
             html +=  '<div class="product-sticker product-sticker__sale">';
@@ -323,9 +327,7 @@ function buildBadges(data) {
             html +=  '<div class="product-sticker product-sticker__restocked">';
             html +=  '<span class="text-small">Restocked</span>';
             html +=  '</div>';
-
-        } else if(last_sizes) {
-
+        } else if(last_sizes){
             html +=  '<div class="product-sticker product-sticker__last-sizes">';
             html +=  '<span class="text-small">Last Sizes</span>';
             html +=  '</div>';
@@ -333,10 +335,14 @@ function buildBadges(data) {
             html +=  '<div class="product-sticker product-sticker__preorder">';
             html +=  '<span class="text-small">Pre-Order</span>';
             html +=  '</div>';
+        } else if(lastchance) {
+            html +=  '<div class="product-sticker product-sticker__lastchance">';
+            html +=  '<span class="text-small">Last Chance</span>';
+            html +=  '</div>';
         }
 
-        html +=  '</div>';
     }
+    html +=  '</div>';
     return html;
 }
 

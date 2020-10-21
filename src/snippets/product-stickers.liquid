@@ -2,6 +2,8 @@
 {% assign new = false %}
 {% assign restocked = false %}
 {% assign last_sizes = false %}
+{% assign preorder = false %}
+{% assign lastchance = false %}
 
 {% if product.compare_at_price_max > product.price %}
     {% assign sale = true %}
@@ -16,11 +18,14 @@
         {% assign last_sizes = true %}
     {% elsif tag == 'preorder' %}
         {% assign preorder = true %}
+    {% elsif tag == 'lastchance' %}
+        {% assign lastchance = true %}
     {% endif %}
 {% endfor %}
 
-{% if sale or new or restocked or last_sizes %}
-    <div class="product-stickers">
+<div class="product-stickers">
+
+
     {% if limit != 1 %}
         {% if sale %}
             <div class="product-sticker product-sticker__sale">
@@ -64,7 +69,16 @@
             <div class="product-sticker product-sticker__last-sizes">
                 <span class="text-small">Last Sizes</span>
             </div>
+        {% elsif preorder %}
+            <div class="product-sticker product-sticker__last-sizes">
+                <span class="text-small">Pre-Order</span>
+            </div>
+        {% elsif lastchance %}
+            <div class="product-sticker product-sticker__last-sizes">
+                <span class="text-small">Last Chance</span>
+            </div>
         {% endif %}
     {% endif %}
-    </div>
-{% endif %}
+
+
+</div>

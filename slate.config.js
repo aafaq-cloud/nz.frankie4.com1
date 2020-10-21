@@ -5,7 +5,7 @@ const path = require('path');
 const alias = {
   jquery: path.resolve('./node_modules/jquery'),
   'lodash-es': path.resolve('./node_modules/lodash-es'),
-  vue: path.resolve('./node_modules/vue/dist/vue.js')
+  vue: path.resolve('./node_modules/vue/dist/vue.min.js')
 };
 
 module.exports = {

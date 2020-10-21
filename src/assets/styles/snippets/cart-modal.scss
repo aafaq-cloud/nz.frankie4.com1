@@ -94,10 +94,12 @@
     width: 30px;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    margin-right: 10px;
 
     @include breakpoint(small down) {
       height: 20px;
       width: auto;
+      margin-right: 0;
       margin-bottom: 10px;
     }
 

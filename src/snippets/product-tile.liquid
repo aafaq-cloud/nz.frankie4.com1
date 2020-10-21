@@ -43,14 +43,17 @@
             <p class="color-secondary-text m-0 mb-10 text-small">{{ product_variant_label }}</p>
         {% endif %}
 
-      <span class="product-tile__price">
+      <div class="product-tile__price-container">
+        <span class="product-tile__price">
         {{ product.price_max | money }}
-      </span>
-      {% if product.compare_at_price_max > product.price_max %}
-        <s class="product-tile__compare-price color-secondary-text text-small">
+        </span>
+        {% if product.compare_at_price_max > product.price_max %}
+          <s class="product-tile__compare-price color-secondary-text text-small">
             {{ product.compare_at_price_max | money }}
-        </s>
-      {% endif %}
+          </s>
+        {% endif %}
+      </div>
+
 
       {% unless hide_swatches != blank %}
 
