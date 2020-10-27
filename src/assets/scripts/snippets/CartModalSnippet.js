@@ -311,7 +311,8 @@ export class CartModalSnippet extends AbstractComponent {
         </div>
       `,
       methods: {
-        close() {
+        close(e) {
+          e.preventDefault();
           instance.closeCart();
         },
         formatTotalMoneyValue(value) {

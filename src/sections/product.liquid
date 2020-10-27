@@ -551,11 +551,11 @@
                   <script type="application/json" data-related-products-json>
                       {
                       "products"    : [
-                      {{ product | json }}{% unless related_products == blank %},{% endunless %}
+                      {{ product | json }}
                       {%- for related_product in related_products -%}
                         {%- assign related_product_object = all_products[related_product] -%}
                         {%- if related_product_object != blank -%}
-                          {{ related_product_object | json }}{% unless forloop.last == true %},{% endunless %}
+                          ,{{ related_product_object | json }}
                         {%- endif -%}
                       {%- endfor -%}
                       ]}
