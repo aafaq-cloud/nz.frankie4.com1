@@ -1,11 +1,11 @@
 .title-block  {
   position: relative;
 
-  a {
-    @include breakpoint(large) {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-  }
+  //a {
+  //  @include breakpoint(large) {
+  //    position: absolute;
+  //    right: 0;
+  //    bottom: 0;
+  //  }
+  //}
 }

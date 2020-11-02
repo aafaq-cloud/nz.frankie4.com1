@@ -26,6 +26,17 @@
                                class="mb-20 {% if form.errors contains 'last_name' %}input-error{% endif %}"
                                {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
 
+                        <div class="date-wrap">
+                            <div class="placeholder">Date of Birth</div>
+                            <input type="date"
+                                   name="customer[note][DOB]"
+                                   id="DOB"
+                                   autocomplete="off"
+                                   autocapitalize="off">
+                        </div>
+                        <div class="mt-5 mb-20">You will receive a birthday voucher</div>
+
+
                         <input type="email"
                                name="customer[email]"
                                id="Email"
