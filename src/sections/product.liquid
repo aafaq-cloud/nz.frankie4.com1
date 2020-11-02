@@ -215,7 +215,7 @@
 
                         <div class="variant-wrapper mt-20">
 
-
+                          {% if related_products != blank %}
                           <div class="mb-20">
 
                             {% assign colourCurrent = product.handle %}
@@ -297,10 +297,10 @@
                                   {{ related_products_seasonal_liquid }}
                                 </div>
                               {% endif %}
-
                             </div> <!-- end .product-swatches -->
-                          </div>
 
+                          </div>
+                          {% endif %}
 
                           {% unless is_quickview %}
 
