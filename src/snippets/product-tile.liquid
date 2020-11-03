@@ -73,6 +73,8 @@
           {% endfor %}
           {% assign related_products = related_products | split: ',' %}
 
+
+
           <div class="product-tile__swatches">
             {% assign colour = product.handle %}
             {% assign image = colour | append: '.png' %}
@@ -84,26 +86,25 @@
               </label>
             </div>
 
-          {% for product_item in related_products %}
-            {% assign colour = product_item %}
-            {% assign image = colour | append: '.png' %}
-            {% assign imageUrl = image | file_url %}
-             <div class="color-swatch color-swatch--tile">
-               <input type="radio" name="colors--{{ product.id }}" id="{{ product_item }}--{{ product.id }}--{{ product_item }}" class="color-swatch__input" value="{{ product_item }}">
-               <label for="{{ product_item }}--{{ product.id }}--{{ product_item }}" title="{{ colour | replace: '-', ' ' | capitalize  }}" aria-label="{{ product_item }}" class="color-swatch__label">
-                 <img src="{{ imageUrl }}"/>
-               </label>
-             </div>
-          {% endfor %}
+            {% for product_item in related_products %}
+              {% assign colour = product_item %}
+              {% assign image = colour | append: '.png' %}
+              {% assign imageUrl = image | file_url %}
+               <div class="color-swatch color-swatch--tile">
+                 <input type="radio" name="colors--{{ product.id }}" id="{{ product_item }}--{{ product.id }}--{{ product_item }}" class="color-swatch__input" value="{{ product_item }}">
+                 <label for="{{ product_item }}--{{ product.id }}--{{ product_item }}" title="{{ colour | replace: '-', ' ' | capitalize  }}" aria-label="{{ product_item }}" class="color-swatch__label">
+                   <img src="{{ imageUrl }}"/>
+                 </label>
+               </div>
+            {% endfor %}
 
-
-            {% if related_products.size > 2 %}
             <div class="more-colours">
               <a href="{{ product.url }}">+</a>
             </div>
-            {% endif %}
 
           </div>
+
+
         </div>
       {% endunless %}
 
