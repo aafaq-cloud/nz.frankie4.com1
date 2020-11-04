@@ -15,6 +15,7 @@ If a comment was just submitted but requires moderation, we have an extra commen
 
 
 {% assign current_article_id = article.id %}
+{% assign current_article_tag = article.tags.first %}
 
 <div class="section section-article-detail">
 
@@ -111,9 +112,17 @@ If a comment was just submitted but requires moderation, we have an extra commen
             <p class="lead color-secondary-text">{{section.settings.related_articles_subtitle}}</p>
         </div>
         <div class="grid-x grid-margin-x grid-margin-y">
+
             {% assign article_listing = 1 %}
-            {% for article in blog.articles limit: 4  %}
-                {% unless current_article_id ==  article.id or article_listing == 4 %}
+            {% for article in blog.articles  %}
+
+                {% if article.tags contains current_article_tag %}
+                    {% assign same_category = true %}
+                {% else %}
+                    {% assign same_category = false %}
+                {% endif %}
+
+                {% unless current_article_id == article.id or same_category != true or article_listing == 4 %}
                     <div class="cell small-12 medium-6 large-4{% if article_listing == 3 %} hide-for-medium-only{% endif %}">
                         {% include 'article-tile' %}
                     </div>
