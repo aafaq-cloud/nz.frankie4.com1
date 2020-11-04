@@ -64,6 +64,10 @@
     }
   }
 
+  .click-and-collect {
+    padding: 30px 20px;
+    border: 1px solid #EBEBEC
+  }
 
 }
 
@@ -110,15 +114,7 @@
 }
 
 .popup-products {
-  //margin: 10px 0;
-  //margin: 0 -20px;
-  //width: calc(100% + 40px);
   list-style: none;
-  //overflow-y: auto;
-  //max-height: 400px;
-  //flex-grow: 0;
-
-  //margin: 0 -20px;
   padding: 0;
 
 }

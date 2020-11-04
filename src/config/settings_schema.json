@@ -255,6 +255,27 @@
         "type": "richtext",
         "id": "cart_feature_strip_text_3",
         "label": "Content 3"
+      },
+      {
+        "type": "header",
+        "content": "Click and Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_title",
+        "label": "Click and Collect Title",
+        "default": "Available for Click and Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_content",
+        "label": "Click and Collect Content",
+        "default": "Order online by 5pm today and collect in-store from 2pm tomorrow."
+      },
+      {
+        "type": "url",
+        "id": "click_and_collect_page",
+        "label": "Nearest Store Link"
       }
     ]
   },
