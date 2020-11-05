@@ -48,18 +48,23 @@ input[type="search"]::-webkit-search-results-decoration {
   padding: 0;
 
   .placeholder {
-    font-size: rem-calc(16px);
+    font-size: rem-calc(16);
     padding: 16px 0 16px 16px;
     margin: 0;
-    font-weight: normal;
+    font-weight: 300;
     text-transform: none;
     color: $color-form-element-placeholder-text;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(14);
+    }
+
   }
 
   input[type="date"] {
     flex: 1 1 auto;
-    height: 52px;
     padding: 13px 16px;
+    font-weight: 300;
     background: transparent;
     -webkit-appearance: none;
     border: none;
