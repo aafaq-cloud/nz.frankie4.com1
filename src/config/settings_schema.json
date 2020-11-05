@@ -261,6 +261,12 @@
         "content": "Click and Collect"
       },
       {
+        "type": "checkbox",
+        "id": "click_and_collect_enable",
+        "label": "Enable Click and Collect",
+        "default": true
+      },
+      {
         "type": "text",
         "id": "click_and_collect_title",
         "label": "Click and Collect Title",

@@ -529,22 +529,23 @@
 
                     </div>
 
+
+                  {% if section.settings.click_and_collect_enable == true %}
+                    <div class="click-and-collect mt-40">
+                      <div class="grid-x grid-margin-x align-center">
+                        <div class="cell shrink">
+                          {% render 'icon-click-collect' %}
+                        </div>
+                        <div class="cell auto">
+                          <div><strong>{{ section.settings.click_and_collect_title }}</strong></div>
+                          <div class="mb-10">{{ section.settings.click_and_collect_content }}</div>
+                          <a href="{{ section.settings.click_and_collect_page }}" target="_blank">Learn More</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+
                 {% endunless %}
-
-
-                <div class="click-and-collect mt-40">
-                  <div class="grid-x grid-margin-x align-center">
-                    <div class="cell shrink">
-                      {% render 'icon-click-collect' %}
-                    </div>
-                    <div class="cell auto">
-                      <div><strong>{{ section.settings.click_and_collect_title }}</strong></div>
-                      <div class="mb-10">{{ section.settings.click_and_collect_content }}</div>
-                      <a href="{{ section.settings.click_and_collect_page }}" target="_blank">Learn More</a>
-                    </div>
-                  </div>
-                </div>
-
 
 
                 <div class="grid-x grid-margin-x align-right align-middle mt-20">
@@ -605,6 +606,12 @@
       {
         "type": "header",
         "content": "Click and Collect"
+      },
+        {
+        "type": "checkbox",
+        "id": "click_and_collect_enable",
+        "label": "Enable Click and Collect",
+        "default": true
       },
       {
         "type": "text",

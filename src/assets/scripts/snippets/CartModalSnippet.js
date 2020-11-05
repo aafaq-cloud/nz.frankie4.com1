@@ -268,7 +268,7 @@ export class CartModalSnippet extends AbstractComponent {
             </div>
             
             
-            <div class="click-and-collect mb-20">
+            <div class="click-and-collect mb-20" v-if="clickAndCollect.show">
                 <div class="grid-x grid-margin-x align-center">
                   <div class="cell shrink">
                     <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
