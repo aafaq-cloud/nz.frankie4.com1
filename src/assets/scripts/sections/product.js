@@ -45,6 +45,8 @@ export class ProductSection extends AbstractComponent {
           window.ShopifyWishlistInstace.updateAddToWishlistButtons();
       }
     });
+
+    console.log(this.product);
   }
 
 
@@ -105,6 +107,10 @@ export class ProductSection extends AbstractComponent {
         e.preventDefault();
 
         const imageIndex = thumbnails[i].getAttribute("data-image-index");
+        
+        console.log(imageIndex);
+        console.log(document.getElementById("product-image-1"));
+        document.getElementById("product-image-1").innerHTML = "<h1>test</h1>";
 
         for (let j = 0; j < images.length; j++) {
           if (images[j].getAttribute("data-image-index") === imageIndex) {
