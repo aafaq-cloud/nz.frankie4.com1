@@ -71,13 +71,14 @@
 
                             {% endif %}
 
+                          {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mt-10 mb-10">
                             Payment options with Afterpay and ZipPay
                           </div>
-
+                          {% endif %}
                         </h5>
 
-
+                      {% if product.type != "GIFT CARD" %}
                       <div class="yotpo bottomLine "
                            data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                            data-domain="{{shop.permanent_domain | escape }}"
@@ -89,7 +90,7 @@
                            data-description="{{ product.description | escape }}"
                            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
                       </div>
-
+                      {% endif %}
                     </div>
                 </div>
 
@@ -187,13 +188,15 @@
                                 {% endif %}
 
                             </h5>
-
+                          {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mb-20">
                             Payment options with Afterpay and ZipPay
                           </div>
+                          {% endif %}
 
                         </div>
 
+                        {% if product.type != "GIFT CARD" %}
                         <div class="yotpo bottomLine hide-for-small-only"
                              data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                              data-domain="{{shop.permanent_domain | escape }}"
@@ -205,6 +208,7 @@
                              data-description="{{ product.description | escape }}"
                              data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
                         </div>
+                        {% endif %}
 
 
                       {% unless is_quickview %}
@@ -305,7 +309,7 @@
                           {% unless is_quickview %}
 
                             <div class="grid-x grid-margin-x align-right align-middle mb-20">
-
+                            {% if product.type != "GIFT CARD" %}
                               <div class="cell shrink">
                                 {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
                                 {% unless product.tags contains 'bis-hidden' %}
@@ -351,6 +355,7 @@
                                   </div>
                                 </div>
                               {% endif %}
+                            {% endif %}
                             </div>
 
 
