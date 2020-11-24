@@ -28,7 +28,7 @@
                   <li class="cell mb-20">
 
                     <div aria-controls="accordion-item-{{ forloop.index }}" {% if link.links != blank %} data-autoload-class="ComponentAccordionItem" {% endif %} class="accordion-toggle">
-                      <h6 class="accordion-toggle-title">{{ link.title }}</h6>
+                      <h6 class="accordion-toggle-title"> <a {% if link.url != '#' %}href="{{ link.url }}"{% endif %}>{{ link.title }}</a></h6>
                       {% if link.links != blank %}
                       <span class="open-icon">{% include 'icon-chevron' %}</span>
                       <span class="close-icon">{% include 'icon-chevron' %}</span>
