@@ -56,7 +56,16 @@
       },
       moneyFormat: {{ shop.money_format | json }},
       cdnBase: {{ cdn_base | json }},
-      noImageUrl: {{ no_image | json }}
+      noImageUrl: {{ no_image | json }},
+      cart: {
+          clickAndCollect: {
+              show: {{ settings.click_and_collect_enable | json }},
+              title: {{ settings.click_and_collect_title | | json}},
+              content: {{ settings.click_and_collect_content | | json}},
+              page: {{ settings.click_and_collect_page | | json}}
+          }
+
+      }
     };
   </script>
 

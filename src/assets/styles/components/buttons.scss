@@ -52,6 +52,13 @@ button {
         height: 1em;
       }
     }
+
+    &.large-icon {
+      i {
+        font-size: 20px;
+      }
+    }
+
   }
 
   &.has-icon-absolute {
@@ -195,6 +202,19 @@ button {
       color: white;
     }
   }
+}
+
+.button-grey {
+  border-color: transparent;
+  background: #F1F1F1;
+  color: $darker-grey;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      background: darken(#F1F1F1, 5);
+    }
+  }
+
 }
 
 .button-hollow {
