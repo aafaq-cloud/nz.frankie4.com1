@@ -373,7 +373,7 @@
 
                                 <label class="option-label hide">{{ option.name }}</label>
 
-                                {% if option.name == 'Size' %}
+                                {% if option.name == 'Size' or option.name == 'size' %}
 
                                   <div class="radio-select">
 
@@ -388,9 +388,12 @@
                                              data-index="{{ option.position }}"
                                              name="variantselector-{{ selector_name }}[]"
                                              type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                                      <label title="{{ value }}"
+                                      <label title="{{ value }}" style="text-align: center;"
                                              class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
-                                        <span>{{ value | escape }}</span>
+                                        {% assign size = value | split: " "  %}
+                                        {% capture string_with_newlines %}{{ size[0] | escape }}
+                                        {{ size[1] | escape }}{% endcapture %}
+                                        <span>{{ string_with_newlines | newline_to_br }}</span>
                                       </label>
                                     {% endfor %}
 
