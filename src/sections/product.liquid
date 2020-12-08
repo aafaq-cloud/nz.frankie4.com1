@@ -306,6 +306,11 @@
                           </div>
                           {% endif %}
 
+                          {% if is_quickview %}
+                            {% include 'swym-product-view', product: product %}
+                            <button class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}"></button>
+                          {% endif %}
+
                           {% unless is_quickview %}
 
                             <div class="grid-x grid-margin-x align-left align-middle mb-20">
