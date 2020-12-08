@@ -316,8 +316,13 @@ export class CartModalSnippet extends AbstractComponent {
                 <div class="cell medium-6 small-order-2 medium-order-1">
                  <button class="button button-hollow button-expanded" @click="close">Continue Shopping</button>
                 </div>
+                <!-- 
                 <div class="cell medium-6 small-order-1 medium-order-2">
                    <button type="submit" name="checkout" class="button button-primary button-expanded" ref="checkout-button">Checkout</button>
+                </div>
+                -->
+                <div class="cell medium-6 small-order-1 medium-order-2">
+                  <button name="viewcart" class="button button-primary button-expanded" ref="checkout-button"><a href="/cart" style="text-decoration: none">View Cart</a></button>
                 </div>
               </div>
 
