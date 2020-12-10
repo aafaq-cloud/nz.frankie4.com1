@@ -1,0 +1,39 @@
+.section-foot-health-hub-header {
+
+    .foot-health-hub-header {
+
+      &-container {
+        max-width: 2000px;
+        margin: auto;
+        position: relative;
+      }
+
+      &-content {
+        position: relative;
+        padding: 100px 0;
+      }
+
+      &-image {
+        position: absolute;
+        right: 0;
+        height: 100%;
+
+
+        &-container {
+
+          background:  #EEEAE7;
+          position: absolute;
+
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: calc(((100% - 1240px) / 2) + (1240px * 0.85));
+          height: 100%;
+        }
+
+      }
+
+    }
+
+
+}

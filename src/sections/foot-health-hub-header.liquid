@@ -1,0 +1,52 @@
+<div class="section section-foot-health-hub-header">
+
+  <div class="foot-health-hub-header-container">
+    <div class="foot-health-hub-header-image-container">
+
+      <img src="{{ section.settings.image | img_url: 'x500' }}" class="foot-health-hub-header-image"/>
+
+    </div>
+
+    <div class="foot-health-hub-header-content">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="large-5">
+
+            <h1>{{ section.settings.title }}</h1>
+            <div class="lead">{{ section.settings.content }}</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Foot Health Hub Header",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+{% endschema %}
+
