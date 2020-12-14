@@ -98,54 +98,45 @@
             <div class="cell small-12 {% unless is_quickview %}medium-7{% else %}medium-6{% endunless %} large-auto">
                 <div class="glide">
                     <div data-glide-el="track" class="glide__track">
-                        <div class="glide__slides">
+                        <div class="glide__slides" id="product_images">
                             {% if product.images.size > 0 %}
                                 {% for image in product.images %}
                                   {% if forloop.index0 == 0%}
-                                    <div class="glide__slide">
+                                    <div class="glide__slide" style="display: block; padding-right: 10px">
+                                      <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
+                                    </div>
+                                  {% else %}
+                                    <div class="glide__slide" style="display: none; padding-right: 10px">
                                       <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
                                     </div>
                                   {% endif %}
                                 {% endfor %}
                             {% endif %}
-                            {% if video != blank %}
-                                <div class="glide__slide">
-                                    <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
-                                        <video autoplay="" loop="" muted="" plays-inline="" playsinline>
-                                            <source src="{{ video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
-                <div id="product-image-1">
-                  <img data-image data-src="{{product.images[0].src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
-                </div>
               	{% unless is_quickview %}
-                  <div class="product-thumbnails cell show-for-large large-shrink">
+                  <div class="product-thumbnails cell large-shrink">
                     {% if product.images.size > 0 %}
                     <div class="product-item-thumbnails" style="flex-direction: row;">
                       {% for image in product.images %}
-                      <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}" style="padding: 5px;">
+                      <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}" style="padding: 0 5px 10px 0; margin-top: 5px">
                         <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
                       </a>
                       {% endfor %}
-                      {% if video != blank %}
-                      <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ slide_index_limit }}">
-                        <div class="video-wrapper">
-                          {% include 'icon-play' %}
-                          <video loop="" muted="" plays-inline="" playsinline>
-                            <source src="{{ video }}" type="video/mp4">
-                          </video>
-                        </div>
-                      </a>
-                      {% endif %}
                     </div>
                     {% endif %}
                   </div>
               	{% endunless %}
+                {% if video != blank %}
+                    <div class="glide__slide" style="padding: 0 10px 0 0">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-right: 10px">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline>
+                                <source src="{{ video }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
 
             <div class="product-details cell {% unless is_quickview %}medium-5{% else %}medium-6{% endunless %}">

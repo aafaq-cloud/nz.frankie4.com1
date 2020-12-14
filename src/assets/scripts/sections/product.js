@@ -107,10 +107,14 @@ export class ProductSection extends AbstractComponent {
         e.preventDefault();
 
         const imageIndex = thumbnails[i].getAttribute("data-image-index");
-        
-        console.log(imageIndex);
-        console.log(document.getElementById("product-image-1"));
-        document.getElementById("product-image-1").innerHTML = "<h1>test</h1>";
+        var product_images = document.getElementById("product_images").children;
+        for (let i = 0; i< product_images.length; i++) {
+          if (i != imageIndex) {
+            document.getElementById("product_images").children[i].style.display = "none";
+          } else {
+            document.getElementById("product_images").children[i].style.display = "block";
+          }
+        }
 
         for (let j = 0; j < images.length; j++) {
           if (images[j].getAttribute("data-image-index") === imageIndex) {
