@@ -33,7 +33,9 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       margin-top: 0;
       margin-bottom: 10px;
       line-height: 14px;
@@ -59,6 +61,7 @@
     .yotpo-stars {
       //display: none;
       line-height: 10px;
+      margin-bottom: 5px;
 
       > span {
         //font-size: 12px;
