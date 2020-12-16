@@ -306,21 +306,21 @@
                           </div>
                           {% endif %}
 
+                          {% if is_quickview %}
+                            {% include 'swym-product-view', product: product %}
+                            <button class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}"></button>
+                          {% endif %}
+
                           {% unless is_quickview %}
 
-                            <div class="grid-x grid-margin-x align-right align-middle mb-20">
+                            <div class="grid-x grid-margin-x align-left align-middle mb-20">
                             {% if product.type != "GIFT CARD" %}
-                              <div class="cell shrink">
-                                {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
-                                {% unless product.tags contains 'bis-hidden' %}
-                                  <a class="icon-link" id="BIS_trigger">
-                                    Can't find your size?
-                                  </a>
-                                {% endunless %}
-                              </div>
+
+                              <div class="swym-wishlist-button-bar" style="padding: 10px"></div>
+
                               {% if section.settings.display_size_guide %}
                                 <div class="cell shrink">
-                                  <a class="size-guide" data-open="size-guide-modal">
+                                  <a class="size-guide" data-open="size-guide-modal" style="border: none">
                                     {% include 'icon-size-guide' %}
                                     Size Guide
                                   </a>
@@ -355,6 +355,15 @@
                                   </div>
                                 </div>
                               {% endif %}
+
+                              <div class="cell shrink">
+                                {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
+                                {% unless product.tags contains 'bis-hidden' %}
+                                  <a class="icon-link" id="BIS_trigger">
+                                    Can't find your size?
+                                  </a>
+                                {% endunless %}
+                              </div>
                             {% endif %}
                             </div>
 
@@ -554,21 +563,6 @@
                   {% endif %}
 
                 {% endunless %}
-
-
-                <div class="grid-x grid-margin-x align-right align-middle mt-20">
-
-                  <div class="cell shrink">
-                    <a class="add-to-wishlist" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}_variant_{{ current_variant.id }}">
-                      <i>
-                        {% include 'icon-heart' %}
-                      </i>
-                    </a>
-                  </div>
-                  <div class="cell shrink">
-                    {% include 'social-sharing', share_permalink: product.url %}
-                  </div>
-                </div>
 
                 {% unless product == empty %}
                     <script type="application/json" data-product-json>
