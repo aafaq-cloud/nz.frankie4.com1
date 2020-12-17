@@ -626,3 +626,22 @@
     max-height: 70vh;
   }
 }
+
+@media only screen and (max-width: 1118px) and (min-width: 865px){
+  .good-design-award {
+    height: 386px!important;
+  }
+ }
+ 
+ @media only screen and (max-width: 864px) and (min-width: 640px){
+  .good-design-award {
+    height: 434px!important;
+  }
+ }
+
+ @media only screen and (max-width: 639px){
+  .good-design-award {
+    height: 250px!important;
+    margin-bottom: 20px;
+  }
+ }

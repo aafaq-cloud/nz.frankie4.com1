@@ -1,18 +1,18 @@
 <div class="section section-text-image no-margin">
     <div class="grid-container">
-        <div class="grid-x align-middle" style="height: 500px">
-            <div class="cell medium-7 large-7">
+        <div class="grid-x align-middle" style="height: auto">
+            <div class="cell small-12 medium-7 large-7">
                 <div class="cell-text-container" style="padding: 20px; text-align: center; margin: 5%">
                     <div class="cell-image cell medium-auto">
-                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="height: 12vh; margin: auto">
-                    </div><br>
-                    <p>{{section.settings.content}}</p><br>
+                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="height: 100px; margin: auto">
+                    </div>
+                    <p>{{section.settings.content}}</p>
                     <div class="cell shrink">
                         <a class="button button-primary" target="_blank" href="{{ section.settings.good_design_award }}">Learn More</a>
                     </div>
                 </div>
             </div>
-            <div class="cell-image cell medium-auto" style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); height: 100%; width: 100%; background-size: cover;">
+            <div class="cell-image cell medium-auto good-design-award" style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); height: 370px; width: 100%; background-size: cover;">
             </div>
         </div>
     </div>
