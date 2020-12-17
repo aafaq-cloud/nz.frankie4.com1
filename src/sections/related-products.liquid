@@ -18,29 +18,8 @@ such as 'featured' or 'all'.
 {% endfor %}
 {% assign related_collections = related_collections | split: "," %}
 
-{% assign related_products_count = 0 %}
-{% assign related_products = '' %}
 
-{% for related_collection in related_collections %}
-	{% for looped_product in collections[related_collection].products %}
 
-		{% unless related_products_count > 9 %}
-			{% if looped_product.handle == product.handle %}
-				{% continue %}
-			{% endif %}
-			{% if related_products != '' %}
-				{% assign related_products = related_products | append: ',' %}
-			{% endif %}
-            {% assign related_products = related_products | append: looped_product.handle %}
-            {% assign related_products_count = related_products_count | plus: 1 %}
-
-		{% endunless %}
-	{% endfor %}
-{% endfor %}
-
-{% assign related_products = related_products | split: "," %}
-
-{% if related_products.size > 0 %}
     <div class="section section-related-products large-margin">
 
          <div class="grid-container related-products-container">
@@ -53,21 +32,24 @@ such as 'featured' or 'all'.
             </div>
 
             <div class="grid-x grid-margin-x grid-margin-y">
-
-             {% for related_product_handle in related_products limit: 4 %}
-                  {%- assign product = all_products[related_product_handle] -%}
-                  <div class="cell small-6 large-3">
-                    {% render 'product-tile', product: product %}
-                  </div>
+              {% assign related_products_count = 1 %}
 
 
-             {% endfor %}
-
+              {% for related_collection in related_collections %}
+                {% for related_product in collections[related_collection].products %}
+                   {% if related_product.handle == product.handle or related_products_count > 4 %}
+                     {% continue %}
+                   {% endif %}
+                    <div class="cell small-6 large-3">
+                      {% render 'product-tile', product: related_product %}
+                    </div>
+                    {% assign related_products_count = related_products_count | plus: 1 %}
+                {% endfor %}
+              {% endfor %}
 
             </div>
         </div>
     </div>
-{% endif %}
 
 {% schema %}
 
