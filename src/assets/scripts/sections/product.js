@@ -58,42 +58,48 @@ export class ProductSection extends AbstractComponent {
     this.glideElement = this.component.querySelector(".glide");
 
     // Ensure it runs on load
-    this.resizeHandler();
+    // this.resizeHandler();
 
     // Bind resize handler to window resize
-    throttledResize.add(() => this.resizeHandler());
-  }
+    // throttledResize.add(() => this.resizeHandler());
 
-  /**
-   * Handle the adding and removing of the slider based on breakpoint
-   */
-  resizeHandler() {
-    if(this.component.classList.contains('is-quickview')) {
-      this.mountGlide();
-    } else if (window.innerWidth < 640) {
-      this.mountGlide();
-    } else if (window.innerWidth >= 640) {
-      this.dismountGlide();
-    }
-  }
-
-  mountGlide() {
     if (!this.glideActive) {
-      this.glide = new Glide(this.glideElement,{
+      this.glide = new Glide(this.glideElement, {
       }).mount();
       this.glideActive = true;
     }
   }
 
+  /**
+   * Handle the adding and removing of the slider based on breakpoint
+   */
+  // resizeHandler() {
+  //   if(this.component.classList.contains('is-quickview')) {
+  //     this.mountGlide();
+  //   } else if (window.innerWidth < 640) {
+  //     this.mountGlide();
+  //   } else if (window.innerWidth >= 640) {
+  //     this.mountGlide();
+  //   }
+  // }
 
-  dismountGlide() {
-    if (this.glideActive) {
-      if (this.glide) {
-        this.glide.destroy();
-      }
-      this.glideActive = false;
-    }
-  }
+  // mountGlide() {
+  //   if (!this.glideActive) {
+  //     this.glide = new Glide(this.glideElement,{
+  //     }).mount();
+  //     this.glideActive = true;
+  //   }
+  // }
+
+
+  // dismountGlide() {
+  //   if (this.glideActive) {
+  //     if (this.glide) {
+  //       this.glide.destroy();
+  //     }
+  //     this.glideActive = false;
+  //   }
+  // }
 
   /**
    * Initialise the scroll to image on thumbnail click
