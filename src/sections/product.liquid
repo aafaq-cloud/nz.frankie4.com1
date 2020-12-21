@@ -130,9 +130,9 @@
                 </div>
                 {% unless is_quickview %}
                 {% if video != blank %}
-                    <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 0">
+                    <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-right: 10px">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline style="nargin-left: 5px">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline>
                                 <source src="{{ video }}" type="video/mp4">
                             </video>
                         </div>
