@@ -1,0 +1,86 @@
+<div class="section section-foot-health-hub-wayfinder">
+
+  {% assign slide_count = section.blocks.size %}
+  {% assign slide_index_limit = slide_count | minus: 1 %}
+
+  <div class="grid-container">
+
+    <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
+
+    <div class="wayfinder-slider" data-autoload-class="ComponentWayfinderSlider">
+      <div class="glide">
+        <div data-glide-el="track" class="glide__track">
+          <div class="glide__slides grid-x grid-margin-x grid-margin-y">
+
+            {% for block in section.blocks %}
+
+              <div class="cell medium-4 glide__slide">
+                <div class="wayfinder-tile">
+                  <a href="{{ block.settings.link }}">
+                    <div class="wayfinder-title">
+                      {{ block.settings.title }}
+                    </div>
+                    <img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}">
+                  </a>
+                </div>
+              </div>
+
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+          {% for i in (0..slide_index_limit) %}
+            <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+{% schema %}
+    {
+        "name": "Foot Health Hub Grid",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Section Title"
+          },
+          {
+            "type": "text",
+            "id": "section_title",
+            "label": "Title"
+          }
+        ],
+        "blocks": [
+          {
+            "type": "wayfinder",
+            "name": "Wayfinder",
+            "settings": [
+              {
+                "id": "title",
+                "type": "text",
+                "label": "Title"
+              },
+              {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
+              },
+              {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+              }
+            ]
+          }
+        ]
+    }
+{% endschema %}
+

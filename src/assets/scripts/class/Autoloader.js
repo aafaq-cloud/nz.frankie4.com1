@@ -4,6 +4,7 @@ import {ComponentQuantitySelector} from "../components/ComponentQuantitySelector
 import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
 import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
+import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
 
 // Snippets
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
@@ -24,6 +25,7 @@ import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
 
+
 export class Autoloader {
   static registerAutoloadClasses() {
     const autoloadClasses = {
@@ -33,6 +35,7 @@ export class Autoloader {
       ComponentAccordionItem,
       ComponentCarousel,
       ComponentVideo,
+      ComponentWayfinderSlider,
 
       // Snippets
       SearchAutocompleteSnippet,

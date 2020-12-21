@@ -1,0 +1,90 @@
+.wayfinder-slider {
+
+      margin-right: - map-get($grid-container-padding, small) / 2;
+      width: calc(100% + map-get($grid-container-padding, small) / 2);
+      @include breakpoint(medium) {
+        margin: 0;
+        width: 100%;
+      }
+
+  .grid-x.glide__slides {
+    padding: 20px 0;
+
+    @include breakpoint(medium) {
+      flex-wrap: wrap;
+      width: auto;
+      white-space: inherit;
+      overflow: visible;
+    }
+  }
+  .glide__track {
+    @include breakpoint(medium) {
+        overflow: visible;
+      }
+  }
+
+  .wayfinder {
+
+
+    &-tile {
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &-title {
+      position: absolute;
+      z-index: 1;
+      font-size: rem-calc(18);
+      line-height: rem-calc(25);
+      width: 190px;
+      height: 80px;
+      bottom: 0;
+      left: 0;
+      background: #FFFFFF;
+      padding: 15px;
+      font-weight: 500;
+
+      @include breakpoint(medium) {
+        padding: 30px;
+        font-size: rem-calc(24);
+        line-height: rem-calc(36);
+        width: 245px;
+        height: 130px;
+
+      }
+
+    }
+
+  }
+
+  .glide {
+
+
+    &__bullets {
+      bottom: -1em;
+      left: 0;
+      transform: none;
+
+      @include breakpoint(medium) {
+        display: none;
+      }
+
+      .glide__bullet {
+        background-color: #35383F;
+        border: 2px solid #35383F;
+        box-shadow: none;
+
+        &--active {
+          background-color: #F1F1F1;
+        }
+      }
+
+    }
+
+  }
+}
