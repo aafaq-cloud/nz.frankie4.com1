@@ -24,10 +24,17 @@ export class FootHealthHubSliderSection extends AbstractComponent {
         this.imageGlideElement = this.component.querySelector(".glide.image-slider");
         this.glideSettings = {
             type: 'carousel',
-            peek: {
-                before: 0,
-                after: 100
+            perView: 1,
+            peek: {before: 0, after: 300},
+            breakpoints: {
+                1600: {
+                    peek: {before: 0, after: 200},
+                },
+                1200: {
+                    peek: {before: 0, after: 100},
+                }
             }
+
         };
         this.contentGlideSettings = {
             dragThreshold: false,

@@ -4,49 +4,25 @@
   {% assign slide_count = section.blocks.size %}
   {% assign slide_index_limit = slide_count | minus: 1 %}
 
-  <div class="slide-container grid-container">
+  <div class="slide-container">
 
-    <div class="grid-x grid-margin-x align-middle">
-
-      <div class="large-5 cell">
-        <div class="content-slider-container">
-          <div class="glide content-slider">
-            <div data-glide-el="track" class="glide__track">
-              <div class="glide__slides">
-                {% for block in section.blocks %}
-                  <div class="glide__slide">
-                    <div>
-                      <div class="subtitle">{{ block.settings.subtitle }}</div>
-                      <div class="h2">{{ block.settings.title }}</div>
-                      <a class="button-link mt-20" href="{{ block.settings.button_link }}">
-                        {{ block.settings.button_text }}
-                        {% render 'icon-arrow-right' %}
-                      </a>
-                    </div>
+    <div class="content-slider-container">
+      <div>
+        <div class="glide content-slider">
+          <div data-glide-el="track" class="glide__track">
+            <div class="glide__slides">
+              {% for block in section.blocks %}
+                <div class="glide__slide">
+                  <div>
+                    <div class="subtitle">{{ block.settings.subtitle }}</div>
+                    <div class="h2">{{ block.settings.title }}</div>
+                    <a class="button-link mt-20" href="{{ block.settings.button_link }}">
+                      {{ block.settings.button_text }}
+                      {% render 'icon-arrow-right' %}
+                    </a>
                   </div>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="large-7 cell">
-        <div class="image-slider-container">
-          <div class="glide image-slider">
-            <div data-glide-el="track" class="glide__track">
-              <div class="glide__slides">
-                {% for block in section.blocks %}
-                  <div class="glide__slide">
-                    <img src="{{ block.settings.image | img_url: '635x510', crop: 'center' }}">
-                  </div>
-                {% endfor %}
-              </div>
-              <div class="glide__bullets" data-glide-el="controls[nav]">
-                {% for i in (0..slide_index_limit) %}
-                  <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
-                {% endfor %}
-              </div>
+                </div>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -54,7 +30,28 @@
 
     </div>
 
-  </div>
+    <div class="image-slider-container">
+
+        <div class="glide image-slider">
+          <div data-glide-el="track" class="glide__track">
+            <div class="glide__slides">
+              {% for block in section.blocks %}
+                <div class="glide__slide">
+                  <img src="{{ block.settings.image | img_url: '635x510', crop: 'center' }}">
+                </div>
+              {% endfor %}
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              {% for i in (0..slide_index_limit) %}
+                <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
 
 </div>
 
