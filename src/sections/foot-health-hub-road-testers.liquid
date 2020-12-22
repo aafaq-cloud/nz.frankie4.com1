@@ -23,11 +23,6 @@
           <div class="image-slider-container">
 
             <div class="glide image-slider">
-              <div class="glide__bullets" data-glide-el="controls[nav]">
-                {% for i in (0..slide_index_limit) %}
-                  <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
-                {% endfor %}
-              </div>
               <div data-glide-el="track" class="glide__track">
                 <div class="glide__slides">
                   {% for block in section.blocks %}
@@ -43,7 +38,11 @@
                     </div>
                   {% endfor %}
                 </div>
-
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                  {% for i in (0..slide_index_limit) %}
+                    <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
+                  {% endfor %}
+                </div>
               </div>
             </div>
           </div>

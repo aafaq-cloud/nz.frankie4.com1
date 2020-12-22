@@ -1,6 +1,6 @@
 .section-foot-health-hub-road-testers {
 
-  padding: 50px 0;
+  //padding: 50px 0;
 
   .content-box {
     background: #F1F1F1;
@@ -38,11 +38,15 @@
     }
 
     &__bullets {
-      top: -2em;
-      //right: 100px;
-      right: 0;
+      bottom: -2em;
       left: auto;
       transform: none;
+
+      @include breakpoint(medium) {
+        position: absolute;
+        top: -2em;
+        right: 0;
+      }
 
       .glide__bullet {
         background-color: #35383F;
