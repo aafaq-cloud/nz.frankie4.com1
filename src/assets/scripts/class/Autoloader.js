@@ -24,6 +24,7 @@ import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
+import {FootHealthHubRoadTestersSection} from "../sections/foot-health-hub-road-testers";
 
 
 export class Autoloader {
@@ -54,7 +55,8 @@ export class Autoloader {
       ContactFormSection,
       BannerSection,
       ShippingSection,
-      FootHealthHubSliderSection
+      FootHealthHubSliderSection,
+      FootHealthHubRoadTestersSection
     };
 
     for (const key in autoloadClasses) {

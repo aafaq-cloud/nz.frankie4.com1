@@ -1,0 +1,61 @@
+.section-foot-health-hub-road-testers {
+
+  padding: 50px 0;
+
+  .content-box {
+    background: #F1F1F1;
+    padding: 30px;
+    margin-bottom: 60px;
+
+    @include breakpoint(medium) {
+      padding: 60px;
+      height: 100%;
+      margin: 0;
+    }
+
+    &-heading {
+      font-size: rem-calc(30);
+      line-height: rem-calc(45);
+      font-weight: 500;
+    }
+  }
+
+
+
+  .glide {
+
+    &__slide {
+      transition: opacity 200ms;
+
+      &:not(.glide__slide--active) {
+        opacity: 0.2;
+      }
+
+      &.glide__slide--active + .glide__slide {
+        opacity: 1;
+      }
+
+    }
+
+    &__bullets {
+      top: -2em;
+      //right: 100px;
+      right: 0;
+      left: auto;
+      transform: none;
+
+      .glide__bullet {
+        background-color: #35383F;
+        border: 2px solid #35383F;
+        box-shadow: none;
+
+        &--active {
+          background-color: #F1F1F1;
+        }
+      }
+
+    }
+
+  }
+
+}

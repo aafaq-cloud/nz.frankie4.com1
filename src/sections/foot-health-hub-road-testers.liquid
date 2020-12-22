@@ -1,0 +1,108 @@
+<div class="section section-foot-health-hub-road-testers" data-autoload-class="FootHealthHubRoadTestersSection">
+
+
+  {% assign slide_count = section.blocks.size %}
+  {% assign slide_index_limit = slide_count | minus: 1 %}
+
+  <div class="slide-container">
+
+    <div class="grid-container">
+
+      <div class="grid-x grid-margin-x">
+
+        <div class="cell large-4">
+
+          <div class="content-box">
+            <div class="content-box-heading">{{ section.settings.section_title }}</div>
+            <p>{{ section.settings.section_content }}</p>
+          </div>
+
+        </div>
+
+        <div class="cell large-8">
+          <div class="image-slider-container">
+
+            <div class="glide image-slider">
+              <div class="glide__bullets" data-glide-el="controls[nav]">
+                {% for i in (0..slide_index_limit) %}
+                  <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
+                {% endfor %}
+              </div>
+              <div data-glide-el="track" class="glide__track">
+                <div class="glide__slides">
+                  {% for block in section.blocks %}
+                    <div class="glide__slide">
+                      <div>
+                        <img src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}">
+                        <div>
+                          <div class="mb-20">{{ block.settings.content }}</div>
+                          <div>{{ block.settings.name }}</div>
+                        </div>
+                      </div>
+
+                    </div>
+                  {% endfor %}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
+
+{% schema %}
+    {
+        "name": "Road Testers",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Section Title"
+          },
+          {
+            "type": "text",
+            "id": "section_title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "section_content",
+            "label": "Content"
+          }
+        ],
+        "blocks": [
+          {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+              {
+                "id": "name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "id": "content",
+                "type": "textarea",
+                "label": "Content"
+              },
+              {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+              }
+            ]
+          }
+        ]
+    }
+{% endschema %}
+
