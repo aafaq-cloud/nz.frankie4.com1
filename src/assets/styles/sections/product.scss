@@ -710,3 +710,14 @@
     padding-right: 20px!important;
   }
  }
+
+ .glide__bullet {
+   border: none!important;
+   box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,.15)!important;
+   background-color: hsla(0,0%,100%,.5)!important;
+ }
+
+ .glide__bullet--active {
+  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,.3)!important;
+  background-color: hsla(0,0%,100%,1)!important;
+}
