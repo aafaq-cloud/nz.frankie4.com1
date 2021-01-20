@@ -28,6 +28,8 @@
 {% endif %}
 
 <article class="product-tile text-center grid-y" data-handle="{{product.handle}}">
+
+  
   <div class="cell product-tile__image-container">
      <a href="{{product_url}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
     <img data-src="{{product | img_url: '335x400', scale: 2, crop: 'center'}}" class="lazyload product-tile-image">

@@ -45,6 +45,8 @@ export class ProductSection extends AbstractComponent {
           window.ShopifyWishlistInstace.updateAddToWishlistButtons();
       }
     });
+
+    console.log(this.product);
   }
 
 
@@ -56,42 +58,48 @@ export class ProductSection extends AbstractComponent {
     this.glideElement = this.component.querySelector(".glide");
 
     // Ensure it runs on load
-    this.resizeHandler();
+    // this.resizeHandler();
 
     // Bind resize handler to window resize
-    throttledResize.add(() => this.resizeHandler());
-  }
+    // throttledResize.add(() => this.resizeHandler());
 
-  /**
-   * Handle the adding and removing of the slider based on breakpoint
-   */
-  resizeHandler() {
-    if(this.component.classList.contains('is-quickview')) {
-      this.mountGlide();
-    } else if (window.innerWidth < 640) {
-      this.mountGlide();
-    } else if (window.innerWidth >= 640) {
-      this.dismountGlide();
-    }
-  }
-
-  mountGlide() {
     if (!this.glideActive) {
-      this.glide = new Glide(this.glideElement,{
+      this.glide = new Glide(this.glideElement, {
       }).mount();
       this.glideActive = true;
     }
   }
 
+  /**
+   * Handle the adding and removing of the slider based on breakpoint
+   */
+  // resizeHandler() {
+  //   if(this.component.classList.contains('is-quickview')) {
+  //     this.mountGlide();
+  //   } else if (window.innerWidth < 640) {
+  //     this.mountGlide();
+  //   } else if (window.innerWidth >= 640) {
+  //     this.mountGlide();
+  //   }
+  // }
 
-  dismountGlide() {
-    if (this.glideActive) {
-      if (this.glide) {
-        this.glide.destroy();
-      }
-      this.glideActive = false;
-    }
-  }
+  // mountGlide() {
+  //   if (!this.glideActive) {
+  //     this.glide = new Glide(this.glideElement,{
+  //     }).mount();
+  //     this.glideActive = true;
+  //   }
+  // }
+
+
+  // dismountGlide() {
+  //   if (this.glideActive) {
+  //     if (this.glide) {
+  //       this.glide.destroy();
+  //     }
+  //     this.glideActive = false;
+  //   }
+  // }
 
   /**
    * Initialise the scroll to image on thumbnail click
@@ -105,6 +113,14 @@ export class ProductSection extends AbstractComponent {
         e.preventDefault();
 
         const imageIndex = thumbnails[i].getAttribute("data-image-index");
+        var product_images = document.getElementById("product_images").children;
+        for (let i = 0; i< product_images.length; i++) {
+          if (i != imageIndex) {
+            document.getElementById("product_images").children[i].style.display = "none";
+          } else {
+            document.getElementById("product_images").children[i].style.display = "block";
+          }
+        }
 
         for (let j = 0; j < images.length; j++) {
           if (images[j].getAttribute("data-image-index") === imageIndex) {
