@@ -71,13 +71,14 @@
 
                             {% endif %}
 
+                          {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mt-10 mb-10">
                             Payment options with Afterpay and ZipPay
                           </div>
-
+                          {% endif %}
                         </h5>
 
-
+                      {% if product.type != "GIFT CARD" %}
                       <div class="yotpo bottomLine "
                            data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                            data-domain="{{shop.permanent_domain | escape }}"
@@ -89,67 +90,55 @@
                            data-description="{{ product.description | escape }}"
                            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
                       </div>
-
+                      {% endif %}
                     </div>
                 </div>
 
             </div>
-
-            {% unless is_quickview %}
-                <div class="product-thumbnails cell show-for-large large-shrink">
-                    {% if product.images.size > 0 %}
-                        <div class="product-item-thumbnails">
-                            {% for image in product.images %}
-                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}">
-                                    <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
-                                </a>
-                            {% endfor %}
-                            {% if video != blank %}
-                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ slide_index_limit }}">
-                                    <div class="video-wrapper">
-                                        {% include 'icon-play' %}
-                                        <video loop="" muted="" plays-inline="" playsinline>
-                                            <source src="{{ video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </a>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                </div>
-            {% endunless %}
-
-            <div class="product-images cell small-12 {% unless is_quickview %}medium-7{% else %}medium-6{% endunless %} large-auto">
-
-
-
+            <div class="cell small-12 {% unless is_quickview %}medium-7{% else %}medium-6{% endunless %} large-auto big-screen-padding">
                 <div class="glide">
-                    <div data-glide-el="track" class="glide__track">
-                        <div class="glide__slides">
-                            {% if product.images.size > 0 %}
-                                {% for image in product.images %}
-                                    <div class="glide__slide">
-                                        <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            {% if video != blank %}
-                                <div class="glide__slide">
-                                    <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
-                                        <video autoplay="" loop="" muted="" plays-inline="" playsinline>
-                                            <source src="{{ video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                            {% endif %}
+                  <div class="glide__track" data-glide-el="track">
+                      <div class="glide__slides" id="product_images">
+                      {% if product.images.size > 0 %}
+                          {% for image in product.images %}
+                              <div class="glide__slide">
+                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '650x650'}}" class="lazyload product-item-image big-mobile-screen" style="display: none;">
+                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '600x600'}}" class="lazyload product-item-image mid-mobile-screen" style="display: none;">
+                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '500x500'}}" class="lazyload product-item-image mid-small-screen" style="display: none;">
+                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '400x400'}}" class="lazyload product-item-image small-screen" style="display: none;">
+                              </div>
+                          {% endfor %}
+                      {% endif %}
+                      </div>
+                  </div>
+                  {% unless is_quickview %}
+                    {% if product.images.size > 0 %}
+                      <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
+                        {% for image in product.images %}
+                          <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
+                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #f1f1f1;">
+                          </button>
+                        {% endfor %}
+                      </div>
+                      <div class="glide__bullets" data-glide-el="controls[nav]">
+                        {% for image in product.images %}
+                          <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {% endunless %}
+                </div>
+                {% unless is_quickview %}
+                {% if video != blank %}
+                    <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-right: 10px">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline>
+                                <source src="{{ video }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
-                    <div class="glide__bullets" data-glide-el="controls[nav]">
-                        {% for i in (0..slide_index_limit) %}
-                            <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
-                        {% endfor %}
-                    </div>
-                </div>
+                {% endif %}
+                {% endunless %}
             </div>
 
             <div class="product-details cell {% unless is_quickview %}medium-5{% else %}medium-6{% endunless %}">
@@ -187,13 +176,15 @@
                                 {% endif %}
 
                             </h5>
-
+                          {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mb-20">
                             Payment options with Afterpay and ZipPay
                           </div>
+                          {% endif %}
 
                         </div>
 
+                        {% if product.type != "GIFT CARD" %}
                         <div class="yotpo bottomLine hide-for-small-only"
                              data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                              data-domain="{{shop.permanent_domain | escape }}"
@@ -205,6 +196,7 @@
                              data-description="{{ product.description | escape }}"
                              data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
                         </div>
+                        {% endif %}
 
 
                       {% unless is_quickview %}
@@ -305,7 +297,7 @@
                           {% unless is_quickview %}
 
                             <div class="grid-x grid-margin-x align-right align-middle mb-20">
-
+                            {% if product.type != "GIFT CARD" %}
                               <div class="cell shrink">
                                 {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
                                 {% unless product.tags contains 'bis-hidden' %}
@@ -351,6 +343,7 @@
                                   </div>
                                 </div>
                               {% endif %}
+                            {% endif %}
                             </div>
 
 
@@ -368,7 +361,7 @@
 
                                 <label class="option-label hide">{{ option.name }}</label>
 
-                                {% if option.name == 'Size' %}
+                                {% if option.name == 'Size' or option.name == 'size' %}
 
                                   <div class="radio-select">
 
@@ -383,9 +376,12 @@
                                              data-index="{{ option.position }}"
                                              name="variantselector-{{ selector_name }}[]"
                                              type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                                      <label title="{{ value }}"
+                                      <label title="{{ value }}" style="text-align: center;"
                                              class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
-                                        <span>{{ value | escape }}</span>
+                                        {% assign size = value | split: " "  %}
+                                        {% capture string_with_newlines %}{{ size[0] | escape }}
+                                        {{ size[1] | escape }}{% endcapture %}
+                                        <span>{{ string_with_newlines | newline_to_br }}</span>
                                       </label>
                                     {% endfor %}
 
@@ -480,6 +476,8 @@
                 </div>
 
 
+
+
                 {% unless is_quickview %}
 
                     <div class="product-information mt-40">
@@ -527,7 +525,24 @@
 
                     </div>
 
+
+                  {% if section.settings.click_and_collect_enable == true %}
+                    <div class="click-and-collect mt-40">
+                      <div class="grid-x grid-margin-x align-center">
+                        <div class="cell shrink">
+                          {% render 'icon-click-collect' %}
+                        </div>
+                        <div class="cell auto">
+                          <div><strong>{{ section.settings.click_and_collect_title }}</strong></div>
+                          <div class="mb-10">{{ section.settings.click_and_collect_content }}</div>
+                          <a href="{{ section.settings.click_and_collect_page }}" target="_blank">Learn More</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+
                 {% endunless %}
+
 
                 <div class="grid-x grid-margin-x align-right align-middle mt-20">
 
@@ -583,6 +598,33 @@
         "label": "Display quantity selector",
         "info": "If unchecked, Add To Cart is always 1 item",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Click and Collect"
+      },
+        {
+        "type": "checkbox",
+        "id": "click_and_collect_enable",
+        "label": "Enable Click and Collect",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_title",
+        "label": "Click and Collect Title",
+        "default": "Available for Click and Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_content",
+        "label": "Click and Collect Content",
+        "default": "Order online by 5pm today and collect in-store from 2pm tomorrow."
+      },
+      {
+        "type": "url",
+        "id": "click_and_collect_page",
+        "label": "Nearest Store Link"
       },
       {
         "type": "header",
