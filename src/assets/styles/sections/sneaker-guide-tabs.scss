@@ -1,0 +1,167 @@
+.section-sneaker-guide-tabs {
+
+  .sneaker-guide-nav-slider {
+
+    max-width: 90%;
+    margin: auto;
+
+
+    .sneaker-guide-nav-slider-title {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .sneaker-guide-nav-slider-image {
+      padding: 20px;
+    }
+
+    .glide {
+
+      &__slides {
+
+      }
+
+      &__slide {
+
+        border-bottom: 1px solid lightgray;
+        opacity: 0.5;
+
+
+        &.glide__slide--active {
+          box-shadow: inset 0px -2px #35383F;
+          opacity: 1;
+          font-weight: 500;
+        }
+      }
+
+
+      &__arrow {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        left: -40px;
+        @include breakpoint(medium) {
+          left: calc(-5% - 20px);
+        }
+
+
+        @include breakpoint(medium) {
+          display: block;
+        }
+
+        svg {
+          transform: rotate(90deg);
+          height: 3rem;
+          width: 3rem;
+        }
+
+        &--right {
+
+          left: auto;
+          right: -40px;
+
+          @include breakpoint(medium) {
+            right: calc(-5% - 20px);
+          }
+
+          svg {
+            transform: rotate(270deg);
+          }
+        }
+      }
+    }
+  }
+
+
+
+  // Tab Content
+  .sneaker-guide-content-container {
+    background-color: #f1f1f1;
+    padding: 20px 0;
+
+    @include breakpoint(medium) {
+      padding: 60px 0;
+    }
+
+    .sneaker-guide-content {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+      transition: all 400ms;
+    }
+
+    .sneaker-guide-content:not(.active) {
+      //display: none;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+    }
+
+    .sneaker-guide-content-text {
+
+      h2 {
+        @include breakpoint(medium) {
+          font-size: 60px;
+        }
+      }
+
+      p {
+        font-size: (14 / 14) * 1rem;
+        line-height: (24 / 14) * 1rem;;
+      }
+
+      .sneaker-guide-button {
+
+        text-decoration: none;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        transition: transform 200ms;
+        font-weight: 500;
+
+        svg {
+          margin-left: 10px;
+        }
+
+        &:hover {
+          transform: translateX(10px);
+        }
+      }
+
+    }
+
+
+    // Tab Content Shoe Sliders
+    .sneaker-guide-content-slider {
+
+      img {
+        //width: 100%;
+      }
+
+      .glide {
+        &__bullets {
+          bottom: 0;
+          left: 0;
+
+          .glide__bullet {
+            background-color: #35383F;
+            border: 2px solid #35383F;
+            box-shadow: none;
+
+            &--active {
+              background-color: #F1F1F1;
+            }
+          }
+
+        }
+
+      }
+    }
+
+
+
+
+  }
+
+
+}
