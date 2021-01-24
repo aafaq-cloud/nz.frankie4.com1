@@ -1,12 +1,24 @@
-<div data-autoload-class="SneakerGuideTabsSection" class="section section-sneaker-guide-tabs no-margin">
+<div data-autoload-class="SneakerGuideTabsSection" class="section section-sneaker-guide-tabs no-margin" style="background-color: #F5F5F5;">
 
 
   {% comment %}
     Top Slider for Shoes
   {% endcomment %}
+  {% comment %} <div class="grid-container">
+    <div style="padding: 60px 0 60px 0; width: 100%;"><h1 class="mt-40 mb-40 text-center">{{ section.settings.section_title }}</h1></div>
+    {% for block in section.blocks %}
+      <div class="glide__slide" style="float: left; width: 16vw; max-width: 250px">
+        <div style="width: 16vw; max-width: 250px">
+          <img class="sneaker-guide-nav-slider-image" src="{{ block.settings.sneaker_image | img_url: '250x250', crop: 'center' }}"/>
+          <div class="sneaker-guide-nav-slider-title">{{ block.settings.title }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div> {% endcomment %}
+
   <div class="grid-container">
 
-    <h2 class="mt-40 mb-40 text-center">{{ section.settings.section_title }}</h2>
+    <div style="padding: 60px 0 60px 0; width: 100%;"><h1 class="mt-40 mb-40 text-center">{{ section.settings.section_title }}</h1></div>
 
     <div class="glide sneaker-guide-nav-slider">
       <div class="glide__track" data-glide-el="track">
@@ -15,20 +27,18 @@
           {% for block in section.blocks %}
             <div class="glide__slide">
               <div data-slide="={{ forloop.index0 }}">
-                <img class="sneaker-guide-nav-slider-image" src="{{ block.settings.sneaker_image | img_url: '200x100', crop: 'center' }}"/>
+                <img class="sneaker-guide-nav-slider-image" src="{{ block.settings.sneaker_image | img_url: '380x380', crop: 'center' }}"/>
                 <div class="sneaker-guide-nav-slider-title">{{ block.settings.title }}</div>
               </div>
             </div>
           {% endfor %}
         </div>
       </div>
-      <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
-      </div>
     </div>
 
   </div>
+
+
 
 
 

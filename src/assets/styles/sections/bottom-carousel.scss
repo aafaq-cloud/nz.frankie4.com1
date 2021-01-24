@@ -1,17 +1,17 @@
-.section-sneaker-guide-tabs {
+.section-blog-tabs {
 
-  .sneaker-guide-nav-slider {
+  .blog-nav-slider {
 
-    max-width: 90%;
+    max-width: 100%;
     margin: auto;
 
 
-    .sneaker-guide-nav-slider-title {
+    .blog-nav-slider-title {
       padding: 10px;
       text-align: center;
     }
 
-    .sneaker-guide-nav-slider-image {
+    .blog-nav-slider-image {
       padding: 20px;
     }
 
@@ -75,28 +75,28 @@
 
 
   // Tab Content
-  .sneaker-guide-content-container {
+  .blog-content-container {
     padding: 20px 0;
 
     @include breakpoint(medium) {
       padding: 60px 0;
     }
 
-    .sneaker-guide-content {
+    .blog-content {
       opacity: 1;
       visibility: visible;
       height: auto;
       transition: all 400ms;
     }
 
-    .sneaker-guide-content:not(.active) {
+    .blog-content:not(.active) {
       //display: none;
       visibility: hidden;
       opacity: 0;
       height: 0;
     }
 
-    .sneaker-guide-content-text {
+    .blog-content-text {
 
       h2 {
         @include breakpoint(medium) {
@@ -109,7 +109,7 @@
         line-height: (24 / 14) * 1rem;;
       }
 
-      .sneaker-guide-button {
+      .blog-button {
 
         text-decoration: none;
         padding-right: 10px;
@@ -131,7 +131,7 @@
 
 
     // Tab Content Shoe Sliders
-    .sneaker-guide-content-slider {
+    .blog-content-slider {
 
       img {
         //width: 100%;

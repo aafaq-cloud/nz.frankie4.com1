@@ -1,5 +1,5 @@
 /**
- * Sneaker Guide Tabs Section Script
+ * Blog Tabs Section Script
  * ------------------------------------------------------------------------------
  *
  */
@@ -8,7 +8,7 @@ import {AbstractComponent} from "../class/AbstractComponent";
 import Glide from '@glidejs/glide';
 
 
-export class SneakerGuideTabsSection extends AbstractComponent {
+export class BlogTabsSection extends AbstractComponent {
     constructor(component) {
         super(component);
 
@@ -17,20 +17,19 @@ export class SneakerGuideTabsSection extends AbstractComponent {
 
 
     initSlider() {
-        this.glideElement = this.component.querySelector(".sneaker-guide-nav-slider");
+        this.glideElement = this.component.querySelector(".blog-nav-slider");
         this.glideElements = this.glideElement.querySelectorAll(".glide__slide");
 
         this.glideSettings = {
             type: 'carousel',
             gap: 0,
-            focusAt: 0,
-            perView: 4
+            perView: 3
         };
 
         this.glide = new Glide(this.glideElement, this.glideSettings);
         
         // Handle changing active slide on click
-        this.slideContent = this.component.querySelectorAll(".sneaker-guide-content");
+        this.slideContent = this.component.querySelectorAll(".blog-content");
 
         // When Nav Slide changes active slide, hide/show related content
         this.glide.on(['run','mount.after'], () => {
@@ -38,7 +37,7 @@ export class SneakerGuideTabsSection extends AbstractComponent {
             for (let i = 0; i < this.slideContent.length; i++) {
                 if (this.slideContent[i].getAttribute('data-content-index') ==  this.glide.index){
                     this.slideContent[i].classList.add('active');
-                    this.initTabSliders(this.slideContent[i].querySelector('.sneaker-guide-content-slider'));
+                    this.initTabSliders(this.slideContent[i].querySelector('.blog-content-slider'));
                 } else {
                     this.slideContent[i].classList.remove('active');
                 }

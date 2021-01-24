@@ -1,0 +1,126 @@
+<div data-autoload-class="SectionFeaturesSection" class="section no-margin" style="background-color: #F5F5F5;">
+    <div class="grid-container">
+        <div style="padding: 60px 0 60px 0; width: 100%;"><h1 class="mt-40 mb-40 text-center">{{ section.settings.section_title }}</h1></div>
+
+        <div style="text-align: center; font-size: 0">
+            {% for block in section.blocks %}
+                <button style="width: 25%; padding: 0" class="tablink feature_image" id="{{ block.settings.feature_name }}">
+                    <img style="padding: 0 10px 0 10px;" src="{{ block.settings.feature_image | img_url: '300x300', crop: 'center' }}"/>
+                    <div class="overlay" id="{{ block.settings.feature_name }}_line" style="margin: 3px 0 0 0;"></div>
+                </button>
+            {% endfor %}
+        </div>
+
+        {% for block in section.blocks %}
+            <div id="{{ block.settings.feature_name }}_content" class="tabcontent" style="display: none">
+                <h3>{{ block.settings.feature_name }}</h3>
+                <p>Home is where the heart is..</p>
+                <div class="glide" id="g_{{ block.settings.feature_name }}">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide" style="width: 100px">
+                                Lots of content here {{ block.settings.feature_name }}
+                            </li>
+                            <li class="glide__slide" style="width: 100px">
+                                And here {{ block.settings.feature_name }}
+                            </li>
+                            <li class="glide__slide" style="width: 100px">
+                                And also here {{ block.settings.feature_name }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% comment %} 
+        
+        Issue -- glider does not show properly when it's created across 4 tabs
+        
+        Attempt - hard code 4 sections entirely
+        
+        
+        {% endcomment %}
+
+    </div>
+</div>
+{% comment %} spacer section {% endcomment %}
+<div class="section">
+    <div class="grid-container">
+        <div class="grid-x align-middle" style="height: 100px; background-color: white;">
+        </div>
+    </div>
+</div>
+
+<style>
+    .feature_image {
+        cursor: pointer;
+    }
+
+    .feature_image:focus, .feature_image:hover {
+        outline:0;
+        transition: .5s ease;
+    }
+
+    .overlay {
+        transition: .5s ease;
+        background-color: #dddddd;
+        height: 2px;
+    }
+
+    .tablink:hover .overlay {
+        background-color: #000000;
+    }
+
+    .feature_image:focus .overlay {
+        background-color: #000000;
+    }
+
+    .text {
+        color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Feature Section Tabs",
+          "settings": [
+            {
+            "id": "section_title",
+            "type": "text",
+            "label": "Section title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "feature_image",
+                "name": "Feature Sections",
+                "settings": [
+                    {
+                        "id": "feature_image",
+                        "type": "image_picker",
+                        "label": "Feature Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "feature_name",
+                        "type": "text",
+                        "label": "Feature Name"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

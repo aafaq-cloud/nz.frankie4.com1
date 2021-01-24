@@ -1,0 +1,28 @@
+.feature_image {
+    cursor: pointer;
+}
+
+.feature_image:focus, .feature_image:hover {
+    outline:0;
+    transition: .5s ease;
+}
+
+.overlay {
+    transition: .5s ease;
+    background-color: #dddddd;
+    height: 2px;
+}
+
+.tablink:hover .overlay {
+    background-color: #000000;
+}
+
+.feature_image:focus .overlay {
+    background-color: #000000;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}

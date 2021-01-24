@@ -23,6 +23,8 @@ import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
+import {SectionFeaturesSection} from "../sections/section-features";
+import {BlogTabsSection} from "../sections/bottom-carousel";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -50,6 +52,8 @@ export class Autoloader {
       ContactSection,
       ContactFormSection,
       SneakerGuideTabsSection,
+      SectionFeaturesSection,
+      BlogTabsSection,
       BannerSection,
       ShippingSection
     };

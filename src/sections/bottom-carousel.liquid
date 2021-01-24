@@ -1,0 +1,92 @@
+<div data-autoload-class="BlogTabsSection" class="section section-blog-tabs no-margin" style="background-color: #FFFFFF;">
+
+  <div class="grid-container">
+    <div class="glide blog-nav-slider">
+      <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides">
+          {% for block in section.blocks %}
+            <div class="glide__slide">
+              <div data-slide="={{ forloop.index0 }}">
+                <img class="blog-nav-slider-image" src="{{ block.settings.sneaker_image | img_url: '500x500', crop: 'center' }}"/>
+                {% comment %} <div class="blog-nav-slider-title">{{ block.settings.title }}</div> {% endcomment %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% include "icon-chevron" %}</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% include "icon-chevron" %}</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+{% schema %}
+    {
+        "name": "Sneaker  Tabs",
+          "settings": [
+            {
+            "id": "section_title",
+            "type": "text",
+            "label": "Section title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "sneaker_slide",
+                "name": "Sneaker Slide",
+                "settings": [
+                    {
+                        "id": "sneaker_image",
+                        "type": "image_picker",
+                        "label": "Sneaker Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "content",
+                        "type": "richtext",
+                        "label": "content"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    },
+                    {
+                        "id": "image1",
+                        "type": "image_picker",
+                        "label": "Image 1"
+                    },
+                    {
+                        "id": "image2",
+                        "type": "image_picker",
+                        "label": "Image 2"
+                    },
+                    {
+                        "id": "image3",
+                        "type": "image_picker",
+                        "label": "Image 3"
+                    },
+                    {
+                        "id": "image4",
+                        "type": "image_picker",
+                        "label": "Image 4"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
