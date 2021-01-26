@@ -1,0 +1,95 @@
+{% comment %} line + words + line {% endcomment %}
+<div class="section">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div style="width: 3px; height: 140px; background-color: #808080; margin: 50px auto 80px auto;"></div>
+            <div style="text-align: center; width: 1100px; margin: 0 8vw 0 8vw;">
+                <h1>{{section.settings.section_title}}</h1>
+                <p>{{section.settings.section_paragraph}}</p>
+            </div>
+            <div style="width: 3px; height: 140px; background-color: #808080; margin: 55px auto 50px auto;"></div>
+        </div>
+    </div>
+</div>
+
+{% comment %} images + quote {% endcomment %}
+<div class="section">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell small-12 medium-6 large-6" style="padding-right: 60px; height: 90vh; max-height: 1150px;">
+                <div class="cell-image cell medium-auto" 
+                    style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); 
+                            height: 90vh; 
+                            max-height: 1150px; 
+                            width: 100%; 
+                            background-size: cover;">
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 large-6" style="height: 90vh; max-height: 1150px;">
+                <div class="cell-image cell medium-auto" 
+                    style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}'); 
+                            height: 40vh; 
+                            max-height: 450px; 
+                            width: 100%; 
+                            background-size: cover;">
+                </div>
+                <div style="width: 3px; height: 140px; background-color: #808080; margin: -70px auto 80px auto;"></div>
+                <div style="text-align: center;">
+                    <h1>"</h1>
+                    <h3>{{section.settings.section_quote}}</h3>
+                    <br>
+                    <h4>{{section.settings.section_name}}</h4>
+                    <h1>"</h1>
+                </div>
+                <div style="width: 3px; height: 140px; background-color: #808080; margin: 80px auto 80px auto;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} spacer section {% endcomment %}
+<div class="section">
+    <div class="grid-container">
+        <div class="grid-x align-middle" style="height: 100px; background-color: white;">
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+     {
+         "name": "About Us Section 1",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph",
+                "label": "Paragraph"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Image1"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Image2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote",
+                "label": "Quote"
+            },
+            {
+                "type": "text",
+                "id": "section_name",
+                "label": "Name"
+            }
+         ]
+     }
+ {% endschema %}
