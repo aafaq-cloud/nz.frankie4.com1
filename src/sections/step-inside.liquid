@@ -1,0 +1,94 @@
+<div class="section section-step-inside" data-autoload-class="StepInsideSection">
+
+    <div class="section-line"></div>
+
+    <div class="grid-container">
+        <div class="grid-x align-center">
+            <div class="cell medium-6">
+                <div class="text-center mb-15 text-container">
+                    <h2 class="h1">{{ section.settings.section_title }}</h2>
+                    <p class="lead">{{ section.settings.section_content }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="glide slider">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for block in section.blocks %}
+                    <li class="glide__slide">
+                        <div class="step-inside-item">
+                            <a href="{{ block.settings.link }}" target="_blank">
+                                <img class="step-inside-item-image" src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"/>
+                                <div class="step-inside-item-content-container">
+                                    <div class="step-inside-item-content">
+                                        <div class="step-inside-item-content-subtitle">
+                                            {{ block.settings.subtitle }}
+                                        </div>
+                                        <h3>{{ block.settings.title }}</h3>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+{% schema %}
+    {
+        "name": "Step Inside Slider",
+        "settings": [
+           {
+            "type": "header",
+            "content": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            },
+            {
+                "id": "section_content",
+                "type": "textarea",
+                "label": "Content"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

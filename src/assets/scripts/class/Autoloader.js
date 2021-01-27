@@ -23,6 +23,7 @@ import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
+import {StepInsideSection} from "../sections/step-inside";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -51,7 +52,8 @@ export class Autoloader {
       ContactFormSection,
       SneakerGuideTabsSection,
       BannerSection,
-      ShippingSection
+      ShippingSection,
+      StepInsideSection
     };
 
     for (const key in autoloadClasses) {
