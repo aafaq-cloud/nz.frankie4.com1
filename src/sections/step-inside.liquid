@@ -21,7 +21,22 @@
                     <li class="glide__slide">
                         <div class="step-inside-item">
                             <a href="{{ block.settings.link }}" target="_blank">
-                                <img class="step-inside-item-image" src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"/>
+                                <img class="step-inside-item-image"
+                                     src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
+                                    srcset="
+                                     {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                                     {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                                     {{ block.settings.image | img_url: '500x500', crop: 'center' }} 500w,
+                                     {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w"
+                                    sizes="
+                                    (min-width: 600px) 60vw,
+                                    (min-width: 850px) 50vw,
+                                    (min-width: 1024px) 33.3vw,
+                                    (min-width: 1200px) 33.3vw,
+                                    (min-width: 1400px) 33.3vw,
+                                    80vw"
+                                    alt="Image for {{ block.settings.title }}"
+                                />
                                 <div class="step-inside-item-content-container">
                                     <div class="step-inside-item-content">
                                         <div class="step-inside-item-content-subtitle">
