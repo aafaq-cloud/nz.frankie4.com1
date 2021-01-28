@@ -17,6 +17,41 @@ export class WeStandForSection extends AbstractComponent {
         this.tabContent = this.component.querySelectorAll(".tab-content-item");
         this.initTabs();
 
+        this.initSliderTabs();
+
+    }
+
+    initSliderTabs() {
+        const tabGlideElement =  this.component.querySelector('.tab-slider')
+        const glideSettings = {
+            gap: 20,
+            perView: 4,
+            swipeThreshold: false,
+            dragThreshold: false,
+            bound: true,
+            breakpoints: {
+                480: {
+                    perView: 2,
+                    swipeThreshold: 80,
+                    dragThreshold: 120,
+                    peek: {before: 0, after: 0}
+                },
+                600: {
+                    perView: 2,
+                    swipeThreshold: 80,
+                    dragThreshold: 120,
+                    peek: {before: 0, after: 50}
+                },
+                900: {
+                    perView: 3,
+                    swipeThreshold: 80,
+                    dragThreshold: 120,
+                    peek: {before: 0, after: 50}
+                }
+            }
+        };
+        const tabGlide = new Glide(tabGlideElement, glideSettings);
+        tabGlide.mount();
     }
 
     /*
@@ -37,19 +72,13 @@ export class WeStandForSection extends AbstractComponent {
 
         // Mount slide if content loaded as active
         for (let i = 0; i < this.tabContent.length; i++) {
-            console.log(this.tabContent[i].classList.contains('active'));
-            // if (this.tabContent[i].classList.contains('active')) {
-            //     console.log('contains');
-            //     console.log(this.tabContent[i].getAttribute('data-tab-content-index'));
-            // }
             if (this.tabContent[i].classList.contains('active')) {
-                this.initTabSliders(this.tabContent[i]);
+                this.initTabSliders(this.tabContent[i].querySelector('.slider'));
             }
         }
     }
 
     resetTabTitleActive(){
-        console.log(this.tabTitles);
         for (let i = 0; i < this.tabTitles.length; i++) {
             this.tabTitles[i].classList.remove('active');
         }
@@ -78,7 +107,6 @@ export class WeStandForSection extends AbstractComponent {
         const tabGlideSettings = {
             gap: 40,
             perView: 1,
-            autoplay: 5000
         };
 
         const tabGlide = new Glide(tabGlideElement, tabGlideSettings);
@@ -86,6 +114,9 @@ export class WeStandForSection extends AbstractComponent {
         if (!isMounted) {
             tabGlide.mount();
             tabGlideElement.classList.add('mounted');
+        } else {
+            tabGlide.destroy();
+            tabGlide.mount();
         }
 
     }

@@ -1,37 +1,46 @@
-<div data-autoload-class="WeStandForSection" class="section section-we-stand-for no-margin">
+<div data-autoload-class="WeStandForSection" class="section section-we-stand-for">
 
-  <div class="grid-container">
+  <div class="grid-container mb-40">
     <div class="grid-x align-center text-center">
       <div class="cell">
-        <h2 class="h1 mb-20">We stand for</h2>
+        <h2 class="h1 mb-20">{{ section.settings.section_title}}</h2>
+        <p>{{ section.settings.section_content }}</p>
       </div>
-
+    </div>
   </div>
 
   <div class="grid-container">
 
-    <div class="grid-x grid-padding-x tab-titles">
-      {% assign tabIndex = 1 %}
-      {% for block in section.blocks %}
+    <div class="tab-titles">
+      <div class="glide tab-slider">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            {% assign tabIndex = 1 %}
+            {% for block in section.blocks %}
 
-        {% if block.type == 'tab_title' %}
-          <div class="cell large-3">
-            <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
-              <div class="tab-title-container">
-                <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
-                <div class="tab-title-content-container">
-                  <div class="tab-title-content">
-                    <h3>{{ block.settings.title }}</h3>
-                  </div>
-                </div>
-              </div>
+              {% if block.type == 'tab_title' %}
+                  <li class="glide__slide">
+                    <div class="tab-title-container">
+                      <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
+                        <div class="tab-title-container">
+                          <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                          <div class="tab-title-content-container">
+                            <div class="tab-title-content">
+                              <h3>{{ block.settings.title }}</h3>
+                            </div>
+                          </div>
+                        </div>
 
-            </div>
-          </div>
-          {% assign tabIndex = tabIndex | plus: 1 %}
-        {% endif %}
+                      </div>
+                    </div>
+                  </li>
+                {% assign tabIndex = tabIndex | plus: 1 %}
+              {% endif %}
 
-      {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
 
     </div>
 
@@ -53,8 +62,6 @@
 
           {% for block in section.blocks %}
 
-
-
             {% if block.type == 'slider_start' %}
 
             {% assign slideTitles = '' %}
@@ -70,15 +77,15 @@
 
                   </ul>
                 </div>
-              <div class="glide__bullets" data-glide-el="controls[nav]">
-                {% assign slides = slideTitles | split: ',' %}
-                {% for bullet in slides %}
-                  <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}">
-                    <span></span>
-                    {{bullet}}
-                  </button>
-                {% endfor %}
-              </div>
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                  {% assign slides = slideTitles | split: ',' %}
+                  {% for bullet in slides %}
+                    <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}">
+                      <span></span>
+                      {{bullet}}
+                    </button>
+                  {% endfor %}
+                </div>
               </div>
 
               </div>
@@ -89,13 +96,24 @@
 
               <li class="glide__slide">
 
-                  <div class="grid-x">
-                    <div class="cell large-6">
-                      <img src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                  <div class="grid-x grid-margin-x grid-margin-y">
+                    <div class="cell medium-12 large-7 tab-content-item-media {{ block.settings.image_placement }}">
+
+                      {% if block.settings.video_url != blank %}
+                        {% assign videoId = block.settings.video_url.id %}
+                        <div class="video-container">
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                      {% else %}
+                        <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                      {% endif %}
+
                     </div>
-                    <div class="cell large-6">
-                      <h2>{{ block.settings.title }}</h2>
+                    <div class="cell medium-12 large-5">
+                      <h2 class="h1">{{ block.settings.title }}</h2>
                       <div>{{ block.settings.content }}</div>
+
+                      <a class="tab-content-item-link" href="{{ block.settings.link }}">{{ block.settings.button_text }}</a>
                     </div>
                   </div>
 
@@ -106,7 +124,6 @@
               {% endunless %}
               {% assign slideTitles = slideTitles | append: block.settings.title %}
 
-
             {% endif %}
 
           {% endfor %}
@@ -115,7 +132,6 @@
     </div>
 
   </div>
-
 
 </div>
 
@@ -176,9 +192,26 @@
                         "label": "Image"
                     },
                     {
+                     "type": "select",
+                     "id": "image_placement",
+                     "label": "Media Placement",
+                     "options": [
+                       {
+                         "value": "",
+                         "label": "Left"
+                       },
+                       {
+
+                         "value": "medium-order-2",
+                         "label": "Right"
+                       }
+                     ],
+                     "default": ""
+                    },
+                    {
                         "id": "video_url",
                         "type": "video_url",
-                        "accept": ["youtube", "vimeo"],
+                        "accept": ["youtube"],
                         "label": "Video"
                     },
                     {
