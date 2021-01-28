@@ -24,6 +24,7 @@ import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {StepInsideSection} from "../sections/step-inside";
+import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -54,6 +55,7 @@ export class Autoloader {
       BannerSection,
       ShippingSection,
       StepInsideSection
+      WeStandForSection
     };
 
     for (const key in autoloadClasses) {
