@@ -1,133 +1,407 @@
 <div class="section">
-    <div class="cell-image cell medium-auto" 
-        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); 
-            height: 600px; 
-            width: 100%; 
-            background-size: cover;
-            background-position: center;">
-            <div style="color: white; text-align: center; padding-top: 200px;">
+    <div class="cell-image cell medium-auto landing-image" 
+        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
+            <div class="text-center landing-text">
                 <h1>{{section.settings.section_main_title}}</h1>
                 <h4>{{section.settings.section_subtitle}}</h4>
             </div>
     </div>
 </div>
 
-<div class="section">
+<div class="section" style="margin-bottom: 60px">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div style="width: 3px; height: 140px; background-color: #808080; margin: 40px auto 10px auto;"></div>
-            <div style="text-align: center; width: 1100px; margin: 40px 12vw 20px 12vw;">
+            <div class="deco-line"></div>
+            <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
                 <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
                 <p>{{section.settings.section_paragraph}}</p>
             </div>
-            <div class="cell-image cell medium-auto" 
-                style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}'); 
-                    height: 700px; 
-                    width: 100%; 
-                    background-size: cover;
-                    background-position: center;">
+            <div class="cell-image cell medium-auto image-full-width" 
+                style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');">
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <div class="section" style="background-color: #eeeeee">
     <div class="grid-container" style="margin: 0; padding: 0;">
         <div class="grid-x align-middle" style="width: 100vw">
-            <div class="cell small-12 medium-6 large-6" style="padding-right: 30px;">
-                <div style="margin: 40px 0 40px 10vw">
-                    <h4 style="text-align: center;">{{section.settings.section_subtitle_2}}</h4>
-                    <h1 style="text-align: center;">{{section.settings.section_title_2}}</h1>
-                    <p style="text-align: left;">{{section.settings.section_paragraph_2}}</p>
+            <div class="cell small-12 medium-6 large-6 column-left">
+                <div class="special-paragraph-margin">
+                    <h4 class="text-center">{{section.settings.section_subtitle_2}}</h4>
+                    <h1 class="text-center" style="margin-bottom: 60px;">{{section.settings.section_title_2}}</h1>
+                    <h5 class="text-left">{{section.settings.section_2_h1}}</h5>
+                    <p class="text-left">{{section.settings.section_2_p1}}</p>
+                    <div class="deco-line-horizontal"></div>
+                    <h5 class="text-left">{{section.settings.section_2_h2}}</h5>
+                    <p class="text-left">{{section.settings.section_2_p2}}</p>
+                    <div class="deco-line-horizontal"></div>
+                    <h5 class="text-left">{{section.settings.section_2_h3}}</h5>
+                    <p class="text-left">{{section.settings.section_2_p3}}</p>
                 </div>
             </div>
-            <div class="cell small-12 medium-6 large-6" style="padding-left: 30px; height: 1000px;">
-                <div class="cell-image cell medium-auto" 
-                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}'); 
-                            height: 100%; 
-                            width: 100%; 
-                            background-size: cover;
-                            background-position: center;">
+            <div class="cell small-12 medium-6 large-6 column-right">
+                <div class="cell-image cell medium-auto image-half-width wide-screen-only" 
+                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
+                    height: 1200px;">
+                </div>
+                <div class="cell-image cell medium-auto image-half-width mobile-screen-only" 
+                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
+                    height: 400px;">
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
 
 <div class="section">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div class="cell small-12 medium-6 large-6" style="padding-right: 30px; height: 45vh;">
-                <div class="cell-image cell medium-auto" 
-                    style="background-image: url('{{section.settings.image_4 | img_url: '1400x'}}'); 
-                            height: 40vh; 
-                            max-height: 950px; 
-                            width: 100%; 
-                            background-size: cover;
-                            background-position: center;">
+            <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
+                <div class="cell-image cell medium-auto image-half-width" 
+                    style="background-image: url('{{section.settings.image_4 | img_url: '1400x'}}');
+                    height: 900px">
                 </div>
             </div>
-            <div class="cell small-12 medium-6 large-6" style="padding-left: 30px; height: 45vh;">
-                <div style="width: 3px; height: 100px; background-color: #808080; margin: 30px auto 30px auto;"></div>
+            <div class="cell small-12 medium-6 large-6 column-right">
+                <div class="deco-line"></div>
                 <div>
-                    <h1 style="text-align: center;">{{section.settings.section_title_3}}</h1>
-                    <p style="text-align: left;">{{section.settings.section_paragraph_3}}</p>
+                    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px">{{section.settings.section_title_3}}</h1>
+                    {{section.settings.section_paragraph_3}}
+                    <span><h5><a href="{{section.settings.link3}}">{{section.settings.link3_name}}</a></h5></span>
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 large-6 column-left mobile-screen-only">
+                <div class="cell-image cell medium-auto image-half-width" 
+                    style="background-image: url('{{section.settings.image_4 | img_url: '1400x'}}');">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-<div class="section">
+<div class="section" style="margin-bottom: 60px">
     <div class="grid-container">
         <div class="grid-x align-middle">
-
-
-
-            <div class="cell small-12 medium-6 large-6" style="padding-right: 30px; height: 45vh;">
-                <div style="width: 3px; height: 100px; background-color: #808080; margin: 30px auto 30px auto;"></div>
-                <div>
-                    <h1 style="text-align: center;">{{section.settings.section_title_4}}</h1>
-                    <p style="text-align: left;">{{section.settings.section_paragraph_4}}</p>
+            <div class="cell small-12 medium-6 large-6 column-left">
+                <div class="deco-line"></div>
+                <h1 class="text-center" style="padding-bottom: 20px">{{section.settings.section_title_4}}</h1>
+                <div onclick="getElementById('section_a1').style.display = 'block';getElementById('section_a2').style.display = 'none';getElementById('section_a3').style.display = 'none'">
+                    <p id="section_q1" class="text-left sections_questions"><b>{{section.settings.section_q1}}</b></p>
+                    <p id="section_a1" class="text-left section_answers">{{section.settings.section_a1}}</p>
+                    <div class="deco-line-horizontal"></div>
                 </div>
-                <div style="width: 3px; height: 100px; margin: 30px auto 30px auto;"></div>
+                <div onclick="getElementById('section_a1').style.display = 'none';getElementById('section_a2').style.display = 'block';getElementById('section_a3').style.display = 'none'">
+                    <p id="section_q2" class="text-left sections_questions"><b>{{section.settings.section_q2}}</b></p>
+                    <p id="section_a2" class="text-left section_answers">{{section.settings.section_a2}}</p>
+                    <div class="deco-line-horizontal"></div>
+                </div>
+                <div onclick="getElementById('section_a1').style.display = 'none';getElementById('section_a2').style.display = 'none';getElementById('section_a3').style.display = 'block'">
+                    <p id="section_q3" class="text-left sections_questions"><b>{{section.settings.section_q3}}</b></p>
+                    <p id="section_a3" class="text-left section_answers">{{section.settings.section_a3}}</p>
+                    <div class="deco-line-horizontal"></div>
+                </div>
+                <span><h5><a href="{{section.settings.link4}}">{{section.settings.link4_name}}</a></h5></span>
             </div>
-
-
-            <div class="cell small-12 medium-6 large-6" style="padding-left: 30px; height: 45vh;">
-                <div class="cell-image cell medium-auto" 
-                    style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}'); 
-                            height: 40vh; 
-                            max-height: 950px; 
-                            width: 100%; 
-                            background-size: cover;
-                            background-position: center;">
+            <div class="cell small-12 medium-6 large-6 column-right">
+                <div class="cell-image cell medium-auto image-half-width" 
+                    style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}');">
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
+
+
+
+<div class="section wide-screen-only">
+    <div class="grid-container">
+        <div id="container">
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_1_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_1 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_2_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_2 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_3_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_3 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_4_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_4 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section mobile-screen-only">
+    <div class="grid-container">
+        <div id="container">
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_1_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_1 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_2_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_2 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="container">
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_3_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_3 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
+                <a href="{{section.settings.image_bottom_4_link}}">
+                    <div class="cell-image cell medium-auto bottom-images" 
+                        style="background-image: url('{{section.settings.image_bottom_4 | img_url: '1400x'}}');">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #container {
+        text-align: justify;
+        font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+    }
+    #container div {
+        display: inline-block;
+    }
+    #container:after {
+        content: '';
+        width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+        display: inline-block;
+    }
+
+    .section_answers {
+        display: none;
+    }
+    .sections_questions {
+        transition: all 0.5s ease;
+    }
+    .sections_questions:hover {
+        cursor: pointer;
+        color: #999999;
+    }
+
+    .special-paragraph-margin {
+        margin: 80px 0 80px 10vw;
+    }
+    .wide-screen-only {
+        display: block;
+    }
+    .mobile-screen-only {
+        display: none;
+    }
+    .column-left {
+        padding-right: 30px;
+    }
+    .column-right {
+        padding-left: 30px;
+    }
+    .landing-image {
+        height: 600px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .landing-text {
+        color: white; 
+        padding-top: 200px;
+    }
+    .deco-line {
+        width: 3px;
+        height: 140px;
+        background-color: #808080;
+        margin: 40px auto 20px auto;
+    }
+    .deco-line-horizontal {
+        width: 100%;
+        height: 2px;
+        background-color: #dddddd;
+        margin: 0px 0 30px 0;
+    }
+    .image-full-width {
+        height: 700px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .image-half-width {
+        height: 700px;  
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom-images {
+        height: 100%; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .bottom-image-blocks {
+        height: 23vw;
+        max-height: 280px;
+        width: 23vw;
+        max-width: 280px;
+        border-bottom: 1px solid white;
+    }
+    .bottom-image-blocks:hover {
+        border-bottom: 1px solid black;
+    }
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+        .landing-image {
+            height: 300px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 100px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 100px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 400px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 600px;  
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .wide-screen-only {
+            display: none;
+        }
+        .mobile-screen-only {
+            display: block;
+        }
+        .special-paragraph-margin {
+            margin: 40px 10vw 40px 10vw;
+        }
+        .column-left {
+            padding-right: 0;
+        }
+        .column-right {
+            padding-left: 0;
+        }
+        .landing-image {
+            height: 200px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 50px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 50px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 200px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 300px;  
+        }
+        .bottom-image-blocks {
+            height: 45vw;
+            max-height: 250px;
+            width: 45vw; 
+            max-width: 250px;
+            margin-bottom: 10px;
+        }
+    }
+
+    b {
+        font-weight: bolder;
+    }
+    h1 {
+        font-size: 80px;
+        font-family: dm serif display;
+        line-height: 80px;
+    }
+    h2 {
+        font-size: 36px;
+        font-family: dm serif display;
+        line-height: 36px;
+    }
+    h3 {
+        font-size: 26px;
+        font-family: montserrat-semibold;
+        line-height: 36px;
+        letter-spacing: 3px;
+    }
+    h4 {
+        font-size: 22px;
+        font-family: montserrat-light;
+        line-height: 32px;
+        letter-spacing: 3px;
+    }
+    h5 {
+        font-size: 20px;
+        font-family: montserrat-bold;
+        line-height: 30px;
+        letter-spacing: 2px;
+    }
+    p {
+        font-size: 20px;
+        font-family: montserrat;
+        line-height: 30px;
+    }
+    .small-text {
+        font-size: 15px;
+        font-family: montserrat-light;
+        line-height: 25px;
+    }
+    .large-text {
+        font-size: 26px;
+        font-family: montserrat;
+        line-height: 36px;
+    }
+    .quote-text {
+        font-size: 30px;
+        font-family: dm serif display;
+        line-height: 32px;
+    }
+
+</style>
 
 
 {% schema %}
@@ -178,9 +452,34 @@
                 "label": "Subtitle2"
             },
             {
+                "type": "text",
+                "id": "section_2_h1",
+                "label": "Section 2 Header 1"
+            },
+            {
                 "type": "textarea",
-                "id": "section_paragraph_2",
-                "label": "Paragraph2"
+                "id": "section_2_p1",
+                "label": "Section 2 Paragraph 1"
+            },
+            {
+                "type": "text",
+                "id": "section_2_h2",
+                "label": "Section 2 Header 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_2_p2",
+                "label": "Section 2 Paragraph 2"
+            },
+            {
+                "type": "text",
+                "id": "section_2_h3",
+                "label": "Section 2 Header 3"
+            },
+            {
+                "type": "textarea",
+                "id": "section_2_p3",
+                "label": "Section 2 Paragraph 3"
             },
             {
                 "type": "image_picker",
@@ -198,6 +497,16 @@
                 "label": "Paragraph3"
             },
             {
+                "type": "text",
+                "id": "link3",
+                "label": "Link3"
+            },
+            {
+                "type": "text",
+                "id": "link3_name",
+                "label": "Link3 Name"
+            },
+            {
                 "type": "image_picker",
                 "id": "image_5",
                 "label": "Image5"
@@ -211,6 +520,86 @@
                 "type": "textarea",
                 "id": "section_paragraph_4",
                 "label": "Paragraph4"
+            },
+            {
+                "type": "text",
+                "id": "section_q1",
+                "label": "Question 1"
+            },
+            {
+                "type": "textarea",
+                "id": "section_a1",
+                "label": "Answer1"
+            },
+            {
+                "type": "text",
+                "id": "section_q2",
+                "label": "Question 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_a2",
+                "label": "Answer2"
+            },
+            {
+                "type": "text",
+                "id": "section_q3",
+                "label": "Question 3"
+            },
+            {
+                "type": "textarea",
+                "id": "section_a3",
+                "label": "Answer3"
+            },
+            {
+                "type": "text",
+                "id": "link4",
+                "label": "Link4"
+            },
+            {
+                "type": "text",
+                "id": "link4_name",
+                "label": "Link4 Name"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_bottom_1",
+                "label": "Image bottom 1"
+            },
+            {
+                "type": "text",
+                "id": "image_bottom_1_link",
+                "label": "Image bottom 1 Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_bottom_2",
+                "label": "Image bottom 2"
+            },
+            {
+                "type": "text",
+                "id": "image_bottom_2_link",
+                "label": "Image bottom 2 Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_bottom_3",
+                "label": "Image bottom 3"
+            },
+            {
+                "type": "text",
+                "id": "image_bottom_3_link",
+                "label": "Image bottom 3 Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_bottom_4",
+                "label": "Image bottom 4"
+            },
+            {
+                "type": "text",
+                "id": "image_bottom_4_link",
+                "label": "Image bottom 4 Link"
             }
          ]
      }

@@ -1,11 +1,7 @@
 <div class="section">
-    <div class="cell-image cell medium-auto" 
-        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); 
-            height: 600px; 
-            width: 100%; 
-            background-size: cover;
-            background-position: center;">
-            <div style="color: white; text-align: center; padding-top: 200px;">
+    <div class="cell-image cell medium-auto landing-image" 
+        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
+            <div class="text-center landing-text">
                 <h1>{{section.settings.section_main_title}}</h1>
                 <h4>{{section.settings.section_subtitle}}</h4>
             </div>
@@ -15,27 +11,31 @@
 <div class="section">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div style="text-align: center; width: 1100px; margin: 40px 12vw 20px 12vw;">
+            <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
                 <h1>{{section.settings.section_title}}</h1>
                 <p>{{section.settings.section_paragraph}}</p>
                 <span><b><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></b></span>
             </div>
         </div>
     </div>
-    <div class="cell-image cell medium-auto" 
-        style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}'); 
-            height: 200px; 
-            width: 100%; 
-            background-size: cover;
-            background-position: center;">
+    <div class="cell-image cell medium-auto image-full-width" 
+        style="height: auto; width: 100%;">
+        <img src="{{section.settings.image_2 | img_url: '1400x'}}" style="width: 100%;"/>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <div class="section" style="background-color: #eeeeee">
     <div class="grid-container">
         <div class="grid-x align-middle">
-
-            <div style="text-align: center; width: 1100px; margin: 40px 12vw 20px 12vw;">
+            <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
                 <h1 style="margin-top: 40px; margin-bottom: 60px">{{section.settings.section_title_2}}</h1>
                 <p>{{section.settings.section_paragraph_2}}</p>
             </div>
@@ -60,7 +60,7 @@
                             background-position: center;">
                 </div>
                 <div style="width: 3px; height: 140px; background-color: #808080; margin: -70px auto 80px auto;"></div>
-                <div style="text-align: center;">
+                <div class="text-center">
                     <p>{{section.settings.section_paragraph_3}}</p>
                     <span><b><a href="{{section.settings.link2}}">{{section.settings.link2_name}}</a></b></span>
                 </div>
@@ -68,6 +68,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 <div class="section">
     <div class="grid-container">
@@ -111,10 +116,18 @@
                 <h1>{{section.settings.section_title_4}}</h1>
                 <p>{{section.settings.section_paragraph_5}}</p>
             </div>
-            <div>
-                {% comment %} Carousel here {% endcomment %}
 
+
+
+            {% comment %} placeholder for bottom section {% endcomment %}
+
+            <div style="text-align: center; width: 1100px; margin: 40px 10% 20px 10%;">
+                <h2>section for bottom carousel links</h2>
             </div>
+
+
+
+            
         </div>
     </div>
 </div>
@@ -126,6 +139,151 @@
         </div>
     </div>
 </div>
+
+
+
+
+<style>
+    #container {
+        text-align: justify;
+        font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+    }
+    #container div {
+        display: inline-block;
+    }
+    #container:after {
+        content: '';
+        width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+        display: inline-block;
+    }
+
+
+    .wide-screen-only {
+        display: block;
+    }
+    .mobile-screen-only {
+        display: none;
+    }
+    .column-left {
+        padding-right: 30px;
+    }
+    .column-right {
+        padding-left: 30px;
+    }
+    .landing-image {
+        height: 600px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .landing-text {
+        color: white; 
+        padding-top: 200px;
+    }
+    .deco-line {
+        width: 3px;
+        height: 140px;
+        background-color: #808080;
+        margin: 40px auto 20px auto;
+    }
+    .image-full-width {
+        height: 700px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .image-half-width {
+        height: 700px;  
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom-images {
+        height: 100%; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .bottom-image-blocks {
+        height: 23vw;
+        max-height: 250px;
+        width: 23vw;
+        max-width: 250px;
+        border-bottom: 1px solid white;
+    }
+    .bottom-image-blocks:hover {
+        border-bottom: 1px solid black;
+    }
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+        .landing-image {
+            height: 300px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 100px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 100px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 400px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 600px;  
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .wide-screen-only {
+            display: none;
+        }
+        .mobile-screen-only {
+            display: block;
+        }
+        .column-left {
+            padding-right: 0;
+        }
+        .column-right {
+            padding-left: 0;
+        }
+        .landing-image {
+            height: 200px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 50px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 50px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 200px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 300px;  
+        }
+        .bottom-image-blocks {
+            height: 45vw;
+            max-height: 250px;
+            width: 45vw; 
+            max-width: 250px;
+            margin-bottom: 10px;
+        }
+    }
+
+</style>
 
 
 {% schema %}
