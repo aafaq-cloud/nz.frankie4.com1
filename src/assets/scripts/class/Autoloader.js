@@ -54,7 +54,7 @@ export class Autoloader {
       SneakerGuideTabsSection,
       BannerSection,
       ShippingSection,
-      StepInsideSection
+      StepInsideSection,
       WeStandForSection
     };
 
