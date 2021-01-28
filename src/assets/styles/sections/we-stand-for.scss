@@ -1,0 +1,151 @@
+.section-we-stand-for {
+
+
+  .tab-titles {
+
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 1px;
+      left: 0.85714rem;
+      width: calc(100% - 1.71429rem);
+      height: 1px;
+      box-shadow: 0 1px 0 0 $color-border;
+
+
+    }
+
+
+    .tab-title {
+      position: relative;
+      z-index: 1;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      padding-bottom: 40px;
+      transition: border-bottom-color 600ms;
+
+      &-image {
+        display: block;
+        transition: transform 600ms;
+      }
+
+      &-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      &-content {
+
+        position: relative;
+        z-index: 2;
+
+        &-container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          display: flex;
+          align-items: flex-end;
+          padding: 20px;
+          color: white;
+          transition: background 600ms;
+          background: none;
+
+
+          @include breakpoint(medium) {
+            padding: 30px 50px;
+          }
+
+        }
+
+      }
+
+      &:hover {
+
+        .tab-title-image {
+          transform: scale(1.05);
+        }
+
+        .tab-title-content-container {
+          //background: rgba($color-body-text, 0.2);
+          background: rgba(black, 0.2);
+        }
+
+      }
+      &.active {
+        border-bottom-color: $color-body-text;
+      }
+
+    }
+
+
+  }
+
+  .tab-content {
+    padding: 40px 0;
+
+    &-item {
+      &:not(.active) {
+        display: none;
+      }
+    }
+
+
+  }
+
+
+  .glide {
+
+    &__bullets {
+
+      position: relative;
+      left: inherit;
+      bottom: 0;
+      transform: none;
+
+
+      .glide__bullet {
+
+        width: auto;
+        height: auto;
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        line-height: inherit;
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-size: rem-calc(16);
+
+        span {
+          display: inline-block;
+          background-color: rgba(0, 0, 0, 0.5);
+          width: 12px;
+          height: 12px;
+          padding: 0;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          transition: all 300ms ease-in-out;
+          cursor: pointer;
+          line-height: 0;
+
+          margin: 0 0.25em;
+        }
+
+
+
+        &--active {
+          span {
+            background-color: $body-font-color;
+          }
+
+        }
+      }
+    }
+
+  }
+
+}
