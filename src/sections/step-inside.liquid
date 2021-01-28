@@ -15,6 +15,10 @@
     </div>
 
     <div class="glide slider">
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+        </div>
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 {% for block in section.blocks %}

@@ -1,15 +1,5 @@
 .section-step-inside {
   position: relative;
-  font-family: 'Montserrat', sans-serif;
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'DM Serif Display', serif;
-  }
 
 
   .step-inside-item {
@@ -70,6 +60,42 @@
 
     }
 
+  }
+
+  .glide {
+
+    &__arrows {
+
+
+    }
+
+    &__arrow {
+      //background: white;
+      border: 0;
+      width: 120px;
+      height: 100%;
+      box-shadow: none;
+
+      @include breakpoint(medium) {
+        width: 200px;
+      }
+
+      &--left {
+        left: 0;
+      }
+      &--right {
+        right: 0;
+      }
+
+      &--left svg {
+        transform: scaleX(-1);
+      }
+
+      svg {
+        width: 90px;
+        height: 90px;
+      }
+    }
   }
 
 
