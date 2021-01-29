@@ -137,5 +137,7 @@
   {% include 'currencies' %}
   {% include 'back-in-stock-helper' %}
   {% include 'bc-sf-filter' %}
+
+  {% render 'upsell-now', customer: customer, product: product, template: template, cart: cart %}
 </body>
 </html>
