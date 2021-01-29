@@ -24,7 +24,7 @@
     "webpack": "^4.16.2"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.2.4",
+    "@glidejs/glide": "^3.4.1",
     "@shopify/theme-a11y": "^1.0.0",
     "@shopify/theme-cart": "^1.0.0-alpha.7",
     "@shopify/theme-currency": "^1.0.0-alpha.7",

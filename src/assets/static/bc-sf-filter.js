@@ -21,7 +21,7 @@ var bcSfFilterTemplate = {
     // Grid Template
     'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch {{itemHandle}} {{isPrimary}}">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
-        '<div class="cell product-tile__image-container">' +
+        '<div class="cell product-tile__image-container">' + 
         '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
         '{{itemImages}}' +
         '<button data-product-quickview data-product-url="{{itemUrl}}" class="product-tile__quickview button button-secondary button-small">Quickview</button>' +
