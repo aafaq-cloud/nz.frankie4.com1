@@ -31,8 +31,21 @@ export class ComponentWayfinderSlider extends AbstractComponent {
     if (window.innerWidth < 640 && !this.glideActive) {
       this.glide = new Glide(this.glideElement, {
         type: "carousel",
+        perView: 2,
         peek: {before:0, after:  100},
-        gap: 30
+        gap: 20,
+        breakpoints: {
+          420: {
+            perView: 1,
+            peek: {before:0, after:  80},
+            gap: 10,
+          },
+          500: {
+            perView: 1,
+            peek: {before:0, after:  200},
+            gap: 20,
+          }
+        }
       }).mount();
       this.glideActive = true;
       // Remove slider if medium or larger viewport

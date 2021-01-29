@@ -5,8 +5,14 @@
 
   <div class="grid-container">
 
-    <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
+    <div class="section-line"></div>
 
+    <div class="grid-x align-center">
+      <div class="cell large-9">
+        <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
+        <p class="lead medium-text-center">{{ section.settings.section_content }}</p>
+      </div>
+    </div>
 
     <div class="wayfinder-slider" data-autoload-class="ComponentWayfinderSlider">
       <div class="glide">
@@ -57,6 +63,11 @@
             "type": "text",
             "id": "section_title",
             "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "section_content",
+            "label": "Content"
           }
         ],
         "blocks": [

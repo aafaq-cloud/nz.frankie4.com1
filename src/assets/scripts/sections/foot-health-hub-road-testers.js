@@ -26,8 +26,19 @@ export class FootHealthHubRoadTestersSection extends AbstractComponent {
             perView: 2,
             peek: {before: 0, after: 100},
             breakpoints: {
-                1200: {
+                500: {
                     perView: 1,
+                    peek: {before: 0, after: 100},
+
+                },
+                700: {
+                    perView: 1,
+                    peek: {before: 0, after: 200},
+
+                },
+                900: {
+                    perView: 1,
+                    peek: {before: 0, after: 400},
 
                 }
             }

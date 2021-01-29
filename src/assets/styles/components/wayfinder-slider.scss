@@ -34,6 +34,16 @@
         width: 100%;
         display: block;
       }
+
+      &::before {
+        content: '';
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &-title {
@@ -41,20 +51,18 @@
       z-index: 1;
       font-size: rem-calc(18);
       line-height: rem-calc(25);
-      width: 190px;
-      height: 80px;
       bottom: 0;
       left: 0;
-      background: #FFFFFF;
+
+      color: #FFFFFF;
       padding: 15px;
       font-weight: 500;
 
       @include breakpoint(medium) {
         padding: 30px;
-        font-size: rem-calc(24);
-        line-height: rem-calc(36);
-        width: 245px;
-        height: 130px;
+        font-size: rem-calc(28);
+        line-height: rem-calc(40);
+
 
       }
 

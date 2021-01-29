@@ -264,3 +264,20 @@
     height: 100%;
   }
 }
+
+.section-line {
+
+  position: relative;
+  padding: 30px;
+
+  &:before {
+    content: '';
+    display: block;
+    height: 80px;
+    width: 1px;
+    background: $color-body-text;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}

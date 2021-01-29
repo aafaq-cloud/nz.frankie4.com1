@@ -2,6 +2,10 @@
 
   //padding: 50px 0;
 
+  .slide-container {
+    padding-top: 40px;
+  }
+
   .content-box {
     background: #F1F1F1;
     padding: 30px;
@@ -9,15 +13,21 @@
 
     @include breakpoint(medium) {
       padding: 60px;
+    }
+
+    @include breakpoint(large) {
       height: 100%;
       margin: 0;
     }
 
-    &-heading {
-      font-size: rem-calc(30);
-      line-height: rem-calc(45);
-      font-weight: 500;
+  }
+
+  .review {
+
+    &-name {
+      font-weight: bold;
     }
+
   }
 
 
@@ -35,6 +45,21 @@
         opacity: 1;
       }
 
+    }
+
+    &__navigation {
+        position: absolute;
+        top: -40px;
+        bottom: auto;
+        right: 0;
+        margin: 0;
+
+      button {
+        cursor: pointer;
+        padding: 5px 0;
+        text-transform: uppercase;
+        font-size: rem-calc(16);
+      }
     }
 
     &__bullets {

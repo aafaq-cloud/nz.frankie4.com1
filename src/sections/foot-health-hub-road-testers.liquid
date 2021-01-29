@@ -13,8 +13,8 @@
         <div class="cell large-4">
 
           <div class="content-box">
-            <div class="content-box-heading">{{ section.settings.section_title }}</div>
-            <p>{{ section.settings.section_content }}</p>
+            <div class="h2 content-box-heading">{{ section.settings.section_title }}</div>
+            <p class="lead m-0">{{ section.settings.section_content }}</p>
           </div>
 
         </div>
@@ -27,22 +27,27 @@
                 <div class="glide__slides">
                   {% for block in section.blocks %}
                     <div class="glide__slide">
-                      <div>
+                      <div class="review">
                         <img src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}">
                         <div>
-                          <div class="mb-20">{{ block.settings.content }}</div>
-                          <div>{{ block.settings.name }}</div>
+                          <div class="review-content mb-20">{{ block.settings.content }}</div>
+                          <div class="review-name mt-20 mb-20">{{ block.settings.name }}</div>
                         </div>
                       </div>
 
                     </div>
                   {% endfor %}
                 </div>
+                <div class="glide__navigation" data-glide-el="controls">
+                  <button data-glide-dir=">">More Reviews {% render 'icon-arrow-right' %}</button>
+                </div>
+                {% comment %}
                 <div class="glide__bullets" data-glide-el="controls[nav]">
                   {% for i in (0..slide_index_limit) %}
                     <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
                   {% endfor %}
                 </div>
+                {% endcomment %}
               </div>
             </div>
           </div>
