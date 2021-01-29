@@ -24,15 +24,7 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-<div class="section" style="background-color: #eeeeee">
+<div class="section" style="background-color: #eeeeee; margin-bottom: 60px">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
@@ -59,7 +51,7 @@
                             background-size: cover;
                             background-position: center;">
                 </div>
-                <div style="width: 3px; height: 140px; background-color: #808080; margin: -70px auto 80px auto;"></div>
+                <div class="deco-line" style="margin-top: -70px;"></div>
                 <div class="text-center">
                     <p>{{section.settings.section_paragraph_3}}</p>
                     <span><b><a href="{{section.settings.link2}}">{{section.settings.link2_name}}</a></b></span>
@@ -108,37 +100,6 @@
     </div>
 </div>
 
-<div class="section">
-    <div class="grid-container">
-        <div class="grid-x align-middle">
-            <div style="width: 3px; height: 140px; background-color: #808080; margin: 40px auto 10px auto;"></div>
-            <div style="text-align: center; width: 1100px; margin: 40px 12vw 20px 12vw;">
-                <h1>{{section.settings.section_title_4}}</h1>
-                <p>{{section.settings.section_paragraph_5}}</p>
-            </div>
-
-
-
-            {% comment %} placeholder for bottom section {% endcomment %}
-
-            <div style="text-align: center; width: 1100px; margin: 40px 10% 20px 10%;">
-                <h2>section for bottom carousel links</h2>
-            </div>
-
-
-
-            
-        </div>
-    </div>
-</div>
-
-{% comment %} spacer section {% endcomment %}
-<div class="section">
-    <div class="grid-container">
-        <div class="grid-x align-middle" style="height: 100px; background-color: white;">
-        </div>
-    </div>
-</div>
 
 
 
@@ -283,6 +244,57 @@
         }
     }
 
+    b {
+        font-weight: bolder;
+    }
+    h1 {
+        font-size: 80px;
+        font-family: dm serif display;
+        line-height: 80px;
+    }
+    h2 {
+        font-size: 36px;
+        font-family: dm serif display;
+        line-height: 36px;
+    }
+    h3 {
+        font-size: 26px;
+        font-family: montserrat-semibold;
+        line-height: 36px;
+        letter-spacing: 3px;
+    }
+    h4 {
+        font-size: 22px;
+        font-family: montserrat-light;
+        line-height: 32px;
+        letter-spacing: 3px;
+    }
+    h5 {
+        font-size: 20px;
+        font-family: montserrat-bold;
+        line-height: 30px;
+        letter-spacing: 2px;
+    }
+    p {
+        font-size: 20px;
+        font-family: montserrat;
+        line-height: 30px;
+    }
+    .small-text {
+        font-size: 15px;
+        font-family: montserrat-light;
+        line-height: 25px;
+    }
+    .large-text {
+        font-size: 26px;
+        font-family: montserrat;
+        line-height: 36px;
+    }
+    .quote-text {
+        font-size: 30px;
+        font-family: dm serif display;
+        line-height: 32px;
+    }
 </style>
 
 
