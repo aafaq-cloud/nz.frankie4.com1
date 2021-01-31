@@ -24,9 +24,9 @@
                       <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
                         <div class="tab-title-container">
                           <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
-                          <div class="tab-title-content-container">
+                          <div class="tab-title-content-container" style="padding: 30px 50px 15px 25px">
                             <div class="tab-title-content">
-                              <h3>{{ block.settings.title }}</h3>
+                              <h2>{{ block.settings.title }}</h2>
                             </div>
                           </div>
                         </div>
@@ -97,7 +97,7 @@
               <li class="glide__slide">
 
                   <div class="grid-x grid-margin-x grid-margin-y">
-                    <div class="cell medium-12 large-7 tab-content-item-media {{ block.settings.image_placement }}">
+                    <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}">
 
                       {% if block.settings.video_url != blank %}
                         {% assign videoId = block.settings.video_url.id %}
@@ -105,11 +105,11 @@
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                       {% else %}
-                        <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                        <img width="540" height="430" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
                       {% endif %}
 
                     </div>
-                    <div class="cell medium-12 large-5">
+                    <div class="cell medium-12 large-6">
                       <h2 class="h1">{{ block.settings.title }}</h2>
                       <div>{{ block.settings.content }}</div>
 
@@ -139,7 +139,7 @@
 <div class="section">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div class="deco-line"></div>
+            <div class="deco-line" style="margin-bottom: 40px"></div>
         </div>
     </div>
 </div>

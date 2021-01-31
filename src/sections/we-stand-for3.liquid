@@ -4,7 +4,6 @@
     <div class="grid-x align-center text-center">
       <div class="cell">
         <h2 class="h1 mb-20" style="margin-top: 80px">{{ section.settings.section_title}}</h2>
-        <p>{{ section.settings.section_content }}</p>
       </div>
     </div>
   </div>
@@ -94,23 +93,18 @@
 
             {% if block.type == 'tab_content' %}
 
-              <li class="glide__slide" style="margin-bottom: 20px">
+              <li class="glide__slide">
 
                   <div class="grid-x grid-margin-x grid-margin-y">
                     <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}">
 
-                      {% if block.settings.video != blank %}
-                        {% comment %} {% assign videoId = block.settings.video_url.id %}
+                      {% if block.settings.video_url != blank %}
+                        {% assign videoId = block.settings.video_url.id %}
                         <div class="video-container">
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div> {% endcomment %}
-                        <div data-autoload-class="ComponentVideo">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline width="560" height="315">
-                                <source src="{{ block.settings.video }}" type="video/mp4">
-                            </video>
                         </div>
                       {% else %}
-                        <img width="540" height="430" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                        <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
                       {% endif %}
 
                     </div>
@@ -214,10 +208,10 @@
                      "default": ""
                     },
                     {
-                        "id": "video",
-                        "type": "text",
-                        "label": "Video",
-                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                        "id": "video_url",
+                        "type": "video_url",
+                        "accept": ["youtube"],
+                        "label": "Video"
                     },
                     {
                         "id": "title",
@@ -226,7 +220,7 @@
                     },
                     {
                         "id": "content",
-                        "type": "text",
+                        "type": "richtext",
                         "label": "Content"
                     },
                     {

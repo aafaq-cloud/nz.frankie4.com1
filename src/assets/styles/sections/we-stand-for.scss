@@ -62,7 +62,7 @@
 
       }
       &.active {
-        border-bottom-color: $color-body-text;
+        border-bottom-color: rgba(black, 1);
 
         .tab-title-content-container {
           background: rgba(black, 0.2);
@@ -128,7 +128,7 @@
     .glide {
       &__slides {
         margin: 0;
-        border-bottom: 1px solid $color-border;
+        border-bottom: 2px solid rgba(black, 0.2);
       }
       &__slide {
 

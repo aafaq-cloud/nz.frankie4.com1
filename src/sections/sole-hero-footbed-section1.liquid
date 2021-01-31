@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section" style="margin-bottom: 0">
     <div class="cell-image cell medium-auto landing-image" 
         style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
             <div class="text-center landing-text">
@@ -13,11 +13,12 @@
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
                 <div class="cell-image cell medium-auto image-half-width" 
-                    style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');">
+                    style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');
+                    height: 650px;">
                 </div>
             </div>
             <div class="cell small-12 medium-6 large-6 column-right">
-                <div class="deco-line"></div>
+                <div class="deco-line" style="margin-bottom: 40px"></div>
                 <div class="text-center">
                     <h1>{{section.settings.section_title}}</h1>
                     <p>{{section.settings.section_paragraph}}</p>
@@ -38,29 +39,39 @@
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-12 large-12 wide-screen-only">
-                <div class="cell-image cell medium-auto image-full-width" 
+                {% comment %} <div class="cell-image cell medium-auto image-full-width" 
                     style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');">
+                </div> {% endcomment %}
+                <div data-autoload-class="ComponentVideo">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="675px">
+                        <source src="{{ section.settings.video }}" type="video/mp4">
+                    </video>
                 </div>
                 <div class="text-right" style="width: 100%; margin: 0 0 0 1px;">
-                    <p>{{section.settings.section_patent}}</p>
+                    <p class="small-text" style="margin-top: 0">{{section.settings.section_patent}}</p>
                 </div>
             </div>
             
             <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
                 <h1 style="margin-bottom: 30px">{{section.settings.section_title_2}}</h1>
-                <p>{{section.settings.section_paragraph_2}}</p>
+                <p style="margin-bottom: 0">{{section.settings.section_paragraph_2}}</p>
             </div>
             
             <div class="cell small-12 medium-12 large-12 mobile-screen-only">
-                <div class="cell-image cell medium-auto image-full-width" 
+                {% comment %} <div class="cell-image cell medium-auto image-full-width" 
                     style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');">
+                </div> {% endcomment %}
+                <div data-autoload-class="ComponentVideo">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="700px">
+                        <source src="{{ section.settings.video }}" type="video/mp4">
+                    </video>
                 </div>
                 <div class="text-right" style="width: 100%; margin: 0 0 0 1px;">
-                    <p>{{section.settings.section_patent}}</p>
+                    <p style="margin-bottom: 0">{{section.settings.section_patent}}</p>
                 </div>
             </div>
             
-            <div class="deco-line"></div>
+            <div class="deco-line" style="margin-bottom: 40px"></div>
         </div>
     </div>
 </div>
@@ -129,9 +140,9 @@
     
     .bottom-image-blocks {
         height: 23vw;
-        max-height: 250px;
+        max-height: 280px;
         width: 23vw;
-        max-width: 250px;
+        max-width: 280px;
         border-bottom: 1px solid white;
     }
     .bottom-image-blocks:hover {
@@ -198,9 +209,9 @@
         }
         .bottom-image-blocks {
             height: 45vw;
-            max-height: 250px;
+            max-height: 280px;
             width: 45vw; 
-            max-width: 250px;
+            max-width: 280px;
             margin-bottom: 10px;
         }
     }
@@ -287,6 +298,12 @@
                 "type": "textarea",
                 "id": "section_paragraph",
                 "label": "Paragraph"
+            },
+            {
+                "id": "video",
+                "type": "text",
+                "label": "Video",
+                "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
             },
             {
                 "type": "image_picker",
