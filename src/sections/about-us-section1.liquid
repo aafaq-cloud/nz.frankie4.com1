@@ -1,8 +1,8 @@
-<div class="section">
+<div class="section mobile-section1">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="deco-line"></div>
-            <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
+            <div class="text-center text-block1">
                 <h1>{{section.settings.section_title}}</h1>
                 <p>{{section.settings.section_paragraph}}</p>
             </div>
@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="section wide-screen-margin">
+<div class="section wide-screen-margin mobile-section2">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-6 large-6 wide-screen-only" style="padding-right: 60px; height: 1050px;">
@@ -32,16 +32,16 @@
                             background-size: cover;">
                 </div> {% endcomment %}
                 <div data-autoload-class="ComponentVideo">
-                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="300px">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="300px" class="mobile-video">
                         <source src="{{ section.settings.video }}" type="video/mp4">
                     </video>
                 </div>
-                <div style="height: 80px"></div>
-                <div class="text-center">
-                    <img src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
+                <div class="wide-screen-only" style="height: 80px"></div>
+                <div class="text-center text-block2">
+                    <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
                     <p class="quote-text">{{section.settings.section_quote}}</p>
                     <p>{{section.settings.section_name}}</p>
-                    <img src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
+                    <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
                 </div> 
                 <div class="deco-line"></div>
             </div>
@@ -121,6 +121,11 @@
     .wide-screen-margin{
         margin-bottom: 60px;
     }
+
+    .text-block1 {
+        width: 1100px;
+        margin: 40px 10% 20px 10%;
+    }
     @media screen and (min-width: 641px) and (max-width: 800px) {
         .landing-image {
             height: 300px;
@@ -146,6 +151,53 @@
         }
     }
     @media screen and (max-width: 640px) {
+        .text-block1 {
+            width: 1100px;
+            margin: 25px 10% 0 10%;
+        }
+        .text-block2 {
+            margin: 20px auto 20px auto;
+        }
+        .mobile-section1{
+            margin-bottom: 0;
+        }
+        .mobile-section2{
+            margin: 0 auto 0 auto;
+            height: 630px;
+        }
+        .mobile-section3{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .mobile-video {
+            height:200px;
+            margin-top: 25px;
+        }
+        .mobile-style1 {
+            margin-bottom: 10px;
+        }
+        .mobile-style2 {
+            margin-top: 40px!important;
+        }
+        .mobile-style3 {
+            margin-top: 30px!important;
+            margin-bottom: 30px!important;
+        }
+        .mobile-style4 {
+            margin-top: 40px!important;
+            margin-bottom: 30px!important;
+        }
+        .mobile-style5 {
+            height: 200px!important;
+        }
+        .mobile-style6 {
+            height: 280px!important;
+        }
+        .mobile-width {
+            width: 30px;
+        }
+
         .wide-screen-only {
             display: none;
         }
@@ -169,7 +221,7 @@
             width: 3px;
             height: 50px;
             background-color: #808080;
-            margin: 20px auto 10px auto;
+            margin: 0 auto 0 auto;
         }
         .image-full-width {
             height: 200px; 
@@ -192,6 +244,55 @@
         }
         .wide-screen-margin{
             margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 34px!important;
+            line-height: 34px!important;
+        }
+        h2 {
+            font-size: 28px!important;
+            line-height: 28px!important;
+        }
+        .mobile-h {
+            font-size: 18px!important;
+            line-height: 18px!important;
+        }
+        h3 {
+            font-size: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h4 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h5 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        p {
+            font-size: 12px!important;
+            line-height: 20px!important;
+        }
+        .small-text {
+            font-size: 12px!important;
+            line-height: 16px!important;
+        }
+        .large-text {
+            font-size: 26px;
+            line-height: 36px;
+        }
+        .quote-text {
+            font-size: 18px!important;
+            line-height: 24px!important;
+        }
+        .mobile-bullet {
+            display: block!important;
+            text-align: left;
+            width: 100%;
+            overflow: scroll;
         }
     }
 

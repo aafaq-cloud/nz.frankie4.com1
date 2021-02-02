@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section" style="margin-top: 0;">
     <div class="cell-image cell medium-auto landing-image" 
         style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
             <div class="text-center landing-text">
@@ -8,11 +8,11 @@
     </div>
 </div>
 
-<div class="section" style="margin-bottom: 60px">
+<div class="section mobile-style1" style="margin-bottom: 60px">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div class="deco-line"></div>
-            <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
+            <div class="deco-line mobile-style1 mobile-style2"></div>
+            <div class="text-center mobile-style3 mobile-style1" style="width: 1100px; margin: 40px 10% 20px 10%;">
                 <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
                 <p>{{section.settings.section_paragraph}}</p>
             </div>
@@ -29,7 +29,7 @@
             <div class="cell small-12 medium-6 large-6 column-left">
                 <div class="special-paragraph-margin">
                     <h4 class="text-center">{{section.settings.section_subtitle_2}}</h4>
-                    <h1 class="text-center" style="margin-bottom: 60px;">{{section.settings.section_title_2}}</h1>
+                    <h1 class="text-center mobile-style7" style="margin-bottom: 60px;">{{section.settings.section_title_2}}</h1>
                     <h5 class="text-left">{{section.settings.section_2_h1}}</h5>
                     <p class="text-left">{{section.settings.section_2_p1}}</p>
                     <div class="deco-line-horizontal"></div>
@@ -43,7 +43,7 @@
             <div class="cell small-12 medium-6 large-6 column-right">
                 <div class="cell-image cell medium-auto image-half-width wide-screen-only" 
                     style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
-                    height: 1200px;">
+                    height: 1400px;">
                 </div>
                 <div class="cell-image cell medium-auto image-half-width mobile-screen-only" 
                     style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-<div class="section">
+<div class="section mobile-style2" style="margin-top: 60px">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
@@ -64,9 +64,9 @@
                 </div>
             </div>
             <div class="cell small-12 medium-6 large-6 column-right">
-                <div class="deco-line"></div>
+                <div class="deco-line mobile-style1 mobile-style2"></div>
                 <div>
-                    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px">{{section.settings.section_title_3}}</h1>
+                    <h1 class="text-center mobile-style3 mobile-style5" style="margin-top: 40px; margin-bottom: 40px">{{section.settings.section_title_3}}</h1>
                     {{section.settings.section_paragraph_3}}
                     <span><h5><a href="{{section.settings.link3}}">{{section.settings.link3_name}}</a></h5></span>
                 </div>
@@ -84,7 +84,7 @@
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-6 large-6 column-left">
-                <div class="deco-line"></div>
+                <div class="deco-line mobile-style2 mobile-style5"></div>
                 <h1 class="text-center" style="padding-bottom: 20px">{{section.settings.section_title_4}}</h1>
                 <div onclick="getElementById('section_a1').style.display = 'block';getElementById('section_a2').style.display = 'none';getElementById('section_a3').style.display = 'none'">
                     <p id="section_q1" class="text-left sections_questions"><b>{{section.settings.section_q1}}</b></p>
@@ -103,7 +103,7 @@
                 </div>
                 <span><h5><a href="{{section.settings.link4}}">{{section.settings.link4_name}}</a></h5></span>
             </div>
-            <div class="cell small-12 medium-6 large-6 column-right">
+            <div class="cell small-12 medium-6 large-6 column-right wide-screen-only">
                 <div class="cell-image cell medium-auto image-half-width" 
                     style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}');">
                 </div>
@@ -303,6 +303,55 @@
         }
     }
     @media screen and (max-width: 640px) {
+        .text-block1 {
+            width: 1100px;
+            margin: 25px 10% 0 10%;
+        }
+        .text-block2 {
+            margin: 20px auto 20px auto;
+        }
+        .mobile-section1{
+            margin-bottom: 0;
+        }
+        .mobile-section2{
+            margin: 0 auto 0 auto;
+            height: 630px;
+        }
+        .mobile-section3{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .mobile-video {
+            height:200px;
+            margin-top: 25px;
+        }
+        .mobile-style1 {
+            margin-bottom: 0!important;
+        }
+        .mobile-style2 {
+            margin-top: 0!important;
+        }
+        .mobile-style3 {
+            margin-top: 25px!important;
+        }
+        .mobile-style4 {
+            margin-top: 40px!important;
+            margin-bottom: 30px!important;
+        }
+        .mobile-style5 {
+            margin-bottom: 20px!important;
+        }
+        .mobile-style6 {
+            height: 280px!important;
+        }
+        .mobile-width {
+            width: 30px;
+        }
+        .mobile-style7 {
+            margin-bottom: 35px!important;
+        }
+
         .wide-screen-only {
             display: none;
         }
@@ -346,6 +395,55 @@
             width: 45vw; 
             max-width: 250px;
             margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 34px!important;
+            line-height: 34px!important;
+        }
+        h2 {
+            font-size: 28px!important;
+            line-height: 28px!important;
+        }
+        .mobile-h {
+            font-size: 18px!important;
+            line-height: 18px!important;
+        }
+        h3 {
+            font-size: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h4 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h5 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        p {
+            font-size: 12px!important;
+            line-height: 20px!important;
+        }
+        .small-text {
+            font-size: 12px!important;
+            line-height: 16px!important;
+        }
+        .large-text {
+            font-size: 26px;
+            line-height: 36px;
+        }
+        .quote-text {
+            font-size: 18px!important;
+            line-height: 24px!important;
+        }
+        .mobile-bullet {
+            display: block!important;
+            text-align: left;
+            width: 100%;
+            overflow: scroll;
         }
     }
 

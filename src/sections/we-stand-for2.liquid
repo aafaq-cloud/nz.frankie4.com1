@@ -1,9 +1,9 @@
 <div data-autoload-class="WeStandForSection" class="section section-we-stand-for" style="background-color: #eeeeee">
 
-  <div class="grid-container mb-40">
+  <div class="grid-container mb-40 mobile-style1">
     <div class="grid-x align-center text-center">
       <div class="cell">
-        <h2 class="h1 mb-20" style="margin-top: 80px">{{ section.settings.section_title}}</h2>
+        <h2 class="h1 mb-20 mobile-style2 mobile-style6" style="margin-top: 80px">{{ section.settings.section_title}}</h2>
         <p>{{ section.settings.section_content }}</p>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="grid-x">
       <div class="cell large-12">
 
-        <div class="tab-content">
+        <div class="tab-content mobile-style7">
           {% assign tabContentIndex = 1 %}
 
           {% assign slideTitles = '' %}
@@ -77,7 +77,7 @@
 
                   </ul>
                 </div>
-                <div class="glide__bullets" data-glide-el="controls[nav]">
+                <div class="glide__bullets mobile-bullet" data-glide-el="controls[nav]">
                   {% assign slides = slideTitles | split: ',' %}
                   {% for bullet in slides %}
                     <button class="glide__bullet" style="background: none;" data-glide-dir="={{ forloop.index0 }}">
@@ -105,7 +105,7 @@
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                       {% else %}
-                        <img width="540" height="430" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                        <img width="100%" height="430" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6 mobile-style8"/>
                       {% endif %}
 
                     </div>
@@ -113,7 +113,7 @@
                       <h2 class="h1">{{ block.settings.title }}</h2>
                       <div>{{ block.settings.content }}</div>
 
-                      <a class="tab-content-item-link" href="{{ block.settings.link }}">{{ block.settings.button_text }}</a>
+                      <a class="tab-content-item-link" href="{{ block.settings.link }}" style="text-transform: none;">{{ block.settings.button_text }}</a>
                     </div>
                   </div>
 
@@ -136,10 +136,30 @@
   </div>
 </div>
 
-<div class="section">
+{% comment %} <div class="section">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="deco-line" style="margin-bottom: 40px"></div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<div class="section section-text-image no-margin" style="background-color: #FFFFFF;">
+    <div class="grid-container">
+        <div class="grid-x align-middle" style="height: auto">
+            <div class="cell small-12 medium-7 large-7">
+                <div class="deco-line mobile-style3 mobile-style4"></div>
+                <div class="cell-text-container mobile-style9" style="padding: 20px; text-align: center; margin: 8%">
+                    <div class="cell-image cell medium-auto">
+                        <img src="{{section.settings.icon_good_design_award | img_url: '400x'}}" style="width: 210px; margin: auto">
+                    </div>
+                    <p>{{section.settings.content_good_design_award}}</p>
+                    <span><h5><a target="_blank" href="{{ section.settings.url_good_design_award }}">{{ section.settings.url_name_good_design_award }}</a></h5></span>
+                </div>
+                <div class="deco-line mobile-style4"></div>
+            </div>
+            <div class="cell-image cell medium-auto good-design-award non-mobile-screen" style="background-image: url('{{section.settings.image_good_design_award | img_url: '1400x'}}'); height: 500px; width: 100%; background-size: cover;">
+            </div>
         </div>
     </div>
 </div>
@@ -276,6 +296,31 @@
                 "type": "text",
                 "id": "image_bottom_4_link",
                 "label": "Image bottom 4 Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "icon_good_design_award",
+                "label": "Good Design Award Icon"
+            },
+            {
+                "type": "textarea",
+                "id": "content_good_design_award",
+                "label": "Content"
+            },
+            {
+                "type": "url",
+                "id": "url_good_design_award",
+                "label": "Good Design Award URL link"
+            },
+            {
+                "type": "text",
+                "id": "url_name_good_design_award",
+                "label": "Good Design Award URL link Name"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_good_design_award",
+                "label": "Good Design Award Image"
             }
         ],
         "blocks": [
