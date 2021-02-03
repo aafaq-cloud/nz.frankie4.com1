@@ -22,8 +22,8 @@
         {% unless feature.settings.icon == blank %}
           <img src="{{feature.settings.icon | img_url: '60x60' }}" class="mr-10" alt="{{ feature.settings.title }}"/>
         {% endunless %}
-        {{ feature.settings.title }}
-
+        {% comment %} {{ feature.settings.title }} {% endcomment %}
+        {{ feature.settings.title_show }}
       </div>
     {% endif %}
   {% endfor %}
@@ -47,7 +47,8 @@
         {% endif %}
         <div class="cell auto modal-content-text-cell">
           <div class="modal-content-text">
-              <h2>{{ feature.settings.title }}</h2>
+              {% comment %} <h2>{{ feature.settings.title }}</h2> {% endcomment %}
+              <h2>{{ feature.settings.title_show }}</h2>
               <div class="rte">
                 {{ feature.settings.content }}
               </div>
