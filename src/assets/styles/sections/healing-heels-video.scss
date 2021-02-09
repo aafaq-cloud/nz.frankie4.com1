@@ -1,0 +1,22 @@
+.section-healing-heels-video {
+
+  .section-line {
+    margin-bottom: -70px;
+    z-index: 1;
+  }
+
+  .healing-heels-video {
+    &-container {
+      //position: relative;
+     // height: 60vh;
+      //max-height: 80vh;
+
+      @include breakpoint(medium) {
+        //height: 740px;
+      }
+    }
+  }
+
+
+
+}

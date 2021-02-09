@@ -1,0 +1,31 @@
+<div  class="section section-healing-heels-video">
+  <div class="section-line"></div>
+
+  <div class="healing-heels-video-container">
+    {% if section.settings.video != blank %}
+      <div class="video-container">
+        <video autoplay="true" loop="true" muted="true" plays-inline="" playsinline width="1280" height="720">
+          <source src="{{ section.settings.video }}" type="video/mp4">
+        </video>
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Healing Heels Video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "video",
+      "label": "Video",
+      "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+    }
+  ]
+}
+
+{% endschema %}
