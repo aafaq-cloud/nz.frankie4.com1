@@ -24,6 +24,7 @@ import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
+import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
 import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
 
 export class Autoloader {
@@ -55,6 +56,7 @@ export class Autoloader {
       BannerSection,
       ShippingSection,
       HealingHeelsTabsSection,
+      HealingHeelsTabsTwoSection,
       HealingHeelsImageSliderSection
 
     };
