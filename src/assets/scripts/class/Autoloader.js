@@ -23,7 +23,8 @@ import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
-import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs"
+import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
+import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -53,7 +54,9 @@ export class Autoloader {
       SneakerGuideTabsSection,
       BannerSection,
       ShippingSection,
-      HealingHeelsTabsSection
+      HealingHeelsTabsSection,
+      HealingHeelsImageSliderSection
+
     };
 
     for (const key in autoloadClasses) {

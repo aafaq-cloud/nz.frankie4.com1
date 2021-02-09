@@ -19,9 +19,13 @@
     border-bottom: 1px solid currentColor;
 
     @include breakpoint(medium) {
-      padding: 10px 40px;
+      padding: 10px 20px;
       font-size: rem-calc(20);
     }
+    @include breakpoint(large) {
+      padding: 10px 40px;
+    }
+
 
     &.active {
       color: #000000;
