@@ -1,0 +1,41 @@
+<div  class="section section-healing-heels-header no-margin" data-autoload-class="HealingHeelsHeaderSection">
+
+  <div class="healing-heels-header-image-container" style="background-image: url({{section.settings.image | img_url: '1400x500'}})">
+    {% comment %}
+    <img src="{{section.settings.image | img_url: '1400x500'}}" srcset="{{section.settings.image | img_url: '1400x650'}} 1400w, {{section.settings.image | img_url: '1100x500'}} 1100w, {{section.settings.image | img_url: '800x500'}} 800w, {{section.settings.image | img_url: '450x400'}} 450w" class="healing-heels-header-image">
+    {% endcomment %}
+  </div>
+  <div class="healing-heels-header-content">
+    <div class="grid-container text-center">
+    <h2 class="h1">{{section.settings.title}}</h2>
+    <div class="lead"> {{ section.settings.content }}</div>
+    </div>
+  </div>
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Healing Heels Header",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "textarea",
+    "id": "content",
+    "label": "Content"
+  },
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  }
+  ]
+}
+
+{% endschema %}
