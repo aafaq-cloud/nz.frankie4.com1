@@ -23,6 +23,7 @@ import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
+import {HealingHeelsAccessoriesSection} from "../sections/healing-heels-accessories";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
 import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
 import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
@@ -58,6 +59,7 @@ export class Autoloader {
       SneakerGuideTabsSection,
       BannerSection,
       ShippingSection,
+      HealingHeelsAccessoriesSection,
       HealingHeelsTabsSection,
       HealingHeelsTabsTwoSection,
       HealingHeelsImageSliderSection,
