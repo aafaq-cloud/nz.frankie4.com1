@@ -1,0 +1,56 @@
+.section-healing-heels-testimonials {
+  position: relative;
+  background: #F1F1F1;
+
+  .grid-container {
+    max-width: none;
+  }
+
+  .testimonial-item {
+    text-align: center;
+
+    svg {
+      margin: 20px;
+
+      @include breakpoint(medium) {
+        margin: 40px;
+      }
+
+      &:last-child {
+        transform: scaleX(-1);
+      }
+
+    }
+
+    &-content {
+      font-size: rem-calc(18);
+      font-weight: bold;
+      margin-bottom: 20px;
+
+      @include breakpoint(medium) {
+        font-size: rem-calc(30);
+        line-height: (48 / 40);
+        margin-bottom: 40px;
+      }
+    }
+
+    &-name {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: rem-calc(16);
+
+      @include breakpoint(medium) {
+        font-size: rem-calc(20);
+      }
+    }
+    &-job {
+      font-size: rem-calc(16);
+
+      @include breakpoint(medium) {
+        font-size: rem-calc(20);
+      }
+    }
+
+  }
+
+}

@@ -26,6 +26,8 @@ import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
 import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
 import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
+import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
+
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -57,7 +59,8 @@ export class Autoloader {
       ShippingSection,
       HealingHeelsTabsSection,
       HealingHeelsTabsTwoSection,
-      HealingHeelsImageSliderSection
+      HealingHeelsImageSliderSection,
+      HealingHeelsTestimonialsSection
 
     };
 

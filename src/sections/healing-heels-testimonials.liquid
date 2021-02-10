@@ -1,0 +1,101 @@
+<div class="section section-healing-heels-testimonials large-margin" data-autoload-class="HealingHeelsTestimonialsSection">
+
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x align-middle">
+      <div class="cell medium-6">
+        <img class="image-slider-item-image"
+             src="{{ section.settings.image | img_url: '600x600', crop: 'center' }}"
+             srcset="
+                 {{ section.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                 {{ section.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                 {{ section.settings.image | img_url: '500x500', crop: 'center' }} 500w,
+                 {{ section.settings.image | img_url: '600x600', crop: 'center' }} 600w"
+             sizes="
+                (min-width: 640px) 100vw,
+                (min-width: 1400px) 50vw,
+                100vw"
+             alt="Image for Testimonials"
+        />
+      </div>
+      <div class="cell medium-5">
+
+        <div class="glide testimonials-slider">
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+              {% for block in section.blocks %}
+                <div class="glide__slide">
+
+                  <div class="testimonial-item">
+
+                    {% render 'icon-quote' %}
+                    <div class="testimonial-item-content">
+                      {{ block.settings.testimonial }}
+                    </div>
+
+                    <div>
+                      <div class="testimonial-item-name">
+                        {{ block.settings.name }}
+                      </div>
+                      <div class="testimonial-item-job">
+                        {{ block.settings.job_title }}
+                      </div>
+                    </div>
+                    {% render 'icon-quote' %}
+
+                  </div>
+
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Healing Heels Quotes",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "id": "testimonial",
+          "type": "textarea",
+          "label": "Testimonial"
+        },
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Person Name"
+        },
+        {
+          "id": "job_title",
+          "type": "text",
+          "label": "Job Title"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}
