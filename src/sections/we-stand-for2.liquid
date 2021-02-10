@@ -55,7 +55,7 @@
     <div class="grid-x">
       <div class="cell large-12">
 
-        <div class="tab-content mobile-style7">
+        <div class="tab-content mobile-style7" style="padding-bottom: 20px">
           {% assign tabContentIndex = 1 %}
 
           {% assign slideTitles = '' %}
@@ -127,10 +127,25 @@
             {% endif %}
 
           {% endfor %}
-
+          <p class="small-text text-center wide-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; font-size: 11px; line-height: 14px">
+            {{ section.settings.section_disclaimer }}
+          </p>
+          <button class="mobile-screen-only" style="margin: 0 auto 0 auto" onclick="toggleText();">Disclaimer</button>
+          <script>
+          function toggleText() {
+            var x = document.getElementById("disclaimer");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+          </script>
+          <p id="disclaimer" class="small-text text-center mobile-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; display: none;">
+            {{ section.settings.section_disclaimer }}
+          </p>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -258,6 +273,36 @@
                 "label": "Content"
             },
             {
+                "id": "section_disclaimer",
+                "type": "textarea",
+                "label": "Disclaimer"
+            },
+            {
+                "type": "image_picker",
+                "id": "icon_good_design_award",
+                "label": "Good Design Award Icon"
+            },
+            {
+                "type": "textarea",
+                "id": "content_good_design_award",
+                "label": "Content"
+            },
+            {
+                "type": "url",
+                "id": "url_good_design_award",
+                "label": "Good Design Award URL link"
+            },
+            {
+                "type": "text",
+                "id": "url_name_good_design_award",
+                "label": "Good Design Award URL link Name"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_good_design_award",
+                "label": "Good Design Award Image"
+            },
+            {
                 "type": "image_picker",
                 "id": "image_bottom_1",
                 "label": "Image bottom 1"
@@ -296,31 +341,6 @@
                 "type": "text",
                 "id": "image_bottom_4_link",
                 "label": "Image bottom 4 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "icon_good_design_award",
-                "label": "Good Design Award Icon"
-            },
-            {
-                "type": "textarea",
-                "id": "content_good_design_award",
-                "label": "Content"
-            },
-            {
-                "type": "url",
-                "id": "url_good_design_award",
-                "label": "Good Design Award URL link"
-            },
-            {
-                "type": "text",
-                "id": "url_name_good_design_award",
-                "label": "Good Design Award URL link Name"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_good_design_award",
-                "label": "Good Design Award Image"
             }
         ],
         "blocks": [

@@ -56,10 +56,26 @@
             <div class="cell-image cell medium-auto image-full-width wide-screen-only" 
                 style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}');
                 height: 500px;">
+                <div class="grid-container">
+                    <div class="grid-x align-middle">
+                        <div class="cell small-7 medium-7 large-7"></div>
+                        <div class="cell small-5 medium-5 large-5">
+                            <p class="text-right small-text" style="margin: 400px 20px 0 0;">{{section.settings.section_paragraph_5}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="cell-image cell medium-auto image-full-width mobile-screen-only" 
                 style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}');
                 height: 300px;">
+                <div class="grid-container">
+                    <div class="grid-x align-middle">
+                        <div class="cell small-4 medium-4 large-4"></div>
+                        <div class="cell small-8 medium-8 large-8">
+                            <p class="text-right small-text" style="margin: 170px 10px 0 0;">{{section.settings.section_paragraph_5}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -394,50 +410,50 @@
     }
     h1 {
         font-size: 80px;
-        font-family: dm serif display;
+        font-family: 'dm serif display', 'Times New Roman Bold';
         line-height: 80px;
     }
     h2 {
         font-size: 36px;
-        font-family: dm serif display;
+        font-family: 'dm serif display', 'Times New Roman Bold';
         line-height: 36px;
     }
     h3 {
         font-size: 26px;
-        font-family: montserrat-semibold;
+        font-family: 'montserrat-semibold', 'Helvetica Bold';
         line-height: 36px;
         letter-spacing: 3px;
     }
     h4 {
         font-size: 22px;
-        font-family: montserrat-light;
+        font-family: 'montserrat-light', 'Helvetica Light';
         line-height: 32px;
         letter-spacing: 3px;
     }
     h5 {
         font-size: 20px;
-        font-family: montserrat-bold;
+        font-family: 'montserrat-bold', 'Helvetica Bold';
         line-height: 30px;
         letter-spacing: 2px;
     }
     p {
         font-size: 20px;
-        font-family: montserrat;
+        font-family: 'montserrat', 'Helvetica Light';
         line-height: 30px;
     }
     .small-text {
         font-size: 15px;
-        font-family: montserrat-light;
+        font-family: 'montserrat-light', 'Helvetica Light';
         line-height: 25px;
     }
     .large-text {
         font-size: 26px;
-        font-family: montserrat;
+        font-family: 'montserrat', 'Helvetica Light';
         line-height: 36px;
     }
     .quote-text {
         font-size: 30px;
-        font-family: dm serif display;
+        font-family: 'dm serif display', 'Times New Roman Bold';
         line-height: 32px;
     }
 
@@ -495,6 +511,11 @@
                 "type": "image_picker",
                 "id": "image_5",
                 "label": "Image5"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_5",
+                "label": "Paragraph Patent"
             },
             {
                 "type": "image_picker",
