@@ -26,6 +26,7 @@ import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
 import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
 import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
+import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
 import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
 
 
@@ -60,6 +61,7 @@ export class Autoloader {
       HealingHeelsTabsSection,
       HealingHeelsTabsTwoSection,
       HealingHeelsImageSliderSection,
+      HealingHeelsCollectionSliderSection,
       HealingHeelsTestimonialsSection
 
     };
