@@ -14,12 +14,20 @@
     <div class="tab-titles">
       <div class="glide tab-slider">
         <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides">
+          <ul class="glide__slides set_width">
+          <style>
+          .set_width {
+            width: 1200px!important;
+          }
+          .image_set_width {
+            width: 380px!important;
+          }
+          </style>
             {% assign tabIndex = 1 %}
             {% for block in section.blocks %}
 
               {% if block.type == 'tab_title' %}
-                  <li class="glide__slide">
+                  <li class="glide__slide image_set_width">
                     <div class="tab-title-container">
                       <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
                         <div class="tab-title-container">
