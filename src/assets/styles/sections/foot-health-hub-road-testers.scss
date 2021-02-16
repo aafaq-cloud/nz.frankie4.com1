@@ -1,6 +1,9 @@
 .section-foot-health-hub-road-testers {
 
-  //padding: 50px 0;
+  @include breakpoint(medium) {
+    margin: 50px 0;
+  }
+
 
   .slide-container {
     padding-top: 40px;

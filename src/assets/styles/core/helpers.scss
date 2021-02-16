@@ -268,14 +268,14 @@
 .section-line {
 
   position: relative;
-  padding: 30px;
+  padding: 20px 20px 30px;
 
   &:before {
     content: '';
     display: block;
-    height: 80px;
-    width: 1px;
-    background: $color-body-text;
+    height: 100px;
+    width: 2px;
+    background: #808080;
     margin-left: auto;
     margin-right: auto;
   }

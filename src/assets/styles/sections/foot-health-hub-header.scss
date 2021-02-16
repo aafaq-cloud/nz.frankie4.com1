@@ -31,8 +31,9 @@
 
       &-content {
         position: relative;
-        padding: 20px 0;
-        margin-top: -45px;
+        padding: 30px 20px;
+        text-align: center;
+        //margin-top: -45px;
         color: #FFFFFF;
         max-width: 600px;
 
@@ -67,7 +68,7 @@
 
           background:  #EEEAE7;
           position: relative;
-          height: 180px;
+          //height: 180px;
 
           @include breakpoint(medium) {
             position: absolute;
@@ -75,7 +76,6 @@
             top: 0;
             bottom: 0;
             width: 100%;
-            //width: calc(((100% - 1240px) / 2) + (1240px * 0.85));
             height: 100%;
           }
 
