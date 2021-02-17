@@ -25,6 +25,8 @@ import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
+import {StepInsideSliderSection} from "../sections/step-inside-slider";
+import {SimpleGlideSection} from "../sections/simple-glider";
 import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
@@ -57,6 +59,8 @@ export class Autoloader {
       BannerSection,
       ShippingSection,
       StepInsideSection,
+      StepInsideSliderSection,
+      SimpleGlideSection,
       WeStandForSection
     };
 

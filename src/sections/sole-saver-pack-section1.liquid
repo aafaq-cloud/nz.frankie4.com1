@@ -60,89 +60,38 @@
         <div class="grid-x align-middle">
             <div class="text-center text-block2 mobile-style1">
                 <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
-                <p class="quote-text">{{section.settings.section_quote}}</p>
-                <p>{{section.settings.section_name}}</p>
+
+                <div class="glide1" data-autoload-class="SimpleGlideSection">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide">0
+                                <p class="quote-text">{{section.settings.section_quote}}</p>
+                                <p>{{section.settings.section_name}}</p>
+                            </li>
+                            <li class="glide__slide">1
+                                <p class="quote-text">{{section.settings.section_quote}}</p>
+                                <p>{{section.settings.section_name}}</p>
+                            </li>
+                            <li class="glide__slide">2
+                                <p class="quote-text">{{section.settings.section_quote}}</p>
+                                <p>{{section.settings.section_name}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                </div>
+
+                
                 <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
             </div> 
             <div class="deco-line"></div>
         </div>
     </div>
 </div>
-
-
-
-<div class="section wide-screen-only">
-    <div class="grid-container">
-        <div id="container">
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_1_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_1 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_2_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_2 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_3_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_3 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_4_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_4 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section mobile-screen-only">
-    <div class="grid-container">
-        <div id="container">
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_1_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_1 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_2_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_2 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div id="container">
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_3_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_3 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-            <div class="cell small-3 medium-3 large-3 bottom-image-blocks">
-                <a href="{{section.settings.image_bottom_4_link}}">
-                    <div class="cell-image cell medium-auto bottom-images" 
-                        style="background-image: url('{{section.settings.image_bottom_4 | img_url: '1400x'}}');">
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <style>
     #container {
