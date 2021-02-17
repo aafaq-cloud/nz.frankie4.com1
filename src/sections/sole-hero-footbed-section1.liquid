@@ -39,11 +39,8 @@
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell small-12 medium-12 large-12 wide-screen-only">
-                {% comment %} <div class="cell-image cell medium-auto image-full-width" 
-                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');">
-                </div> {% endcomment %}
                 <div data-autoload-class="ComponentVideo">
-                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="675px">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="675px" controls="controls">
                         <source src="{{ section.settings.video }}" type="video/mp4">
                     </video>
                 </div>
@@ -58,11 +55,8 @@
             </div>
             
             <div class="cell small-12 medium-12 large-12 mobile-screen-only">
-                {% comment %} <div class="cell-image cell medium-auto image-full-width" 
-                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');">
-                </div> {% endcomment %}
                 <div data-autoload-class="ComponentVideo">
-                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200px">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200px" controls="controls">
                         <source src="{{ section.settings.video }}" type="video/mp4">
                     </video>
                 </div>
