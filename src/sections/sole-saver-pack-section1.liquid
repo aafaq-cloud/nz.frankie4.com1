@@ -46,9 +46,11 @@
                 </div>
             </div>
             <div class="cell small-12 medium-6 large-6 column-right">
-                <div class="cell-image cell medium-auto image-half-width mobile-style6 mobile-style3" 
+                <div class="cell-image cell medium-auto image-half-width mobile-style7 mobile-style3" 
                     style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
-                    height: 900px">
+                    height: 900px;
+                    background-size: contain;
+                    background-repeat: no-repeat;">
                 </div>
             </div>
         </div>
@@ -58,31 +60,48 @@
 <div class="section">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div class="text-center text-block2 mobile-style1">
+            <div class="text-center text-block2 mobile-style1" style="width: 100%; max-width: 1200px">
                 <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
 
-                <div class="glide1" data-autoload-class="SimpleGlideSection">
+                <div class="glide1" data-autoload-class="SimpleGlideSection" style="width: 100%; max-width: 1200px">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
-                            <li class="glide__slide">0
+                            <li class="glide__slide" style="width: 1200px">
                                 <p class="quote-text">{{section.settings.section_quote}}</p>
                                 <p>{{section.settings.section_name}}</p>
                             </li>
-                            <li class="glide__slide">1
-                                <p class="quote-text">{{section.settings.section_quote}}</p>
-                                <p>{{section.settings.section_name}}</p>
+                            <li class="glide__slide" style="width: 1200px">
+                                <p class="quote-text">{{section.settings.section_quote2}}</p>
+                                <p>{{section.settings.section_name2}}</p>
                             </li>
-                            <li class="glide__slide">2
-                                <p class="quote-text">{{section.settings.section_quote}}</p>
-                                <p>{{section.settings.section_name}}</p>
+                            <li class="glide__slide" style="width: 1200px">
+                                <p class="quote-text">{{section.settings.section_quote3}}</p>
+                                <p>{{section.settings.section_name3}}</p>
                             </li>
                         </ul>
                     </div>
-                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                    <div class="glide__bullets wide-screen-only" data-glide-el="controls[nav]" style="width: 52%; max-width: 625px; position: relative;">
                         <button class="glide__bullet" data-glide-dir="=0"></button>
                         <button class="glide__bullet" data-glide-dir="=1"></button>
                         <button class="glide__bullet" data-glide-dir="=2"></button>
                     </div>
+                    <div class="glide__bullets mobile-screen-only" data-glide-el="controls[nav]" style="width: 45%; max-width: 625px; position: relative;">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                    <style>
+                        .glide__bullet--active {
+                            background-color: black!important;
+                        } 
+                        .glide__bullet {
+                            background-color: grey;
+                        }
+                        .glide__bullet:hover, .glide__bullet:focus {
+                            background-color: black;
+                            border-color: black;
+                        }
+                    </style>
                 </div>
 
                 
@@ -231,6 +250,9 @@
         }
         .mobile-style6 {
             height: 280px!important;
+        }
+        .mobile-style7 {
+            height: 500px!important;
         }
         
         .mobile-width {
@@ -462,44 +484,24 @@
                 "label": "Name"
             },
             {
-                "type": "image_picker",
-                "id": "image_bottom_1",
-                "label": "Image bottom 1"
+                "type": "textarea",
+                "id": "section_quote2",
+                "label": "Quote2"
             },
             {
                 "type": "text",
-                "id": "image_bottom_1_link",
-                "label": "Image bottom 1 Link"
+                "id": "section_name2",
+                "label": "Name2"
             },
             {
-                "type": "image_picker",
-                "id": "image_bottom_2",
-                "label": "Image bottom 2"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_2_link",
-                "label": "Image bottom 2 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_3",
-                "label": "Image bottom 3"
+                "type": "textarea",
+                "id": "section_quote3",
+                "label": "Quote3"
             },
             {
                 "type": "text",
-                "id": "image_bottom_3_link",
-                "label": "Image bottom 3 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_4",
-                "label": "Image bottom 4"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_4_link",
-                "label": "Image bottom 4 Link"
+                "id": "section_name3",
+                "label": "Name3"
             }
          ]
      }

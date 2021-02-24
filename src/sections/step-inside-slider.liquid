@@ -1,7 +1,10 @@
 <div class="section section-step-inside-slider" data-autoload-class="StepInsideSliderSection">
 
     <div class="glide slider">
-
+        <div class="glide__arrows mid-screen-show" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+        </div>
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 {% for block in section.blocks %}
@@ -44,6 +47,17 @@
 
 
 </div>
+
+<style>
+    .mid-screen-show {
+        display: none;
+    }
+    @media screen and (max-width: 1300px) {
+        .mid-screen-show {
+            display: block;
+        }
+    }
+</style>
 
 {% schema %}
     {

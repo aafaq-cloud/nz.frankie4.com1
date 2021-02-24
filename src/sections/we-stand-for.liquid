@@ -13,6 +13,10 @@
 
     <div class="tab-titles">
       <div class="glide tab-slider">
+        <div class="glide__arrows mid-screen-show" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" style="top:40%" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+            <button class="glide__arrow glide__arrow--right" style="top:40%" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+        </div>
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             {% assign tabIndex = 1 %}
@@ -100,13 +104,18 @@
                     <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}" style="padding: 0">
 
                       {% if block.settings.video != blank %}
-                        <div data-autoload-class="ComponentVideo">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="330" class="mobile-style5" controls="controls">
+                        <div data-autoload-class="ComponentVideo" class="wide-screen-only">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="330" controls="controls">
                                 <source src="{{ block.settings.video }}" type="video/mp4">
                             </video>
                         </div>
+                        <div data-autoload-class="ComponentVideo" class="mobile-screen-only">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200" controls="controls">
+                                <source src="{{ block.settings.video-m }}" type="video/mp4">
+                            </video>
+                        </div>
                       {% else %}
-                        <img width="100%" style="object-fit: cover; object-position: bottom;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6"/>
+                        <img width="100%" style="object-fit: contain; object-position: bottom;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6"/>
                       {% endif %}
 
                     </div>
@@ -216,6 +225,12 @@
                         "id": "video",
                         "type": "text",
                         "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "video-m",
+                        "type": "text",
+                        "label": "Video Mobile",
                         "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
                     },
                     {

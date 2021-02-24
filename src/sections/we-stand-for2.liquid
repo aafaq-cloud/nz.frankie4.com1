@@ -114,7 +114,7 @@
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                       {% else %}
-                        <img width="100%" height="430" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6 mobile-style8"/>
+                        <img width="100%" style="object-fit: contain;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6 mobile-style8"/>
                       {% endif %}
 
                     </div>
@@ -139,7 +139,7 @@
           <p class="small-text text-center wide-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; font-size: 11px; line-height: 14px">
             {{ section.settings.section_disclaimer }}
           </p>
-          <button class="mobile-screen-only" style="margin: 0 auto 0 auto" onclick="toggleText();">Disclaimer</button>
+          <button class="mobile-screen-only" style="margin: 10px auto 0 auto; background-color: #444; color: white; width: 100%;" onclick="toggleText();">Disclaimer</button>
           <script>
           function toggleText() {
             var x = document.getElementById("disclaimer");
@@ -235,46 +235,6 @@
                 "type": "image_picker",
                 "id": "image_good_design_award",
                 "label": "Good Design Award Image"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_1",
-                "label": "Image bottom 1"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_1_link",
-                "label": "Image bottom 1 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_2",
-                "label": "Image bottom 2"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_2_link",
-                "label": "Image bottom 2 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_3",
-                "label": "Image bottom 3"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_3_link",
-                "label": "Image bottom 3 Link"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_bottom_4",
-                "label": "Image bottom 4"
-            },
-            {
-                "type": "text",
-                "id": "image_bottom_4_link",
-                "label": "Image bottom 4 Link"
             }
         ],
         "blocks": [

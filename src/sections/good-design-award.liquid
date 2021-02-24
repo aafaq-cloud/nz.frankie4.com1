@@ -1,21 +1,4 @@
-<div class="section section-text-image no-margin">
-    {% comment %} <div class="grid-container">
-        <div class="grid-x align-middle" style="height: auto">
-            <div class="cell small-12 medium-7 large-7">
-                <div class="cell-text-container" style="padding: 20px; text-align: center; margin: 8%">
-                    <div class="cell-image cell medium-auto">
-                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 210px; margin: auto">
-                    </div>
-                    <p style="line-height: normal;">{{section.settings.content}}</p>
-                    <div class="cell shrink">
-                        <a class="button button-primary" target="_blank" href="{{ section.settings.good_design_award }}">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cell-image cell medium-auto good-design-award non-mobile-screen" style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}'); height: 400px; width: 100%; background-size: cover;">
-            </div>
-        </div>
-    </div> {% endcomment %}
+<div class="section section-text-image no-margin wide-screen-only">
 
     <div class="grid-container">
         <div class="grid-x align-middle">
@@ -31,14 +14,8 @@
                 </div>
             </div>
             <div class="cell-image cell medium-auto">
-                <div data-autoload-class="ComponentVideo" style="height:400px" class="wide-screen-only">
-                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="400">
-                        <source src="{{ section.settings.video }}" type="video/mp4">
-                    </video>
-                </div>
-
-                <div data-autoload-class="ComponentVideo" style="height:200px; margin-bottom: 25px" class="mobile-screen-only">
-                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200">
+                <div data-autoload-class="ComponentVideo" style="height:450px">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="450" controls="controls">
                         <source src="{{ section.settings.video }}" type="video/mp4">
                     </video>
                 </div>
@@ -46,6 +23,52 @@
         </div>
     </div>
 </div>
+
+<div class="section section-text-image no-margin mobile-screen-only">
+
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell medium-6 large-4">
+                <div class="cell-text-container" style="padding: 20px; text-align: center; margin: 8%">
+                    <div class="cell-image cell medium-auto">
+                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 210px; margin: auto">
+                    </div>
+                    <p style="line-height: normal;">{{section.settings.content}}</p>
+                    <div class="cell shrink">
+                        <a class="button button-primary" target="_blank" href="{{ section.settings.good_design_award }}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-image cell medium-auto">
+                <div data-autoload-class="ComponentVideo" style="height:200px; margin-bottom: 25px">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200" controls="controls">
+                        <source src="{{ section.settings.video-m }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.wide-screen-only {
+    display: block;
+}
+.mobile-screen-only {
+    display: none;
+}
+
+@media screen and (max-width: 640px) {
+    .wide-screen-only {
+        display: none;
+    }
+    .mobile-screen-only {
+        display: block;
+    }
+}
+</style>
+
+
 
 {% schema %}
 {
@@ -70,6 +93,12 @@
         "id": "video",
         "type": "text",
         "label": "Video",
+        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+    },
+    {
+        "id": "video-m",
+        "type": "text",
+        "label": "Video Mobile",
         "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
     }
   ]

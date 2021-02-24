@@ -140,6 +140,33 @@
   // Content sliders
   .glide {
 
+    &__arrows {
+
+
+    }
+
+    &__arrow {
+      //background: white;
+      border: 0;
+      box-shadow: none;
+
+      &--left {
+        left: 0;
+      }
+      &--right {
+        right: 0;
+      }
+
+      &--left svg {
+        transform: scaleX(-1);
+      }
+
+      svg {
+        width: 30px;
+        height: 80px;
+      }
+    }
+
     &__bullets {
 
       position: relative;
@@ -184,6 +211,11 @@
 
         }
       }
+    }
+
+    .glide__arrow {
+      background-color: rgba(255,255,255,0.5);
+      padding: 0;
     }
 
   }
