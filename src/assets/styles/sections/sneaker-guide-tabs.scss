@@ -76,7 +76,7 @@
 
   // Tab Content
   .sneaker-guide-content-container {
-    background-color: #f1f1f1;
+    background-color: #e6e6e6;
     padding: 20px 0;
 
     @include breakpoint(medium) {
@@ -149,7 +149,7 @@
             box-shadow: none;
 
             &--active {
-              background-color: #F1F1F1;
+              background-color: #e6e6e6;
             }
           }
 

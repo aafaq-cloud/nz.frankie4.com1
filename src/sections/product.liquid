@@ -114,7 +114,7 @@
                       <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
                         {% for image in product.images %}
                           <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
-                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #f1f1f1;">
+                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
                           </button>
                         {% endfor %}
                       </div>
