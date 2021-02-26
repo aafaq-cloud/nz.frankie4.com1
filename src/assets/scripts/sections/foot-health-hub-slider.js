@@ -22,6 +22,9 @@ export class FootHealthHubSliderSection extends AbstractComponent {
 
         this.contentGlideElement = this.component.querySelector(".glide.content-slider");
         this.imageGlideElement = this.component.querySelector(".glide.image-slider");
+        this.imageGlideElements = this.imageGlideElement.querySelectorAll(".glide__slide");
+
+
         this.glideSettings = {
             type: 'carousel',
             perView: 1,
@@ -48,8 +51,11 @@ export class FootHealthHubSliderSection extends AbstractComponent {
             this.contentGlide.go(`=${this.imageGlide.index}`);
         });
 
-        this.imageGlide.mount();
-        this.contentGlide.mount();
+
+        if (this.imageGlideElements.length > 1) {
+            this.imageGlide.mount();
+            this.contentGlide.mount();
+        }
 
     }
 

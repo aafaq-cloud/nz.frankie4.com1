@@ -15,6 +15,7 @@ export class ComponentWayfinderSlider extends AbstractComponent {
   initSlider() {
     this.glideActive = false;
     this.glideElement = this.component.querySelector(".glide");
+    this.glideElements = this.glideElement.querySelectorAll(".glide__slide");
 
     // Ensure it runs on load
     this.resizeHandler();
@@ -29,24 +30,26 @@ export class ComponentWayfinderSlider extends AbstractComponent {
   resizeHandler() {
     // Add slider if small viewport
     if (window.innerWidth < 640 && !this.glideActive) {
-      this.glide = new Glide(this.glideElement, {
-        type: "carousel",
-        perView: 2,
-        peek: {before:0, after:  100},
-        gap: 20,
-        breakpoints: {
-          420: {
-            perView: 1,
-            peek: {before:0, after:  80},
-            gap: 10,
-          },
-          500: {
-            perView: 1,
-            peek: {before:0, after:  200},
-            gap: 20,
+      if (this.glideElements.length > 1) {
+        this.glide = new Glide(this.glideElement, {
+          type: "carousel",
+          perView: 2,
+          peek: {before:0, after:  100},
+          gap: 20,
+          breakpoints: {
+            420: {
+              perView: 1,
+              peek: {before:0, after:  80},
+              gap: 10,
+            },
+            500: {
+              perView: 1,
+              peek: {before:0, after:  200},
+              gap: 20,
+            }
           }
-        }
-      }).mount();
+        }).mount();
+      }
       this.glideActive = true;
       // Remove slider if medium or larger viewport
     } else if (window.innerWidth >= 640 && this.glideActive) {
