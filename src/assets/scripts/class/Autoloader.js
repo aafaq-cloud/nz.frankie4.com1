@@ -30,6 +30,11 @@ import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-sl
 import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
 import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
 
+import {HighHeelsDifference} from "../sections/high-heels-difference";
+import {StepInsideSection} from "../sections/step-inside";
+import {StepInsideSliderSection} from "../sections/step-inside-slider";
+import {SimpleGlideSection} from "../sections/simple-glider";
+import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -57,6 +62,7 @@ export class Autoloader {
       ContactSection,
       ContactFormSection,
       SneakerGuideTabsSection,
+      HighHeelsDifference,
       BannerSection,
       ShippingSection,
       HealingHeelsAccessoriesSection,
@@ -64,8 +70,13 @@ export class Autoloader {
       HealingHeelsTabsTwoSection,
       HealingHeelsImageSliderSection,
       HealingHeelsCollectionSliderSection,
-      HealingHeelsTestimonialsSection
+      HealingHeelsTestimonialsSection,
 
+      ShippingSection,
+      StepInsideSection,
+      StepInsideSliderSection,
+      SimpleGlideSection,
+      WeStandForSection
     };
 
     for (const key in autoloadClasses) {
