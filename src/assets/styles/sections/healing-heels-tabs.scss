@@ -1,0 +1,58 @@
+.section-healing-heels-tabs {
+
+  .tabs-heading {
+    text-transform: uppercase;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+
+  }
+  .tab {
+    cursor: pointer;
+    padding: 10px;
+    color: $color-body-secondary-text;
+    font-size: rem-calc(16);
+    text-transform: uppercase;
+    border-bottom: 1px solid currentColor;
+
+    @include breakpoint(medium) {
+      padding: 10px 20px;
+      font-size: rem-calc(20);
+    }
+    @include breakpoint(large) {
+      padding: 10px 40px;
+    }
+
+
+    &.active {
+      color: #000000;
+    }
+
+  }
+  .tab-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+  }
+
+
+  .tab-button {
+    font-size: rem-calc(14px);
+    line-height: (21 / 14);
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(20px);
+      line-height: (30 / 20);
+    }
+  }
+
+
+}

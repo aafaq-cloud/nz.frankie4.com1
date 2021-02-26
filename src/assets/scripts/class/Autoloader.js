@@ -27,6 +27,13 @@ import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
 import {FootHealthHubRoadTestersSection} from "../sections/foot-health-hub-road-testers";
 
+import {HealingHeelsAccessoriesSection} from "../sections/healing-heels-accessories";
+import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
+import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
+import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
+import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
+import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
+
 import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
 import {StepInsideSliderSection} from "../sections/step-inside-slider";
@@ -65,6 +72,14 @@ export class Autoloader {
       ShippingSection,
       FootHealthHubSliderSection,
       FootHealthHubRoadTestersSection,
+      ShippingSection,
+      HealingHeelsAccessoriesSection,
+      HealingHeelsTabsSection,
+      HealingHeelsTabsTwoSection,
+      HealingHeelsImageSliderSection,
+      HealingHeelsCollectionSliderSection,
+      HealingHeelsTestimonialsSection,
+
       ShippingSection,
       StepInsideSection,
       StepInsideSliderSection,

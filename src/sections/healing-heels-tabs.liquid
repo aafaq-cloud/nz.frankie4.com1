@@ -1,0 +1,102 @@
+<div  class="section section-healing-heels-tabs large-margin" data-autoload-class="HealingHeelsTabsSection">
+
+  <div class="section-line"></div>
+
+  <div class="grid-container text-center">
+    <div class="grid-x align-center">
+      <div class="cell medium-8 large-8">
+        <h2 class="h1">{{section.settings.title}}</h2>
+        <div class="lead"> {{ section.settings.content }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-container text-center">
+
+    <div class="grid-x align-center">
+
+      <div class="cell large-9">
+        <h4 class="mb-20 tabs-heading">{{ section.settings.tab_heading }}</h4>
+        <!-- Tab Headings -->
+        <div class="tabs">
+          {% for block in section.blocks %}
+            <div class="tab{% if forloop.first %} active{% endif %}">
+              {{ block.settings.tab_title }}
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Tab Content -->
+        {% for block in section.blocks %}
+          <div class="tab-content{% if forloop.first %} active{% endif %}">
+            <div class="lead">
+              {{ block.settings.tab_content }}
+            </div>
+            {% if block.settings.tab_button_url != blank %}
+              <a class="tab-button" href="{{ block.settings.tab_button_url }}">{{ block.settings.tab_button_text }} {% render 'icon-arrow-right' %}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Healing Heels Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "tab_heading",
+      "label": "Tabs Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "id": "tab_title",
+          "type": "text",
+          "label": "Tab Title"
+        },
+        {
+          "id": "tab_content",
+          "type": "richtext",
+          "label": "Tab Content"
+        },
+        {
+          "id": "tab_button_text",
+          "type": "text",
+          "label": "Button Title"
+        },
+        {
+          "id": "tab_button_url",
+          "type": "url",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,36 @@
+<div  class="section section-healing-heels-text large-margin">
+
+  <div class="grid-container text-center">
+    <div class="grid-x align-center">
+
+      <div class="cell medium-8 large-8">
+        <h2 class="h1">{{section.settings.title}}</h2>
+        <div class="lead"> {{ section.settings.content }}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Healing Heels Text",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "richtext",
+    "id": "content",
+    "label": "Content"
+  }
+  ]
+}
+
+{% endschema %}
