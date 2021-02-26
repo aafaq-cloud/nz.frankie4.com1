@@ -67,7 +67,7 @@
         "content": "Feature Box 1"
       },
       {
-        "type": "richtext",
+        "type": "textarea",
         "id": "feature_strip_text_1",
         "label": "Content"
       },
@@ -82,7 +82,7 @@
         "content": "Feature Box 2"
       },
       {
-        "type": "richtext",
+        "type": "textarea",
         "id": "feature_strip_text_2",
         "label": "Content"
       },
@@ -97,7 +97,7 @@
         "content": "Feature Box 3"
       },
       {
-        "type": "richtext",
+        "type": "textarea",
         "id": "feature_strip_text_3",
         "label": "Content"
       },

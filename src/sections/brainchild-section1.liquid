@@ -1,0 +1,544 @@
+<div class="section" style="margin-top: 0; margin-bottom: 0">
+    <div class="cell-image cell medium-auto landing-image" 
+        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
+            <div class="text-center landing-text">
+                <h1>{{section.settings.section_main_title}}</h1>
+                <h4>{{section.settings.section_subtitle}}</h4>
+            </div>
+    </div>
+</div>
+
+<div class="section mobile-style1">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="text-center text-block1 mobile-style2">
+                <h1 class="mobile-style5">{{section.settings.section_title}}</h1>
+                <p>{{section.settings.section_paragraph}}</p>
+                <span><h5><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></h5></span>
+            </div>
+        </div>
+    </div>
+    <div class="cell-image cell medium-auto image-full-width wide-screen-only" 
+        style="height: auto; width: 100%;">
+        <img src="{{section.settings.image_2 | img_url: '1400x'}}" style="width: 100%;"/>
+    </div>
+    <div class="cell-image cell medium-auto image-full-width mobile-screen-only" 
+        style="height: auto; width: 100%;">
+        <img src="{{section.settings.image_2_mobile | img_url: '1400x'}}" style="width: 100%;"/>
+    </div>
+</div>
+
+<div class="section mobile-style2 mobile-style1" style="background-color: #eeeeee; margin-bottom: 60px">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="text-center text-block1 mobile-style2">
+                <h1 class="mobile-style4" style="margin-top: 40px; margin-bottom: 60px">{{section.settings.section_title_2}}</h1>
+                <p>{{section.settings.section_paragraph_2}}</p>
+            </div>
+
+            <div class="cell small-12 medium-6 large-6 wide-screen-only" style="padding-right: 60px; height: 900px;">
+                <div class="cell-image cell medium-auto mobile-image1" 
+                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}'); 
+                            height: 750px; 
+                            width: 100%; 
+                            background-size: contain;
+                            background-position: top;
+                            background-repeat: no-repeat;">
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 large-6 wide-screen-only" style="height: 900px;">
+                <div class="cell-image cell medium-auto mobile-image2" 
+                    style="background-image: url('{{section.settings.image_4 | img_url: '1400x'}}'); 
+                            height: 400px; 
+                            width: 100%; 
+                            background-size: contain;
+                            background-position: top;
+                            background-repeat: no-repeat;">
+                </div>
+                <div class="deco-line" style="margin-top: -70px;"></div>
+                <div class="text-center">
+                    <p>{{section.settings.section_paragraph_3}}</p>
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 large-6 mobile-image2-div mobile-screen-only" style="height: 900px;">
+                <div class="cell-image cell medium-auto mobile-image2" 
+                    style="background-image: url('{{section.settings.image_3_4 | img_url: '1400x'}}'); 
+                            height: 400px; 
+                            width: 100%; 
+                            background-size: contain;
+                            background-position: top;
+                            background-repeat: no-repeat;">
+                </div>
+                <div class="text-center">
+                    <p>{{section.settings.section_paragraph_3}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="section mobile-style2">
+    <div class="grid-container">
+        <div class="grid-x" style="align-items: flex-end;">
+            
+            <div class="cell small-12 medium-6 large-6 column-left">
+                <div class="deco-line mobile-style7"></div>
+                <div style="text-align: center;">
+                    <h1>{{section.settings.section_title_3}}</h1>
+                    <p>{{section.settings.section_paragraph_4}}</p>
+                </div>
+                <div class="cell-image cell medium-auto mobile-image3" 
+                    style="background-image: url('{{section.settings.image_5 | img_url: '1400x'}}'); 
+                            height: 400px; 
+                            width: 100%; 
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;">
+                </div>
+            </div>
+
+            <div class="cell small-12 medium-6 large-6 wide-screen-only column-right">
+                <div class="cell-image cell medium-auto" 
+                    style="background-image: url('{{section.settings.image_6 | img_url: '1400x'}}'); 
+                            height: 1000px; 
+                            width: 100%; 
+                            background-size: cover;
+                            background-position: center;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    #container {
+        text-align: justify;
+        font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+    }
+    #container div {
+        display: inline-block;
+    }
+    #container:after {
+        content: '';
+        width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+        display: inline-block;
+    }
+
+
+    .wide-screen-only {
+        display: block;
+    }
+    .mobile-screen-only {
+        display: none;
+    }
+    .column-left {
+        padding-right: 30px;
+    }
+    .column-right {
+        padding-left: 30px;
+    }
+    .landing-image {
+        height: 600px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .landing-text {
+        color: white; 
+        padding-top: 200px;
+    }
+    .deco-line {
+        width: 3px;
+        height: 140px;
+        background-color: #808080;
+        margin: 40px auto 20px auto;
+    }
+    .image-full-width {
+        height: 700px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .image-half-width {
+        height: 700px;  
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom-images {
+        height: 100%; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .bottom-image-blocks {
+        height: 23vw;
+        max-height: 250px;
+        width: 23vw;
+        max-width: 250px;
+        border-bottom: 1px solid white;
+    }
+    .bottom-image-blocks:hover {
+        border-bottom: 1px solid black;
+    }
+
+    .text-block1 {
+        width: 1100px;
+        margin: 40px 10% 20px 10%;
+    }
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+        .landing-image {
+            height: 300px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 100px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 100px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 400px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 600px;  
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .mobile-image1{
+            height: 400px!important;
+        }
+        .mobile-image2{
+            height: 300px!important;
+        }
+        .mobile-image2-div{
+            height: 550px!important;
+        }
+        .mobile-image3{
+            height: 300px!important;
+        }
+
+        .text-block1 {
+            width: 1100px;
+            margin: 25px 10% 0 10%;
+        }
+        .text-block2 {
+            margin: 20px auto 20px auto;
+        }
+        .mobile-section1{
+            margin-bottom: 0;
+        }
+        .mobile-section2{
+            margin: 0 auto 0 auto;
+            height: 630px;
+        }
+        .mobile-section3{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .mobile-video {
+            height:200px;
+            margin-top: 25px;
+        }
+
+        .mobile-style1 {
+            margin-bottom: 0!important;
+        }
+        .mobile-style2 {
+            margin-top: 0!important;
+        }
+        .mobile-style3 {
+            margin-top: 25px!important;
+        }
+        .mobile-style4 {
+            margin-top: 40px!important;
+            margin-bottom: 30px!important;
+        }
+        .mobile-style5 {
+            margin-bottom: 20px!important;
+        }
+        .mobile-style6 {
+            height: 280px!important;
+        }
+        .mobile-style7 {
+            margin-top: 30px!important;
+            margin-bottom: 20px!important;
+        }
+
+        .mobile-width {
+            width: 30px;
+        }
+
+        .wide-screen-only {
+            display: none;
+        }
+        .mobile-screen-only {
+            display: block;
+        }
+        .column-left {
+            padding-right: 0;
+        }
+        .column-right {
+            padding-left: 0;
+        }
+        .landing-image {
+            height: 200px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 50px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 50px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 200px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 300px;  
+        }
+        .bottom-image-blocks {
+            height: 45vw;
+            max-height: 250px;
+            width: 45vw; 
+            max-width: 250px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 34px!important;
+            line-height: 34px!important;
+        }
+        h2 {
+            font-size: 28px!important;
+            line-height: 28px!important;
+        }
+        .mobile-h {
+            font-size: 18px!important;
+            line-height: 18px!important;
+        }
+        h3 {
+            font-size: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h4 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h5 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        p {
+            font-size: 12px!important;
+            line-height: 20px!important;
+        }
+        .small-text {
+            font-size: 12px!important;
+            line-height: 16px!important;
+        }
+        .large-text {
+            font-size: 26px;
+            line-height: 36px;
+        }
+        .quote-text {
+            font-size: 18px!important;
+            line-height: 24px!important;
+        }
+        .mobile-bullet {
+            display: block!important;
+            text-align: left;
+            width: 100%;
+            overflow: scroll;
+        }
+    }
+
+    b {
+        font-weight: bolder;
+    }
+    h1 {
+        font-size: 80px;
+        font-family: 'dm serif display', 'Times New Roman Bold';
+        line-height: 80px;
+    }
+    h2 {
+        font-size: 36px;
+        font-family: 'dm serif display', 'Times New Roman Bold';
+        line-height: 36px;
+    }
+    h3 {
+        font-size: 26px;
+        font-family: 'montserrat-semibold', 'Helvetica Bold';
+        line-height: 36px;
+        letter-spacing: 3px;
+    }
+    h4 {
+        font-size: 22px;
+        font-family: 'montserrat-light', 'Helvetica Light';
+        line-height: 32px;
+        letter-spacing: 3px;
+    }
+    h5 {
+        font-size: 20px;
+        font-family: 'montserrat-bold', 'Helvetica Bold';
+        line-height: 30px;
+        letter-spacing: 2px;
+    }
+    p {
+        font-size: 20px;
+        font-family: 'montserrat', 'Helvetica Light';
+        line-height: 30px;
+    }
+    .small-text {
+        font-size: 15px;
+        font-family: 'montserrat-light', 'Helvetica Light';
+        line-height: 25px;
+    }
+    .large-text {
+        font-size: 26px;
+        font-family: 'montserrat', 'Helvetica Light';
+        line-height: 36px;
+    }
+    .quote-text {
+        font-size: 30px;
+        font-family: 'dm serif display', 'Times New Roman Bold';
+        line-height: 32px;
+    }
+</style>
+
+
+{% schema %}
+     {
+         "name": "Brainchild Content",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_main_title",
+                "label": "Page Title"
+            },{
+                "type": "text",
+                "id": "section_subtitle",
+                "label": "Subtitle"
+            },{
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Image1"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph",
+                "label": "Paragraph"
+            },
+            {
+                "type": "text",
+                "id": "link1",
+                "label": "Link1"
+            },
+            {
+                "type": "text",
+                "id": "link1_name",
+                "label": "Link1 Name"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Image2"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2_mobile",
+                "label": "Image2 Mobile"
+            },
+            {
+                "type": "text",
+                "id": "section_title_2",
+                "label": "Title2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_2",
+                "label": "Paragraph2"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_3",
+                "label": "Image3"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_4",
+                "label": "Image4"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_3_4",
+                "label": "Image3&4gif"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_3",
+                "label": "Paragraph3"
+            },
+            {
+                "type": "text",
+                "id": "section_title_3",
+                "label": "Title3"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_4",
+                "label": "Paragraph4"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_5",
+                "label": "Image5"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_6",
+                "label": "Image6"
+            },
+            {
+                "type": "text",
+                "id": "section_title_4",
+                "label": "Title4"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_5",
+                "label": "Paragraph5"
+            }
+         ]
+     }
+ {% endschema %}

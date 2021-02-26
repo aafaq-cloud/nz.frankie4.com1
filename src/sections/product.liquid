@@ -25,11 +25,9 @@
 
 {% assign related_products = related_products | split: ',' %}
 
-{% assign video = product.metafields.frankie4.video %}
+{% assign video1 = product.metafields.frankie4.video1 %}
+{% assign video2 = product.metafields.frankie4.video2 %}
 {% assign slide_count = product.images | size %}
-{% if video != blank %}
-    {% assign slide_count = slide_count | plus: 1 %}
-{% endif %}
 {% assign slide_index_limit = slide_count | minus: 1 %}
 
 <div data-autoload-class="ProductSection" class="section section-product{% if is_quickview %} is-quickview no-margin{% endif %}" itemscope itemtype="http://schema.org/Product">
@@ -116,7 +114,7 @@
                       <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
                         {% for image in product.images %}
                           <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
-                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #f1f1f1;">
+                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
                           </button>
                         {% endfor %}
                       </div>
@@ -128,16 +126,49 @@
                     {% endif %}
                   {% endunless %}
                 </div>
+                <style>
+                  .wide-screen-only {
+                      display: block;
+                  }
+                  .mobile-screen-only {
+                      display: none;
+                  }
+                  @media screen and (max-width: 640px) {
+                      .wide-screen-only {
+                          display: none;
+                      }
+                      .mobile-screen-only {
+                          display: block;
+                      }
+                  }
+                </style>
                 {% unless is_quickview %}
-                {% if video != blank %}
+
+                {% if video1 != blank and video2 != blank%}
                     <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
-                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-right: 10px">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline>
-                                <source src="{{ video }}" type="video/mp4">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="margin-right: 1%; width: 48.5%; float: left">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 48.5%; float: left">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video2 }}" type="video/mp4">
                             </video>
                         </div>
                     </div>
                 {% endif %}
+
+                {% if video1 != blank and video2 == blank %}
+                    <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 50%;">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
+
                 {% endunless %}
             </div>
 
@@ -484,6 +515,37 @@
 
                         {% render "product-features", product: product, features: section.blocks %}
 
+
+                {% unless is_quickview %}
+
+                {% if video1 != blank and video2 != blank%}
+                    <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video2 }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if video1 != blank and video2 == blank %}
+                    <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
+                        <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 100%;">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% endunless %}
+
+
                         {% if product.description %}
                           {% render "product-accordion" %}
                         {% endif %}
@@ -723,7 +785,12 @@
           {
             "id": "title",
             "type": "text",
-            "label": "Title"
+            "label": "Title ID"
+          },
+          {
+            "id": "title_show",
+            "type": "text",
+            "label": "Title to Show"
           },
           {
             "id": "content",
@@ -734,6 +801,12 @@
             "id": "image",
             "type": "image_picker",
             "label": "Image"
+          },
+          {
+              "id": "video",
+              "type": "text",
+              "label": "Video",
+              "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
           }
         ]
       }

@@ -27,6 +27,11 @@ import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
 import {FootHealthHubRoadTestersSection} from "../sections/foot-health-hub-road-testers";
 
+import {HighHeelsDifference} from "../sections/high-heels-difference";
+import {StepInsideSection} from "../sections/step-inside";
+import {StepInsideSliderSection} from "../sections/step-inside-slider";
+import {SimpleGlideSection} from "../sections/simple-glider";
+import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
   static registerAutoloadClasses() {
@@ -55,10 +60,16 @@ export class Autoloader {
       ContactSection,
       ContactFormSection,
       SneakerGuideTabsSection,
+      HighHeelsDifference,
       BannerSection,
       ShippingSection,
       FootHealthHubSliderSection,
-      FootHealthHubRoadTestersSection
+      FootHealthHubRoadTestersSection,
+      ShippingSection,
+      StepInsideSection,
+      StepInsideSliderSection,
+      SimpleGlideSection,
+      WeStandForSection
     };
 
     for (const key in autoloadClasses) {
