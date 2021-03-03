@@ -316,55 +316,55 @@
 
 
     b {
-        font-weight: bolder;
+        font-weight: bolder!important;
     }
     h1 {
-        font-size: 80px;
-        font-family: 'dm serif display', 'Times New Roman Bold';
-        line-height: 80px;
+        font-size: 80px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 80px!important;
     }
     h2 {
-        font-size: 36px;
-        font-family: 'dm serif display', 'Times New Roman Bold';
-        line-height: 36px;
+        font-size: 36px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 36px!important;
     }
     h3 {
-        font-size: 26px;
-        font-family: 'montserrat-semibold', 'Helvetica Bold';
-        line-height: 36px;
-        letter-spacing: 3px;
+        font-size: 26px!important;
+        font-family: 'montserrat-semibold', 'Helvetica Bold'!important;
+        line-height: 36px!important;
+        letter-spacing: 3px!important;
     }
     h4 {
-        font-size: 22px;
-        font-family: 'montserrat-light', 'Helvetica Light';
-        line-height: 32px;
-        letter-spacing: 3px;
+        font-size: 22px!important;
+        font-family: 'montserrat-light', 'Helvetica Light'!important;
+        line-height: 32px!important;
+        letter-spacing: 3px!important;
     }
     h5 {
-        font-size: 20px;
-        font-family: 'montserrat-bold', 'Helvetica Bold';
-        line-height: 30px;
-        letter-spacing: 2px;
+        font-size: 20px!important;
+        font-family: 'montserrat-bold', 'Helvetica Bold'!important;
+        line-height: 30px!important;
+        letter-spacing: 2px!important;
     }
     p {
-        font-size: 20px;
-        font-family: 'montserrat', 'Helvetica Light';
-        line-height: 30px;
+        font-size: 20px!important;
+        font-family: 'montserrat', 'Helvetica Light'!important;
+        line-height: 30px!important;
     }
     .small-text {
-        font-size: 15px;
-        font-family: 'montserrat-light', 'Helvetica Light';
-        line-height: 25px;
+        font-size: 15px!important;
+        font-family: 'montserrat-light', 'Helvetica Light'!important;
+        line-height: 25px!important;
     }
     .large-text {
-        font-size: 26px;
-        font-family: 'montserrat', 'Helvetica Light';
-        line-height: 36px;
+        font-size: 26px!important;
+        font-family: 'montserrat', 'Helvetica Light'!important;
+        line-height: 36px!important;
     }
     .quote-text {
-        font-size: 30px;
-        font-family: 'dm serif display', 'Times New Roman Bold';
-        line-height: 32px;
+        font-size: 30px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 32px!important;
     }
     @media screen and (max-width: 640px) {
 
@@ -403,8 +403,8 @@
             line-height: 16px!important;
         }
         .large-text {
-            font-size: 26px;
-            line-height: 36px;
+            font-size: 26px!important;
+            line-height: 36px!important;
         }
         .quote-text {
             font-size: 18px!important;

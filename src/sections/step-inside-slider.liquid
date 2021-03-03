@@ -8,6 +8,7 @@
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 {% for block in section.blocks %}
+                {% if block.type == 'slide' %}
                     <li class="glide__slide">
                         <div class="step-inside-item">
                             <a href="{{ block.settings.link }}" target="_blank">
@@ -40,6 +41,7 @@
                         </div>
 
                     </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
