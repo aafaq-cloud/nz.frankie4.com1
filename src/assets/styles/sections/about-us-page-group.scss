@@ -148,7 +148,19 @@
     
     
     @media screen and (max-width: 640px) {
-
+        .padding-0 {
+            padding: 0!important;
+        }
+        .pt-0 {
+            padding-top: 0!important;
+        }
+        .pt-0-5 {
+            padding: 5px 0 0 0!important;
+        }
+        .pt-0-30 {
+            padding: 30px 0 30px 0!important;
+        }
+        
 
 
 
@@ -176,10 +188,10 @@
 
 
         .wide-screen-only {
-            display: none!important;
+            display: none;
         }
         .mobile-screen-only {
-            display: block!important;
+            display: block;
         }
 
 
@@ -231,34 +243,7 @@
         .special-paragraph-margin {
             margin: 40px 10vw 40px 10vw;
         } 
-
-
-        // high heels + brainchild
-        .mobile-image1{
-            height: 400px!important;
-        }
-        .mobile-image2{
-            height: 300px!important;
-        }
-        .mobile-image2-div{
-            height: 550px!important;
-        }
-        .mobile-image3{
-            height: 300px!important;
-        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

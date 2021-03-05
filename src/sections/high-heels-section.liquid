@@ -12,9 +12,9 @@
     <div class="section m-mb-0 m-mt-0">
         <div class="grid-container">
             <div class="grid-x align-middle">
-                <div class="section-line m-mt-30 m-mb-20"></div>
+                <div class="section-line mti-30 m-mt-30 m-mb-15"></div>
                 <div class="text-center text-block1 m-mt-0">
-                    <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
+                    <h1 class="mbi-30">{{section.settings.section_title}}</h1>
                     <p>{{section.settings.section_paragraph}}</p>
                 </div>
             </div>
@@ -101,14 +101,14 @@
             <div class="grid-x align-middle">
 
                 <div class="cell small-12 medium-6 large-6 column-left">
-                    <div class="section-line  m-mt-0 m-mb-20"></div>
+                    <div class="section-line mti-30 mbi-20 m-mt-0 m-mb-15"></div>
                     <div class="text-center">
                         <img src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
                         <p class="quote-text">{{section.settings.section_quote}}</p>
                         <p>{{section.settings.section_name}}</p>
                         <img src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
                     </div>
-                    <div class="section-line m-mt-10 m-mb-30"></div>
+                    <div class="section-line mti-30 m-mt-10 m-mb-30"></div>
                 </div>
 
                 <div class="cell small-12 medium-6 large-6 column-right">
@@ -180,7 +180,7 @@
             <div class="grid-x">
             <div class="cell large-12">
 
-                <div class="tab-content m-mt-30 m-mb-20 mobile-style-10">
+                <div class="tab-content m-mt-30 m-mb-20 padding-0">
                 {% assign tabContentIndex = 1 %}
 
                 {% assign slideTitles = '' %}
@@ -284,12 +284,12 @@
                     </div>
                 </div>
                 <div class="cell small-12 medium-6 large-6 column-right">
-                    <div class="section-line m-mt-0 m-mb-20"></div>
+                    <div class="section-line mti-30 mbi-20 m-mt-0 m-mb-15"></div>
                     <div class="text-center">
                         <h1>{{section.settings.section_title_2_1}}</h1>
                         <p>{{section.settings.section_paragraph_2_1}}</p>
                     </div>
-                    <div class="section-line m-mt-20 m-mb-10"></div>
+                    <div class="section-line mti-30 m-mt-20 m-mb-0"></div>
                     <div class="mobile-screen-only" style="height: 20px;"></div>
                 </div>
                 <div class="cell small-12 medium-6 large-6 column-left mobile-screen-only">
@@ -305,7 +305,7 @@
         <div class="grid-container">
             <div class="grid-x align-middle">
                 <div class="cell small-12 medium-6 large-6 column-left">
-                    <div class="section-line m-mt-30 m-mb-20"></div>
+                    <div class="section-line mbi-30 m-mt-30 m-mb-20"></div>
                     <div class="text-center">
                         <h1 class="wide-screen-only" style="font-size: 78px; letter-spacing: -3px;">{{section.settings.section_title_2_2}}</h1>
                         <h1 class="mobile-screen-only">{{section.settings.section_title_2_2}}</h1>
@@ -326,7 +326,7 @@
 
     <div class="section" style="background-color: #F5F5F5;">
         <div class="grid-container">
-            <div class="grid-x align-middle mobile-style9" style="padding: 80px 0 60px 0">
+            <div class="grid-x align-middle pt-0-30" style="padding: 80px 0 60px 0">
                 <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
                     <div data-autoload-class="ComponentVideo">
                         <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="720px" controls="controls">
@@ -420,21 +420,6 @@
 </div>
 
 
-
-
-
-
-
-<style>
-    @media screen and (max-width: 640px) {
-        .mobile-style9 {
-            padding: 30px 0 30px 0!important;
-        }
-        .mobile-style-10 {
-            padding: 0!important;
-        }
-    }
-</style>
 
 {% schema %}
      {
