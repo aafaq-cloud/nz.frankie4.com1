@@ -1,21 +1,20 @@
 <div class="section section-about-us-page-group">
 
     <div class="section">
-        <div class="section mobile-section1">
+        <div class="section m-mb-0">
             <div class="grid-container">
                 <div class="grid-x align-middle">
-                    <div class="section-line"></div>
+                    <div class="section-line mti-40 m-mt-10"></div>
                     <div class="text-center text-block1">
                         <h1>{{section.settings.section_title}}</h1>
                         <p>{{section.settings.section_paragraph}}</p>
                     </div>
-                    <div class="section-line wide-screen-only mt-0 mb-40"></div>
-                    <div class="section-line mobile-screen-only" style="margin-top:0;"></div>
+                    <div class="section-line mti-0 mbi-30 m-mt-10 m-mb-0"></div>
                 </div>
             </div>
         </div>
 
-        <div class="section wide-screen-margin mobile-section2">
+        <div class="section m-h700 m-auto mti-0 mbi-70">
             <div class="grid-container">
                 <div class="grid-x align-middle">
                     <div class="cell small-12 medium-6 large-6 wide-screen-only" style="padding-right: 60px; height: 1050px;">
@@ -32,14 +31,13 @@
                                 <source src="{{ section.settings.video }}" type="video/mp4">
                             </video>
                         </div>
-                        <div class="wide-screen-only" style="height: 80px"></div>
-                        <div class="text-center text-block2">
+                        <div class="text-center m-auto mti-60 mbi-20 m-mt-40">
                             <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
                             <p class="quote-text">{{section.settings.section_quote}}</p>
                             <p>{{section.settings.section_name}}</p>
                             <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
                         </div> 
-                        <div class="section-line"></div>
+                        <div class="section-line mti-40 m-mt-20"></div>
                     </div>
                 </div>
             </div>
@@ -47,12 +45,12 @@
 
     </div>
 
-    <div data-autoload-class="WeStandForSection" class="section section-we-stand-for" style="background-color: #eeeeee">
+    <div data-autoload-class="WeStandForSection" class="section section-we-stand-for grey-section">
 
-        <div class="grid-container mb-40 mobile-style1">
+        <div class="grid-container mbi-40 m-mb-10">
             <div class="grid-x align-center text-center">
             <div class="cell">
-                <h2 class="h1 mb-20 mobile-style2" style="margin-top: 80px">{{ section.settings.section_title_slider}}</h2>
+                <h2 class="h1 mti-80 mbi-20 m-mt-40">{{ section.settings.section_title_slider}}</h2>
                 <p>{{ section.settings.section_content }}</p>
             </div>
             </div>
@@ -164,7 +162,7 @@
                                     </video>
                                 </div>
                             {% else %}
-                                <img width="100%" style="object-fit: contain; object-position: bottom;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}" class="mobile-style6"/>
+                                <img class="m-h300" width="100%" style="object-fit: contain; object-position: bottom;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
                             {% endif %}
 
                             </div>
@@ -222,8 +220,8 @@
                     </div>
                 </div>
                 <div class="cell small-12 medium-6 large-6 column-right">
-                    <div class="section-line mobile-style8 mobile-style7"></div>
-                    <div style="text-align: center;">
+                    <div class="section-line mti-40 mbi-40 m-mt-30 m-mb-15"></div>
+                    <div class="text-center">
                         <h1>{{section.settings.section_title_2}}</h1>
                         <p>{{section.settings.section_paragraph_2}}</p>
                         <span><h5><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></h5></span>
@@ -245,14 +243,14 @@
         </div>
     </div>
 
-    <div class="section section-step-inside mobile-section3" data-autoload-class="StepInsideSection">
+    <div class="section section-step-inside mti-0 mbi-0" data-autoload-class="StepInsideSection">
 
-        <div class="section-line mobile-style4" style="margin-top: 80px; margin-bottom: 60px"></div>
+        <div class="section-line mti-70 mbi-40 m-mt-30 m-mb-15"></div>
 
         <div class="grid-container">
             <div class="grid-x align-center">
                 <div class="cell medium-6">
-                    <div class="text-center mb-15 text-container">
+                    <div class="text-center mbi-15 text-container">
                         <h1>{{ section.settings.section_title_blog }}</h1>
                         <p class="lead">{{ section.settings.section_content_blog }}</p>
                     </div>
@@ -312,37 +310,6 @@
     </div>
 
 </div>
-
-<style>
-    @media screen and (max-width: 640px) {
-        .mobile-style1 {
-            margin-bottom: 10px;
-        }
-        .mobile-style2 {
-            margin-top: 40px!important;
-        }
-        .mobile-style3 {
-            margin-top: 30px!important;
-            margin-bottom: 30px!important;
-        }
-        .mobile-style4 {
-            margin-top: 40px!important;
-            margin-bottom: 30px!important;
-        }
-        .mobile-style5 {
-            height: 200px!important;
-        }
-        .mobile-style6 {
-            height: 280px!important;
-        }
-        .mobile-style7 {
-            margin-bottom: 20px!important;
-        }
-        .mobile-style8 {
-            margin-bottom: 30px!important;
-        }
-    }
-</style>
 
 {% schema %}
     {

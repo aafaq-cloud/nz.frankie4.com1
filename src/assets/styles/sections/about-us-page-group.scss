@@ -12,9 +12,6 @@
         width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
         display: inline-block;
     }
-
-
-
     .wide-screen-only {
         display: block;
     }
@@ -24,10 +21,6 @@
     .mid-screen-show {
         display: none;
     }
-
-
-
-
     .section_answers {
         display: none;
     }
@@ -37,6 +30,9 @@
     .sections_questions:hover {
         cursor: pointer;
         color: #999999;
+    }
+    .grey-section {
+        background-color: #eeeeee;
     }
 
 
@@ -111,12 +107,7 @@
     .special-paragraph-margin {
         margin: 80px 0 80px 10vw;
     }
-    .wide-screen-margin{
-        margin-bottom: 60px;
-    }
-    .responsive-section-height {
-        height: 1150px;
-    }
+
     .banner-title {
         font-weight: normal!important;
         padding-bottom: 10px;
@@ -157,23 +148,23 @@
     
     
     @media screen and (max-width: 640px) {
+
+
+
+
+
+
+
+
+
+
+
         .text-block1 {
             width: 1100px;
             margin: 25px 10% 0 10%;
         }
         .text-block2 {
             margin: 20px auto 20px auto;
-        }
-        .mobile-section1{
-            margin-bottom: 0;
-        }
-        .mobile-section2{
-            margin: 0 auto 0 auto;
-            height: 630px;
-        }
-        .mobile-section3{
-            margin-top: 0;
-            margin-bottom: 0;
         }
         .mobile-video {
             height:200px;
@@ -241,14 +232,6 @@
             margin: 40px 10vw 40px 10vw;
         } 
 
-        // about us
-        .responsive-section-height {
-            height: 1050px;
-        }
-        .wide-screen-margin{
-            margin-bottom: 30px;
-        }
-
 
         // high heels + brainchild
         .mobile-image1{
@@ -263,55 +246,20 @@
         .mobile-image3{
             height: 300px!important;
         }
-
-        .m-mt {
-            &-0 {
-                margin-top: 0!important;
-            }
-            &-5 {
-                margin-top: 5px!important;
-            }
-            &-10 {
-                margin-top: 10px!important;
-            }
-            &-20 {
-                margin-top: 20px!important;
-            }
-            &-30 {
-                margin-top: 30px!important;
-            }
-            &-40 {
-                margin-top: 40px!important;
-            }
-            &-50 {
-                margin-top: 50px!important;
-            }
-        }
-
-        .m-mb {
-            &-0 {
-                margin-bottom: 0!important;
-            }
-            &-5 {
-                margin-bottom: 5px!important;
-            }
-            &-10 {
-                margin-bottom: 10px!important;
-            }
-            &-15 {
-                margin-bottom: 15px!important;
-            }
-            &-20 {
-                margin-bottom: 20px!important;
-            }
-            &-30 {
-                margin-bottom: 30px!important;
-            }
-            &-40 {
-                margin-bottom: 40px!important;
-            }
-        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
