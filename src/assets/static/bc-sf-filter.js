@@ -313,7 +313,7 @@ function buildBadges(data) {
         }
     }
 
-    if (sale || newItem || restocked || last_sizes){
+    if (sale || newItem || restocked || last_sizes || preorder || lastchance){
 
         if (sale){
             html +=  '<div class="product-sticker product-sticker__sale">';
