@@ -1,0 +1,166 @@
+<div data-autoload-class="ComponentVideo" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+  <video autoplay="" loop="" muted="" plays-inline="" playsinline style="width:100%; height:100%; object-fit: cover; object-position: bottom">
+    <source src="{{ section.settings.video }}" type="video/mp4">
+  </video>
+  <div style="position: fixed; top: 50px; width: 100%; height: 100%;">
+    <div class="wide-screen-only" style="width: 100vw; height: 400px; margin: auto;">
+      <div class="cell-image cell medium-auto" style="height: auto; width: 100%;">
+        <img src="{{section.settings.image | img_url: '1400x'}}" style="width:25vh; height: 25vh"/>
+      </div>
+      <div class="grid-container" style="width: 50vw">
+        <div class="grid-x align-middle">
+          <div class="text-center" style="color: #FFFFFF">
+            <p style="margin-top: 0; margin-bottom: 5px">{{section.settings.section_paragraph}}</p>
+            <p style="margin-top: 0; margin-bottom: 5px"><b>{{section.settings.section_bolded_line}}</b></p>
+            <div style="width: 30vw; margin: auto">
+              {% form 'customer' %}
+                {% if form.posted_successfully? %}
+                  <ul class="form-success mb-30">
+                    <li>{{ 'general.password_page.signup_form_success' | t }}</li>
+                  </ul>
+                {% else %}
+                  <input type="hidden" name="contact[tags]" value="prospect, password page">
+                  <label for="email" class="hide">
+                    {{ 'general.password_page.signup_form_email_label' | t }}
+                  </label>
+                  <div class="grid-x grid-margin-y mt-40 mb-10" style="margin-top: 0; margin-bottom: 5px">
+                    <div class="cell medium-auto">
+                      <input type="email"
+                             name="contact[email]"
+                             id="Email"
+                             spellcheck="false"
+                             autocomplete="off"
+                             autocapitalize="off"
+                             placeholder="{{ 'general.password_page.signup_form_email_placeholder' | t }}"
+                             style="height: 50px">
+                    </div>
+                    <div class="cell medium-shrink">
+                      <button type="submit" name="commit" class="button button-primary button-expanded" style="height: 50px">
+                        {{ 'general.password_page.signup_form_submit' | t }}
+                      </button>
+                    </div>
+                  </div>
+                  {{ form.errors | default_errors }}
+                {% endif %}
+              {% endform %}
+            </div>
+            
+            <img src="{{section.settings.image_logo | img_url: '1400x'}}" style="max-height:10vh; margin-top: 40px; margin-top: 0; margin-bottom: 5px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-screen-only" style="height: 400px; margin: auto;">
+      <div class="cell-image cell medium-auto" style="width: 100%;">
+        <img src="{{section.settings.image | img_url: '1400x'}}" style="width:25vh; height: 25vh"/>
+      </div>
+      <div class="grid-container">
+        <div class="grid-x align-middle">
+          <div class="text-center" style="color: #FFFFFF">
+            <p style="margin-top: 0; margin-bottom: 5px">{{section.settings.section_paragraph}}</p>
+            <p style="margin-top: 0; margin-bottom: 5px"><b>{{section.settings.section_bolded_line}}</b></p>
+            
+            <div style="margin-top: 0">
+            	{% form 'customer' %}
+                {% if form.posted_successfully? %}
+                  <ul class="form-success mb-30">
+                    <li>{{ 'general.password_page.signup_form_success' | t }}</li>
+                  </ul>
+                {% else %}
+  <!--                 <h5 class="color-secondary-text">{{ 'general.password_page.signup_form_heading' | t }}</h5> -->
+                  <input type="hidden" name="contact[tags]" value="prospect, password page">
+                  <label for="email" class="hide">
+                    {{ 'general.password_page.signup_form_email_label' | t }}
+                  </label>
+
+                    <div class="grid-x grid-margin-y mt-40 mb-10" style="margin-top: 5px;">
+                      <div class="cell medium-auto">
+                        <input type="email"
+                          name="contact[email]"
+                          id="Email"
+                          spellcheck="false"
+                          autocomplete="off"
+                          autocapitalize="off"
+                          placeholder="{{ 'general.password_page.signup_form_email_placeholder' | t }}"
+                          style="height: 30px">
+                      </div>
+                      <div class="cell medium-shrink">
+                      <button type="submit" name="commit" class="button button-primary button-expanded" style="height: 30px">
+                          {{ 'general.password_page.signup_form_submit' | t }}
+                        </button>
+                      </div>
+                    </div>
+
+                    {{ form.errors | default_errors }}
+
+                {% endif %}
+              {% endform %}
+            </div>
+            
+            
+            <img src="{{section.settings.image_logo | img_url: '1400x'}}" style="max-height:5vh; margin-top: 40px; margin-top: 0; margin-bottom: 5px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  p {
+    font-size: 20px;
+  }
+  .wide-screen-only {
+    display: block;
+  }
+  .mobile-screen-only {
+      display: none;
+  }
+
+  @media screen and (max-width: 640px) {
+    p {
+      font-size: 14px;
+    }
+    .wide-screen-only {
+      display: none;
+    }
+    .mobile-screen-only {
+      display: block;
+    }
+  }
+</style>
+
+
+{% schema %}
+  {
+    "name": "Holding Page Section",
+    "settings": [
+        {
+          "id": "video",
+          "type": "text",
+          "label": "Video",
+          "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+        },
+		{
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "section_paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "textarea",
+          "id": "section_bolded_line",
+          "label": "Bolded Line"
+        },
+		{
+          "type": "image_picker",
+          "id": "image_logo",
+          "label": "Logo"
+        }
+	]
+  }
+{% endschema %}
