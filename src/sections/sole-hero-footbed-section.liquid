@@ -1,0 +1,523 @@
+<div class="section section-about-us-page-group">
+
+    <div class="section mti-0 mbi-0 m-auto" style="max-width: 2000px;">
+        <div class="cell-image cell medium-auto landing-image" 
+            style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
+                <div class="text-center landing-text">
+                    <h1>{{section.settings.section_main_title}}</h1>
+                    <h4>{{section.settings.section_subtitle}}</h4>
+                </div>
+        </div>
+    </div>
+
+    <div class="section m-mb-0">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
+                    <div class="cell-image cell medium-auto image-half-width" 
+                        style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');
+                        height: 650px;
+                        background-size: contain;
+                        background-repeat: no-repeat;">
+                    </div>
+                </div>
+                <div class="cell small-12 medium-6 large-6 column-right">
+                    <div class="section-line mti-40 mbi-40 m-mt-0 m-mb-20"></div>
+                    <div class="text-center">
+                        <h1>{{section.settings.section_title }}</h1>
+                        <p>{{section.settings.section_paragraph}}</p>
+                        <span><b><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></b></span>
+                    </div>
+                    <div class="section-line mti-50 mbi-30 m-mt-30 m-mb-0"></div>
+                </div>
+                <div class="cell small-12 medium-6 large-6 column-left mobile-screen-only">
+                    <div class="cell-image cell medium-auto image-half-width" 
+                        style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');
+                        background-size: contain;
+                        background-repeat: no-repeat;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section m-mt-0">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="cell small-12 medium-12 large-12 wide-screen-only">
+                    <div data-autoload-class="ComponentVideo">
+                        <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="675px" controls="controls">
+                            <source src="{{ section.settings.video }}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="text-right" style="width: 100%; margin: 0 0 0 1px;">
+                        <p class="small-text mti-0">{{section.settings.section_patent}}</p>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="width: 1100px; margin: 40px 10% 20px 10%;">
+                    <h1 class="mbi-30">{{section.settings.section_title_2}}</h1>
+                    <p class="mbi-0">{{section.settings.section_paragraph_2}}</p>
+                </div>
+                
+                <div class="cell small-12 medium-12 large-12 mobile-screen-only">
+                    <div data-autoload-class="ComponentVideo">
+                        <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="200px" controls="controls">
+                            <source src="{{ section.settings.video-m }}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="text-right" style="width: 100%; margin: 0 0 0 1px;">
+                        <p class="mbi-0">{{section.settings.section_patent}}</p>
+                    </div>
+                </div>
+                
+                <div class="section-line mti-40 mbi-30 m-mb-0 m-mt-15"></div>
+            </div>
+        </div>
+    </div>
+
+    <div data-autoload-class="WeStandForSection" class="section section-we-stand-for grey-section">
+
+        <div class="grid-container mbi-40 m-mt-0 m-mb-20">
+            <div class="grid-x align-center text-center">
+            <div class="cell">
+                <h2 class="h1 mti-80 mbi-20 m-mt-30">{{ section.settings.section_title_slider}}</h2>
+                <p>{{ section.settings.section_content_slider }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+
+            <div class="tab-titles">
+            <div class="glide tab-slider">
+                <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% assign tabIndex = 1 %}
+                    {% for block in section.blocks %}
+
+                    {% if block.type == 'tab_title' %}
+                        <li class="glide__slide">
+                            <div class="tab-title-container">
+                            <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
+                                <div class="tab-title-container">
+                                <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                                <div class="tab-title-content-container" style="padding: 30px 50px 15px 25px">
+                                    <div class="tab-title-content">
+                                    <h2>{{ block.settings.title }}</h2>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+                        </li>
+                        {% assign tabIndex = tabIndex | plus: 1 %}
+                    {% endif %}
+
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="grid-container">
+
+            <div class="grid-x">
+            <div class="cell large-12">
+
+                <div class="tab-content pt-0" style="padding-bottom: 20px">
+                {% assign tabContentIndex = 1 %}
+
+                {% assign slideTitles = '' %}
+
+                {% for block in section.blocks %}
+
+                    {% if block.type == 'slider_start' %}
+
+                    {% assign slideTitles = '' %}
+                    <div class="tab-content-item{% if tabContentIndex == 1 %} active{% endif %}" data-tab-content-index="{{ tabContentIndex }}">
+                    <div class="glide slider">
+                        <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                    {% assign tabContentIndex = tabContentIndex | plus: 1 %}
+
+                    {% endif %}
+
+                    {% if block.type == 'slider_end' %}
+
+                        </ul>
+                        </div>
+                        <div class="glide__bullets wide-screen-only" data-glide-el="controls[nav]">
+                        {% assign slides = slideTitles | split: ',' %}
+                        {% for bullet in slides %}
+                            <button class="glide__bullet" style="background: none;" data-glide-dir="={{ forloop.index0 }}">
+                            <span></span>
+                            <div class="text-left">{{bullet}}</div>
+                            </button>
+                        {% endfor %}
+                        </div>
+                        <div class="glide__bullets mobile-bullet mobile-screen-only" data-glide-el="controls[nav]">
+                        {% assign slides = slideTitles | split: ',' %}
+                        {% for bullet in slides %}
+                            <button class="glide__bullet" style="background: none;" data-glide-dir="={{ forloop.index0 }}">
+                            <span></span>
+                            {{bullet}}
+                            </button>
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    {% if block.type == 'tab_content' %}
+
+                    <li class="glide__slide">
+
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}">
+
+                            {% if block.settings.video_url != blank %}
+                                {% assign videoId = block.settings.video_url.id %}
+                                <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                                <img class="m-mt-30 m-h300" width="100%" style="object-fit: contain;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                            {% endif %}
+
+                            </div>
+                            <div class="cell medium-12 large-6">
+                            <h2 class="h1">{{ block.settings.title }}</h2>
+                            <div>{{ block.settings.content }}</div>
+
+                            <a class="tab-content-item-link" href="{{ block.settings.link }}" style="text-transform: none;">{{ block.settings.button_text }}</a>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    {% unless slideTitles == '' %}
+                        {% assign slideTitles = slideTitles | append: ',' %}
+                    {% endunless %}
+                    {% assign slideTitles = slideTitles | append: block.settings.title %}
+
+                    {% endif %}
+
+                {% endfor %}
+                <p class="small-text text-center wide-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; font-size: 11px; line-height: 14px">
+                    {{ section.settings.section_disclaimer }}
+                </p>
+                <button class="mobile-screen-only" style="margin: 10px auto 0 auto; background-color: #444; color: white; width: 100%;" onclick="toggleText();">Disclaimer</button>
+                <script>
+                function toggleText() {
+                    var x = document.getElementById("disclaimer");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+                </script>
+                <p id="disclaimer" class="small-text text-center mobile-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; display: none;">
+                    {{ section.settings.section_disclaimer }}
+                </p>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section section-text-image no-margin" style="background-color: #FFFFFF;">
+        <div class="grid-container">
+            <div class="grid-x align-middle" style="height: auto">
+                <div class="cell small-12 medium-7 large-7">
+                    <div class="section-line mti-40 m-mb-0 m-mt-0"></div>
+                    <div class="cell-text-container pt-0-5 text-center" style="padding: 20px; margin: 8%">
+                        <div class="cell-image cell medium-auto">
+                            <img src="{{section.settings.icon_good_design_award | img_url: '400x'}}" style="width: 210px; margin: auto">
+                        </div>
+                        <p>{{section.settings.content_good_design_award}}</p>
+                        <span><h5><a target="_blank" href="{{ section.settings.url_good_design_award }}">{{ section.settings.url_name_good_design_award }}</a></h5></span>
+                    </div>
+                    <div class="section-line mbi-30 m-mt-40 m-mb-0"></div>
+                </div>
+                <div class="cell-image cell medium-auto good-design-award non-mobile-screen" style="background-image: url('{{section.settings.image_good_design_award | img_url: '1400x'}}'); height: 500px; width: 100%; background-size: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-step-inside-slider" data-autoload-class="StepInsideSliderSection">
+
+        <div class="glide slider">
+            <div class="glide__arrows mid-screen-show" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+            </div>
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'slide' %}
+                        <li class="glide__slide">
+                            <div class="step-inside-item">
+                                <a href="{{ block.settings.link }}" target="_blank">
+                                    <img class="step-inside-item-image"
+                                        src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
+                                        srcset="
+                                        {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                                        {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                                        {{ block.settings.image | img_url: '500x500', crop: 'center' }} 500w,
+                                        {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w"
+                                        sizes="
+                                        (min-width: 600px) 60vw,
+                                        (min-width: 850px) 50vw,
+                                        (min-width: 1024px) 33.3vw,
+                                        (min-width: 1200px) 33.3vw,
+                                        (min-width: 1400px) 33.3vw,
+                                        80vw"
+                                        alt="Image for {{ block.settings.title }}"
+                                    />
+                                    <div class="step-inside-item-content-container" style="padding: 40px 50px 20px 25px">
+                                        <div class="step-inside-item-content">
+                                            <div class="step-inside-item-content-subtitle">
+                                                <h5>{{ block.settings.subtitle }}</h5>
+                                            </div>
+                                            <h2>{{ block.settings.title }}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% schema %}
+     {
+         "name": "Sole Hero Footbed Content",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_main_title",
+                "label": "Page Title"
+            },{
+                "type": "text",
+                "id": "section_subtitle",
+                "label": "Page Subtitle"
+            },{
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Page Landing Background Image"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title 1"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph",
+                "label": "Paragraph 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_2",
+                "label": "Image Section 1 - Left"
+            },
+            {
+                "id": "video",
+                "type": "text",
+                "label": "Video Section 1",
+                "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+            },
+            {
+                "id": "video-m",
+                "type": "text",
+                "label": "Video Section 1 Mobile",
+                "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+            },
+
+            {
+                "type": "textarea",
+                "id": "section_patent",
+                "label": "Patent"
+            },
+            {
+                "type": "text",
+                "id": "section_title_2",
+                "label": "Title 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_2",
+                "label": "Paragraph 2"
+            },
+            {
+                "type": "text",
+                "id": "section_title_slider",
+                "label": "Slider Title"
+            },
+            {
+                "type": "textarea",
+                "id": "section_content_slider",
+                "label": "Slider Paragraph"
+            },
+            {
+                "id": "section_disclaimer",
+                "type": "textarea",
+                "label": "Disclaimer"
+            },
+            {
+                "type": "image_picker",
+                "id": "icon_good_design_award",
+                "label": "Good Design Award Icon"
+            },
+            {
+                "type": "textarea",
+                "id": "content_good_design_award",
+                "label": "Good Design Award Paragraph"
+            },
+            {
+                "type": "text",
+                "id": "url_name_good_design_award",
+                "label": "Good Design Award URL link Text"
+            },
+            {
+                "type": "url",
+                "id": "url_good_design_award",
+                "label": "Good Design Award URL link"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_good_design_award",
+                "label": "Good Design Award Image"
+            }
+         ],
+        "blocks": [
+            {
+                "type": "tab_title",
+                "name": "Tab Title",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                ]
+            },
+            {
+                "type": "slider_start",
+                "name": "Slider Start",
+                "settings": []
+            },
+            {
+              "type": "slider_end",
+              "name": "Slider End",
+              "settings": []
+            },
+            {
+                "type": "tab_content",
+                "name": "Tab Content",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                     "type": "select",
+                     "id": "image_placement",
+                     "label": "Media Placement",
+                     "options": [
+                       {
+                         "value": "",
+                         "label": "Left"
+                       },
+                       {
+
+                         "value": "medium-order-2",
+                         "label": "Right"
+                       }
+                     ],
+                     "default": ""
+                    },
+                    {
+                        "id": "video_url",
+                        "type": "video_url",
+                        "accept": ["youtube"],
+                        "label": "Video"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "content",
+                        "type": "richtext",
+                        "label": "Content"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            },
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ]
+     }
+ {% endschema %}

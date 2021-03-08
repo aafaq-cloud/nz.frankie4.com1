@@ -1,0 +1,294 @@
+<div class="section section-about-us-page-group">
+
+    <div class="section mti-0 mbi-0 m-auto" style="max-width: 2000px;">
+        <div class="cell-image cell medium-auto landing-image" 
+            style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');">
+                <div class="text-center landing-text">
+                    <h1>{{section.settings.section_main_title}}</h1>
+                    <h4>{{section.settings.section_subtitle}}</h4>
+                </div>
+        </div>
+    </div>
+
+    <div class="section m-mb-0">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="section-line mti-40 mbi-30 m-mb-0 m-mt-0"></div>
+                <div class="text-center m-mt-20 m-mb-0" style="width: 1100px; margin: 40px 10% 20px 10%;">
+                    <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
+                    <p>{{section.settings.section_paragraph}}</p>
+                </div>
+                <div data-autoload-class="ComponentVideo">
+                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="100%" height="675px" class="mobile-video" controls="controls">
+                        <source src="{{ section.settings.video }}" type="video/mp4">
+                    </video>
+                </div>
+                <div style="text-align: right; width: 100%; margin: 0 0 0 1px;">
+                    <p class="small-text mbi-0">{{section.settings.section_patent}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section mti-30 mbi-20 m-mt-0 m-mb-0">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="section-line mti-20 mbi-20 m-mt-10 m-mb-20"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="margin-top: 0;">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="cell small-12 medium-6 large-6 column-left">
+                    <div class="text-left">
+                        <h1>{{section.settings.section_title_2}}</h1>
+                        {{section.settings.section_paragraph_2}}
+                    </div>
+                </div>
+                <div class="cell small-12 medium-6 large-6 column-right">
+                    <div class="cell-image cell medium-auto image-half-width m-h500 m-mt-20" 
+                        style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
+                        height: 900px;
+                        background-size: contain;
+                        background-repeat: no-repeat;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="grid-container">
+            <div class="grid-x align-middle">
+                <div class="text-center m-auto mti-20 mbi-20 m-mb-0" style="width: 100%; max-width: 1200px">
+                    <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
+
+                    <div class="glide1" data-autoload-class="SimpleGlideSection" style="width: 100%; max-width: 1200px">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide" style="width: 1200px">
+                                    <p class="quote-text">{{section.settings.section_quote}}</p>
+                                    <p>{{section.settings.section_name}}</p>
+                                </li>
+                                <li class="glide__slide" style="width: 1200px">
+                                    <p class="quote-text">{{section.settings.section_quote2}}</p>
+                                    <p>{{section.settings.section_name2}}</p>
+                                </li>
+                                <li class="glide__slide" style="width: 1200px">
+                                    <p class="quote-text">{{section.settings.section_quote3}}</p>
+                                    <p>{{section.settings.section_name3}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glide__bullets wide-screen-only" data-glide-el="controls[nav]" style="width: 52%; max-width: 625px; position: relative;">
+                            <button class="glide__bullet" data-glide-dir="=0"></button>
+                            <button class="glide__bullet" data-glide-dir="=1"></button>
+                            <button class="glide__bullet" data-glide-dir="=2"></button>
+                        </div>
+                        <div class="glide__bullets mobile-screen-only" data-glide-el="controls[nav]" style="width: 45%; max-width: 625px; position: relative;">
+                            <button class="glide__bullet" data-glide-dir="=0"></button>
+                            <button class="glide__bullet" data-glide-dir="=1"></button>
+                            <button class="glide__bullet" data-glide-dir="=2"></button>
+                        </div>
+                        <style>
+                            .glide__bullet--active {
+                                background-color: black!important;
+                            } 
+                            .glide__bullet {
+                                background-color: grey;
+                            }
+                            .glide__bullet:hover, .glide__bullet:focus {
+                                background-color: black;
+                                border-color: black;
+                            }
+                        </style>
+                    </div>
+
+                    
+                    <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
+                </div> 
+                <div class="section-line mti-30 mbi-30 m-mb-0"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-step-inside-slider" data-autoload-class="StepInsideSliderSection">
+
+        <div class="glide slider">
+            <div class="glide__arrows mid-screen-show" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+            </div>
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'slide' %}
+                        <li class="glide__slide">
+                            <div class="step-inside-item">
+                                <a href="{{ block.settings.link }}" target="_blank">
+                                    <img class="step-inside-item-image"
+                                        src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
+                                        srcset="
+                                        {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                                        {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                                        {{ block.settings.image | img_url: '500x500', crop: 'center' }} 500w,
+                                        {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w"
+                                        sizes="
+                                        (min-width: 600px) 60vw,
+                                        (min-width: 850px) 50vw,
+                                        (min-width: 1024px) 33.3vw,
+                                        (min-width: 1200px) 33.3vw,
+                                        (min-width: 1400px) 33.3vw,
+                                        80vw"
+                                        alt="Image for {{ block.settings.title }}"
+                                    />
+                                    <div class="step-inside-item-content-container" style="padding: 40px 50px 20px 25px">
+                                        <div class="step-inside-item-content">
+                                            <div class="step-inside-item-content-subtitle">
+                                                <h5>{{ block.settings.subtitle }}</h5>
+                                            </div>
+                                            <h2>{{ block.settings.title }}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% schema %}
+     {
+         "name": "Sole Saver Pack Content",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_main_title",
+                "label": "Page Title"
+            },{
+                "type": "text",
+                "id": "section_subtitle",
+                "label": "Page Subtitle"
+            },{
+                "type": "image_picker",
+                "id": "image_1",
+                "label": "Page Landing Background Image"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title 1"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph",
+                "label": "Paragraph 1"
+            },
+            {
+                "id": "video",
+                "type": "text",
+                "label": "Video Section",
+                "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+            },
+            {
+                "type": "textarea",
+                "id": "section_patent",
+                "label": "Patent"
+            },
+            {
+                "type": "text",
+                "id": "section_title_2",
+                "label": "Title 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_2",
+                "label": "Paragraph 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_3",
+                "label": "Image Section 2 - Right"
+            },
+            {
+                "type": "image_picker",
+                "id": "quote_image_1",
+                "label": "Quote Icon 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "quote_image_2",
+                "label": "Quote Icon 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote",
+                "label": "Quote"
+            },
+            {
+                "type": "text",
+                "id": "section_name",
+                "label": "Author"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote2",
+                "label": "Quote 2"
+            },
+            {
+                "type": "text",
+                "id": "section_name2",
+                "label": "Author 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote3",
+                "label": "Quote 3"
+            },
+            {
+                "type": "text",
+                "id": "section_name3",
+                "label": "Author 3"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ]
+     }
+ {% endschema %}

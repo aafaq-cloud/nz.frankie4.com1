@@ -1,0 +1,348 @@
+.section-about-us-page-group {
+    // custom page styling
+    #container {
+        text-align: justify;
+        font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+    }
+    #container div {
+        display: inline-block;
+    }
+    #container:after {
+        content: '';
+        width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+        display: inline-block;
+    }
+    .wide-screen-only {
+        display: block;
+    }
+    .mobile-screen-only {
+        display: none;
+    }
+    .mid-screen-show {
+        display: none;
+    }
+    .section_answers {
+        display: none;
+    }
+    .sections_questions {
+        transition: all 0.5s ease;
+    }
+    .sections_questions:hover {
+        cursor: pointer;
+        color: #999999;
+    }
+    .grey-section {
+        background-color: #eeeeee;
+    }
+
+
+
+
+    .column-left {
+        padding-right: 30px;
+    }
+    .column-right {
+        padding-left: 30px;
+    }
+    .landing-image {
+        height: 600px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .landing-text {
+        color: white; 
+        padding-top: 200px;
+    }
+    .deco-line {
+        width: 3px;
+        height: 140px;
+        background-color: #808080;
+        margin: 40px auto 20px auto;
+    }
+    .deco-line-horizontal {
+        width: 100%;
+        height: 2px;
+        background-color: #dddddd;
+        margin: 40px auto 10px auto;
+        // margin: 0px 0 30px 0; sustainability + customer care
+    }
+    .image-full-width {
+        height: 700px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .image-half-width {
+        height: 700px;  
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom-images {
+        height: 100%; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom-image-blocks {
+        height: 23vw;
+        max-height: 280px;
+        width: 23vw;
+        max-width: 280px;
+        border-bottom: 1px solid white;
+    }
+    .bottom-image-blocks:hover {
+        border-bottom: 1px solid black;
+    }
+
+
+
+
+    .text-block1 {
+        width: 1100px;
+        margin: 40px 10% 20px 10%;
+    }
+    // sustainability 
+    .special-paragraph-margin {
+        margin: 80px 0 80px 10vw;
+    }
+
+    .banner-title {
+        font-weight: normal!important;
+        padding-bottom: 10px;
+    }
+    
+    
+    
+    @media screen and (max-width: 900px) {
+        .mid-screen-show {
+            display: block;
+        }
+    }
+    
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+        .landing-image {
+            height: 300px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 100px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 100px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+        }
+        .image-full-width {
+            height: 400px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 600px;  
+        }
+    }
+    
+    
+    @media screen and (max-width: 640px) {
+        .padding-0 {
+            padding: 0!important;
+        }
+        .pt-0 {
+            padding-top: 0!important;
+        }
+        .pt-0-5 {
+            padding: 5px 0 0 0!important;
+        }
+        .pt-0-30 {
+            padding: 30px 0 30px 0!important;
+        }
+        
+
+
+
+
+
+
+
+
+
+
+        .text-block1 {
+            width: 1100px;
+            margin: 25px 10% 0 10%;
+        }
+        .text-block2 {
+            margin: 20px auto 20px auto;
+        }
+        .mobile-video {
+            height:200px;
+            margin-top: 25px;
+        }
+        .mobile-width {
+            width: 30px;
+        }
+
+
+        .wide-screen-only {
+            display: none;
+        }
+        .mobile-screen-only {
+            display: block;
+        }
+
+
+        .column-left {
+            padding-right: 0;
+        }
+        .column-right {
+            padding-left: 0;
+        }
+        .landing-image {
+            height: 200px;
+        }
+        .landing-text {
+            color: white; 
+            padding-top: 50px;
+        }
+        .deco-line {
+            width: 3px;
+            height: 50px;
+            background-color: #808080;
+            margin: 20px auto 10px auto;
+            // margin: 0 auto 0 auto; about us 
+        }
+        .image-full-width {
+            height: 200px; 
+            width: 100%; 
+            background-size: cover;
+            background-position: center;
+        }
+        .image-half-width {
+            height: 300px;  
+        }
+        .bottom-image-blocks {
+            height: 45vw;
+            max-height: 250px;
+            width: 45vw; 
+            max-width: 250px;
+            margin-bottom: 10px;
+        }
+        .mobile-bullet {
+            display: block!important;
+            text-align: left;
+            width: 100%;
+            overflow: scroll;
+        }
+
+
+        // sustainability 
+        .special-paragraph-margin {
+            margin: 40px 10vw 40px 10vw;
+        } 
+    }
+
+
+
+
+    b {
+        font-weight: bolder!important;
+    }
+    h1 {
+        font-size: 80px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 80px!important;
+    }
+    h2 {
+        font-size: 36px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 36px!important;
+    }
+    h3 {
+        font-size: 26px!important;
+        font-family: 'montserrat-semibold', 'Helvetica Bold'!important;
+        line-height: 36px!important;
+        letter-spacing: 3px!important;
+    }
+    h4 {
+        font-size: 22px!important;
+        font-family: 'montserrat-light', 'Helvetica Light'!important;
+        line-height: 32px!important;
+        letter-spacing: 3px!important;
+    }
+    h5 {
+        font-size: 20px!important;
+        font-family: 'montserrat-bold', 'Helvetica Bold'!important;
+        line-height: 30px!important;
+        letter-spacing: 2px!important;
+    }
+    p {
+        font-size: 20px!important;
+        font-family: 'montserrat', 'Helvetica Light'!important;
+        line-height: 30px!important;
+    }
+    .small-text {
+        font-size: 15px!important;
+        font-family: 'montserrat-light', 'Helvetica Light'!important;
+        line-height: 25px!important;
+    }
+    .large-text {
+        font-size: 26px!important;
+        font-family: 'montserrat', 'Helvetica Light'!important;
+        line-height: 36px!important;
+    }
+    .quote-text {
+        font-size: 30px!important;
+        font-family: 'dm serif display', 'Times New Roman Bold'!important;
+        line-height: 32px!important;
+    }
+    @media screen and (max-width: 640px) {
+
+        h1 {
+            font-size: 34px!important;
+            line-height: 34px!important;
+        }
+        h2 {
+            font-size: 28px!important;
+            line-height: 28px!important;
+        }
+        .mobile-h {
+            font-size: 18px!important;
+            line-height: 18px!important;
+        }
+        h3 {
+            font-size: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h4 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        h5 {
+            font-size: 14px!important;
+            line-height: 20px!important;
+            letter-spacing: 1px!important;
+        }
+        p {
+            font-size: 12px!important;
+            line-height: 20px!important;
+        }
+        .small-text {
+            font-size: 12px!important;
+            line-height: 16px!important;
+        }
+        .large-text {
+            font-size: 26px!important;
+            line-height: 36px!important;
+        }
+        .quote-text {
+            font-size: 18px!important;
+            line-height: 24px!important;
+        }
+
+    }
+}
