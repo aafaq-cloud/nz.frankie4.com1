@@ -24,45 +24,56 @@
       </div>
     </div>
 
-     <div class="grid-x grid-padding-x grid-margin-y">
+    <div class="grid-x grid-padding-x grid-margin-y">
 
-        <div class="small-12 medium-12 large-12 cell">
+      <div class="small-12 medium-12 large-12 cell">
 
-          <div class="bc-sf-filter-mobile">
-            <div id="bc-sf-filter-tree-mobile"></div>
-            <div id="bc-sf-filter-tree"></div>
-          </div>
+        <div class="bc-sf-filter-mobile">
+          <div id="bc-sf-filter-tree-mobile"></div>
+          <div id="bc-sf-filter-tree"></div>
+        </div>
 
-            <!-- Sorting -->
-            <div class="collection-toolbar">
-              <div class="cell auto grid-x grid-margin-x align-middle align-justify">
-                <div class="collection-toolbar__sort cell shrink flex-container align-middle">
-                  <div id="bc-sf-filter-top-sorting"></div>
-               </div>
+          <!-- Sorting -->
+          <div class="collection-toolbar">
+            <div class="cell auto grid-x grid-margin-x align-middle align-justify">
+              <div class="collection-toolbar__sort cell shrink flex-container align-middle">
+                <div id="bc-sf-filter-top-sorting"></div>
               </div>
             </div>
+          </div>
 
-            <!-- Listing -->
+          <!-- Listing -->
 
-            <div id="bc-sf-filter-products" class="collection-products grid-x grid-margin-x grid-margin-y"
-            data-primary="{% if collection.metafields.products.primary != blank %}true{% else %}false{% endif %}"
-            data-load_more_enable="{% if section.settings.plus_load_more_enabled and paginate.pages > 1 %}true{% else %}false{% endif %}">
-              {% for product in collection.products %}
-                <div class="cell small-6 large-3 grid-x align-stretch">
+          <div id="bc-sf-filter-products" class="collection-products grid-x grid-margin-x grid-margin-y"
+          data-primary="{% if collection.metafields.products.primary != blank %}true{% else %}false{% endif %}"
+          data-load_more_enable="{% if section.settings.plus_load_more_enabled and paginate.pages > 1 %}true{% else %}false{% endif %}">
+            {% for product in collection.products %}
+              <div class="cell small-6 large-3 grid-x align-stretch">
 
-                </div>
-              {% endfor %}
-            </div>
-
-
-            <div id="bc-sf-filter-bottom-pagination"></div>
-            <div id="bc-sf-filter-load-more"></div>
+              </div>
+            {% endfor %}
+          </div>
 
 
-         </div>
+          <div id="bc-sf-filter-bottom-pagination"></div>
+          <div id="bc-sf-filter-load-more"></div>
 
-     </div>
+        </div>
 
+    </div>
+
+    <div class="grid-x grid-padding-x grid-margin-y align-center">
+      <div class="small-12 medium-12 large-7 cell">
+
+        <div class="collection-description">
+          {% assign SEO_text = collection.metafields.collections.SEO_text %}
+          {%  if SEO_text != '' %}
+            <p class="color-secondary-text text-center" style="margin: 30px 0 15px 0;">{{SEO_text}}</p>
+          {%  endif %}
+        </div>
+
+      </div>
+    </div>
 
    </div>
 
