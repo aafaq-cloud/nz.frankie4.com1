@@ -63,13 +63,21 @@
     </div>
 
     <div class="grid-x grid-padding-x grid-margin-y align-center">
-      <div class="small-12 medium-12 large-7 cell">
+      <div class="small-12 medium-12 large-12 cell">
 
         <div class="collection-description">
+          {% assign SEO_heading = collection.metafields.collections.SEO_heading %}
           {% assign SEO_text = collection.metafields.collections.SEO_text %}
-          {%  if SEO_text != '' %}
-            <p class="color-secondary-text text-center" style="margin: 30px 0 15px 0;">{{SEO_text}}</p>
-          {%  endif %}
+          {% if SEO_text != '' %}
+            <div class="color-secondary-text text-left seo_div">
+              {% if SEO_heading != '' %}
+                <h5>{{SEO_heading}}</h5>
+              {% endif %}
+              <div class="seo_text">
+                {{SEO_text}}
+              </div>
+            </div>
+          {% endif %}
         </div>
 
       </div>
