@@ -5,8 +5,6 @@
  */
 
 import $ from "jquery";
-// Replace with generic throttle once Foundation is cleaned out sitewide
-import {Foundation} from "foundation-sites";
 
 import {AbstractComponent} from "../class/AbstractComponent";
 

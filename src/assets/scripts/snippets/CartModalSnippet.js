@@ -12,7 +12,6 @@ import VueResource from "vue-resource";
 import VueGlide from 'vue-glide-js';
 //import 'vue-glide-js/dist/vue-glide.css';
 import { Glide, GlideSlide } from 'vue-glide-js';
-import {MediaQuery} from "foundation-sites";
 
 import {AbstractComponent} from "../class/AbstractComponent";
 

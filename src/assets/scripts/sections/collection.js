@@ -6,7 +6,8 @@
 
 import $ from "jquery";
 // Replace with generic throttle once Foundation is cleaned out sitewide
-import {Foundation} from "foundation-sites";
+import {throttle} from "../helpers/throttle";
+
 
 import {AbstractComponent} from "../class/AbstractComponent";
 
@@ -85,10 +86,11 @@ export class CollectionSection extends AbstractComponent {
         this.loadMoreCheck();
       });
 
-      $(window).scroll(
-        Foundation.util.throttle(() => {
-          this.loadMoreCheck();
-        }, 400)
+      window.addEventListener(
+          "scroll",
+          throttle(() => {
+            this.loadMoreCheck();
+          }, 400)
       );
     }
   }
