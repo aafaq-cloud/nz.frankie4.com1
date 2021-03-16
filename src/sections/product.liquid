@@ -98,24 +98,43 @@
                   <div class="glide__track" data-glide-el="track">
                       <div class="glide__slides" id="product_images">
                       {% if product.images.size > 0 %}
-                          {% for image in product.images %}
+                        {% for media in product.media %}
+                          {% case media.media_type %}
+                              {% when 'image' %}
                               <div class="glide__slide">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '650x650'}}" class="lazyload product-item-image big-mobile-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '600x600'}}" class="lazyload product-item-image mid-mobile-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '500x500'}}" class="lazyload product-item-image mid-small-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '400x400'}}" class="lazyload product-item-image small-screen" style="display: none;">
+                                  <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{media.src | img_url: '650x650'}}" class="lazyload product-item-image">
                               </div>
-                          {% endfor %}
+                              {% when 'video' %}
+                              <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-left: 15px">
+                                  <video autoplay="" loop="" muted="" plays-inline="" playsinline>
+                                      <source src="{{media.sources[1].url}}" type="video/mp4">
+                                  </video>
+                              </div>
+                          {% endcase %}
+                        {% endfor %}
                       {% endif %}
                       </div>
                   </div>
                   {% unless is_quickview %}
                     {% if product.images.size > 0 %}
                       <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
-                        {% for image in product.images %}
-                          <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
-                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
-                          </button>
+                        {% for media in product.media %}
+                          <script>console.log({{media|json}});</script>
+                          {% comment %} <p>{{media.sources[0].url}}</p> {% endcomment %}
+                          {% case media.media_type %}
+                            {% when 'image' %}
+                              <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
+                                  <img data-src="{{media.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
+                              </button>
+                            {% when 'video' %}
+                              <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen" style="padding-top: 0!important">
+                                  <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
+                                      <video loop="" muted="" plays-inline="" playsinline>
+                                          <source src="{{media.sources[1].url}}" type="video/mp4">
+                                      </video>
+                                  </div>
+                              </button>
+                          {% endcase %}
                         {% endfor %}
                       </div>
                       <div class="glide__bullets" data-glide-el="controls[nav]">
