@@ -105,7 +105,7 @@
                                   <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{media.src | img_url: '650x650'}}" class="lazyload product-item-image">
                               </div>
                               {% when 'video' %}
-                              <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="padding-left: 15px">
+                              <div class="video-wrapper big-screen-pl-15" data-image data-image-index="{{ slide_index_limit }}">
                                   <video autoplay="" loop="" muted="" plays-inline="" playsinline>
                                       <source src="{{media.sources[1].url}}" type="video/mp4">
                                   </video>
@@ -120,7 +120,6 @@
                       <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
                         {% for media in product.media %}
                           <script>console.log({{media|json}});</script>
-                          {% comment %} <p>{{media.sources[0].url}}</p> {% endcomment %}
                           {% case media.media_type %}
                             {% when 'image' %}
                               <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
@@ -145,22 +144,7 @@
                     {% endif %}
                   {% endunless %}
                 </div>
-                <style>
-                  .wide-screen-only {
-                      display: block;
-                  }
-                  .mobile-screen-only {
-                      display: none;
-                  }
-                  @media screen and (max-width: 640px) {
-                      .wide-screen-only {
-                          display: none;
-                      }
-                      .mobile-screen-only {
-                          display: block;
-                      }
-                  }
-                </style>
+
                 {% unless is_quickview %}
 
                 {% if video1 != blank and video2 != blank%}
