@@ -11,10 +11,6 @@ import {throttle} from "../helpers/throttle";
 
 import {AbstractComponent} from "../class/AbstractComponent";
 
-/*
-  See Comics Etc. Project for example of AJAX filtering on collections
-*/
-
 export class CollectionSection extends AbstractComponent {
   constructor(component) {
 
