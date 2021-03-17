@@ -1,6 +1,5 @@
 import $ from "jquery";
 import {Autoloader} from "./Autoloader";
-import { Reveal } from 'foundation-sites/js/foundation.reveal';
 
 export class QuickView {
   constructor() {
@@ -21,7 +20,7 @@ export class QuickView {
     this.modal = $(modalHTML);
 
     this.modalContent = this.modal.find(".modal-content");
-    this.modalReveal = new Reveal(this.modal)
+    this.modal.foundation();
 
     this.initQuickViewButtons();
   }
@@ -60,7 +59,7 @@ export class QuickView {
             success(response) {
               instance.loading = false;
               instance.modalContent.html(response);
-              instance.modalReveal.open();
+              instance.modal.foundation("open");
               Autoloader.initAutoloadClasses();
             },
             complete() {
