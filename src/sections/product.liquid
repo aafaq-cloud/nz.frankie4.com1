@@ -100,11 +100,14 @@
                       {% if product.images.size > 0 %}
                           {% for image in product.images %}
                               <div class="glide__slide">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '650x650'}}" class="lazyload product-item-image big-mobile-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '600x600'}}" class="lazyload product-item-image mid-mobile-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '500x500'}}" class="lazyload product-item-image mid-small-screen" style="display: none;">
-                                <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '400x400'}}" class="lazyload product-item-image small-screen" style="display: none;">
-                              </div>
+                                <img data-src="{{image | img_url: '650x650'}}"
+                                     data-srcset="{{image | img_url: '650x'}} 650w, {{image | img_url: '500x'}} 500w, {{image | img_url: '400x'}} 400w"
+                                     sizes="(min-width: 640px) 50vw,
+                                       100vw"
+                                     alt="{{product.title}}"
+                                     class="lazyload product-item-image"/>
+
+                                   </div>
                           {% endfor %}
                       {% endif %}
                       </div>
