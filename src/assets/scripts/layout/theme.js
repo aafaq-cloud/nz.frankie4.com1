@@ -33,7 +33,7 @@ $(document).ready(() => {
   // Autoload Classes
   Autoloader.registerAutoloadClasses();
 
-  $(document).foundation();
+  //$(document).foundation();
 
   // Apply a specific class to the html element for browser support of cookies.
   if (cookiesEnabled()) {
