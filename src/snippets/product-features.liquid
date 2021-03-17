@@ -42,7 +42,7 @@
       <div class="modal-content grid-x grid-margin-x align-middle">
         {% if feature.settings.image %}
           <div class="cell medium-6 modal-content-image-cell">
-            <img src="{{feature.settings.image | img_url: '500x'}}" class="lazyload">
+            <img data-src="{{feature.settings.image | img_url: '500x'}}" class="lazyload">
           </div>
         {% else %}
           <div class="cell medium-6 modal-content-image-cell">

@@ -357,7 +357,7 @@
                                     </svg>
                                   </a>
                                   <div class="modal-content">
-                                    <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+                                    <img data-src="{{section.settings.size_guide_image | img_url: '800x'}}" data-srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
 
                                     <div class="modal-content-text">
                                       {% if section.settings.size_guide_content %}
