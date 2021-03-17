@@ -17,17 +17,14 @@ import {QuickView} from "../class/Quickview";
 import {ShopifyCurrency} from "../class/Currency";
 import {ProductList} from "../class/ProductList";
 
-import {Foundation} from "foundation-sites/js/foundation.core";
-import { Reveal } from 'foundation-sites/js/foundation.reveal';
-Foundation.addToJquery($);
-Foundation.plugin(Reveal, 'Reveal');
-
 window.slate = window.slate || {};
 window.theme = window.theme || {};
 
 $(document).ready(() => {
-  // Initialise modalclose-button
-  MicroModal.init();
+
+  MicroModal.init({
+    'disableScroll': true
+  });
 
   // Initialise the core application
   window.AppCurrency = new ShopifyCurrency();
@@ -38,7 +35,6 @@ $(document).ready(() => {
   // Autoload Classes
   Autoloader.registerAutoloadClasses();
 
-  $(document).foundation();
 
   // Apply a specific class to the html element for browser support of cookies.
   if (cookiesEnabled()) {

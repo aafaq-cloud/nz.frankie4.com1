@@ -1,0 +1,60 @@
+.modal {
+  display: none;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  &__container {
+
+    //z-index: 1006;
+    padding: 1rem;
+    border: 1px solid #cacaca;
+    border-radius: 0;
+    background-color: #fefefe;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+
+    &-large {
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    &-padded {
+      padding: 40px
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    padding: 9px;
+    z-index: 4;
+    cursor: pointer;
+    line-height: 0;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  &.is-open {
+    display: block;
+  }
+
+}
