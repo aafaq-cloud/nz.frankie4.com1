@@ -18,25 +18,41 @@
 
     //z-index: 1006;
     padding: 1rem;
-    border: 1px solid #cacaca;
     border-radius: 0;
     background-color: #fefefe;
     position: relative;
     margin-right: auto;
     margin-left: auto;
     overflow-y: auto;
-    width: 90%;
+    width: 100%;
+    height: 100%;
     max-width: 600px;
-    max-height: 90vh;
+    max-height: 100vh;
+
+    @include breakpoint(medium) {
+      width: 90%;
+      height: auto;
+      max-height: 90vh;
+    }
 
     &-large {
-      width: 90%;
+      //width: 90%;
       max-width: 1000px;
+      @include breakpoint(medium) {
+        width: 90%;
+      }
     }
 
     &-padded {
       padding: 40px
     }
+  }
+
+  &__content {
+  }
+
+  &__text {
+      padding: 30px
   }
 
   &__close {
