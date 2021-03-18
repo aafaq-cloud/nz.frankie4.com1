@@ -6,13 +6,14 @@ import {cookiesEnabled} from "@shopify/theme-cart";
 // import "lazysizes/plugins/object-fit/ls.object-fit";
 // import "lazysizes/plugins/parent-fit/ls.parent-fit";
 import "lazysizes/plugins/rias/ls.rias";
+import "lazysizes/plugins/unveilhooks/ls.unveilhooks";
 // import "lazysizes/plugins/bgset/ls.bgset";
 import "lazysizes";
 // import "lazysizes/plugins/respimg/ls.respimg";
 
 import {Autoloader} from "../class/Autoloader";
 import {ShopifyCart} from "../class/ShopifyCart";
-import MicroModal from 'micromodal';
+import MicroModal from "micromodal";
 import {QuickView} from "../class/Quickview";
 import {ShopifyCurrency} from "../class/Currency";
 import {ProductList} from "../class/ProductList";

@@ -4,8 +4,10 @@
   <div class="healing-heels-video-container">
     {% if section.settings.video != blank %}
       <div class="video-container">
-        <video autoplay="true" loop="true" muted="true" plays-inline="" playsinline width="1280" height="720">
-          <source src="{{ section.settings.video }}" type="video/mp4">
+        <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+               playsinline controls="controls"
+               width="1280" height="720"
+               data-src="{{section.settings.video }}">
         </video>
       </div>
     {% endif %}
