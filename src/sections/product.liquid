@@ -71,7 +71,7 @@
 
                           {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mt-10 mb-10">
-                            Payment options with Afterpay and ZipPay
+                            Payment options with Afterpay, ZipPay and Klarna
                           </div>
                           {% endif %}
                         </h5>
@@ -98,27 +98,42 @@
                   <div class="glide__track" data-glide-el="track">
                       <div class="glide__slides" id="product_images">
                       {% if product.images.size > 0 %}
-                          {% for image in product.images %}
+                        {% for media in product.media %}
+                          {% case media.media_type %}
+                              {% when 'image' %}
                               <div class="glide__slide">
-                                <img data-src="{{image | img_url: '650x650'}}"
-                                     data-srcset="{{image | img_url: '650x'}} 650w, {{image | img_url: '500x'}} 500w, {{image | img_url: '400x'}} 400w"
-                                     sizes="(min-width: 640px) 50vw,
-                                       100vw"
-                                     alt="{{product.title}}"
-                                     class="lazyload product-item-image"/>
-
-                                   </div>
-                          {% endfor %}
+                                  <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{media.src | img_url: '650x650'}}" class="lazyload product-item-image">
+                              </div>
+                              {% when 'video' %}
+                              <div class="video-wrapper big-screen-pl-15" data-image data-image-index="{{ slide_index_limit }}">
+                                  <video autoplay="" loop="" muted="" plays-inline="" playsinline>
+                                      <source src="{{media.sources[1].url}}" type="video/mp4">
+                                  </video>
+                              </div>
+                          {% endcase %}
+                        {% endfor %}
                       {% endif %}
                       </div>
                   </div>
                   {% unless is_quickview %}
                     {% if product.images.size > 0 %}
                       <div data-glide-el="controls[nav]" class="product-item-thumbnails product-thumbnails cell large-shrink" style="flex-direction: row;">
-                        {% for image in product.images %}
-                          <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
-                              <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
-                          </button>
+                        {% for media in product.media %}
+                          <script>console.log({{media|json}});</script>
+                          {% case media.media_type %}
+                            {% when 'image' %}
+                              <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen">
+                                  <img data-src="{{media.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image" style="background-color: #e6e6e6;">
+                              </button>
+                            {% when 'video' %}
+                              <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen" style="padding-top: 0!important">
+                                  <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
+                                      <video loop="" muted="" plays-inline="" playsinline>
+                                          <source src="{{media.sources[1].url}}" type="video/mp4">
+                                      </video>
+                                  </div>
+                              </button>
+                          {% endcase %}
                         {% endfor %}
                       </div>
                       <div class="glide__bullets" data-glide-el="controls[nav]">
@@ -129,38 +144,20 @@
                     {% endif %}
                   {% endunless %}
                 </div>
-                <style>
-                  .wide-screen-only {
-                      display: block;
-                  }
-                  .mobile-screen-only {
-                      display: none;
-                  }
-                  @media screen and (max-width: 640px) {
-                      .wide-screen-only {
-                          display: none;
-                      }
-                      .mobile-screen-only {
-                          display: block;
-                      }
-                  }
-                </style>
+
                 {% unless is_quickview %}
 
                 {% if video1 != blank and video2 != blank%}
                     <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="margin-right: 1%; width: 48.5%; float: left">
-                          <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
-                                 data-src="{{video1 }}">
-                          </video>
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
                         </div>
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 48.5%; float: left">
-
-                          <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
-                                 data-src="{{video2 }}">
-                          </video>
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video2 }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                 {% endif %}
@@ -168,10 +165,9 @@
                 {% if video1 != blank and video2 == blank %}
                     <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 50%;">
-                          <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
-                                 data-src="{{video1 }}">
-                          </video>
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                 {% endif %}
@@ -216,7 +212,7 @@
                             </h5>
                           {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mb-20">
-                            Payment options with Afterpay and ZipPay
+                            Payment options with Afterpay, ZipPay and Klarna
                           </div>
                           {% endif %}
 
@@ -346,26 +342,24 @@
                               </div>
                               {% if section.settings.display_size_guide %}
                                 <div class="cell shrink">
-                                  <a class="size-guide" data-open="size-guide-modal" data-micromodal-trigger="size-guide-modal">
+                                  <a class="size-guide" data-open="size-guide-modal">
                                     {% include 'icon-size-guide' %}
                                     Size Guide
                                   </a>
                                 </div>
 
-                              <div class="modal modal-size-guide" id="size-guide-modal" aria-hidden="true">
-                                <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-                                  <div class="modal__container" role="dialog" aria-modal="true">
+                                <div class="reveal modal-size-guide" id="size-guide-modal" data-reveal>
+                                  <a class="close-button" data-close aria-label="Close Quick View">
+                                    <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
+                                      <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
+                                                        38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
+                                                        0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
+                                    </svg>
+                                  </a>
+                                  <div class="modal-content">
+                                    <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
 
-                                    <button class="modal__close" aria-label="Close modal" data-micromodal-close>
-                                      <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
-                                        <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
-                                                          38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
-                                                          0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
-                                      </svg>
-                                    </button>
-                                  <div class="modal__content">
-                                    <img data-src="{{section.settings.size_guide_image | img_url: '800x'}}" data-srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
-                                    <div class="modal__text">
+                                    <div class="modal-content-text">
                                       {% if section.settings.size_guide_content %}
                                         <div class="rte">
                                           {{ section.settings.size_guide_content }}
@@ -381,8 +375,6 @@
                                       {% endif %}
                                     </div>
                                   </div>
-                                  </div>
-                                </div>
                                 </div>
                               {% endif %}
                             {% endif %}
@@ -532,16 +524,14 @@
                 {% if video1 != blank and video2 != blank%}
                     <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
-                            <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                   playsinline controls="controls"
-                                   data-src="{{video1 }}">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
-                          <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
-                                 data-src="{{video2 }}">
-                          </video>
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video2 }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                 {% endif %}
@@ -549,10 +539,9 @@
                 {% if video1 != blank and video2 == blank %}
                     <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 100%;">
-                          <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
-                                 data-src="{{video1 }}">
-                          </video>
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                                <source src="{{ video1 }}" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                 {% endif %}
