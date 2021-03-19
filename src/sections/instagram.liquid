@@ -10,9 +10,14 @@
         </div>
     </div>
 
-    <div
+    {% comment %} <div
         class="yotpo yotpo-pictures-widget"
         data-gallery-id="5d30323401f0952d49ff7e78">
+    </div> {% endcomment %}
+
+    <div
+        class="yotpo yotpo-pictures-widget"
+        data-gallery-id="{{section.settings.gallery_id}}">
     </div>
 
 
@@ -35,6 +40,11 @@
                 "type": "richtext",
                 "id": "section_subheading",
                 "label": "Subheading"
+            },
+            {
+                "type": "text",
+                "id": "gallery_id",
+                "label": "Yotpo Gallery ID"
             }
         ],
         "presets": [
