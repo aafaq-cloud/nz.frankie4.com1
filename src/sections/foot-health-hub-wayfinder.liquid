@@ -5,12 +5,11 @@
 
   <div class="grid-container">
 
-    <div class="section-line"></div>
-
     <div class="grid-x align-center">
       <div class="cell large-9">
+        <div class="lead medium-text-center">{{ section.settings.section_content }}</div>
+        <div class="section-line"></div>
         <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
-        <p class="lead medium-text-center">{{ section.settings.section_content }}</p>
       </div>
     </div>
 
@@ -24,8 +23,9 @@
               <div class="cell medium-4 glide__slide">
                 <div class="wayfinder-tile">
                   <a href="{{ block.settings.link }}">
-                    <div class="wayfinder-title">
-                      {{ block.settings.title }}
+                    <div class="wayfinder-content">
+                      <div class="wayfinder-title">{{ block.settings.title }}</div>
+                      <div class="wayfinder-subtitle">{{ block.settings.subtitle }}</div>
                     </div>
                     <img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}">
                   </a>
@@ -45,9 +45,7 @@
       </div>
     </div>
 
-
   </div>
-
 
 </div>
 
@@ -65,7 +63,7 @@
             "label": "Title"
           },
           {
-            "type": "textarea",
+            "type": "richtext",
             "id": "section_content",
             "label": "Content"
           }
@@ -79,6 +77,11 @@
                 "id": "title",
                 "type": "text",
                 "label": "Title"
+              },
+              {
+                "id": "subtitle",
+                "type": "text",
+                "label": "Subtitle"
               },
               {
                 "type": "url",
