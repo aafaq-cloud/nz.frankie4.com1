@@ -33,6 +33,7 @@ import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
 import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
 import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
 import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
+import {HealingHeelsNavWayfinderSection} from "../sections/healing-heels-nav-wayfinder";
 
 import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
@@ -79,6 +80,7 @@ export class Autoloader {
       HealingHeelsImageSliderSection,
       HealingHeelsCollectionSliderSection,
       HealingHeelsTestimonialsSection,
+      HealingHeelsNavWayfinderSection,
 
       ShippingSection,
       StepInsideSection,
