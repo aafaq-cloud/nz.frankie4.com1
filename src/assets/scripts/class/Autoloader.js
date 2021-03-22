@@ -5,6 +5,7 @@ import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
 import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
+import {ComponentFullWidthSlider} from "../components/ComponentFullWidthSlider";
 
 // Snippets
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
@@ -30,8 +31,6 @@ import {FootHealthHubRoadTestersSection} from "../sections/foot-health-hub-road-
 import {HealingHeelsAccessoriesSection} from "../sections/healing-heels-accessories";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
 import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
-import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
-import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
 import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
 import {HealingHeelsNavWayfinderSection} from "../sections/healing-heels-nav-wayfinder";
 
@@ -51,6 +50,7 @@ export class Autoloader {
       ComponentCarousel,
       ComponentVideo,
       ComponentWayfinderSlider,
+      ComponentFullWidthSlider,
 
       // Snippets
       SearchAutocompleteSnippet,
@@ -77,8 +77,6 @@ export class Autoloader {
       HealingHeelsAccessoriesSection,
       HealingHeelsTabsSection,
       HealingHeelsTabsTwoSection,
-      HealingHeelsImageSliderSection,
-      HealingHeelsCollectionSliderSection,
       HealingHeelsTestimonialsSection,
       HealingHeelsNavWayfinderSection,
 

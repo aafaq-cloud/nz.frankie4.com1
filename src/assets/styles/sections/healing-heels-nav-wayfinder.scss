@@ -1,5 +1,6 @@
 .section-healing-heels-nav-wayfinder {
 
+  background-color: #f1f1f1;
 
   .tab-titles {
 
@@ -151,7 +152,7 @@
 
 
       .glide__bullet {
-
+        background-color: transparent;
         width: auto;
         height: auto;
         border-radius: 0;
@@ -180,6 +181,7 @@
 
 
         &--active {
+          background-color: transparent;
           span {
             background-color: $body-font-color;
           }
