@@ -18,33 +18,27 @@
       <div class="glide tab-slider">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
-            {% assign tabIndex = 1 %}
-            {% assign tab_title_blocks = section.blocks | where: "type", "tab_title" %}
-            {% for block in tab_title_blocks %}
+
+            {% for block in section.blocks %}
 
                 <li class="glide__slide">
-
-                  <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
+                  <div class="tab-title{% if forloop.index0 == 0 %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
                     <div class="tab-title-container">
-                      <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                      <img class="tab-title-image" src="{{ block.settings.nav_image | img_url: '500x500', crop: 'center' }}"/>
                       <div class="tab-title-content-container">
                         <div class="tab-title-content">
-                          <h3>{{ block.settings.title }}</h3>
+                          <h3>{{ block.settings.nav_title }}</h3>
                         </div>
                       </div>
                     </div>
 
                   </div>
-
                 </li>
-              {% assign tabIndex = tabIndex | plus: 1 %}
-
 
             {% endfor %}
           </ul>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -59,83 +53,59 @@
       <div class="cell large-12">
 
         <div class="tab-content">
-          {% assign tabContentIndex = 1 %}
 
-          {% assign slideTitles = '' %}
 
-          {% for block in section.blocks %}
 
-            {% if block.type == 'slider_start' %}
-
-            {% assign slideTitles = '' %}
-             <div class="tab-content-item{% if tabContentIndex == 1 %} active{% endif %}" data-tab-content-index="{{ tabContentIndex }}">
               <div class="glide slider">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
-              {% assign tabContentIndex = tabContentIndex | plus: 1 %}
+                  {% assign tabContentIndex = tabContentIndex | plus: 1 %}
+                    {% for block in section.blocks %}
+                    <li class="glide__slide">
 
-            {% endif %}
+                      <div class="grid-x grid-margin-x grid-margin-y align-center text-center">
 
-            {% if block.type == 'slider_end' %}
+                        <div class="cell medium-12 large-10">
+                          <h2 class="h1">{{ block.settings.title }}</h2>
+                            <div>{{ block.settings.content }}</div>
 
+                            <a class="tab-content-item-link" href="{{ block.settings.link }}">{{ block.settings.button_text }}</a>
+
+                            {% if block.settings.video_url != blank %}
+                            {% assign videoId = block.settings.video_url.id %}
+                            <div class="video-container">
+                              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                            {% else if block.settings.video != blank %}
+                            <div class="video-container">
+                              <video autoplay="true" loop="true" muted="true" plays-inline="" playsinline width="1280" height="720">
+                                <source src="{{ block.settings.video }}" type="video/mp4">
+                              </video>
+                            </div>
+                            {% else %}
+                            <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                            {% endif %}
+
+                        </div>
+
+                      </div>
+
+                    </li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="glide__bullets" data-glide-el="controls[nav]">
-                  {% assign slides = slideTitles | split: ',' %}
-                  {% for bullet in slides %}
+
+                  {% for block in section.blocks %}
                     <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}">
                       <span></span>
-                      {{bullet}}
+                      {{block.settings.title}}
                     </button>
                   {% endfor %}
                 </div>
               </div>
 
               </div>
-
-            {% endif %}
-
-            {% if block.type == 'tab_content' %}
-
-              <li class="glide__slide">
-
-                  <div class="grid-x grid-margin-x grid-margin-y align-center text-center">
-
-                    <div class="cell medium-12 large-10">
-                      <h2 class="h1">{{ block.settings.title }}</h2>
-                      <div>{{ block.settings.content }}</div>
-
-                      <a class="tab-content-item-link" href="{{ block.settings.link }}">{{ block.settings.button_text }}</a>
-
-                      {% if block.settings.video_url != blank %}
-                        {% assign videoId = block.settings.video_url.id %}
-                        <div class="video-container">
-                          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-                      {% else if block.settings.video != blank %}
-                        <div class="video-container">
-                          <video autoplay="true" loop="true" muted="true" plays-inline="" playsinline width="1280" height="720">
-                            <source src="{{ block.settings.video }}" type="video/mp4">
-                          </video>
-                        </div>
-                        {% else %}
-                          <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
-                      {% endif %}
-
-                    </div>
-
-                  </div>
-
-              </li>
-
-              {% unless slideTitles == '' %}
-                {% assign slideTitles = slideTitles | append: ',' %}
-              {% endunless %}
-              {% assign slideTitles = slideTitles | append: block.settings.title %}
-
-            {% endif %}
-
-          {% endfor %}
 
         </div>
       </div>
@@ -171,36 +141,28 @@
         ],
         "blocks": [
              {
-                "type": "tab_title",
-                "name": "Tab Title",
+                "type": "tab",
+                "name": "Tab",
                 "settings": [
                     {
-                        "id": "image",
-                        "type": "image_picker",
-                        "label": "Image"
+                      "type": "header",
+                      "content": "Tab Heading"
                     },
                     {
-                        "id": "title",
+                        "id": "nav_image",
+                        "type": "image_picker",
+                        "label": "Nav Image"
+                    },
+                    {
+                        "id": "nav_title",
                         "type": "text",
                         "label": "Title"
-                    }
-                ]
-            },
-            {
-                "type": "slider_start",
-                "name": "Slider Start",
-                "settings": []
-            },
-            {
-              "type": "slider_end",
-              "name": "Slider End",
-              "settings": []
-            },
-            {
-                "type": "tab_content",
-                "name": "Tab Content",
-                "settings": [
+                    },
                     {
+                      "type": "header",
+                      "content": "Tab Content"
+                    },
+                     {
                         "id": "image",
                         "type": "image_picker",
                         "label": "Image"

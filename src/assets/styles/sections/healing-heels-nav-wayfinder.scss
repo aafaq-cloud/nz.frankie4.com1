@@ -87,6 +87,8 @@
       }
 
       &-link {
+        display: block;
+        margin-bottom: 20px;
         text-transform: uppercase;
         font-weight: 700;
       }
@@ -149,6 +151,11 @@
       transform: none;
       display: flex;
       justify-content: center;
+      flex-direction: column;
+
+      @include breakpoint(medium) {
+        flex-direction: row;
+      }
 
 
       .glide__bullet {
@@ -159,9 +166,14 @@
         border: 0;
         box-shadow: none;
         line-height: inherit;
-        margin-right: 20px;
+        margin: 10px 0;
         text-transform: uppercase;
-        font-size: rem-calc(16);
+        font-size: rem-calc(14);
+
+        @include breakpoint(medium){
+          margin: 0 20px 0 0;
+          font-size: rem-calc(16);
+        }
 
         span {
           display: inline-block;
