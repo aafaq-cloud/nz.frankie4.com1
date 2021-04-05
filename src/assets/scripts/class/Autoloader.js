@@ -6,6 +6,7 @@ import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
 import {ComponentFullWidthSlider} from "../components/ComponentFullWidthSlider";
+import {ComponentGridSlider} from "../components/ComponentGridSlider";
 
 // Snippets
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
@@ -51,6 +52,7 @@ export class Autoloader {
       ComponentVideo,
       ComponentWayfinderSlider,
       ComponentFullWidthSlider,
+      ComponentGridSlider,
 
       // Snippets
       SearchAutocompleteSnippet,

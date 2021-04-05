@@ -1,0 +1,28 @@
+<div class="section section-disclaimer no-margin">
+
+  <div class="grid-container">
+    <div class="text-center mb-15 text-container">
+      <h2 class="m-0">  {{ section.settings.heading }}</h2>
+      <p class="mt-5 mb-0">{{ section.settings.content }}</p>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Disclaimer",
+    "settings": [
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "content",
+        "type": "richtext",
+        "label": "Content"
+      }
+    ]
+  }
+{% endschema %}
