@@ -25,6 +25,7 @@
         </div>
     </div>
 
+    {% if section.settings.store_info_check %}
     <div class="section m-mt-0">
         <div class="grid-container">
             <div class="grid-x align-middle">
@@ -51,6 +52,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="section m-mb-0">
         <div class="grid-container">
@@ -231,6 +233,11 @@
                 "type": "image_picker",
                 "id": "image_2",
                 "label": "Image Section 1"
+            },
+            {
+                "type": "checkbox",
+                "id": "store_info_check",
+                "label": "Store info display"
             },
             {
                 "type": "text",
