@@ -1,67 +1,67 @@
-<div class="section section-healing-heels-collection-slider large-margin" data-autoload-class="HealingHeelsCollectionSliderSection">
+<div class="section section-healing-heels-collection-slider large-margin">
 
   <div class="section-line"></div>
 
   <div class="grid-container text-center">
-    <div class="grid-x align-center">
+    <div class="grid-x align-center mb-40">
       <div class="cell medium-8 large-8">
-        <h2 class="h1 image-slider-title">{{section.settings.title}}</h2>
+        <h2 class="h1">{{section.settings.title}}</h2>
       </div>
     </div>
   </div>
 
+  <div class="grid-slider" data-autoload-class="ComponentGridSlider">
+    <div class="glide image-slider">
 
-  <div class="glide image-slider">
+      <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides">
+          {% for block in section.blocks %}
 
-    <div class="glide__track" data-glide-el="track">
-      <div class="glide__slides">
-        {% for block in section.blocks %}
+            {% assign collection = collections[block.settings.collection] %}
 
-          {% assign collection = collections[block.settings.collection] %}
+            {% assign collection_image = collection.image %}
+            {% if block.settings.image != blank %}
+              {% assign collection_image = block.settings.image %}
+            {% endif %}
 
-          {% assign collection_image = collection.image %}
-          {% if block.settings.image != blank %}
-            {% assign collection_image = block.settings.image %}
-          {% endif %}
+            <div class="glide__slide">
 
-          <div class="glide__slide">
+                <div class="image-slider-item">
 
-              <div class="image-slider-item">
-
-                <a href="{{ collection.url }}" target="_blank">
-                  <img class="image-slider-item-image"
-                       src="{{ collection_image | img_url: '600x600', crop: 'center' }}"
-                       srcset="
-                                   {{ collection_image | img_url: '300x300', crop: 'center' }} 300w,
-                                   {{ collection_image | img_url: '400x400', crop: 'center' }} 400w,
-                                   {{ collection_image | img_url: '500x500', crop: 'center' }} 500w,
-                                   {{ collection_image | img_url: '600x600', crop: 'center' }} 600w"
-                       sizes="
-                                  (min-width: 600px) 60vw,
-                                  (min-width: 850px) 50vw,
-                                  (min-width: 1024px) 33.3vw,
-                                  (min-width: 1200px) 33.3vw,
-                                  (min-width: 1400px) 33.3vw,
-                                  80vw"
-                       alt="Image for {{ collection.title }}"
-                  />
-                  <div class="image-slider-item-content-container">
-                    <div class="image-slider-item-content">
-                      <h3>{{ collection.title }}</h3>
+                  <a href="{{ collection.url }}" target="_blank">
+                    <img class="image-slider-item-image"
+                         src="{{ collection_image | img_url: '600x600', crop: 'center' }}"
+                         srcset="
+                                     {{ collection_image | img_url: '300x300', crop: 'center' }} 300w,
+                                     {{ collection_image | img_url: '400x400', crop: 'center' }} 400w,
+                                     {{ collection_image | img_url: '500x500', crop: 'center' }} 500w,
+                                     {{ collection_image | img_url: '600x600', crop: 'center' }} 600w"
+                         sizes="
+                                    (min-width: 600px) 60vw,
+                                    (min-width: 850px) 50vw,
+                                    (min-width: 1024px) 33.3vw,
+                                    (min-width: 1200px) 33.3vw,
+                                    (min-width: 1400px) 33.3vw,
+                                    80vw"
+                         alt="Image for {{ collection.title }}"
+                    />
+                    <div class="image-slider-item-content-container">
+                      <div class="image-slider-item-content">
+                        <h3>{{ collection.title }}</h3>
+                      </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
 
-              </div>
+                </div>
 
-          </div>
-        {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
+
     </div>
-
   </div>
-
 
 
 </div>

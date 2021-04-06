@@ -43,6 +43,7 @@
 @import "./components/responsive-images";
 @import "./components/video";
 @import "./components/wayfinder-slider";
+@import "./components/full-width-slider";
 
 // Sections
 @import "./sections/about-us-page-group";
@@ -78,6 +79,8 @@
 @import "./sections/healing-heels-tabs";
 @import "./sections/healing-heels-tabs-two";
 @import "./sections/healing-heels-testimonials";
+@import "./sections/healing-heels-nav-wayfinder";
+@import "./sections/healing-heels-quote";
 @import "./sections/healing-heels-video";
 @import "./sections/healing-heels-video-two";
 @import "./sections/image-with-text";
@@ -109,6 +112,7 @@
 @import "./snippets/pagination";
 @import "./snippets/product-tile";
 @import "./snippets/collection-tile";
+@import "./snippets/image-slider-item";
 @import "./snippets/search-autocomplete";
 @import "./snippets/social-icons";
 @import "./snippets/social-sharing";
