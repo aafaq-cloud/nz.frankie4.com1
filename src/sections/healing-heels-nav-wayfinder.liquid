@@ -76,14 +76,15 @@
                             <div class="video-container">
                               <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
-                            {% else if block.settings.video != blank %}
+                            {% elsif block.settings.video != blank %}
                             <div class="video-container">
                               <video autoplay="true" loop="true" muted="true" plays-inline="" playsinline width="1280" height="720">
                                 <source src="{{ block.settings.video }}" type="video/mp4">
                               </video>
                             </div>
-                            {% else %}
+                            {% elsif block.settings.image != blank %}
                             <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                            {% else %}
                             {% endif %}
 
                         </div>
@@ -166,23 +167,6 @@
                         "id": "image",
                         "type": "image_picker",
                         "label": "Image"
-                    },
-                    {
-                     "type": "select",
-                     "id": "image_placement",
-                     "label": "Media Placement",
-                     "options": [
-                       {
-                         "value": "",
-                         "label": "Left"
-                       },
-                       {
-
-                         "value": "medium-order-2",
-                         "label": "Right"
-                       }
-                     ],
-                     "default": ""
                     },
                     {
                         "id": "video_url",
