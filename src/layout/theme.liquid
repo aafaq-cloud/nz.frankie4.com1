@@ -8,6 +8,7 @@
   <meta name="theme-color" content="{{ settings.color_accent }}">
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="google-site-verification" content="eP6yJoI5vi_evs4jZ-uRX6Cd0I8T40RNP02-X1VjOlA" />
+  <meta content="GooGhywoiu9839t543j0s7543uw1 - pls add {brittany.mohr@frankie4.com.au} to GA account {UA-141128031-1} with ‘Manage Users and Edit’ permissions - date {25 March 2021}."/>
 
   <!--[CODE BELOW FOR REMOVING 'FSS' from search engines]><!-->
   {% if handle contains 'fss-offer' %}
@@ -85,17 +86,6 @@
   {% include 'shogun-head' %}
   {% include 'bc-sf-filter-style' %}
 
-  <!-- Global site tag (gtag.js) - Google Ads: 816958429 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-816958429"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-141128031-1');
-  </script>
-
-
   {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
   {%- assign time_now = 'now' | date: '%s' %}
   {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
@@ -103,13 +93,6 @@
   {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
     {{'yotpo-full-css.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-M3J2K9K');</script>
-  <!-- End Google Tag Manager -->
   
   <!-- Start of frankie4 Zendesk Widget script -->
   <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=ba715df2-b1f7-45cf-8cc9-ffe5f982256c"> </script>
