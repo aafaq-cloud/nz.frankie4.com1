@@ -71,7 +71,16 @@
 
                           {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mt-10 mb-10">
-                            Payment options with Afterpay, ZipPay and Klarna
+                            {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                                <!-- US -->
+                                Payment options with Afterpay, ZipPay and Klarna
+                            {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+                                <!-- NZ -->
+                                Payment options with Afterpay and Klarna
+                            {% else %}
+                                <!-- AU -->
+                                Payment options with Afterpay, ZipPay and Klarna
+                            {% endif %}
                           </div>
                           {% endif %}
                         </h5>
@@ -221,7 +230,16 @@
                             </h5>
                           {% if product.type != "GIFT CARD" %}
                           <div class="text-small color-secondary-text mb-20">
-                            Payment options with Afterpay, ZipPay and Klarna
+                            {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                                <!-- US -->
+                                Payment options with Afterpay, ZipPay and Klarna
+                            {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+                                <!-- NZ -->
+                                Payment options with Afterpay and Klarna
+                            {% else %}
+                                <!-- AU -->
+                                Payment options with Afterpay, ZipPay and Klarna
+                            {% endif %}
                           </div>
                           {% endif %}
 
