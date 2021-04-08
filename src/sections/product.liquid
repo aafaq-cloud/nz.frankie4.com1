@@ -429,7 +429,8 @@
 
                                 <label class="option-label hide">{{ option.name }}</label>
 
-                                {% if option.name == 'Size' or option.name == 'size' %}
+                                {% assign size_option = option.name | downcase %}
+                                {% if size_option == 'size' %}
 
                                   <div class="radio-select">
 
