@@ -1,0 +1,101 @@
+<div class="section section-about-us-page-group">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="text-center m-auto mti-20 mbi-20 m-mb-0" style="width: 100%; max-width: 1200px">
+                <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
+
+                <div class="glide1" data-autoload-class="SimpleGlideSection" style="width: 100%; max-width: 1200px">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide" style="width: 1200px">
+                                <p class="quote-text">{{section.settings.section_quote}}</p>
+                                <p>{{section.settings.section_name}}</p>
+                            </li>
+                            <li class="glide__slide" style="width: 1200px">
+                                <p class="quote-text">{{section.settings.section_quote2}}</p>
+                                <p>{{section.settings.section_name2}}</p>
+                            </li>
+                            <li class="glide__slide" style="width: 1200px">
+                                <p class="quote-text">{{section.settings.section_quote3}}</p>
+                                <p>{{section.settings.section_name3}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glide__bullets wide-screen-only" data-glide-el="controls[nav]" style="width: 52%; max-width: 625px; position: relative;">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                    <div class="glide__bullets mobile-screen-only" data-glide-el="controls[nav]" style="width: 45%; max-width: 625px; position: relative;">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                    </div>
+                    <style>
+                        .glide__bullet--active {
+                            background-color: black!important;
+                        } 
+                        .glide__bullet {
+                            background-color: grey;
+                        }
+                        .glide__bullet:hover, .glide__bullet:focus {
+                            background-color: black;
+                            border-color: black;
+                        }
+                    </style>
+                </div>
+
+                
+                <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{% schema %}
+     {
+         "name": "Reviews Slider",
+         "settings": [
+            {
+                "type": "image_picker",
+                "id": "quote_image_1",
+                "label": "Quote Icon 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "quote_image_2",
+                "label": "Quote Icon 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote",
+                "label": "Quote"
+            },
+            {
+                "type": "text",
+                "id": "section_name",
+                "label": "Author"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote2",
+                "label": "Quote 2"
+            },
+            {
+                "type": "text",
+                "id": "section_name2",
+                "label": "Author 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_quote3",
+                "label": "Quote 3"
+            },
+            {
+                "type": "text",
+                "id": "section_name3",
+                "label": "Author 3"
+            }
+        ]
+     }
+ {% endschema %}
