@@ -121,7 +121,7 @@
                               {% when 'video' %}
                               <div class="video-wrapper big-screen-pl-15" data-image data-image-index="{{ slide_index_limit }}">
                                 <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                       playsinline controls="controls"
+                                       playsinline 
                                        data-src="{{media.sources[1].url }}">
                                 </video>
                               </div>
@@ -143,7 +143,7 @@
                               <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen" style="padding-top: 0!important">
                                   <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
                                     <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                           playsinline controls="controls"
+                                           playsinline 
                                            data-src="{{media.sources[1].url }}">
                                     </video>
                                   </div>
