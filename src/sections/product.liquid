@@ -73,7 +73,7 @@
                           <div class="text-small color-secondary-text mt-10 mb-10">
                             {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                                 <!-- US -->
-                                Payment options with Afterpay, ZipPay and Klarna
+                                Payment options with Afterpay and Klarna
                             {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
                                 <!-- NZ -->
                                 Payment options with Afterpay and Klarna
@@ -121,7 +121,7 @@
                               {% when 'video' %}
                               <div class="video-wrapper big-screen-pl-15" data-image data-image-index="{{ slide_index_limit }}">
                                 <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                       playsinline controls="controls"
+                                       playsinline 
                                        data-src="{{media.sources[1].url }}">
                                 </video>
                               </div>
@@ -143,7 +143,7 @@
                               <button data-glide-dir="={{ forloop.index0 }}" class="product-item-thumbnails-button non-mobile-screen" style="padding-top: 0!important">
                                   <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
                                     <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                           playsinline controls="controls"
+                                           playsinline 
                                            data-src="{{media.sources[1].url }}">
                                     </video>
                                   </div>
@@ -232,7 +232,7 @@
                           <div class="text-small color-secondary-text mb-20">
                             {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                                 <!-- US -->
-                                Payment options with Afterpay, ZipPay and Klarna
+                                Payment options with Afterpay and Klarna
                             {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
                                 <!-- NZ -->
                                 Payment options with Afterpay and Klarna

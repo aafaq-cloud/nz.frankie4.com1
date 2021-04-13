@@ -1,8 +1,6 @@
 <div data-autoload-class="ComponentVideo" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
-  <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-         playsinline controls="controls"
-         style="width:100%; height:100%; object-fit: cover; object-position: bottom"
-         data-src="{{section.settings.video }}">
+  <video autoplay="" loop="" muted="" plays-inline="" playsinline style="width:100%; height:100%; object-fit: cover; object-position: bottom">
+    <source src="{{ section.settings.video }}" type="video/mp4">
   </video>
   <div style="position: fixed; top: 50px; width: 100%; height: 100%;">
     <div class="wide-screen-only" style="width: 100vw; height: 400px; margin: auto;">

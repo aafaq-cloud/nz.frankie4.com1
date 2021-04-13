@@ -44,7 +44,7 @@
                     <div class="text-small">
                         {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                             <!-- US -->
-                            9am - 6pm AEST
+                            9am - 6pm GMT
                         {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
                             <!-- NZ -->
                             11am - 8pm NZST
@@ -60,7 +60,7 @@
                 <div class="shrink">{% include "icon-email" %}</div>
                 {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                     <!-- US -->
-                    <div class="auto"><a href="mailto:info@frankie4.com.au">info@frankie4.com.au</a></div>
+                    <div class="auto"><a href="mailto:info@frankie4.com">info@frankie4.com</a></div>
                 {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
                     <!-- NZ -->
                     <div class="auto"><a href="mailto:info@frankie4.co.nz">info@frankie4.co.nz</a></div>
