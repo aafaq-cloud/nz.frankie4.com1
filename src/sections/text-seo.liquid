@@ -6,6 +6,9 @@
                 <div class="seo_text">
                     {{ section.settings.content }}
                 </div>
+                <div style="display: none">
+                    {{ section.settings.content_hidden }}
+                </div>
             </div>
 
     </div>
@@ -14,12 +17,17 @@
 
 {% schema %}
     {
-        "name": "Text",
+        "name": "Text SEO",
         "settings": [
             {
                 "id": "content",
                 "type": "richtext",
                 "label": "Content"
+            },
+            {
+                "id": "content_hidden",
+                "type": "richtext",
+                "label": "Content Hidden"
             }
         ],
         "presets": [
