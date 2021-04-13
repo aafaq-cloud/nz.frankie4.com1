@@ -1,6 +1,7 @@
 .section-text-seo {
 
   background: white;
+  margin-top: -40px;
 
   .text-container {
     padding: 30px 0;
@@ -25,16 +26,26 @@
     }
 
     .seo_text a {
-    color: #42abc8;
+    color: #80878a;
     transition: 0.3s ease all;
     }
 
     .seo_text a:hover {
-    color: #05617a;
+    color: #272b2c;
     }
 
     .seo_text strong {
     color: #000000;
-    }
+  }
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+
+  #toggle_btn {
+    cursor: pointer;
+    text-decoration: underline;
+    color: black;
+  }
 
 }
