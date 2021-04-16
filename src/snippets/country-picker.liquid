@@ -1,0 +1,15 @@
+{% if request.host == 'frankie4.com' or request.host == 'frankie4.myshopify.com' %}
+    <label class="currency-picker__wrapper hide">
+        AU
+    </label>
+    <div class="currency-picker component-select select-wrap" data-autoload-class="ComponentSelect">
+        <select>
+            <option value="AU" selected="selected">AU</option>
+            <option value="NZ">NZ</option>
+            <option value="US">US</option>
+        </select>
+        {% include 'icon-chevron' %}
+    </div>
+{% else %}
+    {{ shop.currency }}
+{% endif %}
