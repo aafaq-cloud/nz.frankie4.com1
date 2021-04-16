@@ -7,13 +7,17 @@
 
                 {% assign width = block.settings.width %}
                 {% assign cell_class = '' %}
+                {% assign image_width = '1200x' %}
 
                 {% if width == "1-3" %}
                     {% assign cell_class = "medium-4" %}
+                    {% assign image_width = '450x' %}
                 {% elsif width == "1-2" %}
                     {% assign cell_class = "medium-6" %}
+                    {% assign image_width = '600x' %}
                 {% elsif width == "2-3" %}
                     {% assign cell_class = "medium-8" %}
+                    {% assign image_width = '1200x' %}
                 {% endif %}
 
                 <div class="cell media-block {{ cell_class }}{% if block.settings.hide_for_mobile %} show-for-medium{% endif %}">
@@ -25,16 +29,25 @@
 
                     {% if block.settings.video != blank %}
                         <div class="component-video" data-autoload-class="ComponentVideo">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline width="1280" height="720">
-                                <source src="{{ block.settings.video }}" type="video/mp4">
+                            <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                                   playsinline controls="controls"
+                                   width="1280" height="720"
+                                   data-src="{{block.settings.video }}">
                             </video>
                         </div>
+
                     {% elsif block.settings.image != blank %}
-                        {% if block.settings.mobile_image %}
-                            <img src="{{block.settings.mobile_image | img_url: '1000x'}}" srcset="{{block.settings.mobile_image | img_url: '1000x'}} 1400w, {{block.settings.mobile_image | img_url: '1100x'}} 1100w, {{block.settings.mobile_image | img_url: '800x'}} 800w, {{block.settings.mobile_image | img_url: '450x'}} 450w" class="media-block-image mobile-media-block-image">
-                        {% endif %}
-                        <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="media-block-image">
+
+                        <picture>
+                            {% if block.settings.mobile_image %}
+                                <source media="(max-width:640px)" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
+                            {% endif %}
+                            <img data-src="{{block.settings.image | img_url: image_width}}" alt="{{block.settings.title}}" class="lazyload media-block-image">
+                        </picture>
+
                     {% endif %}
+
+
 
                     {% if block.settings.title != blank or block.settings.link_text != blank %}
                         <div class="media-block-content-wrapper grid-y align-right align-middle h-100">

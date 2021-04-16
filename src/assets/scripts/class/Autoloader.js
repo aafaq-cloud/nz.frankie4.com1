@@ -5,6 +5,8 @@ import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
 import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
+import {ComponentFullWidthSlider} from "../components/ComponentFullWidthSlider";
+import {ComponentGridSlider} from "../components/ComponentGridSlider";
 
 // Snippets
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
@@ -30,9 +32,8 @@ import {FootHealthHubRoadTestersSection} from "../sections/foot-health-hub-road-
 import {HealingHeelsAccessoriesSection} from "../sections/healing-heels-accessories";
 import {HealingHeelsTabsSection} from "../sections/healing-heels-tabs";
 import {HealingHeelsTabsTwoSection} from "../sections/healing-heels-tabs-two";
-import {HealingHeelsImageSliderSection} from "../sections/healing-heels-image-slider";
-import {HealingHeelsCollectionSliderSection} from "../sections/healing-heels-collection-slider";
 import {HealingHeelsTestimonialsSection} from "../sections/healing-heels-testimonials";
+import {HealingHeelsNavWayfinderSection} from "../sections/healing-heels-nav-wayfinder";
 
 import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
@@ -50,6 +51,8 @@ export class Autoloader {
       ComponentCarousel,
       ComponentVideo,
       ComponentWayfinderSlider,
+      ComponentFullWidthSlider,
+      ComponentGridSlider,
 
       // Snippets
       SearchAutocompleteSnippet,
@@ -76,9 +79,8 @@ export class Autoloader {
       HealingHeelsAccessoriesSection,
       HealingHeelsTabsSection,
       HealingHeelsTabsTwoSection,
-      HealingHeelsImageSliderSection,
-      HealingHeelsCollectionSliderSection,
       HealingHeelsTestimonialsSection,
+      HealingHeelsNavWayfinderSection,
 
       ShippingSection,
       StepInsideSection,

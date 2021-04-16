@@ -1,61 +1,62 @@
-<div class="section section-healing-heels-image-slider large-margin" data-autoload-class="HealingHeelsImageSliderSection">
+<div class="section section-healing-heels-image-slider large-margin">
 
   <div class="grid-container text-center">
-    <div class="grid-x align-center">
+    <div class="grid-x align-center mb-40">
       <div class="cell medium-8 large-8">
-        <h4 class="image-slider-title mb-40">{{section.settings.title}}</h4>
+        <h4 class="image-slider-title">{{section.settings.title}}</h4>
       </div>
     </div>
   </div>
 
+  <div class="full-width-slider" data-autoload-class="ComponentFullWidthSlider">
 
-  <div class="glide image-slider">
+    <div class="glide image-slider">
 
-    <div class="glide__track" data-glide-el="track">
-      <div class="glide__slides">
-        {% for block in section.blocks %}
-          <div class="glide__slide">
+      <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides">
+          {% for block in section.blocks %}
+            <div class="glide__slide">
 
-              <div class="image-slider-item">
+                <div class="image-slider-item">
 
-                <a href="{{ block.settings.link }}" target="_blank">
-                  <img class="image-slider-item-image"
-                       src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
-                       srcset="
-                                   {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
-                                   {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
-                                   {{ block.settings.image | img_url: '500x500', crop: 'center' }} 500w,
-                                   {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w"
-                       sizes="
-                                  (min-width: 600px) 60vw,
-                                  (min-width: 850px) 50vw,
-                                  (min-width: 1024px) 33.3vw,
-                                  (min-width: 1200px) 33.3vw,
-                                  (min-width: 1400px) 33.3vw,
-                                  80vw"
-                       alt="Image for {{ block.settings.title }}"
-                  />
-                  <div class="image-slider-item-content-container">
-                    <div class="image-slider-item-content">
-                      <div class="image-slider-item-content-subtitle">
-                        {{ block.settings.subtitle }}
+                  <a href="{{ block.settings.link }}" target="_blank">
+                    <img class="image-slider-item-image"
+                         src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
+                         srcset="
+                                     {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                                     {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                                     {{ block.settings.image | img_url: '500x500', crop: 'center' }} 500w,
+                                     {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w"
+                         sizes="
+                                    (min-width: 600px) 60vw,
+                                    (min-width: 850px) 50vw,
+                                    (min-width: 1024px) 33.3vw,
+                                    (min-width: 1200px) 33.3vw,
+                                    (min-width: 1400px) 33.3vw,
+                                    80vw"
+                         alt="Image for {{ block.settings.title }}"
+                    />
+                    <div class="image-slider-item-content-container">
+                      <div class="image-slider-item-content">
+                        <div class="image-slider-item-content-subtitle">
+                          {{ block.settings.subtitle }}
+                        </div>
+                        <h3>{{ block.settings.title }}</h3>
                       </div>
-                      <h3>{{ block.settings.title }}</h3>
                     </div>
-                  </div>
-                </a>
+                  </a>
 
 
-              </div>
+                </div>
 
-          </div>
-        {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
+
     </div>
 
   </div>
-
-
 
 </div>
 

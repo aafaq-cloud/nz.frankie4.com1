@@ -14,17 +14,23 @@
                         {% if block.settings.video != blank %}
                             <div class="banner-video">
                                 <div class="component-video" data-autoload-class="ComponentVideo">
-                                    <video autoplay="" loop="" muted="" plays-inline="" playsinline width="1280" height="720">
-                                        <source src="{{ block.settings.video }}" type="video/mp4">
+                                    <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                                           playsinline controls="controls"
+                                           width="1280" height="720"
+                                           data-src="{{block.settings.video }}">
                                     </video>
                                 </div>
                             </div>
                         {% else %}
-                            {% if block.settings.mobile_image %}
-                                <img src="{{block.settings.mobile_image | img_url: '1400x'}}" srcset="{{block.settings.mobile_image | img_url: '1400x'}} 1400w, {{block.settings.mobile_image | img_url: '1100x'}} 1100w, {{block.settings.mobile_image | img_url: '800x'}} 800w, {{block.settings.mobile_image | img_url: '450x'}} 450w" class="mobile-banner-image banner-image">
-                            {% endif %}
-                            <img src="{{block.settings.image | img_url: '1400x'}}" srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w, {{block.settings.image | img_url: '450x'}} 450w" class="banner-image">
-                        {% endif %}
+
+                            <picture>
+                                {% if block.settings.mobile_image %}
+                                    <source media="(max-width:640px)" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
+                                {% endif %}
+                                <img data-src="{{block.settings.image |  img_url: '1400x' }}" data-srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                            </picture>
+
+                         {% endif %}
 
 
                         <div class="banner-content-wrapper">

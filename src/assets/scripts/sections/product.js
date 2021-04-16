@@ -45,8 +45,6 @@ export class ProductSection extends AbstractComponent {
           window.ShopifyWishlistInstace.updateAddToWishlistButtons();
       }
     });
-
-    console.log(this.product);
   }
 
 

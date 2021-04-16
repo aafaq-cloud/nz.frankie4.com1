@@ -6,6 +6,8 @@
 
 import $ from "jquery";
 import {AbstractComponent} from "../class/AbstractComponent";
+import {throttle} from "../helpers/throttle";
+
 
 export class HeaderSection extends AbstractComponent {
   constructor(component) {
@@ -74,7 +76,7 @@ export class HeaderSection extends AbstractComponent {
     const instance = this;
 
     $(window).scroll(
-      Foundation.util.throttle(function() {
+        throttle(function() {
         const scrollTopNew = $(this).scrollTop();
 
         if (!HeaderSection.isLockedHeader()) {
