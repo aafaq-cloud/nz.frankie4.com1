@@ -248,7 +248,7 @@
 
         <div class="grid-container">
             <div class="grid-x align-center">
-                <div class="cell medium-6">
+                <div class="cell medium-12">
                     <div class="text-center mbi-15 text-container">
                         <h1>{{ section.settings.section_title_blog }}</h1>
                         <p class="lead">{{ section.settings.section_content_blog }}</p>
@@ -315,7 +315,7 @@
 
 {% schema %}
      {
-         "name": "Customer Care Content",
+         "name": "Workwear Hub Content",
          "settings": [
             {
                 "type": "text",
@@ -399,16 +399,24 @@
             },
             {
                 "type": "text",
+                "id": "section_title_slider",
+                "label": "Title Slider"
+            },
+            {
+                "type": "textarea",
+                "id": "section_content",
+                "label": "Content Slider"
+            },
+            {
+                "type": "text",
                 "id": "section_title_4",
                 "label": "Title Section 4"
             },
-
             {
                 "type": "image_picker",
                 "id": "image_5",
                 "label": "Image Section 4"
             },
-
             {
                 "type": "textarea",
                 "id": "section_paragraph_4",
@@ -416,88 +424,13 @@
             },
             {
                 "type": "text",
-                "id": "phone_number",
-                "label": "Phone Number"
-            },
-            {
-                "type": "text",
-                "id": "email",
-                "label": "Email Text"
-            },
-            {
-                "type": "text",
-                "id": "email_link",
-                "label": "Email Link"
-            },
-            {
-                "type": "text",
-                "id": "link3_name",
-                "label": "Link Online Chat Text"
-            },
-            {
-                "type": "text",
-                "id": "link3",
-                "label": "Link Online Chat Link"
-            },
-            {
-                "type": "text",
-                "id": "section_title_5",
-                "label": "Title 5"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_6",
-                "label": "Image Section 5"
-            },
-            {
-                "type": "text",
-                "id": "section_q1",
-                "label": "Question 1"
+                "id": "section_title_blog",
+                "label": "Title Bottom Slider"
             },
             {
                 "type": "textarea",
-                "id": "section_a1",
-                "label": "Answer1"
-            },
-            {
-                "type": "text",
-                "id": "section_q2",
-                "label": "Question 2"
-            },
-            {
-                "type": "textarea",
-                "id": "section_a2",
-                "label": "Answer2"
-            },
-            {
-                "type": "text",
-                "id": "section_q3",
-                "label": "Question 3"
-            },
-            {
-                "type": "textarea",
-                "id": "section_a3",
-                "label": "Answer3"
-            },
-            {
-                "type": "text",
-                "id": "section_q4",
-                "label": "Question 4"
-            },
-            {
-                "type": "textarea",
-                "id": "section_a4",
-                "label": "Answer4"
-            },
-            {
-                "type": "text",
-                "id": "link4_name",
-                "label": "Link Section 5 Text"
-            },
-            {
-                "type": "text",
-                "id": "link4",
-                "label": "Link Section 5"
+                "id": "section_content_blog",
+                "label": "Content Bottom Slider"
             }
          ],
         "blocks": [
