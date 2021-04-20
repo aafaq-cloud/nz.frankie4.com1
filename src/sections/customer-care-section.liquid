@@ -54,6 +54,7 @@
     </div>
     {% endif %}
 
+    {% if section.settings.store_shopper_check %}
     <div class="section m-mb-0">
         <div class="grid-container">
             <div class="grid-x align-middle">
@@ -75,6 +76,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="section">
         <div class="grid-container">
@@ -263,6 +265,11 @@
                 "type": "text",
                 "id": "link1",
                 "label": "Link Section 2"
+            },
+            {
+                "type": "checkbox",
+                "id": "store_shopper_check",
+                "label": "Store shopper display"
             },
             {
                 "type": "text",
