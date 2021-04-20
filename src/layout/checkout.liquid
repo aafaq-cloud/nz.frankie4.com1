@@ -67,5 +67,20 @@
     {{ tracking_code }}
 
     {% include 'script-tags', layout: 'checkout' %}
+  
+    {% if request.host == 'frankie4.com' or request.host == 'frankie4.myshopify.com' %}
+        <script type="text/javascript" src="https://dnuaqhs941n75.cloudfront.net/files/shopify/js/checkout_marketing_subscription_v2.js?ver=1618451908"></script>
+        <script>
+        smsbump_checkout_widget.init({
+            has_box: 1,
+            has_title: 1, 
+            checkbox_title: "Sign up for SMS updates",
+            checkbox_label: "Be the first to know about our latest styles to drop and sales.",
+            consent_message : "By checking the SMS updates signup box I consent to receive recurring automated marketing by text message through an automatic telephone dialing system. Consent is not a condition to purchase. Message and Data rate apply. Opt-Out by texting STOP.",
+            privacy_policy_text: "View Privacy Policy",
+            privacy_policy_link: "https://frankie4.com/pages/terms-privacy-policy", 
+        });
+        </script>
+    {% endif %}
 </body>
 </html>
