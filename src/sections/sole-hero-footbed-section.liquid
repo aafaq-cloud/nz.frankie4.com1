@@ -192,7 +192,7 @@
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 </div>
                             {% else %}
-                                <img class="m-mt-30 m-h300" width="100%" style="object-fit: contain;" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                                <img class="m-mt-30 m-h300" width="100%" style="object-fit: cover; height: 400px" src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
                             {% endif %}
 
                             </div>

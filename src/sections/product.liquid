@@ -337,7 +337,7 @@
                             <div class="product-swatches">
                               <!-- Core Colours -->
                               {% if related_products_liquid != blank %}
-                              <label class="option-label"><strong>Core</strong> Colours</label>
+                              <label class="option-label"><strong>Core</strong> {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %} Colors {% else %} Colours {% endif %}</label>
                               <div class="product-swatches__container">
                                 {{ related_products_liquid }}
                               </div>
@@ -345,7 +345,7 @@
 
                               <!-- Seasonal Colours -->
                               {% if related_products_seasonal_liquid != blank %}
-                                <label class="option-label mt-20"><strong>Seasonal</strong> Colours</label>
+                                <label class="option-label mt-20"><strong>Seasonal</strong> {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %} Colors {% else %} Colours {% endif %}</label>
                                 <div class="product-swatches__container">
                                   {{ related_products_seasonal_liquid }}
                                 </div>
