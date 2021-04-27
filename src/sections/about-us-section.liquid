@@ -28,7 +28,7 @@
                     <div class="cell small-12 medium-6 large-6" style="height: 1050px;">
                         <div data-autoload-class="ComponentVideo">
                             <video class="lazyload mobile-video" preload="none" autoplay="" loop="" muted=""
-                                   playsinline controls="controls"
+                                   playsinline controls controlslist="nodownload"
                                    width="100%" height="340px"
                                    data-src="{{section.settings.video }}">
                             </video>
@@ -155,14 +155,14 @@
                             {% if block.settings.video != blank %}
                                 <div data-autoload-class="ComponentVideo" class="wide-screen-only">
                                     <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                           playsinline controls="controls"
+                                           playsinline controls controlslist="nodownload" 
                                            width="100%" height="330"
                                            data-src="{{block.settings.video }}">
                                     </video>
                                 </div>
                                 <div data-autoload-class="ComponentVideo" class="mobile-screen-only">
                                     <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                           playsinline controls="controls"
+                                           playsinline controls controlslist="nodownload" 
                                            width="100%" height="200"
                                            data-src="{{section.settings.video-m }}">
                                     </video>
