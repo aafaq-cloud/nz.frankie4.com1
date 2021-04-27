@@ -26,6 +26,9 @@
                             </div>
                             <div class="grid-x accordion accordion-body rte" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
                                 {{ block.settings.content }}
+                                {% if block.settings.image != null %}
+                                    <img src="{{ block.settings.image | img_url: '1000x1000', crop: 'center' }}"/>
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -127,6 +130,11 @@
                         "type": "richtext",
                         "id": "content",
                         "label":"Item Content"
+                      },
+                      {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label":"Item Image"
                       }
                   ]
               }
