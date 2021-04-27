@@ -7,12 +7,16 @@
                 <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
                 <p>{{section.settings.section_paragraph}}</p>
             </div>
+            {% assign block_count = 0 %}
             {% for block in section.blocks %}
-            <div class="row"> 
+            {% assign block_count = block_count | plus: 1 %}
+            <div class="row{% if block_count > 1 %} show-for-medium{% endif %}">
                 <div class="column">
                     <div class="flip-card">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front" style="background-image: url('{{block.settings.image1 | img_url: '500x'}}'); background-size: cover"></div>
+                            <div class="flip-card-front text-right" style="background-image: url('{{block.settings.image1 | img_url: '500x'}}'); background-size: cover">
+                                <span class="show-for-small-only click-span">Click me</span>
+                            </div>
                             <div class="flip-card-back">
                                 <div class="quote_div">
                                     <img class="mobile-width quotes" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
@@ -33,7 +37,9 @@
                 <div class="column">
                     <div class="flip-card">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front" style="background-image: url('{{block.settings.image2 | img_url: '500x'}}'); background-size: cover"></div>
+                            <div class="flip-card-front text-right" style="background-image: url('{{block.settings.image2 | img_url: '500x'}}'); background-size: cover">
+                                <span class="show-for-small-only click-span">Click me</span>
+                            </div>
                             <div class="flip-card-back">
                                 <div class="quote_div">
                                     <img class="mobile-width quotes" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
@@ -54,7 +60,9 @@
                 <div class="column">
                     <div class="flip-card">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front" style="background-image: url('{{block.settings.image3 | img_url: '500x'}}'); background-size: cover"></div>
+                            <div class="flip-card-front text-right" style="background-image: url('{{block.settings.image3 | img_url: '500x'}}'); background-size: cover">
+                                <span class="show-for-small-only click-span">Click me</span>
+                            </div>
                             <div class="flip-card-back">
                                 <div class="quote_div">
                                     <img class="mobile-width quotes" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
@@ -75,7 +83,9 @@
                 <div class="column">
                     <div class="flip-card">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front" style="background-image: url('{{block.settings.image4 | img_url: '500x'}}'); background-size: cover"></div>
+                            <div class="flip-card-front text-right" style="background-image: url('{{block.settings.image4 | img_url: '500x'}}'); background-size: cover">
+                                <span class="show-for-small-only click-span">Click me</span>
+                            </div>
                             <div class="flip-card-back">
                                 <div class="quote_div">
                                     <img class="mobile-width quotes" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
@@ -136,7 +146,7 @@
         }
 
         .row {
-            height: 80vw;
+            height: 700px;
         }
 
         .flip-card {
@@ -150,6 +160,14 @@
             -ms-flex: 100%;
             flex: 100%;
             max-width: 100%;
+        }
+
+        .row {
+            height: 1300px;
+        }
+
+        .flip-card {
+            margin: auto;
         }
     }
 
@@ -167,9 +185,8 @@
         width: 100%;
         height: 100%;
         text-align: center;
-        transition: transform 0.6s;
+        transition: transform 0.8s;
         transform-style: preserve-3d;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     }
 
     .flip-card:hover .flip-card-inner {
@@ -204,7 +221,13 @@
     }
 
     .quote_div {
-        padding: 5px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .click-span {
+        color: white;
+        padding: 2px 5px 2px 5px!important;
+        background-color: #333;
     }
 </style>
 
