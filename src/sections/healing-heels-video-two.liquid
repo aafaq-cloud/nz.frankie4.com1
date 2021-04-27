@@ -5,7 +5,7 @@
     {% if section.settings.video != blank %}
       <div class="video-container">
         <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-               playsinline controls="controls"
+               playsinline controls controlslist="nodownload"
                width="1280" height="720"
                data-src="{{section.settings.video }}">
         </video>
