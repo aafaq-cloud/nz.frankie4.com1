@@ -20,7 +20,7 @@ Navigation to display on small and medium viewports
             <ul class="mobile-nav-links">
                 {% for link in linklists[section.settings.main_linklist].links %}
                     <li>
-                        <a {% if link.links != blank %}class="has-children"{% endif %} href="{{ link.url }}">{{ link.title | escape }}</a>
+                        <a {% if link.links != blank %}class="has-children"{% endif %} href="{{ link.url }}"><b>{{ link.title | escape }}</b></a>
                         {% if link.links != blank %}
                             <span class="toggle">{% include 'icon-chevron' %}</span>
 
@@ -28,7 +28,7 @@ Navigation to display on small and medium viewports
                                 {% for child_link in link.links %}
                                     {% if child_link.type == 'collection_link' or child_link.type == 'product_link' or link.title == 'Our Difference' %}
                                     <li>
-                                        <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                                        <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">-&nbsp;{{ child_link.title | escape }}</a>
                                         {% if child_link.links != blank %}
                                             <span class="toggle">{% include 'icon-chevron' %}</span>
                                             <ul class="sub-links grandchild-links">
@@ -49,24 +49,24 @@ Navigation to display on small and medium viewports
 
                 {% if shop.customer_accounts_enabled %}
                     <li>
-                        <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                        <a href="/account"><b>{{ 'layout.customer.account' | t }}</b></a>
                         <span class="toggle">{% include 'icon-chevron' %}</span>
 
                         <ul class="sub-links child-links">
 
                             {% if customer %}
                                 <li>
-                                    <a href="/account">{{ 'layout.customer.view_account' | t }}</a>
+                                    <a href="/account">-&nbsp;{{ 'layout.customer.view_account' | t }}</a>
                                 </li>
                                 <li>
-                                    <a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+                                    <a href="/account/logout">-&nbsp;{{ 'layout.customer.log_out' | t }}</a>
                                 </li>
                             {% else %}
                                 <li>
-                                    <a href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+                                    <a href="/account/register">-&nbsp;{{ 'layout.customer.create_account' | t }}</a>
                                 </li>
                                 <li>
-                                    <a href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+                                    <a href="/account/login">-&nbsp;{{ 'layout.customer.log_in' | t }}</a>
                                 </li>
                             {% endif %}
                         </ul>
