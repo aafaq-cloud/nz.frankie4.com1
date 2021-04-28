@@ -166,13 +166,13 @@
                     <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="margin-right: 1%; width: 48.5%; float: left">
                           <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
+                                 playsinline controls controlslist="nodownload"
                                  data-src="{{video1 }}">
                           </video>
                         </div>
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 48.5%; float: left">
                           <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
+                                 playsinline controls controlslist="nodownload"
                                  data-src="{{video2 }}">
                           </video>
                         </div>
@@ -183,7 +183,7 @@
                     <div class="glide__slide non-mobile-screen" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 50%;">
                           <video class="lazyload" preload="none" autoplay="" loop="" muted=""
-                                 playsinline controls="controls"
+                                 playsinline controls controlslist="nodownload"
                                  data-src="{{video1 }}">
                           </video>
                         </div>
@@ -565,12 +565,12 @@
                 {% if video1 != blank and video2 != blank%}
                     <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls controlslist="nodownload">
                                 <source src="{{ video1 }}" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls controlslist="nodownload">
                                 <source src="{{ video2 }}" type="video/mp4">
                             </video>
                         </div>
@@ -580,7 +580,7 @@
                 {% if video1 != blank and video2 == blank %}
                     <div class="glide__slide mobile-screen-only" style="padding: 0 10px 0 5px">
                         <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" style="width: 100%;">
-                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls="controls">
+                            <video autoplay="" loop="" muted="" plays-inline="" playsinline controls controlslist="nodownload">
                                 <source src="{{ video1 }}" type="video/mp4">
                             </video>
                         </div>
