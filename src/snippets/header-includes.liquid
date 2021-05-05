@@ -124,3 +124,29 @@
 
 
 {% endif %}
+
+<script>
+  window.addEventListener("klaviyoForms", function(e) { 
+    if (e.detail.type == 'submit') {
+      console.log(e.detail);
+
+      fetch('https://api.yotpo.com/core/v3/stores/store_id/customers', {
+        method: 'PATCH', 
+        body: JSON.stringify({
+          "customer": {
+            "external_id": "0",
+            "email": e.detail.metaData.$email,
+            "phone_number": "0",
+            "accepts_sms_marketing": true, // subject to user tick box
+            "accepts_email_marketing": true // subject to user tick box
+          }
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then(results => results.json())
+      .then(console.log);
+    }
+  });
+</script>
