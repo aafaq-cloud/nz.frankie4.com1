@@ -70,6 +70,12 @@ export class HeaderSection extends AbstractComponent {
         .parent()
         .toggleClass("open");
     });
+
+    instance.mobileNav.find(".toggle-link").on("click", function() {
+      $(this)
+        .parent()
+        .toggleClass("open");
+    });
   }
 
   initStickyHeader() {
