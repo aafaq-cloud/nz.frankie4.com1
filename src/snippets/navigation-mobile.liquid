@@ -20,14 +20,14 @@ Navigation to display on small and medium viewports
             <ul class="mobile-nav-links">
                 {% for link in linklists[section.settings.main_linklist_mobile].links %}
                     <li>
-                        <a {% if link.links != blank %}class="has-children toggle-link"{% endif %}><b>{{ link.title | escape }}</b></a>
+                        <a {% if link.links != blank %}class="has-children toggle-link"{% else %}href="{{ link.url }}"{% endif %}><b>{{ link.title | escape }}</b></a>
                         {% if link.links != blank %}
                         <span class="toggle">{% include 'icon-chevron' %}</span>
 
                         <ul class="sub-links child-links">
                             {% if link.type == 'collection_link' and link.object.title != 'New Arrivals' %}
                                 <li>
-                                    <a href="{{ link.url }}">&nbsp;&nbsp;Shop All {{ link.object.title }}</a>
+                                    <a href="{{ link.url }}">&nbsp;&nbsp;Shop All {{ link.object.title | capitalize }}</a>
                                 </li>
                             {% endif %}
 
