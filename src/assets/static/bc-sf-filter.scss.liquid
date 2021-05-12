@@ -25,3 +25,17 @@ $searchBoxMobileHeight: 50px;
 .bc-sf-filter-option-block {
     border-bottom: none !important;
 }
+
+/* Boost #72971 */
+@media (max-width: 767px){
+  .search-autocomplete-view.search-focussed {
+    display: none;
+  }
+}
+/* End Boost #72971 */
+
+{% comment %} @media (min-width: 767px) and (max-width: 1023px){
+  .bc-sf-search-suggestion-popover {
+    display: none!important;
+  }
+} {% endcomment %}
