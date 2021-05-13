@@ -18,7 +18,7 @@
   </script>
 
   <!-- AdRoll -->
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     adroll_adv_id = "KYQPLT7375F5FMUSRQTBIQ";
     adroll_pix_id = "YOYPVOIKXNA3RAMDLFTWKQ";
     adroll_version = "2.0";
@@ -41,7 +41,7 @@
       o.parentNode.insertBefore(e, o);
     })(window, document);
     adroll.track("pageView");
-  </script>
+  </script>-->
 
   <meta name="facebook-domain-verification" content="9dui1kndwycovatkzja6616dx6vp38" />
 
@@ -68,7 +68,7 @@
   </script>
 
   <!-- AdRoll -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     adroll_adv_id = "SYGAV2T4FZER5DJLSBAQW7";
     adroll_pix_id = "PBZJSQALEBF3TKDQON5AXQ";
     adroll_version = "2.0";
@@ -91,7 +91,7 @@
       o.parentNode.insertBefore(e, o);
     })(window, document);
     adroll.track("pageView");
-  </script>
+  </script>-->
 
   <meta name="facebook-domain-verification" content="ppodlana65wmec6627hz3i5pjr4pq5" />
 
@@ -122,31 +122,30 @@
       })(window,document,'script','dataLayer','GTM-M3J2K9K');</script>
   <!-- End Google Tag Manager -->
 
-
-{% endif %}
-
-<script>
+  <script>
   window.addEventListener("klaviyoForms", function(e) { 
     if (e.detail.type == 'submit') {
       console.log(e.detail);
 
-      fetch('https://api.yotpo.com/core/v3/stores/store_id/customers', {
-        method: 'PATCH', 
+      fetch('https://api.smsbump.com/v2/formsPublic/subscribe', {
+        method: 'POST', 
         body: JSON.stringify({
-          "customer": {
-            "external_id": "0",
-            "email": e.detail.metaData.$email,
-            "phone_number": "0",
-            "accepts_sms_marketing": true, // subject to user tick box
-            "accepts_email_marketing": true // subject to user tick box
-          }
+          'form_id': 42053,
+          'phone': e.detail.metaData.$phone_number,
+          'country': "AU",
+          "email": e.detail.metaData.$email,
+          "accepts_sms_marketing": true,
+          "accepts_email_marketing": true
         }),
         headers: {
-          'Content-type': 'application/json; charset=UTF-8'
+          "Content-Type": "application/json",
+          "X-SMSBump-Platform": "shopify"
         }
       })
       .then(results => results.json())
       .then(console.log);
     }
   });
-</script>
+  </script>
+
+{% endif %}
