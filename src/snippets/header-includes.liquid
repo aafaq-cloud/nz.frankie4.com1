@@ -48,6 +48,40 @@
   <!-- Klaviyo US integration --> 
   <script type="text/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=S2ZxTM"></script>
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M6F6RFG');</script>
+  <!-- End Google Tag Manager -->
+
+  <script>
+  window.addEventListener("klaviyoForms", function(e) { 
+    if (e.detail.type == 'submit') {
+      console.log(e.detail);
+
+      fetch('https://api.smsbump.com/v2/formsPublic/subscribe', {
+        method: 'POST', 
+        body: JSON.stringify({
+          'form_id': 42731,
+          'phone': e.detail.metaData.$phone_number,
+          'country': "US",
+          "email": e.detail.metaData.$email,
+          "accepts_sms_marketing": true,
+          "accepts_email_marketing": true
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "X-SMSBump-Platform": "shopify"
+        }
+      })
+      .then(results => results.json())
+      .then(console.log);
+    }
+  });
+  </script>
+
 {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
 
   <!-- NZ -->
@@ -95,6 +129,40 @@
 
   <meta name="facebook-domain-verification" content="ppodlana65wmec6627hz3i5pjr4pq5" />
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P9MHBDS');</script>
+  <!-- End Google Tag Manager -->
+
+  <script>
+  window.addEventListener("klaviyoForms", function(e) { 
+    if (e.detail.type == 'submit') {
+      console.log(e.detail);
+
+      fetch('https://api.smsbump.com/v2/formsPublic/subscribe', {
+        method: 'POST', 
+        body: JSON.stringify({
+          'form_id': 42730,
+          'phone': e.detail.metaData.$phone_number,
+          'country': "NZ",
+          "email": e.detail.metaData.$email,
+          "accepts_sms_marketing": true,
+          "accepts_email_marketing": true
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "X-SMSBump-Platform": "shopify"
+        }
+      })
+      .then(results => results.json())
+      .then(console.log);
+    }
+  });
+  </script>
+
 {% else %}
 
   <!-- AU -->
@@ -116,10 +184,10 @@
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-M3J2K9K');</script>
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N82W97V');</script>
   <!-- End Google Tag Manager -->
 
   <script>

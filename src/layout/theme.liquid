@@ -101,10 +101,30 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
-    {% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
-    {% unless the_snippet_content contains 'Liquid error' %}
-        {{ the_snippet_content }}
-    {% endunless %}
+  {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+    <!-- US -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6F6RFG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+    <!-- NZ -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9MHBDS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  {% else %}
+    <!-- AU -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N82W97V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --> 
+  {% endif %}
+
+  {% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
+  {% unless the_snippet_content contains 'Liquid error' %}
+    {{ the_snippet_content }}
+  {% endunless %}
   <a class="in-page-link visually-hidden skip-link" href="#main">{{ 'general.accessibility.skip_to_content' | t }}</a>
   {% section 'header' %}
 
@@ -121,7 +141,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    {% include 'script-tags', layout: 'theme' %}
+  {% include 'script-tags', layout: 'theme' %}
   {% include 'shopify-wishlist' %}
   {% include 'currencies' %}
   {% include 'back-in-stock-helper' %}
