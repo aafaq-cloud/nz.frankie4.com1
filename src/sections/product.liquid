@@ -70,6 +70,7 @@
                             {% endif %}
 
                           {% if product.type != "GIFT CARD" %}
+                          {% if product.type != "Free Gift Card" %}
                           <div class="text-small color-secondary-text mt-10 mb-10">
                             {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                                 <!-- US -->
@@ -82,6 +83,7 @@
                                 Payment options with Afterpay, ZipPay and Klarna
                             {% endif %}
                           </div>
+                          {% endif %}
                           {% endif %}
                         </h5>
 
@@ -152,7 +154,7 @@
                         {% endfor %}
                       </div>
                       <div class="glide__bullets" data-glide-el="controls[nav]">
-                        {% for image in product.images %}
+                        {% for media in product.media %}
                           <button class="glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
                         {% endfor %}
                       </div>
@@ -229,6 +231,7 @@
 
                             </h5>
                           {% if product.type != "GIFT CARD" %}
+                          {% if product.type != "Free Gift Card" %}
                           <div class="text-small color-secondary-text mb-20">
                             {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                                 <!-- US -->
@@ -241,6 +244,7 @@
                                 Payment options with Afterpay, ZipPay and Klarna
                             {% endif %}
                           </div>
+                          {% endif %}
                           {% endif %}
 
                         </div>
@@ -359,6 +363,7 @@
 
                             <div class="grid-x grid-margin-x align-right align-middle mb-20">
                             {% if product.type != "GIFT CARD" %}
+                              {% if product.type != "Free Gift Card" %}
                               <div class="cell shrink">
                                 {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
                                 {% unless product.tags contains 'bis-hidden' %}
@@ -410,7 +415,7 @@
                                 </div>
                               {% endif %}
 
-
+                              {% endif %}
                             {% endif %}
                             </div>
 
@@ -488,6 +493,7 @@
                                 {% endfor %}
                             </select>
 
+                            {% if product.type != "Free Gift Card" %}
                             <div class="grid-x grid-margin-x grid-margin-y">
 
                                 <div class="cell small-6">
@@ -538,6 +544,7 @@
                                 </div>
 
                             </div>
+                            {% endif %}
 
                         </div>
                     </form>

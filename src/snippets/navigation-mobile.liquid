@@ -18,62 +18,61 @@ Navigation to display on small and medium viewports
           </div>
 
             <ul class="mobile-nav-links">
-                {% for link in linklists[section.settings.main_linklist].links %}
+                {% for link in linklists[section.settings.main_linklist_mobile].links %}
                     <li>
-                        <a {% if link.links != blank %}class="has-children"{% endif %} href="{{ link.url }}">{{ link.title | escape }}</a>
+                        <a {% if link.links != blank %}class="has-children toggle-link"{% else %}href="{{ link.url }}"{% endif %}><b>{{ link.title | escape }}</b></a>
                         {% if link.links != blank %}
-                            <span class="toggle">{% include 'icon-chevron' %}</span>
+                        <span class="toggle">{% include 'icon-chevron' %}</span>
 
-                            <ul class="sub-links child-links">
-
-                              {% if link.type == 'collection_link' %}
+                        <ul class="sub-links child-links">
+                            {% if link.type == 'collection_link' and link.object.title != 'New Arrivals' %}
                                 <li>
-                                  <a href="{{ link.url }}">
-                                    <div class="collection-link">Shop All {{ link.object.title }}</div>
-                                  </a>
+                                    <a href="{{ link.url }}">&nbsp;&nbsp;Shop All {{ link.object.title | capitalize }}</a>
                                 </li>
-                              {% endif %}
+                            {% endif %}
 
-                                {% for child_link in link.links %}
-                                    <li>
-                                        <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
-                                        {% if child_link.links != blank %}
-                                            <span class="toggle">{% include 'icon-chevron' %}</span>
-                                            <ul class="sub-links grandchild-links">
-                                                {% for grandchild_link in child_link.links %}
-                                                    <li>
-                                                        <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                            {% for child_link in link.links %}
+                                {% if child_link.type == 'collection_link' or child_link.type == 'product_link' or link.title == 'Our Difference' or child_link.type == 'http_link' %}
+                                <li>
+                                    <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">&nbsp;&nbsp;{{ child_link.title | escape }}</a>
+                                    {% if child_link.links != blank %}
+                                        <span class="toggle">{% include 'icon-chevron' %}</span>
+                                        <ul class="sub-links grandchild-links">
+                                            {% for grandchild_link in child_link.links %}
+                                                <li>
+                                                    <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                         {% endif %}
                     </li>
                 {% endfor %}
 
                 {% if shop.customer_accounts_enabled %}
                     <li>
-                        <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                        <a class="toggle-link"><b>{{ 'layout.customer.account' | t }}</b></a>
                         <span class="toggle">{% include 'icon-chevron' %}</span>
 
                         <ul class="sub-links child-links">
 
                             {% if customer %}
                                 <li>
-                                    <a href="/account">{{ 'layout.customer.view_account' | t }}</a>
+                                    <a href="/account">&nbsp;&nbsp;{{ 'layout.customer.view_account' | t }}</a>
                                 </li>
                                 <li>
-                                    <a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+                                    <a href="/account/logout">&nbsp;&nbsp;{{ 'layout.customer.log_out' | t }}</a>
                                 </li>
                             {% else %}
                                 <li>
-                                    <a href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+                                    <a href="/account/register">&nbsp;&nbsp;{{ 'layout.customer.create_account' | t }}</a>
                                 </li>
                                 <li>
-                                    <a href="/account/login">{{ 'layout.customer.log_in' | t }}</a>
+                                    <a href="/account/login">&nbsp;&nbsp;{{ 'layout.customer.log_in' | t }}</a>
                                 </li>
                             {% endif %}
                         </ul>

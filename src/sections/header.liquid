@@ -43,7 +43,7 @@
         </div>
 
         <ul class="align-right toolbar-items-right toolbar-items cell shrink">
-          <li class="toolbar-item hide-for-mobile-navigation">
+          <li class="toolbar-item hide-for-mobile-navigation" {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' or request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %} style="margin-right: 10px;"{% endif %}>
             {% include 'currency-picker' %}
           </li>
           <li class="toolbar-item toolbar-item-search">
@@ -148,6 +148,12 @@
         "type": "link_list",
         "id": "main_linklist",
         "label": "Main Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist_mobile",
+        "label": "Main Menu Mobile",
         "default": "main-menu"
       },
       {

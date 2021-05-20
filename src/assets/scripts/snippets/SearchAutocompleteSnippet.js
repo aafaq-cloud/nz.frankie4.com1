@@ -138,65 +138,6 @@ export class SearchAutocompleteSnippet extends AbstractComponent {
           <button type="submit" class="underlay toolbar-item-icon" :class="{'active': ((keyword_focused == false || keyword.length <= 0) && resultsFocused == false)}" :tabindex="keyword_focused || resultsFocused ? -1 : 0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 60 60" class="icon"><path d="M58.42 58.045L41.598 40.55c4.291-4.303 6.95-10.235 6.95-16.777C48.547 10.664 37.882 0 24.773 0 11.664 0 1 10.664 1 23.774c0 13.109 10.664 23.773 23.774 23.773a23.664 23.664 0 0 0 15.151-5.47l16.863 17.537a1.13 1.13 0 0 0 1.6.032c.45-.434.464-1.15.032-1.601zM24.774 45.283c-11.861 0-21.51-9.649-21.51-21.51 0-11.86 9.649-21.509 21.51-21.509 11.86 0 21.509 9.649 21.509 21.51 0 11.86-9.65 21.509-21.51 21.509z" fill="#2C2F35" fill-rule="nonzero"/></svg></button>
           <button type="button" class="search-autocomplete-clear underlay toolbar-item-icon" @click="clearSearch" :class="{'active': (keyword.length > 0 || resultsFocused)}" :tabindex="keyword_focused || resultsFocused ? -1 : 0"><svg  xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 100 100" class="icon"><path  d="M61.88,50l35.65-35.65c3.28-3.28,3.28-8.6,0-11.88c-3.28-3.28-8.6-3.28-11.88,0L50,38.12L14.35,2.46 c-3.28-3.28-8.6-3.28-11.88,0c-3.28,3.28-3.28,8.6,0,11.88L38.12,50L2.46,85.65c-3.28,3.28-3.28,8.6,0,11.88 c3.28,3.28,8.6,3.28,11.88,0L50,61.88l35.65,35.65c3.28,3.28,8.6,3.28,11.88,0s3.28-8.6,0-11.88L61.88,50z"/></svg></button>
         </div>
-
-        <div :class="{'active': keyword_focused || resultsFocused}" class="search-autocomplete-overlay hide-for-large"></div>
-
-        <div class="search-autocomplete-results" :class="{'open': (keyword_focused && keyword || resultsFocused) }">
-        <div v-if="this.results.results_count == 0" class="no-results">
-            {{this.results.results_message}}
-        </div>
-        <template v-if="results.results_count > 0">
-            <div v-if="results.product && results.product.length > 0" class="results-section">
-                <ul>
-                    <result-product-item
-                        v-for="(item, index) in results.product"
-                        :title="item.title"
-                        :image="item.thumbnail"
-                        :url="item.url"
-                        :brand="item.brand"
-                        :price="item.price"
-                        :key="item.url"
-                        :ref="'product-' + item.url"
-                        @result-blur="resultBlur"
-                        @result-key-down="resultKeyDown"
-                        @result-click="linkCustomAction"
-                      />
-                </ul>
-            </div>
-            <div v-if="results.page && results.page.length > 0" class="results-section">
-                <h5 class="color-secondary-text results-section-title m-0">Pages</h5>
-                <ul>
-                    <result-page-item
-                        v-for="(item, index) in results.page"
-                        :title="item.title"
-                        :excerpt="item.excerpt"
-                        :url="item.url"
-                        :key="item.url"
-                        :ref="'page-' + item.url"
-                        @result-blur="resultBlur"
-                        @result-key-down="resultKeyDown"/>
-                </ul>
-            </div>
-            <div v-if="results.article && results.article.length > 0" class="results-section">
-                <h5 class="color-secondary-text results-section-title m-0">Articles</h5>
-                <ul>
-                    <result-article-tile
-                        v-for="(item, index) in results.article"
-                        :title="item.title"
-                        :image="item.thumbnail"
-                        :url="item.url"
-                        :key="item.url"
-                        :ref="'article-' + item.url"
-                        @result-blur="resultBlur"
-                        @result-key-down="resultKeyDown"/>
-                </ul>
-            </div>
-
-            <div class="buttons">
-              <button type="submit" class="button-view-all button button-hollow button-small button-expanded" tabindex="-1" ref="submit" @keydown="resultKeyDown($event)" @blur="resultBlur($event)">View All</button>
-            </div>
-        </template>
-        </div>
       </form>
       `,
       watch: {
