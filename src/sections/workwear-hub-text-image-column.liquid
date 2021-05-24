@@ -1,0 +1,61 @@
+<div class="section m-mt-0 section-about-us-page-group">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
+                <div class="cell-image cell medium-auto image-half-width" 
+                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
+                            background-position: bottom;">
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 large-6 column-right">
+                <div class="section-line mti-20 mbi-30 m-mb-20 m-mt-30"></div>
+                <div class="text-center">
+                    <h1>{{section.settings.section_title_2}}</h1>
+                    <p>{{section.settings.section_paragraph_2}}</p>
+                    <span><h5><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></h5></span>
+                </div>
+                <div class="section-line mti-50 mbi-0 m-mb-0 m-mt-30"></div>
+                <div class="mobile-screen-only" style="height: 20px;"></div>
+            </div>
+            <div class="cell small-12 medium-6 large-6 column-left mobile-screen-only">
+                <div class="cell-image cell medium-auto image-half-width" 
+                    style="background-image: url('{{section.settings.image_3 | img_url: '1400x'}}');
+                            background-position: bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+     {
+         "name": "Workwear Hub Section 2",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_title_2",
+                "label": "Title 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_3",
+                "label": "Image Section 2"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph_2",
+                "label": "Paragraph 2"
+            },
+            {
+                "type": "text",
+                "id": "link1_name",
+                "label": "Link Section 2 Text"
+            },
+            {
+                "type": "text",
+                "id": "link1",
+                "label": "Link Section 2"
+            }
+        ]
+     }
+ {% endschema %}

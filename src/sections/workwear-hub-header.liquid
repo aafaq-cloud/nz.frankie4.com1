@@ -1,14 +1,13 @@
-<div  class="section section-healing-heels-header no-margin" data-autoload-class="HealingHeelsHeaderSection">
-
-  <div class="healing-heels-header-image-container" style="background-image: url({{section.settings.image | img_url: '1400x500'}})"></div>
-  <div class="healing-heels-header-content">
-    <div class="grid-container text-center">
-    <h2 class="h1">{{section.settings.title}}</h2>
-    <div class="lead">{{ section.settings.content }}</div>
+<div class="section mti-0 mbi-0 m-auto section-about-us-page-group m-mt-0" style="max-width: 2000px;">
+        <div class="cell-image cell medium-auto landing-image" 
+            style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');
+                    background-position: bottom;">
+                <div class="text-center landing-text">
+                    <h1>{{section.settings.section_main_title}}</h1>
+                    <h4>{{section.settings.section_subtitle}}</h4>
+                </div>
+        </div>
     </div>
-  </div>
-
-</div>
 
 
 {% schema %}
@@ -16,21 +15,21 @@
 {
   "name": "Workwear Hub Header",
   "settings": [
-  {
-    "type": "text",
-    "id": "title",
-    "label": "Title"
-  },
-  {
-    "type": "richtext",
-    "id": "content",
-    "label": "Content"
-  },
-  {
-    "type": "image_picker",
-    "id": "image",
-    "label": "Image"
-  }
+    {
+        "type": "text",
+        "id": "section_main_title",
+        "label": "Page Title"
+    },
+    {
+        "type": "text",
+        "id": "section_subtitle",
+        "label": "Page Subtitle"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Page Landing Background Image"
+    }
   ]
 }
 
