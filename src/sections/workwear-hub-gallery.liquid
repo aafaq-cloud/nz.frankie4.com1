@@ -101,9 +101,15 @@
                 </div>
             </div>
             {% if block_count == 1 %}
-            <div class="text-center m-auto mti-20 mbi-20 m-mb-0 show-for-small-only" style="width: 100%;">
+            <div class="text-center m-auto mti-20 mbi-20 m-mb-0 show-for-small-only section-step-inside" style="width: 100%;">
                 <img class="mobile-width" src="{{section.settings.quote_image_1 | img_url: '60x'}}"/>
                 <div class="glide1" data-autoload-class="SimpleGlideSection" style="width: 100%;">
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+                        {% comment %} <button class="glide__arrow--left" data-glide-dir="<" style="position: absolute; top: 5200px; left: 5px;">{% render 'icon-chevron-right' %}</button>
+                        <button class="glide__arrow--right" data-glide-dir=">" style="position: absolute; top: 5200px; right: 5px;">{% render 'icon-chevron-right' %}</button> {% endcomment %}
+                    </div>
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li class="glide__slide">
@@ -150,25 +156,6 @@
                         <button class="glide__bullet" data-glide-dir="=2"></button>
                         <button class="glide__bullet" data-glide-dir="=3"></button>
                     </div>
-                    <style>
-                        .review_slider .glide__bullet--active {
-                            background-color: black!important;
-                        } 
-                        .glide__bullet {
-                            background-color: grey;
-                        }
-                        .glide__bullet:hover, .glide__bullet:focus {
-                            background-color: black;
-                            border-color: black;
-                        }
-                        .slider_image {
-                            width: 100%;
-                            height: 300px;
-                            background-size: contain;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                        }
-                    </style>
                 </div>
                 <img class="mobile-width" src="{{section.settings.quote_image_2 | img_url: '60x'}}"/>
             </div> 
