@@ -1,5 +1,105 @@
-{% unless settings.promo_content == blank %}
-  <div class="promo-strip text-small text-center">
-    {{settings.promo_content}}
-  </div>
-{% endunless %}
+{% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+  <!-- US -->
+  {% unless settings.promo_content == blank %}
+    <div class="promo-strip text-small text-center show-for-small-only">
+      <div id="container">
+        <div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;SHIPPING DIRECT FROM THE US&nbsp;&nbsp;</div>
+          <div>DEDICATED US CUSTOMER SERVICE TEAM</div>
+          <div>&nbsp;&nbsp;SEATTLE STORE COMING SOON&nbsp;&nbsp;</div>
+        </div>
+      </div>
+      <style>
+        #container
+        {
+            float: left;
+            width: 300px;
+            height: 32px;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+
+        #container > div
+        {
+            width: 500px;
+            height: 32px;
+            white-space: nowrap;
+            animation: slide infinite 8s alternate;
+        }
+
+        #container > div > div
+        {
+            display: inline-block;
+            width: 295px;
+            height: 32px;
+        }
+
+        @keyframes slide {
+          0% {
+            margin-left: 0px;
+          }
+          50% {
+            margin-left: -310px;
+          }
+          100% {
+            margin-left: -600px;
+          }
+        }
+      </style>
+    </div>
+    <div class="promo-strip text-small text-center show-for-medium" style="overflow:auto">
+      {{settings.promo_content}}
+    </div>
+  {% endunless %}
+{% else %}
+  {% unless settings.promo_content == blank %}
+    <div class="promo-strip text-small text-center" style="overflow:auto">
+      {{settings.promo_content}}
+    </div>
+    {% comment %} <div class="promo-strip text-small text-center show-for-small-only">
+      <div id="container">
+        <div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;WAREHOUSE CLOSED FOR STOCKTAKE,&nbsp;&nbsp;</div>
+            <div>ORDERS DISPATCHED FROM JUNE 2ND</div>
+        </div>
+      </div>
+      <style>
+        #container
+        {
+            float: left;
+            width: 300px;
+            height: 32px;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+
+        #container > div
+        {
+            width: 500px;
+            height: 32px;
+            white-space: nowrap;
+            animation: slide infinite 8s alternate;
+        }
+
+        #container > div > div
+        {
+            display: inline-block;
+            width: 295px;
+            height: 32px;
+        }
+
+        @keyframes slide {
+          0% {
+            margin-left: 0px;
+          }
+          /*50% {
+            margin-left: -100px;
+          }*/
+          100% {
+            margin-left: -300px;
+          }
+        }
+      </style>
+    </div> {% endcomment %}
+  {% endunless %}
+{% endif %}
