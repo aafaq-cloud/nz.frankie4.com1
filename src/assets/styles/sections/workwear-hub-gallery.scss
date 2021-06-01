@@ -1,140 +1,142 @@
-.row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    padding: 0 4px;
-    margin-bottom: 20px;
-}
-
-/* Create four equal columns that sits next to each other */
-.column {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
-}
-
-.column img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-    .column {
-        -ms-flex: 50%;
-        flex: 50%;
-        max-width: 50%;
-    }
-
+.section-workwear-hub-gallery {
     .row {
-        height: 700px;
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        padding: 0 4px;
+        margin-bottom: 20px;
     }
-
-    .flip-card {
-        max-height: 80vw!important;
-    }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+    
+    /* Create four equal columns that sits next to each other */
     .column {
-        -ms-flex: 100%;
-        flex: 100%;
+        -ms-flex: 25%; /* IE10 */
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+    }
+    
+    .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+    
+    /* Responsive layout - makes a two column-layout instead of four columns */
+    @media screen and (max-width: 800px) {
+        .column {
+            -ms-flex: 50%;
+            flex: 50%;
+            max-width: 50%;
+        }
+    
+        .row {
+            height: 700px;
+        }
+    
+        .flip-card {
+            max-height: 80vw!important;
+        }
+    }
+    
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+        .column {
+            -ms-flex: 100%;
+            flex: 100%;
+            max-width: 100%;
+        }
+    
+        .row {
+            height: 1300px;
+        }
+    
+        .flip-card {
+            margin: auto;
+        }
+    }
+    
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
         max-width: 100%;
+        max-height: 25vw;
+        perspective: 1000px;
     }
-
-    .row {
-        height: 1300px;
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
     }
-
-    .flip-card {
-        margin: auto;
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
     }
-}
-
-.flip-card {
-    background-color: transparent;
-    width: 300px;
-    height: 300px;
-    max-width: 100%;
-    max-height: 25vw;
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.flip-card-front {
-    background-size: cover;
-}
-
-.flip-card-back {
-    background-color: #dddddd;
-    color: black;
-    transform: rotateY(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
-
-.quotes {
-    width: 20%;
-    max-width: 30px;
-}
-
-.quote_p {
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.quote_div {
-    padding: 5px 10px 5px 10px;
-}
-
-.click-span {
-    color: white;
-    padding: 2px 5px 2px 5px!important;
-    background-color: #333;
-}
-
-.review_slider .glide__bullet--active {
-    background-color: black!important;
-} 
-
-.glide__bullet {
-    background-color: grey;
-}
-
-.glide__bullet:hover, .glide__bullet:focus {
-    background-color: black;
-    border-color: black;
-}
-
-.slider_image {
-    width: 100%;
-    height: 300px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .flip-card-front {
+        background-size: cover;
+    }
+    
+    .flip-card-back {
+        background-color: #dddddd;
+        color: black;
+        transform: rotateY(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+    
+    .quotes {
+        width: 20%;
+        max-width: 30px;
+    }
+    
+    .quote_p {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .quote_div {
+        padding: 5px 10px 5px 10px;
+    }
+    
+    .click-span {
+        color: white;
+        padding: 2px 5px 2px 5px!important;
+        background-color: #333;
+    }
+    
+    .review_slider .glide__bullet--active {
+        background-color: black!important;
+    } 
+    
+    .glide__bullet {
+        background-color: grey;
+    }
+    
+    .glide__bullet:hover, .glide__bullet:focus {
+        background-color: black;
+        border-color: black;
+    }
+    
+    .slider_image {
+        width: 100%;
+        height: 300px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
