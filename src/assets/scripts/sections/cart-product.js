@@ -8,7 +8,7 @@ export default Vue.component("cart-product", {
     <div class="error" v-if="errorMessage">{{errorMessage}}</div>
     <div class="cell medium-auto column-product">
         <div class="grid-x align-middle">
-            <div class="cell shrink column-image hide-for-small-only" v-if="product.image">
+            <div class="cell shrink column-image" v-if="product.image">
               <a :href="product.url" class="cart-product-image-wrapper" tabindex="-1">
                 <img class="lazyload cart-product-image" :data-src="product.image | formatImageSize('147x220')" />
               </a>
@@ -43,7 +43,7 @@ export default Vue.component("cart-product", {
         <button type="button" :disabled="loading" class="js-quantity-add" @click="add">+</button>
       </div>
     </div>
-    <div class="cell medium-auto column-total">
+    <div class="cell medium-auto column-total hide-for-small-only">
       <label class="show-for-small-only">Line total: </label>
       <output v-html="formatMoneyValue(product.line_price)"></output>
     </div>

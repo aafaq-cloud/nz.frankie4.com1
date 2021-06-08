@@ -342,6 +342,27 @@
     color: red;
     width: 100%;
   }
+
+  @media screen and (max-width: 650px) {
+    .column-product {
+      width: 100%;
+    }
+    .column-image {
+      width: 50%;
+    }
+    .column-details {
+      width: 40%;
+    }
+    .column-price {
+      width: 30%;
+      margin-left: 10%;
+    }
+    .column-quantity, .column-total {
+      width: 40%;
+      margin-left: 10%;
+    }
+  }
+  
 }
 
 .cart-product-image-wrapper {
