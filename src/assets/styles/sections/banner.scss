@@ -102,7 +102,7 @@
 }
 
 .banner-title {
-  font-weight: 800;
+  font-weight: 500;
   font-size: rem-calc(48);
 
   @include breakpoint(580px) {
@@ -126,6 +126,8 @@
 
 .banner-subtitle {
   font-size: rem-calc(14px);
+  font-family: 'Montserrat-light', Helvetica Light;
+  letter-spacing: 1px;
 
   @include breakpoint(medium) {
     font-size: rem-calc(18px);
