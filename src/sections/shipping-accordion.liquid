@@ -43,7 +43,14 @@
               <div class="flex-container">
                 <div class="shrink">{% include "icon-phone" %}</div>
                 <div class="auto">
-                    <a href="tel:1300 721 898">1300 721 898</a>
+                    {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                        <!-- US -->
+                        <a href="tel:844 364 4544">Toll Free: 844 364 4544 </a><br>
+                        <a href="tel:206 486 8044">Store/Local#: 206 486 8044</a>
+                    {% else %}
+                        <!-- AU NZ -->
+                        <a href="tel:1300 721 898">1300 721 898</a>
+                    {% endif %}
                     <div class="text-small">
                         {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
                             <!-- US -->
