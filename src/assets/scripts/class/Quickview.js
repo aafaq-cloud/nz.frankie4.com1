@@ -78,8 +78,8 @@ export class QuickView {
               setTimeout(() => {
                 // Trigger an event for the binding of the wishlist
                 const event = document.createEvent("Event");
-                event.initEvent("shopify-wishlist.refresh", null, null);
-                document.body.dispatchEvent(event);
+                // event.initEvent("shopify-wishlist.refresh", null, null);
+                // document.body.dispatchEvent(event);
                 const event2 = document.createEvent("Event");
                 event2.initEvent("products.refresh", null, null);
                 document.dispatchEvent(event2);

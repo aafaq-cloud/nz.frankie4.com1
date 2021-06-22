@@ -141,11 +141,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   {% include 'script-tags', layout: 'theme' %}
-  {% include 'shopify-wishlist' %}
+  {% comment %} {% include 'shopify-wishlist' %} {% endcomment %}
   {% include 'currencies' %}
   {% include 'back-in-stock-helper' %}
   {% include 'bc-sf-filter' %}
 
   {% render 'upsell-now', customer: customer, product: product, template: template, cart: cart %}
+  {% render 'app_wishlist-king' %}
 </body>
 </html>

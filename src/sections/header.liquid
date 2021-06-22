@@ -51,9 +51,9 @@
             {% include 'search-autocomplete' %}
           </li>
           <li class="toolbar-item">
-            <a href="/pages/wishlist" data-shopify-wishlist-link class="toolbar-item-inner wishlist-link">
+            {% comment %} <a href="/pages/wishlist" data-shopify-wishlist-link class="toolbar-item-inner wishlist-link">
                 {% include 'icon-heart' %}
-            </a>
+            </a> {% endcomment %}
           </li>
 
           {% if shop.customer_accounts_enabled %}
