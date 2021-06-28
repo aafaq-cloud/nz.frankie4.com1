@@ -32,7 +32,6 @@ Navigation to display on small and medium viewports
                             {% endif %}
 
                             {% for child_link in link.links %}
-                                {% if child_link.type == 'collection_link' or child_link.type == 'product_link' or link.title == 'Our Difference' or child_link.type == 'http_link' %}
                                 <li>
                                     <a {% if child_link.links != blank %}class="has-children"{% endif %} href="{{ child_link.url }}">&nbsp;&nbsp;{{ child_link.title | escape }}</a>
                                     {% if child_link.links != blank %}
@@ -46,7 +45,6 @@ Navigation to display on small and medium viewports
                                         </ul>
                                     {% endif %}
                                 </li>
-                                {% endif %}
                             {% endfor %}
                         </ul>
                         {% endif %}
