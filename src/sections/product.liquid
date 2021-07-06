@@ -493,7 +493,6 @@
                                 {% endfor %}
                             </select>
 
-                            {% if product.type != "Free Gift Card" %}
                             <div class="grid-x grid-margin-x grid-margin-y">
 
                                 <div class="cell small-6">
@@ -501,7 +500,7 @@
                                   <label class="option-label show-for-sr" for="{{ label_prefix }}Quantity">
                                     {{ 'products.product.quantity' | t }}
                                   </label>
-
+                                  {% if product.type != "Free Gift Card" %}
                                   <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
                                     <button type="button" class="js-quantity-remove" aria-controls="{{ label_prefix }}Quantity">
                                       <span class="show-for-sr">Remove one from quantity</span>
@@ -518,16 +517,16 @@
                                       {% render 'icon-plus' %}
                                     </button>
                                   </div>
-
+                                  {% endif %}
                                 </div>
 
                                 <div class="cell small-6">
-
                                     <button type="submit"
                                             class="add-to-cart button button-primary button-expanded has-icon-absolute"
                                             name="add"
                                             data-add-to-cart
-                                            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                                            {% unless current_variant.available %}disabled="disabled"{% endunless %}
+                                            {% if product.type == "Free Gift Card" %}style="display: none"{% endif %}>
                                         <span data-add-to-cart-text>
                                             {% if current_variant.available %}
                                                 {{ 'products.product.add_to_cart' | t }}
@@ -544,7 +543,6 @@
                                 </div>
 
                             </div>
-                            {% endif %}
 
                         </div>
                     </form>

@@ -51,6 +51,55 @@
       {{settings.promo_content}}
     </div>
   {% endunless %}
+{% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+  <!-- NZ -->
+  {% unless settings.promo_content == blank %}
+    <div class="promo-strip text-small text-center show-for-small-only">
+      <div id="container">
+        <div>
+          <div>OFFICIAL FOOTWEAR PARTNER FOR</div>
+          <div>NZ FASHION WEEK'S 20TH ANNIVERSARY&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+      </div>
+      <style>
+        #container
+        {
+            float: left;
+            width: 300px;
+            height: 32px;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+
+        #container > div
+        {
+            width: 500px;
+            height: 32px;
+            white-space: nowrap;
+            animation: slide infinite 8s alternate;
+        }
+
+        #container > div > div
+        {
+            display: inline-block;
+            width: 295px;
+            height: 32px;
+        }
+
+        @keyframes slide {
+          0% {
+            margin-left: 0px;
+          }
+          100% {
+            margin-left: -300px;
+          }
+        }
+      </style>
+    </div>
+    <div class="promo-strip text-small text-center show-for-medium" style="overflow:auto">
+      {{settings.promo_content}}
+    </div>
+  {% endunless %}
 {% else %}
   {% unless settings.promo_content == blank %}
     <div class="promo-strip text-small text-center" style="overflow:auto">
