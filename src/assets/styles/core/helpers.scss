@@ -455,6 +455,25 @@
 
 }
 
+.section-line-mobile {
+
+  position: relative;
+  padding: 20px 20px 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:before {
+    content: '';
+    display: block;
+    height: 70px;
+    width: 2px;
+    background: #808080;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
 .review-block__label {
   padding: 0!important;
 }
