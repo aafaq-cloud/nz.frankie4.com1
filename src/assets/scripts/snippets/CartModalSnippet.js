@@ -321,7 +321,7 @@ export class CartModalSnippet extends AbstractComponent {
                 </div>
                 -->
                 <div class="cell medium-6 small-order-1 medium-order-2">
-                  <button name="viewcart" class="button button-primary button-expanded"><a href="/cart" style="text-decoration: none">View Cart</a></button>
+                  <a href="/cart"><span name="viewcart" class="button button-primary button-expanded">View Cart</span></a>
                 </div>
               </div>
 
