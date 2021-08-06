@@ -23,7 +23,6 @@
 
       &__slide {
 
-        border-bottom: 1px solid lightgray;
         opacity: 0.5;
 
 
@@ -134,10 +133,6 @@
     // Tab Content Shoe Sliders
     .sneaker-guide-content-slider {
 
-      img {
-        //width: 100%;
-      }
-
       .glide {
         &__bullets {
           bottom: 0;
@@ -161,6 +156,17 @@
 
 
 
+  }
+
+  .slider_height {
+    height: 500px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .slider_height {
+      height: 220px;
+      margin-top: 20px;
+    }
   }
 
 

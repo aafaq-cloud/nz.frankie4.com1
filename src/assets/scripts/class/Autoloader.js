@@ -39,6 +39,7 @@ import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
 import {StepInsideSliderSection} from "../sections/step-inside-slider";
 import {SimpleGlideSection} from "../sections/simple-glider";
+import {SimpleGlideAutoplaySection} from "../sections/simple-glider-autoplay";
 import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
@@ -86,6 +87,7 @@ export class Autoloader {
       StepInsideSection,
       StepInsideSliderSection,
       SimpleGlideSection,
+      SimpleGlideAutoplaySection,
       WeStandForSection
     };
 
