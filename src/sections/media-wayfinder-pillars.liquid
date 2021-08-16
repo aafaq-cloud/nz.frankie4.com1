@@ -1,4 +1,4 @@
-<div class="section section-media-wayfinder">
+<div class="section section-media-wayfinder-pillars">
 
     <div class="media-block-container grid-container">
         <div class="grid-x grid-margin-x grid-margin-y">
@@ -41,19 +41,20 @@
 
                     {% elsif block.settings.image != blank %}
 
-                        <picture>
+                        {% comment %} <picture>
                             {% if block.settings.mobile_image %}
                                 <source media="(max-width:640px)" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
                             {% endif %}
                             <img data-src="{{block.settings.image | img_url: image_width}}" alt="{{block.settings.title}}" class="lazyload media-block-image">
-                        </picture>
+                        </picture> {% endcomment %}
+                        <img data-src="{{block.settings.image | img_url: image_width}}" alt="{{block.settings.title}}" class="lazyload media-block-image">
 
                     {% endif %}
 
 
 
-                    {% if block.settings.title != blank or block.settings.link_text != blank %}
-                        <div class="media-block-content-wrapper grid-y align-right align-middle h-100">
+                    {% comment %} {% if block.settings.title != blank or block.settings.link_text != blank %}
+                        <div class="media-block-content-wrapper grid-y align-right align-middle" style="height: 70%">
                             <div class="media-block-content cell text-center">
                                 {% if block.settings.title != blank %}
                                     <h2 class="extrabold m-0">{{ block.settings.title }}</h2>
@@ -69,13 +70,17 @@
                                 {% endif %}
                             </div>
                         </div>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                     {% comment %} Added by PSFED @ Shopify - April 12 2019 {% endcomment %}
                     {% if block.settings.link != blank and block.settings.link_text == blank %}
                       </a>
                     {% endif %}
+                    <div class="text-center">
+                        <h5 style="margin-top: 14px; font-family: 'Montserrat'">{{ block.settings.title }}</h5>
+                        <p style="line-height: 18px; margin-top: 10px; margin-bottom: 10px">{{ block.settings.paragraph }}</p>
+                        <span style="letter-spacing: 2px; text-decoration: underline">{{ block.settings.link_text }}</span>
+                    </div>
                 </div>
-
             {% endfor %}
         </div>
     </div>
@@ -84,7 +89,7 @@
 
 {% schema %}
     {
-        "name": "Media Wayfinder",
+        "name": "Media Wayfinder2.0",
         "settings": [
         ],
         "blocks": [
@@ -132,6 +137,11 @@
                     },
                     {
                         "type": "text",
+                        "id": "paragraph",
+                        "label": "Paragraph"
+                    },
+                    {
+                        "type": "text",
                         "id": "link_text",
                         "label": "Link Text"
                     },
@@ -145,7 +155,7 @@
         ],
         "presets": [
             {
-                "name": "Media Wayfinder",
+                "name": "Media Wayfinder2.0",
                 "category": "Sections"
             }
         ]
