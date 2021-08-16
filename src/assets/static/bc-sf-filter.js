@@ -22,13 +22,13 @@ var bcSfFilterTemplate = {
     'productGridItemHtml': ' <div class="cell small-6 large-3 grid-x align-stretch {{itemHandle}} {{isPrimary}}">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
         '<div class="cell product-tile__image-container">' + 
+
         '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
         '{{itemImages}}' +
-        '<button data-product-quickview data-product-url="{{itemUrl}}" class="product-tile__quickview button button-secondary button-small">Quickview</button>' +
 
         '</div>' +
 
-        '<div class="cell product-tile__body grid-y">' +
+        '<div class="cell product-tile__body grid-y" style>' +
         '<h6 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h6>' +
         '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
         '<div class="product-tile__info">' +
@@ -218,11 +218,11 @@ function buildImages(data) {
 
     var html = '';
     // Build Main Image
-    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '335x400_crop_center') : bcSfFilterConfig.general.no_image_url;
-    html += '<img src="' + thumbUrl + '" class=" product-tile-image" />';
+    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x420_crop_center') : bcSfFilterConfig.general.no_image_url;
+    html += '<img src="' + thumbUrl + '" class="product-tile-image lazyload" />';
     // Build Image Swap
-    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src']) : thumbUrl;
-    //html += '<img src="' + flipImageUrl + '" class=" product-tile-image secondary" />';
+    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x420_crop_center') : bcSfFilterConfig.general.no_image_url;
+    html += '<img src="' + flipImageUrl + '" class="product-tile-image lazyload product-tile__quickview" style="margin-top: -4px;" />';
 
 
     return html;
