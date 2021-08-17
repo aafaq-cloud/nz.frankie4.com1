@@ -218,11 +218,11 @@ function buildImages(data) {
 
     var html = '';
     // Build Main Image
-    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x420_crop_center') : bcSfFilterConfig.general.no_image_url;
+    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
     html += '<img src="' + thumbUrl + '" class="product-tile-image lazyload" />';
     // Build Image Swap
-    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x420_crop_center') : bcSfFilterConfig.general.no_image_url;
-    html += '<img src="' + flipImageUrl + '" class="product-tile-image lazyload product-tile__quickview" style="margin-top: -4px;" />';
+    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+    html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
 
 
     return html;
