@@ -48,7 +48,8 @@ export class ProductTile extends EventEmitter {
         };
         const selectorsSingle = {
             image: ".product-tile-image",
-            quickview: "[data-product-quickview]",
+            image2: ".product-tile-image-2",
+            // quickview: "[data-product-quickview]",
             title: ".product-tile__title",
             link: ".cover-link",
             stickers: ".product-stickers",
@@ -122,8 +123,9 @@ export class ProductTile extends EventEmitter {
             let image = product.featured_image !== undefined ? product.featured_image : window.theme.noImageUrl;
 
             instance.selectorsSingle.title.innerHTML = product.title;
-            instance.selectorsSingle.image.setAttribute('src', getSizedImageUrl(image, '335x400_crop_center'));
-            instance.selectorsSingle.quickview.setAttribute('data-product-url', instance.urlBase + product.handle);
+            instance.selectorsSingle.image.setAttribute('src', getSizedImageUrl(product.images[0], '375x400_crop_center'));
+            instance.selectorsSingle.image2.setAttribute('src', getSizedImageUrl(product.images[1], '375x400_crop_center'));
+            // instance.selectorsSingle.quickview.setAttribute('data-product-url', instance.urlBase + product.handle);
             instance.selectorsSingle.link.setAttribute('href', instance.urlBase + product.handle);
             instance.selectorsSingle.price.innerHTML = instance.updatePrice(product);
             instance.selectorsSingle.stickers.innerHTML = instance.updateStickers(product);
