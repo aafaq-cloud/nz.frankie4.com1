@@ -8,7 +8,7 @@
   height: 100%;
 
   @include breakpoint(medium) {
-    padding: 20px;
+    padding: 0;
   }
 
   &-image {
@@ -73,6 +73,7 @@
   &__title {
     flex-grow: 1;
     font-size: rem-calc(16);
+    font-family: 'Montserrat';
   }
 
   &__price {
@@ -80,7 +81,7 @@
   }
 
   &__body {
-    margin-top: 20px;
+    margin: 20px;
     flex-grow: 1;
   }
 
@@ -104,7 +105,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
     min-width: 124px;
 
     transition: opacity 200ms;

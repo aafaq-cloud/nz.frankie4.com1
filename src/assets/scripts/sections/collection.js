@@ -162,7 +162,7 @@ export class CollectionSection extends AbstractComponent {
           }
 
           // Refresh Quickview
-          AppQuickview.initQuickViewButtons();
+          // AppQuickview.initQuickViewButtons();
 
           document.dispatchEvent(
             new Event("products.refresh"),
