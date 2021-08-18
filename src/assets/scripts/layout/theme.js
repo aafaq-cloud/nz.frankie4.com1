@@ -14,7 +14,7 @@ import "lazysizes";
 import {Autoloader} from "../class/Autoloader";
 import {ShopifyCart} from "../class/ShopifyCart";
 import MicroModal from "micromodal";
-import {QuickView} from "../class/Quickview";
+// import {QuickView} from "../class/Quickview";
 import {ShopifyCurrency} from "../class/Currency";
 import {ProductList} from "../class/ProductList";
 
@@ -30,7 +30,7 @@ $(document).ready(() => {
   // Initialise the core application
   window.AppCurrency = new ShopifyCurrency();
   window.AppShopifyCart = new ShopifyCart();
-  window.AppQuickview = new QuickView();
+  // window.AppQuickview = new QuickView();
   window.AppProductList = new ProductList();
 
   // Autoload Classes

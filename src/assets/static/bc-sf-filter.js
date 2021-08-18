@@ -486,7 +486,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     }
 
     // Refresh Quickview
-    AppQuickview.initQuickViewButtons();
+    // AppQuickview.initQuickViewButtons();
     AppProductList.initProductList();
 
     //console.log(data);

@@ -49,7 +49,7 @@ export class ProductTile extends EventEmitter {
         const selectorsSingle = {
             image: ".product-tile-image",
             image2: ".product-tile-image-2",
-            quickview: "[data-product-quickview]",
+            // quickview: "[data-product-quickview]",
             title: ".product-tile__title",
             link: ".cover-link",
             stickers: ".product-stickers",
