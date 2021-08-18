@@ -33,7 +33,9 @@
   <div class="cell product-tile__image-container">
     <a href="{{product_url}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>
     <img data-src="{{product.images[0] | img_url: '375x400', scale: 2, crop: 'center'}}" class="lazyload product-tile-image">
+    {% if product.images[1] != blank %}
     <img data-src="{{product.images[1] | img_url: '375x400', scale: 2, crop: 'center'}}" class="lazyload product-tile-image product-tile-image-2 product-tile__quickview" style="margin-top: -4px;">
+    {% endif %}
   </div>
   <div class="cell product-tile__body grid-y">
     <h6 class="product-tile__title grid-x align-middle align-center">{{ product.title }}</h6>

@@ -220,10 +220,15 @@ function buildImages(data) {
     // Build Main Image
     var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
     html += '<img src="' + thumbUrl + '" class="product-tile-image lazyload" />';
-    // Build Image Swap
-    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
-    html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
-
+    if (images.length > 1) {
+        // Build Image Swap
+        var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+        html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
+    } else {
+        // Build Main Image
+        var flipImageUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+        html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
+    }
 
     return html;
 }
