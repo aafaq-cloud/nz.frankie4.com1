@@ -1,8 +1,7 @@
-.section-media-wayfinder-pillars {
+.section-media-wayfinder-trending {
 
   @include breakpoint(small down) {
-    margin-left: map-get($grid-margin-gutters, small);
-    margin-right: map-get($grid-margin-gutters, small);
+    margin: map-get($grid-margin-gutters, small) 0;
   }
 
   .media-block-container {

@@ -1,4 +1,4 @@
-<div data-autoload-class="BannerSection" class="section section-banner no-margin">
+<div data-autoload-class="BannerSection" class="section section-banner-2 no-margin">
 
 
     <div class="slider">
@@ -34,15 +34,13 @@
 
 
                         <div class="banner-content-wrapper">
-                            <div class="grid-container text-left" style="width: 100%; margin-bottom: 100px">
-                                <h1 class="banner-title m-0">{{block.settings.title}}</h1>
+                            <div class="grid-container text-left">
+                                <h1 class="m-0 h1-v2">{{block.settings.title}}</h1>
                                 {% if block.settings.subtitle != blank %}
-                                    <h4 class="banner-subtitle mt-10 mb-0" style="font-weight: 400">{{block.settings.subtitle}}</h4>
+                                    <h4 class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</h4>
                                 {% endif %}
                                 {% if block.settings.button-text != blank %}
-                                    <a class="button mt-30" href="{{block.settings.link}}"
-                                         style="padding: 0; border: none; border-bottom-style: solid; border-width: 1px; justify-content: flex-start; min-width: 0; letter-spacing: 2px">
-                                         {{block.settings.button-text}}</a>
+                                    <a class="button button-underline mt-30" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
                                 {% endif %}
 
                             </div>

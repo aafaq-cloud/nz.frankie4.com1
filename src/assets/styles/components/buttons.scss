@@ -229,3 +229,74 @@ button {
     }
   }
 }
+
+.button-underline {
+  background: none;
+  border: none;
+  border-bottom: 2px white solid;
+  color: white;
+  padding: 4px 1px 4px 1px;
+  min-width: 0;
+  margin-top: 15px;
+  letter-spacing: 1px;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      background: white;
+      color: $darker-grey;
+      border-bottom: 2px $darker-grey solid;
+    }
+  }
+}
+
+.button-underline-dark {
+  background: none;
+  border: none;
+  border-bottom: 1px $darker-grey solid;
+  color: $darker-grey;
+  padding: 4px 1px 4px 1px;
+  min-width: 0;
+  margin-top: 15px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 200ms, color 200ms, border 200ms, opacity 200ms;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      background: $darker-grey;
+      color: white;
+      border-bottom: 1px white solid;
+    }
+  }
+}
+
+.button-box {
+  background: white;
+  border-color: $darker-grey;
+  color: $darker-grey;
+  letter-spacing: 1px;
+
+  &:hover {
+    &:not(:disabled):not(.no-hover) {
+      background: $darker-grey;
+      color: white;
+    }
+  }
+  padding: 10px 20px;
+  min-width: 0!important;
+}
+
+@media screen and (max-width: 640px) {
+  .button-underline {
+    font-size: 12px;
+  }
+  
+  .button-underline-dark {
+    font-size: 12px;
+  }
+  
+  .button-box {
+    font-size: 12px;
+  }
+}

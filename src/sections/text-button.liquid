@@ -1,0 +1,42 @@
+<div class="section mti-100 mbi-70 m-mt-80 m-mb-50">
+
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center" style="width: 100%">
+                <h4 class="h2-v2">{{ section.settings.heading }}</h4>
+                <p class="mt-5 mb-0">{{ section.settings.content }}</p>
+                <a class="button button-box">{{ section.settings.link_text }}</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Text & Button",
+        "settings": [
+            {
+                "id": "heading",
+                "type": "text",
+                "label": "Heading"
+            },
+            {
+                "id": "content",
+                "type": "richtext",
+                "label": "Content"
+            },
+            {
+                "id": "link_text",
+                "type": "text",
+                "label": "Link Text"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Text & Button",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

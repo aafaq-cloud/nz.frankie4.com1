@@ -95,31 +95,30 @@
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(black, 0.1);
   color: white;
 }
 
 .banner-title {
   font-weight: 500;
-  font-size: rem-calc(18);
-  font-family: 'Montserrat', 'Helvetica';
+  font-size: rem-calc(48);
 
   @include breakpoint(580px) {
-    font-size: rem-calc(28);
+    font-size: rem-calc(70);
   }
 
   @include breakpoint(medium) {
-    font-size: rem-calc(32);
+    font-size: rem-calc(80);
   }
 
   @include breakpoint(large) {
-    font-size: rem-calc(38);
+    font-size: rem-calc(90);
   }
 
   @include breakpoint(xlarge) {
-    font-size: rem-calc(42);
+    font-size: rem-calc(100);
   }
 
 }
@@ -128,7 +127,7 @@
 .banner-subtitle {
   font-size: rem-calc(14px);
   font-family: 'Montserrat', 'Helvetica';
-  letter-spacing: normal;
+  letter-spacing: 1px;
   font-weight: 100;
 
   @include breakpoint(medium) {

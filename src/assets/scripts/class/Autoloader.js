@@ -24,6 +24,7 @@ import {FeaturedProductsSection} from "../sections/featured-products";
 import {ContactSection} from "../sections/contact";
 import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
+import {BannerEditorialSection} from "../sections/banner-editorial";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
@@ -73,6 +74,7 @@ export class Autoloader {
       SneakerGuideTabsSection,
       HighHeelsDifference,
       BannerSection,
+      BannerEditorialSection,
       ShippingSection,
       FootHealthHubSliderSection,
       FootHealthHubRoadTestersSection,

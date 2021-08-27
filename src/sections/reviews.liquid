@@ -1,0 +1,84 @@
+<div data-autoload-class="BannerSection" class="section section-reviews no-margin mbi-70 m-mb-20" style="background-color: #e7eae9">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center" style="width: 100%">
+                <h4 class="h2-v2 mti-60 m-mt-40"><span style="font-weight: 500">{{section.settings.title1}}</span><br><span style="font-weight: 300">{{section.settings.title2}}</span></h4>
+            </div>
+        </div>
+        <div class="slider">
+            <div data-glide-el="track" class="glide__track">
+                <div class="glide__slides">
+                    {% for block in section.blocks %}
+                        <div class="glide__slide" style="position: relative">
+                            <picture>
+                                <img data-src="{{section.settings.image |  img_url: '400x' }}" class="lazyload banner-image">
+                            </picture>
+                            <div class="banner-content-wrapper">
+                                <div class="grid-container text-center">
+                                    <span class="quote-text">{{block.settings.section_review}}</span>
+                                    <p class="name-text">{{block.settings.section_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if section.blocks.size > 1 %}
+            <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]">
+                {% for block in section.blocks %}
+                    <button class="slider__bullet glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+                {% endfor %}
+            </div> 
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Reviews",
+        "settings": [
+            {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+            },
+            {
+                "id": "title1",
+                "type": "text",
+                "label": "Review number"
+            },
+            {
+                "id": "title2",
+                "type": "text",
+                "label": "Review text"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "banner_slide",
+                "name": "Review Slide",
+                "settings": [
+                    {
+                        "id": "section_review",
+                        "type": "richtext",
+                        "info": "Max character count 180",
+                        "label": "Review"
+                    },
+                    {
+                        "id": "section_name",
+                        "type": "text",
+                        "label": "Name"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Reviews",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

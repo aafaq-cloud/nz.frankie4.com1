@@ -1,26 +1,14 @@
-<div class="section section-instagram large-margin">
-
+<div class="section section-instagram no-margin">
     <div class="grid-container">
-        <div class="title-block medium-text-center mb-30">
-            <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
-            <div class="lead color-secondary-text mt-5 mb-0">{{section.settings.section_subheading}}</div>
-            {% comment %}
-            <a href="{{ settings.social_instagram_link }}" class="arrow-link color-secondary-text mt-20">Visit our Instagram page {% include 'icon-chevron-right' %}</a>
-            {% endcomment %}
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-left" style="width: 100%">
+                <h4 class="h5-v2 instagram-title"><a class="instagram-link" href="{{ section.settings.section_headinglink }}">{{ section.settings.section_heading }}</a></h4>
+            </div>
         </div>
     </div>
-
-    {% comment %} <div
-        class="yotpo yotpo-pictures-widget"
-        data-gallery-id="5d30323401f0952d49ff7e78">
-    </div> {% endcomment %}
-
-    <div
-        class="yotpo yotpo-pictures-widget"
-        data-gallery-id="{{section.settings.gallery_id}}">
+    <div class="yotpo yotpo-pictures-widget"
+         data-gallery-id="{{section.settings.gallery_id}}">
     </div>
-
-
 </div>
 
 {% schema %}
@@ -28,18 +16,14 @@
         "name": "Instagram",
         "settings": [
             {
-                "type": "header",
-                "content": "Section Title"
+                "type": "text",
+                "id": "section_heading",
+                "label": "Ttile"
             },
             {
                 "type": "text",
-                "id": "section_title",
-                "label": "Title"
-            },
-            {
-                "type": "richtext",
-                "id": "section_subheading",
-                "label": "Subheading"
+                "id": "section_headinglink",
+                "label": "Link"
             },
             {
                 "type": "text",

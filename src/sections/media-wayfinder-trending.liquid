@@ -1,36 +1,46 @@
-<div class="section section-media-wayfinder-pillars mbi-70 m-mb-10 m-mt-10">
-    <div class="media-block-container grid-container">
-        <div class="grid-x grid-margin-x grid-margin-y show-for-small-only">
+<div class="section section-media-wayfinder-trending mbi-70 m-mb-40">
+
+    <div class="media-block-container grid-container" style="max-width: 900px">
+        <div class="grid-x grid-margin-x grid-margin-y">
             <div class="text-center" style="width: 100%">
-                <h4 class="h2-v2 m-mt-20">{{section.settings.title}}</h4>
+                <h4 class="h2-v2">{{section.settings.title}}</h4>
                 <div class="title-underline"></div>
             </div>
         </div>
         <div class="grid-x grid-margin-x grid-margin-y">
             {% for block in section.blocks %}
-                <div class="cell media-block medium-3 small-6">
+                <div class="cell media-block medium-4 small-6 {% if block.settings.hide_for_mobile %}show-for-medium{% endif %}">
                     <a href="{{ block.settings.link }}" style="text-decoration: none">
-                        <img data-src="{{block.settings.image | img_url: '300x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image">
+                        <img data-src="{{block.settings.image | img_url: '450x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image" style="width: 100%">
+                        <div class="text-center">
+                            <h5 class="h5-v2 mti-5">{{ block.settings.title }}</h5>
+                        </div>
                     </a>
-                    <div class="text-center">
-                        <h5 class="h5-v2 mti-5">{{ block.settings.title }}</h5>
-                        <p class="show-for-medium" style="line-height: 18px; margin-top: 10px; margin-bottom: 10px">{{ block.settings.paragraph }}</p>
-                        <a class="button-underline-dark show-for-medium" href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
-                    </div>
                 </div>
             {% endfor %}
         </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center" style="width: 100%">
+                <a class="button button-box mt-30">{{section.settings.button}}</a>
+            </div>
+        </div>
     </div>
+
 </div>
 
 {% schema %}
     {
-        "name": "Four pillars",
+        "name": "Trending products",
         "settings": [
             {
                 "type": "text",
                 "id": "title",
-                "label": "Mobile Title"
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "button",
+                "label": "Button Text"
             }
         ],
         "blocks": [
@@ -42,6 +52,11 @@
                         "type": "image_picker",
                         "id": "image",
                         "label": "Background Image"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "hide_for_mobile",
+                        "label": "Hide for mobile"
                     },
                     {
                         "type": "text",
@@ -68,7 +83,7 @@
         ],
         "presets": [
             {
-                "name": "Four pillars",
+                "name": "Trending products",
                 "category": "Sections"
             }
         ]

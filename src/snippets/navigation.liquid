@@ -16,7 +16,7 @@ Navigation to display on large viewports
 
             {% assign menu_class = menu_class | append: " mega-menu" | strip %}
 
-            <li{% if menu_class != blank %} class="{{ menu_class }}"{% endif %}>
+            <li {% if menu_class != blank %}class="{{ menu_class }}"{% endif %}>
                 <a href="{{ link.url }}">
                   {{ link.title | escape }}
                 </a>
@@ -42,93 +42,164 @@ Navigation to display on large viewports
                     {% endif %}
                 {% endcapture %}
 
+                {% capture link_list2 %}
+                    {% if link.links != blank %}
+                        <ul class="main-nav-child-links">
+                            {% for child_link in link.links %}
+                                {% if child_link.title contains "1" %}
+                                <li class="child-link">
+                                    {% assign link_title = child_link.title | split:"1" %}
+                                    <a href="{{ child_link.url }}" class="hover-link">{{ link_title }}</a>
+                                    {% if child_link.links != blank %}
+                                        <ul class="main-nav-grandchild-links">
+                                            {% for grandchild_link in child_link.links %}
+                                                <li>
+                                                    <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endcapture %}
+
+                {% capture link_list3 %}
+                    {% if link.links != blank %}
+                        <ul class="main-nav-child-links">
+                            {% for child_link in link.links %}
+                                {% if child_link.title contains "2" %}
+                                <li class="child-link">
+                                    {% assign link_title = child_link.title | split:"2" %}
+                                    <a href="{{ child_link.url }}" class="hover-link">{{ link_title }}</a>
+                                    {% if child_link.links != blank %}
+                                        <ul class="main-nav-grandchild-links">
+                                            {% for grandchild_link in child_link.links %}
+                                                <li>
+                                                    <a href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endcapture %}
 
                 {% if link.title == section.settings.mega_menu_handle %}
-                    <div class="main-nav-mega-menu main-nav-mega-menu-1 grid-x">
-                        <div class="main-nav-mega-menu-1-links cell">
+                    <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
+                        {% if link.type == 'collection_link' %}
+                            <div class="cell medium-3">
+                            <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
+                                <img src="{{ link.object.image | img_url: '300x230', crop: 'center' }}"/>
+                            </a>
+                            </div>
+                        {% endif %}
+                        <div class="cell medium-8">
                             {{ link_list }}
-                        </div>
-                        <div class="main-nav-mega-menu-1-image cell auto">
-                            {% if section.settings.mega_menu_image_url_1 %}<a href="{{ section.settings.mega_menu_image_url_1 }}">{% endif %}
-                                <img src="{{section.settings.mega_menu_image_1 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_1 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_1 | img_url: '450x'}} 450w">
-                            {% if section.settings.mega_menu_image_url_1 %}</a>{% endif %}
-                        </div>
-                        <div class="main-nav-mega-menu-1-image cell auto">
-                            {% if section.settings.mega_menu_image_url_2 %}<a href="{{ section.settings.mega_menu_image_url_2 }}">{% endif %}
-                                <img src="{{section.settings.mega_menu_image_2 | img_url: '800x'}}" srcset="{{section.settings.mega_menu_image_2 | img_url: '800x'}} 800w, {{section.settings.mega_menu_image_2 | img_url: '450x'}} 450w">
-                            {% if section.settings.mega_menu_image_url_2 %}</a>{% endif %}
                         </div>
                     </div>
                 {% elsif link.title == section.settings.mega_menu_2_handle %}
                     <div class="main-nav-mega-menu main-nav-mega-menu-2">
                         <div class="grid-x main-nav-mega-menu-2-blocks align-top">
                             {% if section.settings.mega_menu_2_image_url_1 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_1 %}<a href="{{ section.settings.mega_menu_2_image_url_1 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_1 | img_url: '450x'}}" class="lazyload">
-                                        {% if section.settings.mega_menu_2_image_url_1 %}</a>{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_2_image_1 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_2_text_1}}</span>
+                                    {% if section.settings.mega_menu_2_image_url_1 %}</a>{% endif %}
                                 </div>
                             {% endif %}
                             {% if section.settings.mega_menu_2_image_url_2 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_2 %}<a href="{{ section.settings.mega_menu_2_image_url_2 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_2 | img_url: '450x'}}" class="lazyload">
-                                        {% if section.settings.mega_menu_2_image_url_2 %}</a>{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_2_image_2 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_2_text_2}}</span>
+                                    {% if section.settings.mega_menu_2_image_url_2 %}</a>{% endif %}
                                 </div>
                             {% endif %}
                             {% if section.settings.mega_menu_2_image_url_3 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_3 %}<a href="{{ section.settings.mega_menu_2_image_url_3 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_3 | img_url: '450x'}}" class="lazyload">
-                                        {% if section.settings.mega_menu_2_image_url_3 %}</a>{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_2_image_3 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_2_text_3}}</span>
+                                    {% if section.settings.mega_menu_2_image_url_3 %}</a>{% endif %}
                                 </div>
                             {% endif %}
                             {% if section.settings.mega_menu_2_image_url_4 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_4 %}<a href="{{ section.settings.mega_menu_2_image_url_4 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_4 | img_url: '450x'}}" class="lazyload">
-                                        {% if section.settings.mega_menu_2_image_url_4 %}</a>{% endif %}
-                                </div>
-                            {% endif %}
-                            {% if section.settings.mega_menu_2_image_url_5 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
-                                    {% if section.settings.mega_menu_2_image_url_5 %}<a href="{{ section.settings.mega_menu_2_image_url_5 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_5 | img_url: '450x'}}" class="lazyload">
-                                        {% if section.settings.mega_menu_2_image_url_5 %}</a>{% endif %}
-                                </div>
-                            {% endif %}
-                            {% if section.settings.mega_menu_2_image_url_6 != blank %}
-                                <div class="main-nav-mega-menu-image cell small-4">
-                                    {% if section.settings.mega_menu_2_image_url_6 %}<a href="{{ section.settings.mega_menu_2_image_url_6 }}">{% endif %}
-                                        <img data-src="{{section.settings.mega_menu_2_image_6 | img_url: '450x'}}" class="lazyload">
-                                       {% if section.settings.mega_menu_2_image_url_6 %}</a>{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_2_image_4 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_2_text_4}}</span>
+                                    {% if section.settings.mega_menu_2_image_url_4 %}</a>{% endif %}
                                 </div>
                             {% endif %}
                         </div>
-
+                    </div>
+                {% elsif link.title == section.settings.mega_menu_3_handle %}
+                    <div class="main-nav-mega-menu main-nav-mega-menu-2">
+                        <div class="grid-x main-nav-mega-menu-2-blocks align-top">
+                            {% if section.settings.mega_menu_3_image_url_1 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_3_image_url_1 %}<a href="{{ section.settings.mega_menu_3_image_url_1 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_3_image_1 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_3_text_1}}</span>
+                                    {% if section.settings.mega_menu_3_image_url_1 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_3_image_url_2 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_3_image_url_2 %}<a href="{{ section.settings.mega_menu_3_image_url_2 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_3_image_2 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_3_text_2}}</span>
+                                    {% if section.settings.mega_menu_3_image_url_2 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_3_image_url_3 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_3_image_url_3 %}<a href="{{ section.settings.mega_menu_3_image_url_3 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_3_image_3 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_3_text_3}}</span>
+                                    {% if section.settings.mega_menu_3_image_url_3 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_3_image_url_4 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_3_image_url_4 %}<a href="{{ section.settings.mega_menu_3_image_url_4 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_3_image_4 | img_url: '450x'}}" class="lazyload">
+                                    <span class="h5-v2">{{section.settings.mega_menu_3_text_4}}</span>
+                                    {% if section.settings.mega_menu_3_image_url_4 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 {% elsif link_list != blank %}
-                  <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
-
-                    {% if link.type == 'collection_link' %}
-                      <div class="cell medium-3">
-                        <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
-                          <div class="main-nav-mega-menu-title">Shop All {{ link.object.title }}</div>
-                          <img src="{{ link.object.image | img_url: '300x230', crop: 'center' }}"/>
-                        </a>
-                      </div>
-                    {% endif %}
-                    <div class="cell medium-8">
-                    {{ link_list }}
-                    </div>
-                  </div>
-                      {% comment %}
-                        <div class="main-nav-dropdown">
-                            {{ link_list }}
+                    <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
+                        {% if link.type == 'collection_link' %}
+                            <div class="cell medium-3">
+                            <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
+                                <img src="{{ link.object.image | img_url: '300x230', crop: 'center' }}"/>
+                            </a>
+                            </div>
+                        {% endif %}
+                        <div class="cell medium-4">
+                            {{ link_list2 }}
                         </div>
-                      {% endcomment %}
+                        <div class="cell medium-4" style="background-color: #e5eaed; margin: -20px -20px -20px 0; padding: 10px">
+                            {{ link_list3 }}
+                        </div>
+                    </div>
                 {% endif %}
             </li>
         {% endfor %}
     </ul>
 </nav>
+<style>
+.main-nav-child-links {
+    column-count: 1;
+}
+</style>
