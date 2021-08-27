@@ -242,9 +242,7 @@ button {
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      background: white;
-      color: $darker-grey;
-      border-bottom: 2px $darker-grey solid;
+      opacity: 0.6;
     }
   }
 }
@@ -264,9 +262,7 @@ button {
 
   &:hover {
     &:not(:disabled):not(.no-hover) {
-      background: $darker-grey;
-      color: white;
-      border-bottom: 1px white solid;
+      opacity: 0.6;
     }
   }
 }

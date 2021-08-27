@@ -57,6 +57,7 @@
     left: 0;
     width: 100%;
     display: block;
+    object-position: bottom;
 
     @supports (object-fit: cover) {
       height: 70vh;
@@ -92,12 +93,12 @@
 
     .grid-container {
       width: 100%; 
-      margin-bottom: 100px
+      margin-bottom: 50px
     }
 
     @media screen and (max-width: 640px) {
       .grid-container {
-        margin-bottom: 50px
+        margin-bottom: 30px
       }
     }
   }
