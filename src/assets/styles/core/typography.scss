@@ -155,6 +155,7 @@ p {
   font-family: "Montserrat";
   font-size: rem-calc(25);
   line-height: (28 / 24);
+  letter-spacing: 1px;
 
   @include breakpoint(medium) {
     font-size: rem-calc(28);
@@ -206,7 +207,7 @@ p {
 
 .h5-v2 {
   font-family: "Montserrat";
-  font-size: rem-calc(12);
+  font-size: rem-calc(14);
   
   @include breakpoint(medium) {
     font-size: rem-calc(15);
@@ -214,6 +215,32 @@ p {
 
   @include breakpoint(large) {
     font-size: rem-calc(18);
+  }
+}
+
+.h6-v2 {
+  font-family: "Montserrat";
+  font-size: rem-calc(14);
+  
+  @include breakpoint(medium) {
+    font-size: rem-calc(15);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem-calc(15);
+  }
+}
+
+.h7-v2 {
+  font-family: "Montserrat";
+  font-size: rem-calc(12);
+  
+  @include breakpoint(medium) {
+    font-size: rem-calc(14);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem-calc(14);
   }
 }
 

@@ -22,6 +22,11 @@
     &-image {
       object-fit: cover;
       width: 100%;
+      transition: all 400ms ease;
+
+      &:hover {
+        filter: grayscale(1);
+      }
 
       &.mobile-media-block-image {
 

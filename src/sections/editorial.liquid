@@ -1,8 +1,8 @@
 <div data-autoload-class="BannerEditorialSection" class="section section-editorial no-margin mbi-70">
     <div class="grid-container">
         <div class="grid-x grid-margin-x grid-margin-y">
-            <div class="text-center" style="width: 100%">
-                <h4 class="h2-v2">{{section.settings.title}}</h4>
+            <div class="text-center width-100">
+                <h4 class="h4-v2">{{section.settings.title}}</h4>
                 <div class="title-underline mbi-40 m-mb-20"></div>
             </div>
         </div>
@@ -12,16 +12,16 @@
                     {% for block in section.blocks %}
                         <div class="glide__slide" style="position: relative">
                             <picture>
-                                <img data-src="{{block.settings.image |  img_url: '1400x' }}" data-srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                                <img data-src="{{block.settings.image |  img_url: '2000x' }}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
                             </picture>
                             <div class="banner-content-wrapper">
                                 <div class="grid-container text-center">
-                                    <h1 class="h2-v2">{{block.settings.title}}</h1>
+                                    <h1 class="h4-v2">{{block.settings.title}}</h1>
                                 </div>
                             </div>
                             <div class="banner-content-wrapper banner-content-wrapper-bottom">
                                 <div class="grid-container text-center">
-                                    <a class="button button-underline mbi-20" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
+                                    <a class="button button-underline mbi-30 m-mb-20" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
                                 </div>
                             </div>
                         </div>

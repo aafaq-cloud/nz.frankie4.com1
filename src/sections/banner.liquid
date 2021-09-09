@@ -27,17 +27,17 @@
                                 {% if block.settings.mobile_image %}
                                     <source media="(max-width:640px)" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
                                 {% endif %}
-                                <img data-src="{{block.settings.image |  img_url: '1400x' }}" data-srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                                <img data-src="{{block.settings.image |  img_url: '2000x' }}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
                             </picture>
 
                          {% endif %}
 
 
                         <div class="banner-content-wrapper">
-                            <div class="grid-container text-center" style="margin-bottom: 50px">
+                            <div class="grid-container text-center mbi-50">
                                 <h1 class="banner-title m-0">{{block.settings.title}}</h1>
                                 {% if block.settings.subtitle != blank %}
-                                    <h4 class="banner-subtitle mt-10 mb-0" style="font-weight: 400">{{block.settings.subtitle}}</h4>
+                                    <h4 class="banner-subtitle mt-10 mb-0 fwi-400">{{block.settings.subtitle}}</h4>
                                 {% endif %}
                                 {% if block.settings.button-text != blank %}
                                     <a class="button button-secondary mt-30" href="{{block.settings.link}}">{{block.settings.button-text}}</a>

@@ -25,9 +25,9 @@
 
                             <picture>
                                 {% if block.settings.mobile_image %}
-                                    <source media="(max-width:640px)" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
+                                    <source media="(max-width:640px)" style="object-position: {{block.settings.position2}}" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
                                 {% endif %}
-                                <img data-src="{{block.settings.image |  img_url: '1400x' }}" data-srcset="{{block.settings.image | img_url: '1400x'}} 1400w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                                <img data-src="{{block.settings.image |  img_url: '2000x' }}" style="object-position: {{block.settings.position}}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
                             </picture>
 
                          {% endif %}
@@ -40,7 +40,7 @@
                                     <h4 class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</h4>
                                 {% endif %}
                                 {% if block.settings.button-text != blank %}
-                                    <a class="button button-underline mt-30" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
+                                    <a class="button button-underline" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
                                 {% endif %}
 
                             </div>
@@ -83,6 +83,26 @@
                         "id": "mobile_image",
                         "type": "image_picker",
                         "label": "Mobile Image"
+                    },
+                    {
+                        "type": "radio",
+                        "id": "position",
+                        "options": [
+                            { "value": "bottom", "label": "Bottom"},
+                            { "value": "center", "label": "Center"},
+                            { "value": "top", "label": "Top"}
+                        ],
+                        "label": "Image Alignment"
+                    },
+                    {
+                        "type": "radio",
+                        "id": "position2",
+                        "options": [
+                            { "value": "bottom", "label": "Bottom"},
+                            { "value": "center", "label": "Center"},
+                            { "value": "top", "label": "Top"}
+                        ],
+                        "label": "Image Alignment Mobile"
                     },
                     {
                         "id": "video",

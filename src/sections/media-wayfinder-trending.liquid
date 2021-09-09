@@ -2,8 +2,8 @@
 
     <div class="media-block-container grid-container" style="max-width: 900px">
         <div class="grid-x grid-margin-x grid-margin-y">
-            <div class="text-center" style="width: 100%">
-                <h4 class="h2-v2">{{section.settings.title}}</h4>
+            <div class="text-center width-100">
+                <h4 class="h4-v2">{{section.settings.title}}</h4>
                 <div class="title-underline"></div>
             </div>
         </div>
@@ -11,16 +11,16 @@
             {% for block in section.blocks %}
                 <div class="cell media-block medium-4 small-6 {% if block.settings.hide_for_mobile %}show-for-medium{% endif %}">
                     <a href="{{ block.settings.link }}" style="text-decoration: none">
-                        <img data-src="{{block.settings.image | img_url: '450x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image" style="width: 100%">
+                        <img data-src="{{block.settings.image | img_url: '500x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image width-100">
                         <div class="text-center">
-                            <h5 class="h5-v2 mti-5">{{ block.settings.title }}</h5>
+                            <p class="mti-0 mbi-0">{{ block.settings.title }}</p>
                         </div>
                     </a>
                 </div>
             {% endfor %}
         </div>
         <div class="grid-x grid-margin-x grid-margin-y">
-            <div class="text-center" style="width: 100%">
+            <div class="text-center width-100">
                 <a class="button button-box mt-30">{{section.settings.button}}</a>
             </div>
         </div>

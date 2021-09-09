@@ -46,9 +46,9 @@ Navigation to display on large viewports
                     {% if link.links != blank %}
                         <ul class="main-nav-child-links">
                             {% for child_link in link.links %}
-                                {% if child_link.title contains "1" %}
+                                {% if child_link.title contains "col1" %}
                                 <li class="child-link">
-                                    {% assign link_title = child_link.title | split:"1" %}
+                                    {% assign link_title = child_link.title | split:"col1" %}
                                     <a href="{{ child_link.url }}" class="hover-link">{{ link_title }}</a>
                                     {% if child_link.links != blank %}
                                         <ul class="main-nav-grandchild-links">
@@ -70,9 +70,9 @@ Navigation to display on large viewports
                     {% if link.links != blank %}
                         <ul class="main-nav-child-links">
                             {% for child_link in link.links %}
-                                {% if child_link.title contains "2" %}
+                                {% if child_link.title contains "col2" %}
                                 <li class="child-link">
-                                    {% assign link_title = child_link.title | split:"2" %}
+                                    {% assign link_title = child_link.title | split:"col2" %}
                                     <a href="{{ child_link.url }}" class="hover-link">{{ link_title }}</a>
                                     {% if child_link.links != blank %}
                                         <ul class="main-nav-grandchild-links">
@@ -91,16 +91,40 @@ Navigation to display on large viewports
                 {% endcapture %}
 
                 {% if link.title == section.settings.mega_menu_handle %}
-                    <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
-                        {% if link.type == 'collection_link' %}
-                            <div class="cell medium-3">
-                            <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
-                                <img src="{{ link.object.image | img_url: '300x230', crop: 'center' }}"/>
-                            </a>
-                            </div>
-                        {% endif %}
-                        <div class="cell medium-8">
-                            {{ link_list }}
+                    <div class="main-nav-mega-menu main-nav-mega-menu-2">
+                        <div class="grid-x main-nav-mega-menu-2-blocks align-top">
+                            {% if section.settings.mega_menu_image_url_1 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_image_url_1 %}<a href="{{ section.settings.mega_menu_image_url_1 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_image_1 | img_url: '450x'}}" class="lazyload">
+                                    {% if section.settings.mega_menu_text_1 != blank %}<span class="h6-v2">{{section.settings.mega_menu_text_1}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_image_url_1 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_image_url_2 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_image_url_2 %}<a href="{{ section.settings.mega_menu_image_url_2 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_image_2 | img_url: '450x'}}" class="lazyload">
+                                    {% if section.settings.mega_menu_text_2 != blank %}<span class="h6-v2">{{section.settings.mega_menu_text_2}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_image_url_2 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_image_url_3 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_image_url_3 %}<a href="{{ section.settings.mega_menu_image_url_3 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_image_3 | img_url: '450x'}}" class="lazyload">
+                                    {% if section.settings.mega_menu_text_3 != blank %}<span class="h6-v2">{{section.settings.mega_menu_text_3}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_image_url_3 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.mega_menu_image_url_4 != blank %}
+                                <div class="main-nav-mega-menu-image cell small-3 text-center">
+                                    {% if section.settings.mega_menu_image_url_4 %}<a href="{{ section.settings.mega_menu_image_url_4 }}">{% endif %}
+                                    <img data-src="{{section.settings.mega_menu_image_4 | img_url: '450x'}}" class="lazyload">
+                                    {% if section.settings.mega_menu_text_4 != blank %}<span class="h6-v2">{{section.settings.mega_menu_text_4}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_image_url_4 %}</a>{% endif %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% elsif link.title == section.settings.mega_menu_2_handle %}
@@ -110,7 +134,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_1 %}<a href="{{ section.settings.mega_menu_2_image_url_1 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_2_image_1 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_2_text_1 != blank %}<span class="h5-v2">{{section.settings.mega_menu_2_text_1}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_2_text_1 != blank %}<span class="h6-v2">{{section.settings.mega_menu_2_text_1}}</span>{% endif %}
                                     {% if section.settings.mega_menu_2_image_url_1 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -118,7 +142,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_2 %}<a href="{{ section.settings.mega_menu_2_image_url_2 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_2_image_2 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_2_text_2 != blank %}<span class="h5-v2">{{section.settings.mega_menu_2_text_2}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_2_text_2 != blank %}<span class="h6-v2">{{section.settings.mega_menu_2_text_2}}</span>{% endif %}
                                     {% if section.settings.mega_menu_2_image_url_2 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -126,7 +150,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_3 %}<a href="{{ section.settings.mega_menu_2_image_url_3 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_2_image_3 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_2_text_3 != blank %}<span class="h5-v2">{{section.settings.mega_menu_2_text_3}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_2_text_3 != blank %}<span class="h6-v2">{{section.settings.mega_menu_2_text_3}}</span>{% endif %}
                                     {% if section.settings.mega_menu_2_image_url_3 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -134,7 +158,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_2_image_url_4 %}<a href="{{ section.settings.mega_menu_2_image_url_4 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_2_image_4 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_2_text_4 != blank %}<span class="h5-v2">{{section.settings.mega_menu_2_text_4}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_2_text_4 != blank %}<span class="h6-v2">{{section.settings.mega_menu_2_text_4}}</span>{% endif %}
                                     {% if section.settings.mega_menu_2_image_url_4 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -147,7 +171,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_3_image_url_1 %}<a href="{{ section.settings.mega_menu_3_image_url_1 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_3_image_1 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_3_text_1 != blank %}<span class="h5-v2">{{section.settings.mega_menu_3_text_1}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_3_text_1 != blank %}<span class="h6-v2">{{section.settings.mega_menu_3_text_1}}</span>{% endif %}
                                     {% if section.settings.mega_menu_3_image_url_1 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -155,7 +179,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_3_image_url_2 %}<a href="{{ section.settings.mega_menu_3_image_url_2 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_3_image_2 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_3_text_2 != blank %}<span class="h5-v2">{{section.settings.mega_menu_3_text_2}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_3_text_2 != blank %}<span class="h6-v2">{{section.settings.mega_menu_3_text_2}}</span>{% endif %}
                                     {% if section.settings.mega_menu_3_image_url_2 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -163,7 +187,7 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_3_image_url_3 %}<a href="{{ section.settings.mega_menu_3_image_url_3 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_3_image_3 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_3_text_3 != blank %}<span class="h5-v2">{{section.settings.mega_menu_3_text_3}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_3_text_3 != blank %}<span class="h6-v2">{{section.settings.mega_menu_3_text_3}}</span>{% endif %}
                                     {% if section.settings.mega_menu_3_image_url_3 %}</a>{% endif %}
                                 </div>
                             {% endif %}
@@ -171,25 +195,43 @@ Navigation to display on large viewports
                                 <div class="main-nav-mega-menu-image cell small-3 text-center">
                                     {% if section.settings.mega_menu_3_image_url_4 %}<a href="{{ section.settings.mega_menu_3_image_url_4 }}">{% endif %}
                                     <img data-src="{{section.settings.mega_menu_3_image_4 | img_url: '450x'}}" class="lazyload">
-                                    {% if section.settings.mega_menu_3_text_4 != blank %}<span class="h5-v2">{{section.settings.mega_menu_3_text_4}}</span>{% endif %}
+                                    {% if section.settings.mega_menu_3_text_4 != blank %}<span class="h6-v2">{{section.settings.mega_menu_3_text_4}}</span>{% endif %}
                                     {% if section.settings.mega_menu_3_image_url_4 %}</a>{% endif %}
                                 </div>
                             {% endif %}
                         </div>
                     </div>
-                {% elsif link_list != blank %}
+                {% elsif link.title == section.settings.mega_menu_first %}
                     <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
                         {% if link.type == 'collection_link' %}
-                            <div class="cell medium-4">
+                            <div class="cell medium-3">
                             <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
-                                <img src="{{ link.object.image | img_url: '412x316', crop: 'center' }}"/>
+                                <img src="{{ link.object.image | img_url: '300x230', crop: 'bottom' }}"/>
                             </a>
                             </div>
                         {% endif %}
-                        <div class="cell medium-4">
+                        <div class="cell medium-3">
                             {{ link_list2 }}
                         </div>
-                        <div class="cell medium-4" style="background-color: #e5eaed; margin: -20px -20px -20px 0; padding: 10px">
+                        <div class="cell medium-5">
+                            <span class="fwi-600">SHOP BY EDIT</span>
+                            {{ link_list3 }}
+                        </div>
+                    </div>
+                {% elsif link_list != blank %}
+                    <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
+                        {% if link.type == 'collection_link' %}
+                            <div class="cell medium-3">
+                            <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
+                                <img src="{{ link.object.image | img_url: '300x230', crop: 'bottom' }}"/>
+                            </a>
+                            </div>
+                        {% endif %}
+                        <div class="cell medium-3">
+                            {{ link_list2 }}
+                        </div>
+                        <div class="cell medium-5">
+                            <span class="fwi-600">SHOP BY COLOUR</span>
                             {{ link_list3 }}
                         </div>
                     </div>

@@ -17,7 +17,6 @@
   .slide {
     &__arrow {
 
-
       position: absolute;
       display: block;
       top: 50%;
@@ -57,7 +56,6 @@
     left: 0;
     width: 100%;
     display: block;
-    object-position: bottom;
 
     @supports (object-fit: cover) {
       height: 70vh;
@@ -93,12 +91,12 @@
 
     .grid-container {
       width: 100%; 
-      margin-bottom: 50px
+      margin-bottom: 80px
     }
 
     @media screen and (max-width: 640px) {
       .grid-container {
-        margin-bottom: 30px
+        margin-bottom: 60px
       }
     }
   }
@@ -130,15 +128,15 @@
   .banner-subtitle {
     font-size: rem-calc(14px);
     font-family: 'Montserrat', 'Helvetica';
-    letter-spacing: normal;
+    letter-spacing: 0.3px;
     font-weight: 400;
 
     @include breakpoint(medium) {
-      font-size: rem-calc(18px);
+      font-size: rem-calc(16px);
     }
 
     @include breakpoint(large) {
-      font-size: rem-calc(20px);
+      font-size: rem-calc(16px);
     }
   }
 

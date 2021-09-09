@@ -525,7 +525,7 @@
 
 .title-underline {
   width: 40px;
-  height: 1.5px;
+  height: 2px;
   background-color: $darker-grey;
   margin: 20px auto 25px auto;
 }
@@ -534,5 +534,64 @@
   .title-underline {
     margin-top: 0;
     margin-bottom: 14px;
+    height: 1px;
   }
+}
+
+.fwi {
+  &-100 {
+    font-weight: 100!important;
+  }
+  &-200 {
+    font-weight: 200!important;
+  }
+  &-300 {
+    font-weight: 300!important;
+  }
+  &-400 {
+    font-weight: 400!important;
+  }
+  &-500 {
+    font-weight: 500!important;
+  }
+  &-600 {
+    font-weight: 600!important;
+  }
+  &-700 {
+    font-weight: 700!important;
+  }
+  &-800 {
+    font-weight: 800!important;
+  }
+  &-900 {
+    font-weight: 900!important;
+  }
+}
+
+.lsi {
+  &-1 {
+    letter-spacing: 1px!important;
+  }
+  &-1-5 {
+    letter-spacing: 1.5px!important;
+  }
+  &-2 {
+    letter-spacing: 2px!important;
+  }
+}
+
+.width-100 {
+  width: 100%!important;
+}
+
+.text-decoration-none {
+  text-decoration: none!important;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
 }
