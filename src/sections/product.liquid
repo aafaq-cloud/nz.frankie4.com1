@@ -61,25 +61,23 @@
 
                             {% endif %}
 
-                          {% if product.type != "GIFT CARD" %}
-                          {% if product.type != "Free Gift Card" %}
-                          <div class="text-small color-secondary-text mt-10 mb-10">
-                            {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
-                                <!-- US -->
-                                Payment options with Afterpay and Klarna
-                            {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
-                                <!-- NZ -->
-                                Payment options with Afterpay and Klarna
-                            {% else %}
-                                <!-- AU -->
-                                Payment options with Afterpay, ZipPay and Klarna
-                            {% endif %}
-                          </div>
-                          {% endif %}
+                          {% if product.type != "FREE GIFT" %}
+                            <div class="text-small color-secondary-text mt-10 mb-10">
+                              {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                                  <!-- US -->
+                                  Payment options with Shop Pay and Klarna for orders over $100
+                              {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+                                  <!-- NZ -->
+                                  Payment options with Afterpay for orders over $100
+                              {% else %}
+                                  <!-- AU -->
+                                  Payment options with Afterpay, ZipPay and Klarna for orders over $100
+                              {% endif %}
+                            </div>
                           {% endif %}
                         </h5>
 
-                      {% if product.type != "GIFT CARD" %}
+                      {% if product.type != "FREE GIFT" %}
                       <div class="yotpo bottomLine "
                            data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                            data-domain="{{shop.permanent_domain | escape }}"
@@ -213,26 +211,24 @@
                                 {% endif %}
 
                             </h5>
-                          {% if product.type != "GIFT CARD" %}
-                          {% if product.type != "Free Gift Card" %}
-                          <div class="text-small color-secondary-text mb-20">
-                            {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
-                                <!-- US -->
-                                Payment options with Afterpay and Klarna
-                            {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
-                                <!-- NZ -->
-                                Payment options with Afterpay and Klarna
-                            {% else %}
-                                <!-- AU -->
-                                Payment options with Afterpay, ZipPay and Klarna
-                            {% endif %}
-                          </div>
-                          {% endif %}
+                          {% if product.type != "FREE GIFT" %}
+                            <div class="text-small color-secondary-text mb-20">
+                              {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                                  <!-- US -->
+                                  Payment options with Shop Pay and Klarna for orders over $100
+                              {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+                                  <!-- NZ -->
+                                  Payment options with Afterpay for orders over $100
+                              {% else %}
+                                  <!-- AU -->
+                                  Payment options with Afterpay, ZipPay and Klarna for orders over $100
+                              {% endif %}
+                            </div>
                           {% endif %}
 
                         </div>
 
-                        {% if product.type != "GIFT CARD" %}
+                        {% if product.type != "FREE GIFT" %}
                         <div class="yotpo bottomLine hide-for-small-only"
                              data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                              data-domain="{{shop.permanent_domain | escape }}"
@@ -329,8 +325,7 @@
                           {% endif %}
 
                           <div class="grid-x grid-margin-x align-right align-middle mb-20">
-                          {% if product.type != "GIFT CARD" %}
-                            {% if product.type != "Free Gift Card" %}
+                          {% if product.type != "FREE GIFT" %}
                             <div class="cell shrink">
                               {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
                               {% unless product.tags contains 'bis-hidden' %}
@@ -382,7 +377,6 @@
                               </div>
                             {% endif %}
 
-                            {% endif %}
                           {% endif %}
                           </div>
 
@@ -461,7 +455,7 @@
                                   <label class="option-label show-for-sr" for="{{ label_prefix }}Quantity">
                                     {{ 'products.product.quantity' | t }}
                                   </label>
-                                  {% if product.type != "Free Gift Card" %}
+                                  {% if product.type != "FREE GIFT" %}
                                   <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
                                     <button type="button" class="js-quantity-remove" aria-controls="{{ label_prefix }}Quantity">
                                       <span class="show-for-sr">Remove one from quantity</span>
@@ -487,7 +481,7 @@
                                             name="add"
                                             data-add-to-cart
                                             {% unless current_variant.available %}disabled="disabled"{% endunless %}
-                                            {% if product.type == "Free Gift Card" %}style="display: none"{% endif %}>
+                                            {% if product.type == "FREE GIFT" %}style="display: none"{% endif %}>
                                         <span data-add-to-cart-text>
                                             {% if current_variant.available %}
                                                 {{ 'products.product.add_to_cart' | t }}
