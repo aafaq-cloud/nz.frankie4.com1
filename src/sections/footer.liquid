@@ -3,32 +3,119 @@
   <div class="grid-container">
 
     <div class="grid-x grid-margin-x mb-20 footer-links">
-
       {% if section.blocks != blank %}
         {% for block in section.blocks %}
           <div class="cell large-3 mb-20 m-mb-5">
-
             <a href="{{ block.settings.footer_link_link }}">
               <h5 class="h6-v2">{{ block.settings.footer_link_title }} {% include "icon-arrow-right-2" %}</h5>
             </a>
             <div class="color-secondary-text show-for-medium" style="line-height: 20px">{{ block.settings.footer_link_text }}</div>
-
           </div>
         {% endfor %}
       {% endif %}
-
     </div>
 
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x show-for-medium">
+      {%- assign footer_linklist = section.settings.footer_linklist -%}
+      {% if linklists[footer_linklist].links.size > 0 %}
+            {% for link in linklists[footer_linklist].links %}
+              {% if link.title contains "col1" %}
+                <div class="cell large-3 mb-20 m-mb-5">
+                  <ul class="menu" style="column-count: 1">
+                    <li class="mb-40">
+                      {% assign link_title = link.title | split:"col1" %}
+                      <a style="transform: none" {% if link.url != '#' %}href="{{ link.url }}"{% endif %}><h6 class="h7-v2">{{ link.title | split:"col1" }}</h6></a>
+
+                      {% if link.links != blank %}
+                      <ul class="sub-menu color-secondary-text">
+                          {% for child_link in link.links %}
+                            <li style="height: 24px">
+                              <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
+                            </li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </div>
+              {% elsif link.title contains "col2" %}
+                <div class="cell large-3 mb-20 m-mb-5">
+                  <ul class="menu" style="column-count: 1">
+                    <li class="mb-40">
+                      {% assign link_title = link.title | split:"col2" %}
+                      <a style="transform: none" {% if link.url != '#' %}href="{{ link.url }}"{% endif %}><h6 class="h7-v2">{{ link.title | split:"col2" }}</h6></a>
+
+                      {% if link.links != blank %}
+                      <ul class="sub-menu color-secondary-text">
+                          {% for child_link in link.links %}
+                            <li style="height: 24px">
+                              <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
+                            </li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </div>
+              {% elsif link.title contains "col3" %}
+                <div class="cell large-3 mb-20 m-mb-5">
+                  <ul class="menu" style="column-count: 1">
+                    <li class="mb-40">
+                      {% assign link_title = link.title | split:"col3" %}
+                      <a style="transform: none" {% if link.url != '#' %}href="{{ link.url }}"{% endif %}><h6 class="h7-v2">{{ link.title | split:"col3" }}</h6></a>
+
+                      {% if link.links != blank %}
+                      <ul class="sub-menu color-secondary-text">
+                          {% for child_link in link.links %}
+                            <li style="height: 24px">
+                              <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
+                            </li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </div>
+              {% elsif link.title contains "col4" %}
+                <div class="cell large-3 mb-20 m-mb-5">
+                  <ul class="menu" style="column-count: 1">
+                    <li class="mb-40">
+                      {% assign link_title = link.title | split:"col4" %}
+                      <a style="transform: none" {% if link.url != '#' %}href="{{ link.url }}"{% endif %}><h6 class="h7-v2">{{ link.title | split:"col4" }}</h6></a>
+
+                      {% if link.links != blank %}
+                      <ul class="sub-menu color-secondary-text">
+                          {% for child_link in link.links %}
+                            {% if child_link.title contains "Socials" %}
+                                {% include 'social-icons' %}
+                            {% else %}
+                              <li style="height: 24px">
+                                <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
+                              </li>
+                            {% endif %}
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </div>
+              {% endif %}
+            {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="grid-x grid-margin-x hide-for-medium">
       <div class="cell large-12">
           {%- assign footer_mobile_linklist = section.settings.footer_mobile_linklist -%}
           {% if linklists[footer_mobile_linklist].links.size > 0 %}
-            <ul class="menu hide-for-medium grid-x grid-margin-x">
+            <ul class="menu grid-x grid-margin-x">
                 {% for link in linklists[footer_mobile_linklist].links %}
                   <li class="cell mb-20">
 
                     <div aria-controls="accordion-item-{{ forloop.index }}" {% if link.links != blank %} data-autoload-class="ComponentAccordionItem" {% endif %} class="accordion-toggle">
-                      <h6 class="h7-v2 accordion-toggle-title"> <a {% if link.url != '#' %}href="{{ link.url }}"{% endif %}>{{ link.title }}</a></h6>
+                      {% assign size = link.title | size | minus: 4 %}
+                      <h6 class="h7-v2 accordion-toggle-title"> <a {% if link.url != '#' %}href="{{ link.url }}"{% endif %}>{{ link.title | slice: 0, size }}</a></h6>
                       {% if link.links != blank %}
                       <span class="open-icon">{% include 'icon-chevron' %}</span>
                       <span class="close-icon">{% include 'icon-chevron' %}</span>
@@ -38,30 +125,13 @@
                       {% if link.links != blank %}
                         <ul class="sub-menu accordion accordion-body" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
                             {% for child_link in link.links %}
-                              <li style="height: 22px">
-                                <a href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
-                              </li>
-                            {% endfor %}
-                        </ul>
-                      {% endif %}
-                  </li>
-                {% endfor %}
-            </ul>
-          {% endif %}
-
-          {%- assign footer_linklist = section.settings.footer_linklist -%}
-          {% if linklists[footer_linklist].links.size > 0 %}
-            <ul class="menu show-for-medium">
-                {% for link in linklists[footer_linklist].links %}
-                  <li class="mb-40">
-                    <a {% if link.url != '#' %}href="{{ link.url }}"{% endif %}><h6 class="h7-v2">{{ link.title }}</h6></a>
-
-                      {% if link.links != blank %}
-                        <ul class="sub-menu color-secondary-text">
-                            {% for child_link in link.links %}
-                              <li style="height: 22px">
-                                <a href="{{ child_link.url }}" class="hover-link">{{ child_link.title | escape }}</a>
-                              </li>
+                              {% if child_link.title contains "Socials" %}
+                                {% include 'social-icons' %}
+                              {% else %}
+                                <li style="height: 24px">
+                                  <a href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                                </li>
+                              {% endif %}
                             {% endfor %}
                         </ul>
                       {% endif %}
@@ -72,13 +142,13 @@
       </div>
     </div>
 
-    <div class="grid-y grid-margin-x grid-margin-y align-center align-middle mt-20">
+    <div class="grid-y grid-margin-x grid-margin-y align-center align-middle">
 
-      <div class="cell shrink">
+      {% comment %} <div class="cell shrink">
         <div class="social-icons-container">
           {% include 'social-icons' %}
         </div>
-      </div>
+      </div> {% endcomment %}
       <div class="cell shrink">
         <ul class="footer-legals">
           <li>&copy; {{ shop.name | link_to: '/' }} {{ 'now' | date: "%Y" }}</li>

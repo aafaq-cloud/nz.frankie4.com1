@@ -5,7 +5,8 @@ $social-icons-spacing: 8px;
 
 .social-icons {
   list-style: none;
-  font-size: rem-calc($social-icons-size);
+  // font-size: rem-calc($social-icons-size);
+  height: 24px;
   padding: 0;
   margin: 0 (-($social-icons-spacing / 2));
 
@@ -19,12 +20,12 @@ $social-icons-spacing: 8px;
     transition: color 200ms;
 
     &:hover {
-      color: $color-accent;
+      // color: $color-accent;
     }
   }
 
   svg {
-    width: 1em;
-    height: 1em;
+    // width: 1em;
+    // height: 1em;
   }
 }

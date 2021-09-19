@@ -40,14 +40,12 @@
                                     <h4 class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</h4>
                                 {% endif %}
                                 {% if block.settings.button-text != blank %}
-                                    <a class="button button-underline" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
+                                    <span class="button button-underline" href="{{block.settings.link}}">{{block.settings.button-text}}</span>
                                 {% endif %}
 
                             </div>
                         </div>
-                        {% if block.settings.button-text == blank and block.settings.link != blank %}
-                            <a class="cover-link" href="{{block.settings.link}}"></a>
-                        {% endif %}
+                        <a class="cover-link" href="{{block.settings.link}}"></a>
                     </div>
                 {% endfor %}
             </div>

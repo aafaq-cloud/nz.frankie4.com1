@@ -21,7 +21,7 @@
         </div>
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="text-center width-100">
-                <a class="button button-box mt-30">{{section.settings.button}}</a>
+                <a class="button button-box mt-30" href="{{ section.settings.link }}">{{section.settings.button}}</a>
             </div>
         </div>
     </div>
@@ -41,6 +41,11 @@
                 "type": "text",
                 "id": "button",
                 "label": "Button Text"
+            },
+            {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
             }
         ],
         "blocks": [
