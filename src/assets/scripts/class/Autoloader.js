@@ -12,6 +12,7 @@ import {ComponentGridSlider} from "../components/ComponentGridSlider";
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
 import {SearchAutocompleteSnippet} from "../snippets/SearchAutocompleteSnippet";
 import {CollectionFilterSnippet} from "../snippets/CollectionFilterSnippet";
+import {PromoBannerSection} from "../snippets/PromoBannerSnippet";
 
 // Sections
 import {CollectionSection} from "../sections/collection";
@@ -60,6 +61,7 @@ export class Autoloader {
       SearchAutocompleteSnippet,
       CartModalSnippet,
       CollectionFilterSnippet,
+      PromoBannerSection,
 
       // Sections
       HeaderSection,

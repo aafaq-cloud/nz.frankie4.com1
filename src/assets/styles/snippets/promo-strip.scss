@@ -22,3 +22,11 @@ body.has-promo-strip {
     padding-top: $toolbar-height-for-large + map_get($header-height, large) + $promo-strip-height;
   }
 }
+
+.section-banner-promo {
+  position: relative;
+
+  .slider {
+    cursor: auto;
+  }
+}
