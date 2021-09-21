@@ -603,7 +603,7 @@
 
 
 
-                <div class="grid-x grid-margin-x align-right align-middle mt-20">
+                {% comment %} <div class="grid-x grid-margin-x align-right align-middle mt-20">
 
                   <div class="cell shrink">
                     <a class="add-to-wishlist" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}_variant_{{ current_variant.id }}">
@@ -615,7 +615,7 @@
                   <div class="cell shrink">
                     {% include 'social-sharing', share_permalink: product.url %}
                   </div>
-                </div>
+                </div> {% endcomment %}
 
                 {% unless product == empty %}
                     <script type="application/json" data-product-json>

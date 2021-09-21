@@ -100,6 +100,11 @@
   <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=ba715df2-b1f7-45cf-8cc9-ffe5f982256c"> </script>
   <!-- End of frankie4 Zendesk Widget script -->
   
+  <style>
+    .bc-sf-search-suggestion-mobile-overlay {
+    	display: none!important;
+    }
+  </style>
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
@@ -144,7 +149,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   {% include 'script-tags', layout: 'theme' %}
-  {% include 'shopify-wishlist' %}
+  {% comment %} {% include 'shopify-wishlist' %} {% endcomment %}
   {% include 'currencies' %}
   {% include 'back-in-stock-helper' %}
   {% include 'bc-sf-filter' %}

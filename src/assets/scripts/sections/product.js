@@ -37,14 +37,14 @@ export class ProductSection extends AbstractComponent {
     this.product = new Product(options);
 
     // wishlist update
-    let wishlistAdd = this.component.querySelector("[data-shopify-wishlist-add]");
-    this.product.on('variant-change', (variant) => {
-      let wishlistHandle = options.product.handle + '_variant_' + variant.id;
-      wishlistAdd.setAttribute('data-shopify-wishlist-product-handle', wishlistHandle);
-      if (typeof window.ShopifyWishlistInstace != 'undefined') {
-          window.ShopifyWishlistInstace.updateAddToWishlistButtons();
-      }
-    });
+    // let wishlistAdd = this.component.querySelector("[data-shopify-wishlist-add]");
+    // this.product.on('variant-change', (variant) => {
+    //   let wishlistHandle = options.product.handle + '_variant_' + variant.id;
+    //   wishlistAdd.setAttribute('data-shopify-wishlist-product-handle', wishlistHandle);
+    //   if (typeof window.ShopifyWishlistInstace != 'undefined') {
+    //       window.ShopifyWishlistInstace.updateAddToWishlistButtons();
+    //   }
+    // });
   }
 
 

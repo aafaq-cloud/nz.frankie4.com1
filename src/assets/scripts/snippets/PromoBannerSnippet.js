@@ -24,7 +24,7 @@ export class PromoBannerSection extends AbstractComponent {
       type: 'carousel',
       gap: 0,
       perView: 1,
-      autoplay: 4500
+      autoplay: 5500
     };
 
     this.glide = new Glide(this.glideElement, this.glideSettings);
