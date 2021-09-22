@@ -25,8 +25,10 @@ body.has-promo-strip {
 
 .section-banner-promo {
   position: relative;
+  max-height: 32px;
 
   .slider {
     cursor: auto;
+    max-height: 32px;
   }
 }

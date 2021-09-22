@@ -6,8 +6,17 @@
   <div class="grid-container">
 
     <div class="grid-x align-center">
-      <div class="cell large-9">
+      <div class="cell large-5">
         <div class="lead medium-text-center">{{ section.settings.section_content }}</div>
+      </div>
+      <div class="cell large-1"></div>
+      <div class="cell large-5">
+        <img style="object-fit: contain" src="{{ section.settings.gif | img_url: '600x400' }}">
+      </div>
+    </div>
+
+    <div class="grid-x align-center">
+      <div class="cell large-9">
         <div class="section-line"></div>
         <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
       </div>
@@ -58,14 +67,19 @@
             "content": "Section Title"
           },
           {
-            "type": "text",
-            "id": "section_title",
-            "label": "Title"
-          },
-          {
             "type": "richtext",
             "id": "section_content",
             "label": "Content"
+          },
+          {
+            "type": "image_picker",
+            "id": "gif",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "section_title",
+            "label": "Title"
           }
         ],
         "blocks": [
