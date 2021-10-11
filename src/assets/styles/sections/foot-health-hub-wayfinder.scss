@@ -9,4 +9,27 @@
       padding-bottom: 50px;
     }
   }
+
+  .section-top-text {
+    background-color: #f1f1f1; 
+    padding: 20px; 
+    margin-right: 24px; 
+    height: 450px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .section-top-image {
+    height: 450px; 
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .section-top-image {
+      height: 300px; 
+    }
+  }
+  
 }

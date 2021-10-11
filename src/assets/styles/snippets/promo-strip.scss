@@ -26,6 +26,7 @@ body.has-promo-strip {
 .section-banner-promo {
   position: relative;
   max-height: 32px;
+  background-color: $color-primary;
 
   .slider {
     cursor: auto;

@@ -218,6 +218,22 @@ Navigation to display on large viewports
                             {{ link_list3 }}
                         </div>
                     </div>
+                {% elsif link.title == section.settings.mega_menu_second %}
+                    <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
+                        {% if link.type == 'collection_link' %}
+                            <div class="cell medium-3">
+                            <a href="{{ link.url }}" class="main-nav-mega-menu-image-container">
+                                <img src="{{ link.object.image | img_url: '300x230', crop: 'bottom' }}"/>
+                            </a>
+                            </div>
+                        {% endif %}
+                        <div class="cell medium-3">
+                            {{ link_list2 }}
+                        </div>
+                        <div class="cell medium-5">
+                            {{ link_list3 }}
+                        </div>
+                    </div>
                 {% elsif link_list != blank %}
                     <div class="main-nav-mega-menu grid-x grid-margin-x align-justify">
                         {% if link.type == 'collection_link' %}

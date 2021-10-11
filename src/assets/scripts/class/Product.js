@@ -512,7 +512,7 @@ export class Product extends EventEmitter {
       clearTimeout(clearErrorTimeout);
 
       this.selectorsSingle.addToCart.classList.add("js-loading", "no-hover");
-      this.selectorsSingle.addToCartText.innerHTML = "Adding to bag";
+      this.selectorsSingle.addToCartText.innerHTML = "Adding to Cart";
 
       // Trigger an add to cart ajax function
       AppShopifyCart.addItem(variantID, quantity, properties).then(
@@ -520,7 +520,7 @@ export class Product extends EventEmitter {
           // If we successfully added the item to cart we will show a success message
           this.selectorsSingle.addToCart.classList.remove("js-loading");
           this.selectorsSingle.addToCart.classList.add("added");
-          this.selectorsSingle.addToCartText.innerHTML = "Added to bag";
+          this.selectorsSingle.addToCartText.innerHTML = "Added to Cart";
 
           // Clear the success button styles
           setTimeout(() => {

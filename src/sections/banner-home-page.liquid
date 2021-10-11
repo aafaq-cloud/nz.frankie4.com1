@@ -12,7 +12,7 @@
                     <div class="glide__slide" style="position: relative">
 
                         {% if block.settings.video != blank %}
-                            <div class="banner-video">
+                            <div class="banner-video show-for-medium">
                                 <div class="component-video" data-autoload-class="ComponentVideo">
                                     <video class="lazyload" preload="none" autoplay="" loop="" muted=""
                                            playsinline controlslist="nodownload"
@@ -21,17 +21,23 @@
                                     </video>
                                 </div>
                             </div>
+                            <div class="banner-video show-for-small-only">
+                                <div class="component-video" data-autoload-class="ComponentVideo">
+                                    <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                                           playsinline controlslist="nodownload"
+                                           width="1280" height="720"
+                                           data-src="{{block.settings.video_mobile }}">
+                                    </video>
+                                </div>
+                            </div>
                         {% else %}
-
                             <picture>
                                 {% if block.settings.mobile_image %}
                                     <source media="(max-width:640px)" style="object-position: {{block.settings.position2}}" data-srcset="{{block.settings.mobile_image | img_url: '600x'}}">
                                 {% endif %}
                                 <img data-src="{{block.settings.image |  img_url: '2000x' }}" style="object-position: {{block.settings.position}}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
                             </picture>
-
                          {% endif %}
-
 
                         <div class="banner-content-wrapper">
                             <div class="grid-container text-left">
@@ -106,6 +112,12 @@
                         "id": "video",
                         "type": "text",
                         "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "video_mobile",
+                        "type": "text",
+                        "label": "Video Mobile",
                         "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
                     },
                     {

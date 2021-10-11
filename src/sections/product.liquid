@@ -380,7 +380,11 @@
                           {% endif %}
                           </div>
 
-
+                                      <style>
+                                        .test-size-button:hover {
+                                          box-shadow: inset 0 0 0 1px #e9e9e9!important;
+                                        }
+                                      </style>
                           {% unless product.has_only_default_variant %}
 
                             {% for option in product.options_with_values %}
@@ -406,7 +410,7 @@
                                              name="variantselector-{{ selector_name }}[]"
                                              type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
                                       <label title="{{ value }}" style="text-align: center;"
-                                             class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
+                                             class="{{ option.name | downcase  }}-{{ value | downcase }} test-size-button" for="{{ label_prefix }}{{ input_id }}">
                                         {% assign size = value | split: " "  %}
                                         {% capture string_with_newlines %}{{ size[0] | escape }}
                                         {{ size[1] | escape }}{% endcapture %}

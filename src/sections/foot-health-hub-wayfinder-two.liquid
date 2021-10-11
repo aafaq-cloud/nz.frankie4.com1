@@ -1,4 +1,4 @@
-<div class="section section-foot-health-hub-wayfinder-two">
+<div class="section section-foot-health-hub-wayfinder-two mti-0">
 
   {% assign slide_count = section.blocks.size %}
   {% assign slide_index_limit = slide_count | minus: 1 %}
@@ -22,13 +22,13 @@
 
               <div class="cell medium-4 glide__slide">
                 <div class="wayfinder-tile">
-                  <a href="{{ block.settings.link }}">
+                  {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
                     <div class="wayfinder-content">
                       <div class="wayfinder-title">{{ block.settings.title }}</div>
                       <div class="wayfinder-subtitle">{{ block.settings.subtitle }}</div>
                     </div>
                     <img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}">
-                  </a>
+                  {% if block.settings.link != blank %}</a>{% endif %}
                 </div>
               </div>
 
