@@ -41,6 +41,9 @@
 
                         <div class="banner-content-wrapper">
                             <div class="grid-container text-left">
+                              	{% if block.settings.image_small != blank %}
+                              	<img data-src="{{block.settings.image_small |  img_url: '500x' }}" style="width: 200px; height: 70px" class="lazyload">
+                              	{% endif %}
                                 <h1 class="m-0 h1-v2">{{block.settings.title}}</h1>
                                 {% if block.settings.subtitle != blank %}
                                     <h4 class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</h4>
@@ -87,6 +90,11 @@
                         "id": "mobile_image",
                         "type": "image_picker",
                         "label": "Mobile Image"
+                    },
+                    {
+                        "id": "image_small",
+                        "type": "image_picker",
+                        "label": "Image Small"
                     },
                     {
                         "type": "radio",
