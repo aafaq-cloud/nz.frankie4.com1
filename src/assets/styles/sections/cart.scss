@@ -198,10 +198,9 @@
 
   .cart-totals {
     padding: 20px 0;
-    border-bottom: 1px solid $color-border;
 
     @include breakpoint(medium) {
-      padding: 28px 0;
+      padding: 20px 0;
     }
 
     .price-row {

@@ -25,7 +25,7 @@
 {% assign slide_count = product.images | size %}
 {% assign slide_index_limit = slide_count | minus: 1 %}
 
-<div data-autoload-class="ProductSection" class="section section-product" itemscope itemtype="http://schema.org/Product">
+<div data-autoload-class="ProductSection" class="section section-product m-mt-10" itemscope itemtype="http://schema.org/Product">
 
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -229,6 +229,7 @@
                         </div>
 
                         {% if product.type != "FREE GIFT" %}
+                        {% unless product.tags contains 'review-hidden' %}
                         <div class="yotpo bottomLine hide-for-small-only"
                              data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
                              data-domain="{{shop.permanent_domain | escape }}"
@@ -240,6 +241,7 @@
                              data-description="{{ product.description | escape }}"
                              data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
                         </div>
+                        {% endunless %}
                         {% endif %}
 
                         {% render 'product-message', tags: product.tags %}
@@ -336,6 +338,7 @@
                             </div>
 
                             {% if section.settings.display_size_guide %}
+                              {% unless product.tags contains 'size-guide-hidden' %}
                               <div class="cell shrink">
                                 <a class="size-guide" data-open="size-guide-modal" data-micromodal-trigger="size-guide-modal">
                                   {% include 'icon-size-guide' %}
@@ -375,6 +378,7 @@
                                   </div>
                                 </div>
                               </div>
+                              {% endunless %}
                             {% endif %}
 
                           {% endif %}
@@ -485,7 +489,8 @@
                                             name="add"
                                             data-add-to-cart
                                             {% unless current_variant.available %}disabled="disabled"{% endunless %}
-                                            {% if product.type == "FREE GIFT" %}style="display: none"{% endif %}>
+                                            {% if product.type == "FREE GIFT" %}style="display: none"{% endif %}
+                                            {% if product.tags contains 'purchase-hidden' %}style="display: none"{% endif %}>
                                         <span data-add-to-cart-text>
                                             {% if current_variant.available %}
                                                 {{ 'products.product.add_to_cart' | t }}
@@ -517,7 +522,7 @@
                 {% endif %}
 
 
-                    <div class="product-information mt-40">
+                    <div class="product-information mt-30">
 
                         {% render "product-features", product: product, features: section.blocks %}
 
