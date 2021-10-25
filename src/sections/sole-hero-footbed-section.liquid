@@ -167,7 +167,7 @@
                         <div class="glide__bullets mobile-bullet mobile-screen-only" data-glide-el="controls[nav]">
                         {% assign slides = slideTitles | split: ',' %}
                         {% for bullet in slides %}
-                            <button class="glide__bullet" style="background: none;" data-glide-dir="={{ forloop.index0 }}">
+                            <button class="glide__bullet" style="background: none; color: black" data-glide-dir="={{ forloop.index0 }}">
                             <span></span>
                             {{bullet}}
                             </button>
@@ -214,10 +214,10 @@
                     {% endif %}
 
                 {% endfor %}
-                <p class="small-text text-center wide-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; font-size: 11px; line-height: 14px">
+                <p class="small-text text-left wide-screen-only" style="margin-bottom: 0; font-size: 11px!important; line-height: 14px!important">
                     {{ section.settings.section_disclaimer }}
                 </p>
-                <button class="mobile-screen-only" style="margin: 10px auto 0 auto; background-color: #444; color: white; width: 100%;" onclick="toggleText();">Disclaimer</button>
+                <button class="mobile-screen-only" style="margin: 10px auto 10px auto; background-color: #444; color: white; width: 100%;" onclick="toggleText();">Disclaimer</button>
                 <script>
                 function toggleText() {
                     var x = document.getElementById("disclaimer");
@@ -228,7 +228,7 @@
                     }
                 }
                 </script>
-                <p id="disclaimer" class="small-text text-center mobile-screen-only" style="margin-left: 10%; margin-right: 10%; margin-bottom: 0; display: none;">
+                <p id="disclaimer" class="small-text text-left mobile-screen-only" style="margin-bottom: 10px; display: none;">
                     {{ section.settings.section_disclaimer }}
                 </p>
                 </div>
