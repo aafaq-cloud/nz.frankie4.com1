@@ -113,7 +113,7 @@
                 {% for link in linklists[footer_mobile_linklist].links %}
                   <li class="cell mb-20">
 
-                    <div aria-controls="accordion-item-{{ forloop.index }}" {% if link.links != blank %} data-autoload-class="ComponentAccordionItem" {% endif %} class="accordion-toggle">
+                    <div aria-controls="accordion-footer-item-{{ forloop.index }}" {% if link.links != blank %} data-autoload-class="ComponentAccordionFooterItem" {% endif %} class="accordion-toggle">
                       {% assign size = link.title | size | minus: 4 %}
                       <h6 class="h7-v2 accordion-toggle-title"> <a {% if link.url != '#' %}href="{{ link.url }}"{% endif %}>{{ link.title | slice: 0, size }}</a></h6>
                       {% if link.links != blank %}
@@ -123,7 +123,7 @@
                     </div>
 
                       {% if link.links != blank %}
-                        <ul class="sub-menu accordion accordion-body" id="accordion-item-{{ forloop.index }}" aria-expanded="false">
+                        <ul class="sub-menu accordion accordion-body" id="accordion-footer-item-{{ forloop.index }}" aria-expanded="false">
                             {% for child_link in link.links %}
                               {% if child_link.title contains "Socials" %}
                                 {% include 'social-icons' %}

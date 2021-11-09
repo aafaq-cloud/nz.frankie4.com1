@@ -2,6 +2,7 @@
 import {ComponentSelect} from "../components/ComponentSelect";
 import {ComponentQuantitySelector} from "../components/ComponentQuantitySelector";
 import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
+import {ComponentAccordionFooterItem} from "../components/ComponentAccordionFooterItem";
 import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
@@ -51,6 +52,7 @@ export class Autoloader {
       ComponentQuantitySelector,
       ComponentSelect,
       ComponentAccordionItem,
+      ComponentAccordionFooterItem,
       ComponentCarousel,
       ComponentVideo,
       ComponentWayfinderSlider,
