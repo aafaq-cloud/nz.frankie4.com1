@@ -1,15 +1,13 @@
-<div class="section m-mb-0 section-about-us-page-group">
+<div class="section m-mt-0 m-mb-0 section-about-us-page-group" style="background-color: #eeeeee; padding-top: 20px; padding-bottom: 30px">
     <div class="grid-container">
         <div class="grid-x align-middle">
-            <div class="section-line mti-40 mbi-10 m-mb-0 m-mt-0 show-for-medium"></div>
-            <div class="section-line-mobile mti-40 mbi-10 m-mb-0 m-mt-10 show-for-small-only"></div>
-            <div class="text-section text-center m-mt-20 mbi-0 m-mb-20">
-                <h1 style="margin-bottom: 30px">{{section.settings.section_title}}</h1>
+            <div class="text-section text-center mbi-10 m-mt-20 m-mb-20">
+                <span class="h1-v2">{{section.settings.section_title}}</span>
                 <p>{{section.settings.section_paragraph}}</p>
             </div>
             <iframe class="vimeo_video" src="https://player.vimeo.com/video/{{section.settings.video_id}}" width="100%" height="700px" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
-        <div class="grid-container text-center mti-30 mbi-0">
+        <div class="grid-container text-center mti-30">
             <span><h5><a href="{{section.settings.link1}}">{{section.settings.link1_name}}</a></h5></span>
         </div>
     </div>
@@ -58,7 +56,7 @@
                 "label": "Link Text"
             },
             {
-                "type": "text",
+                "type": "url",
                 "id": "link1",
                 "label": "Link URL"
             }

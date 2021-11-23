@@ -1,0 +1,120 @@
+<div class="section-about-us-page-group section-brainchild-ambassador-columns m-mt-0 m-mb-0">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="text-section text-center mbi-0 m-mt-40 m-mb-0">
+                <span class="h1-v2">{{section.settings.section_title}}</span>
+            </div>
+            <div class="section-line-horizontal mti-30 mbi-30 show-for-medium"></div>
+            <div class="section-line-horizontal-mobile m-mb-10 m-mt-10 show-for-small-only"></div>
+            {% if section.settings.section_paragraph != blank %}
+            <div class="text-section text-center mti-0 mbi-0 m-mt-20 m-mb-20">
+                <p>{{section.settings.section_paragraph}}</p>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="column">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            {% if section.settings.link1 != blank %}<a href="{{section.settings.link1}}">{% endif %}
+                                <div class="flip-card-front" style="background-image: url('{{section.settings.img1 | img_url: '500x'}}');">
+                                    <span role="img" aria-label="A profile image of {{ section.settings.img1 }}"> </span>
+                                </div>
+                            {% if section.settings.link1 != blank %}</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            {% if section.settings.link2 != blank %}<a href="{{section.settings.link2}}">{% endif %}
+                                <div class="flip-card-front" style="background-image: url('{{section.settings.img2 | img_url: '500x'}}');">
+                                    <span role="img" aria-label="A profile image of {{ section.settings.img2 }}"> </span>
+                                </div>
+                            {% if section.settings.link2 != blank %}</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            {% if section.settings.link3 != blank %}<a href="{{section.settings.link3}}">{% endif %}
+                                <div class="flip-card-front" style="background-image: url('{{section.settings.img3 | img_url: '500x'}}');">
+                                    <span role="img" aria-label="A profile image of {{ section.settings.img3 }}"> </span>
+                                </div>
+                            {% if section.settings.link3 != blank %}</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            {% if section.settings.link4 != blank %}<a href="{{section.settings.link4}}">{% endif %}
+                                <div class="flip-card-front" style="background-image: url('{{section.settings.img4 | img_url: '500x'}}');">
+                                    <span role="img" aria-label="A profile image of {{ section.settings.img4 }}"> </span>
+                                </div>
+                            {% if section.settings.link4 != blank %}</a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+     {
+         "name": "Image Gallery",
+         "settings": [
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Title 1"
+            },
+            {
+                "type": "textarea",
+                "id": "section_paragraph",
+                "label": "Paragraph 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "img1",
+                "label": "Image 1"
+            },
+            {
+                "type": "url",
+                "id": "link1",
+                "label": "Link URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "img2",
+                "label": "Image 2"
+            },
+            {
+                "type": "url",
+                "id": "link2",
+                "label": "Link URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "img3",
+                "label": "Image 3"
+            },
+            {
+                "type": "url",
+                "id": "link3",
+                "label": "Link URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "img4",
+                "label": "Image 4"
+            },
+            {
+                "type": "url",
+                "id": "link4",
+                "label": "Link URL"
+            }
+         ]
+     }
+ {% endschema %}

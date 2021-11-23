@@ -1,0 +1,18 @@
+.section-brainchild-ambassador-banner {
+    .landing-image-2 {
+        height: 500px; 
+        width: 100%; 
+        background-size: cover;
+        background-position: center;
+    }
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+        .landing-image-2 {
+            height: 300px;
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .landing-image-2 {
+            height: 200px;
+        }
+    }
+}

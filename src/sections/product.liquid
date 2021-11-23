@@ -358,7 +358,11 @@
                                       </svg>
                                     </button>
                                     <div class="modal__content">
-                                      <img data-src="{{section.settings.size_guide_image | img_url: '800x'}}" data-srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+                                      {% if product.type != "SOCKS" %}
+                                        <img data-src="{{section.settings.size_guide_image | img_url: '800x'}}" data-srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+                                      {% else %}
+                                        <img data-src="{{section.settings.size_guide_socks_image | img_url: '800x'}}" data-srcset=" {{section.settings.size_guide_socks_image | img_url: '800x'}} 800w, {{section.settings.size_guide_socks_image | img_url: '700x700'}} 700w"  class="lazyload">
+                                      {% endif %}
                                       <div class="modal__text">
                                         {% if section.settings.size_guide_content %}
                                           <div class="rte">
@@ -757,7 +761,12 @@
       {
         "type": "image_picker",
         "id": "size_guide_image",
-        "label": "Image"
+        "label": "Size Guide Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "size_guide_socks_image",
+        "label": "Size Guide Socks Image"
       },
       {
         "type": "richtext",

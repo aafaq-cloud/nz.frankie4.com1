@@ -48,7 +48,11 @@
 
       <div class="product-tile__price-container">
         <span class="product-tile__price">
-        {{ product.price_max | money }}
+          {% if product.type == 'GIFT CARD'%}
+            {{ product.price_min | money }}
+          {% else %}
+            {{ product.price_max | money }}
+          {% endif %}
         </span>
         {% if product.compare_at_price_max > product.price_max %}
           <s class="product-tile__compare-price color-secondary-text text-small">
@@ -77,7 +81,7 @@
           {% assign related_products = related_products | split: ',' %}
 
 
-
+          {% unless product.type == 'GIFT CARD'%}
           <div class="product-tile__swatches">
             {% assign colour = product.handle %}
             {% assign image = colour | append: '.png' %}
@@ -106,6 +110,7 @@
             </div>
 
           </div>
+          {% endunless %}
 
 
         </div>
