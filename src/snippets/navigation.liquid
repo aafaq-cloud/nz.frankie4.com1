@@ -247,7 +247,11 @@ Navigation to display on large viewports
                             {{ link_list2 }}
                         </div>
                         <div class="cell medium-5">
+                            {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+                            <span class="fwi-600">SHOP BY COLOR</span>
+                            {% else %}
                             <span class="fwi-600">SHOP BY COLOUR</span>
+                            {% endif %}
                             {{ link_list3 }}
                         </div>
                     </div>
