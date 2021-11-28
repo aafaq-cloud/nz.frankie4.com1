@@ -1,15 +1,15 @@
 <div class="section section-concept-stores large-margin">
 
     <div class="grid-container">
-        <div class="grid-x grid-margin-x align-middle title-block">
+        <div class="grid-x grid-margin-x align-middle title-block mbi-5">
             <div class="cell">
                 <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
             </div>
         </div>
         <div class="grid-x grid-margin-x align-middle title-block">
             <div class="cell">
-                <p class="lead">{{section.settings.section_subheading}}</p>
-                <p class="lead">Please click <a href="https://frankie4.com/pages/frankie4-on-covid19"><b>here</b></a> to view our COVID-19 information page.</p>
+                {% if section.settings.section_subheading != blank %}<p class="lead">{{section.settings.section_subheading}}</p>{% endif %}
+                {{section.settings.section_paragraph}}
             </div>
         </div>
     </div>
@@ -73,6 +73,11 @@
                 "type": "textarea",
                 "id": "section_subheading",
                 "label": "Subheading"
+            },
+            {
+                "type": "richtext",
+                "id": "section_paragraph",
+                "label": "Paragraph"
             }
          ],
          "blocks": [
