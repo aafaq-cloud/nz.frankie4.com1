@@ -1,0 +1,31 @@
+<div class="section section-banner no-margin show-for-small-only m-mb-40">
+    <div class="banner-video" style="height: 57vw">
+        <div class="component-video" data-autoload-class="ComponentVideo">
+            <video class="lazyload width-100" preload="none" autoplay="" loop="" muted=""
+                    playsinline controlslist="nodownload"
+                    data-src="{{section.settings.video }}">
+            </video>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Video mobile section",
+        "settings": [
+            {
+                "id": "video",
+                "type": "text",
+                "label": "Video",
+                "info": "Enter the video source URL. The video must behosted on Shopify."
+            }
+        ],
+        "presets": [
+            {
+                "name": "Video section",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

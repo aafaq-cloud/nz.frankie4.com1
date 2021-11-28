@@ -51,6 +51,16 @@
         "type": "richtext",
         "id": "promo_content",
         "label": "Content"
+      },
+      {
+        "type": "richtext",
+        "id": "promo_content2",
+        "label": "Content2"
+      },
+      {
+        "type": "richtext",
+        "id": "promo_content3",
+        "label": "Content3"
       }
     ]
   },

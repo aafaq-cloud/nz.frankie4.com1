@@ -1,0 +1,273 @@
+<div class="section section-about-us-page-group section-brainchild-ambassador-gallery m-mt-0">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            {% assign block_count = 0 %}
+            {% for block in section.blocks %}
+            {% assign block_count = block_count | plus: 1 %}
+            <div class="row show-for-medium">
+                <div class="column">
+                    <div class="flip-card">
+                        {% if block.settings.image1_author != blank %}
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url('{{block.settings.image1 | img_url: '500x'}}');">
+                                <span role="img" aria-label="A profile image of {{ block.settings.image1_author }}"> </span>
+                                <span style="font-size: 14px!important; line-height: 1px!important; font-family: 'montserrat','Helvetica Light'!important;">
+                                    <b>{{ block.settings.image1_author }}</b><br>
+                                    {{ block.settings.image1_occupation }}
+                                </span>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="quote_div">
+                                    <p class="quote_p" style="font-size: 16px!important; line-height: 20px!important; font-family: 'DM Serif Display'!important">
+                                        {{ block.settings.image1_quote }}
+                                    </p> 
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        {% if block.settings.image2_author != blank %}
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url('{{block.settings.image2 | img_url: '500x'}}');">
+                                <span role="img" aria-label="A profile image of {{ block.settings.image2_author }}"> </span>
+                                <span style="font-size: 14px!important; line-height: 1px!important; font-family: 'montserrat','Helvetica Light'!important">
+                                    <b>{{ block.settings.image2_author }}</b><br>
+                                    {{ block.settings.image2_occupation }}
+                                </span>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="quote_div">
+                                    <p class="quote_p" style="font-size: 16px!important; line-height: 20px!important; font-family: 'DM Serif Display'!important">
+                                        {{ block.settings.image2_quote }}
+                                    </p> 
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        {% if block.settings.image3_author != blank %}
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url('{{block.settings.image3 | img_url: '500x'}}');">
+                                <span role="img" aria-label="A profile image of {{ block.settings.image3_author }}"> </span>
+                                <span style="font-size: 14px!important; line-height: 1px!important; font-family: 'montserrat','Helvetica Light'!important">
+                                    <b>{{ block.settings.image3_author }}</b><br>
+                                    {{ block.settings.image3_occupation }}
+                                </span>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="quote_div">
+                                    <p class="quote_p" style="font-size: 16px!important; line-height: 20px!important; font-family: 'DM Serif Display'!important">
+                                        {{ block.settings.image3_quote }}
+                                    </p> 
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="flip-card">
+                        {% if block.settings.image4_author != blank %}
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6)), url('{{block.settings.image4 | img_url: '500x'}}');">
+                                <span role="img" aria-label="A profile image of {{ block.settings.image4_author }}"> </span>
+                                <span style="font-size: 14px!important; line-height: 1px!important; font-family: 'montserrat','Helvetica Light'!important">
+                                    <b>{{ block.settings.image4_author }}</b><br>
+                                    {{ block.settings.image4_occupation }}
+                                </span>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="quote_div">
+                                    <p class="quote_p" style="font-size: 16px!important; line-height: 20px!important; font-family: 'DM Serif Display'!important">
+                                        {{ block.settings.image4_quote }}
+                                    </p> 
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="text-center m-auto mti-20 mbi-20 m-mb-0 show-for-small-only section-step-inside" style="width: 100%;">
+                <div class="glide1" data-autoload-class="SimpleGlideSection" style="width: 100%;">
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" style="top: 30%">{% render 'icon-chevron-right' %}</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">" style="top: 30%">{% render 'icon-chevron-right' %}</button>
+                        {% comment %} <button class="glide__arrow--left" data-glide-dir="<" style="position: absolute; top: 5200px; left: 5px;">{% render 'icon-chevron-right' %}</button>
+                        <button class="glide__arrow--right" data-glide-dir=">" style="position: absolute; top: 5200px; right: 5px;">{% render 'icon-chevron-right' %}</button> {% endcomment %}
+                    </div>
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            {% assign block_count = 0 %}
+                            {% for block in section.blocks %}
+                                {% assign block_count = block_count | plus: 1 %}
+                                {% if block.settings.image1_author != blank %}
+                                <li class="glide__slide">
+                                    <div class="slider_image" style="background-image: url('{{block.settings.image1 | img_url: '500x'}}');">
+                                        <span role="img" aria-label="A profile image of {{ block.settings.image1_author }}"> </span>
+                                    </div>
+                                    <p class="quote-text">{{ block.settings.image1_quote }}</p>
+                                    <p>
+                                        <b>{{ block.settings.image1_author }}</b><br>
+                                        {{ block.settings.image1_occupation }}
+                                    </p>
+                                </li>
+                                {% endif %}
+                                {% if block.settings.image2_author != blank %}
+                                <li class="glide__slide">
+                                    <div class="slider_image" style="background-image: url('{{block.settings.image2 | img_url: '500x'}}');">
+                                        <span role="img" aria-label="A profile image of {{ block.settings.image2_author }}"> </span>
+                                    </div>
+                                    <p class="quote-text">{{ block.settings.image2_quote }}</p>
+                                    <p>
+                                        <b>{{ block.settings.image2_author }}</b><br>
+                                        {{ block.settings.image2_occupation }}
+                                    </p>
+                                </li>
+                                {% endif %}
+                                {% if block.settings.image3_author != blank %}
+                                <li class="glide__slide">
+                                    <div class="slider_image" style="background-image: url('{{block.settings.image3 | img_url: '500x'}}');">
+                                        <span role="img" aria-label="A profile image of {{ block.settings.image3_author }}"> </span>
+                                    </div>
+                                    <p class="quote-text">{{ block.settings.image3_quote }}</p>
+                                    <p>
+                                        <b>{{ block.settings.image3_author }}</b><br>
+                                        {{ block.settings.image3_occupation }}
+                                    </p>
+                                </li>
+                                {% endif %}
+                                {% if block.settings.image4_author != blank %}
+                                <li class="glide__slide">
+                                    <div class="slider_image" style="background-image: url('{{block.settings.image4 | img_url: '500x'}}');">
+                                        <span role="img" aria-label="A profile image of {{ block.settings.image4_author }}"> </span>
+                                    </div>
+                                    <p class="quote-text">{{ block.settings.image4_quote }}</p>
+                                    <p>
+                                        <b>{{ block.settings.image4_author }}</b><br>
+                                        {{ block.settings.image4_occupation }}
+                                    </p>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="glide__bullets mobile-screen-only review_slider" data-glide-el="controls[nav]" style="width: 45%; max-width: 625px; position: relative;">
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                        <button class="glide__bullet" data-glide-dir="=3"></button>
+                        <button class="glide__bullet" data-glide-dir="=4"></button>
+                        <button class="glide__bullet" data-glide-dir="=5"></button>
+                        <button class="glide__bullet" data-glide-dir="=6"></button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{% schema %}
+     {
+        "name": "Image Gallery",
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "id": "image1",
+                        "type": "image_picker",
+                        "label": "Image1"
+                    },
+                    {
+                        "id": "image1_quote",
+                        "type": "text",
+                        "label": "Quote1",
+                        "info": "No more than 180 characters to ensure alignment correct"
+                    },
+                    {
+                        "id": "image1_author",
+                        "type": "text",
+                        "label": "Author1"
+                    },
+                    {
+                        "id": "image1_occupation",
+                        "type": "text",
+                        "label": "Occupation1"
+                    },
+                    {
+                        "id": "image2",
+                        "type": "image_picker",
+                        "label": "Image2"
+                    },
+                    {
+                        "id": "image2_quote",
+                        "type": "text",
+                        "label": "Quote2",
+                        "info": "No more than 180 characters to ensure alignment correct"
+                    },
+                    {
+                        "id": "image2_author",
+                        "type": "text",
+                        "label": "Author2"
+                    },
+                    {
+                        "id": "image2_occupation",
+                        "type": "text",
+                        "label": "Occupation2"
+                    },
+                    {
+                        "id": "image3",
+                        "type": "image_picker",
+                        "label": "Image3"
+                    },
+                    {
+                        "id": "image3_quote",
+                        "type": "text",
+                        "label": "Quote3",
+                        "info": "No more than 180 characters to ensure alignment correct"
+                    },
+                    {
+                        "id": "image3_author",
+                        "type": "text",
+                        "label": "Author3"
+                    },
+                    {
+                        "id": "image3_occupation",
+                        "type": "text",
+                        "label": "Occupation3"
+                    },
+                    {
+                        "id": "image4",
+                        "type": "image_picker",
+                        "label": "Image4"
+                    },
+                    {
+                        "id": "image4_quote",
+                        "type": "text",
+                        "label": "Quote4",
+                        "info": "No more than 180 characters to ensure alignment correct"
+                    },
+                    {
+                        "id": "image4_author",
+                        "type": "text",
+                        "label": "Author4"
+                    },
+                    {
+                        "id": "image4_occupation",
+                        "type": "text",
+                        "label": "Occupation4"
+                    }
+                ]
+            }
+        ]
+     }
+ {% endschema %}

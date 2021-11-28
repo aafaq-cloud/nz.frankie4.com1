@@ -1,11 +1,11 @@
-<div class="section section-text-image no-margin wide-screen-only">
-
+{% if section.settings.show %}
+<div class="section section-text-image no-margin show-for-medium">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell medium-6 large-4">
                 <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
                     <div class="cell-image cell medium-auto">
-                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 210px; margin: auto">
+                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 250px; margin: auto">
                     </div>
                     <p style="line-height: normal;">{{section.settings.content}}</p>
                     <div class="cell shrink">
@@ -25,15 +25,13 @@
         </div>
     </div>
 </div>
-
-<div class="section section-text-image no-margin mobile-screen-only">
-
+<div class="section section-text-image no-margin show-for-small-only">
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="cell medium-6 large-4">
                 <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
                     <div class="cell-image cell medium-auto">
-                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 210px; margin: auto">
+                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 250px; margin: auto">
                     </div>
                     <p style="line-height: normal;">{{section.settings.content}}</p>
                     <div class="cell shrink">
@@ -53,31 +51,17 @@
         </div>
     </div>
 </div>
-
-<style>
-.wide-screen-only {
-    display: block;
-}
-.mobile-screen-only {
-    display: none;
-}
-
-@media screen and (max-width: 640px) {
-    .wide-screen-only {
-        display: none;
-    }
-    .mobile-screen-only {
-        display: block;
-    }
-}
-</style>
-
-
+{% endif %}
 
 {% schema %}
 {
   "name": "Good Design Award",
   "settings": [
+    {
+        "type": "checkbox",
+        "id": "show",
+        "label": "Display or Hide"
+    },
     {
         "type": "image_picker",
         "id": "image_2",

@@ -11,7 +11,6 @@
         <form action="/cart" method="post" novalidate>
 
           <div class="grid-y cart-grid" data-cart-grid is="cart-grid">
-
               <div class="grid-x cart-headings hide-for-small-only">
                   <div class="cell auto product-heading">
                       Product
@@ -39,6 +38,7 @@
               <div>
                 <p class="cart-total-price">{{ cart.total_price | money }}</p>
                 <p class="shipping-note">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+                <p class="shipping-note" style="color: #343840">Please confirm size prior to checking out</p>
               </div>
             </div>
           </div>

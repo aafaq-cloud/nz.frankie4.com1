@@ -1,0 +1,165 @@
+<div data-autoload-class="BannerSection" class="section section-banner-2 no-margin">
+
+
+    <div class="slider">
+
+        <div data-glide-el="track" class="glide__track">
+            <div class="glide__slides">
+
+
+                {% for block in section.blocks %}
+
+                    <div class="glide__slide" style="position: relative">
+
+                        {% if block.settings.video != blank %}
+                            <div class="banner-video show-for-medium">
+                                <div class="component-video" data-autoload-class="ComponentVideo">
+                                    <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                                        playsinline controlslist="nodownload"
+                                        width="1280" height="720"
+                                        data-src="{{block.settings.video }}">
+                                    </video>
+                                </div>
+                            </div>
+                        {% else %}
+                            <picture class="show-for-medium">
+                                <img data-src="{{block.settings.image |  img_url: '2000x' }}" style="object-position: {{block.settings.position}}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                            </picture>
+                        {% endif %}
+
+                        {% if block.settings.video_mobile != blank %}
+                            <div class="banner-video show-for-small-only">
+                                <div class="component-video" data-autoload-class="ComponentVideo">
+                                    <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                                        playsinline controlslist="nodownload"
+                                        width="1280" height="720"
+                                        data-src="{{block.settings.video_mobile }}">
+                                    </video>
+                                </div>
+                            </div>
+                        {% else %} 
+                            <picture class="show-for-small-only">
+                                <img data-src="{{block.settings.mobile_image |  img_url: '2000x' }}" style="object-position: {{block.settings.position}}" data-srcset="{{block.settings.mobile_image | img_url: '2000x'}} 2000w, {{block.settings.mobile_image | img_url: '1100x'}} 1100w, {{block.settings.mobile_image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                            </picture>
+                        {% endif %}
+
+                        <div class="banner-content-wrapper">
+                            <div class="grid-container text-left">
+                              	{% if block.settings.image_small != blank %}
+                              	<img data-src="{{block.settings.image_small |  img_url: '500x' }}" style="width: 200px; height: 70px" class="lazyload">
+                              	{% endif %}
+                                <h1 class="m-0 h1-v2">{{block.settings.title}}</h1>
+                                {% if block.settings.subtitle != blank %}
+                                    <h4 class="banner-subtitle mt-10 mb-0">{{block.settings.subtitle}}</h4>
+                                {% endif %}
+                                {% if block.settings.button-text != blank %}
+                                    <span class="button button-underline" href="{{block.settings.link}}">{{block.settings.button-text}}</span>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <a class="cover-link" href="{{block.settings.link}}"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if section.blocks.size > 1 %}
+        <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]">
+            {% for block in section.blocks %}
+                <button class="slider__bullet glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+            {% endfor %}
+
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Banner 2.0",
+        "blocks": [
+            {
+                "type": "banner_slide",
+                "name": "Banner Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "mobile_image",
+                        "type": "image_picker",
+                        "label": "Mobile Image"
+                    },
+                    {
+                        "id": "image_small",
+                        "type": "image_picker",
+                        "label": "Image Small"
+                    },
+                    {
+                        "type": "radio",
+                        "id": "position",
+                        "options": [
+                            { "value": "bottom", "label": "Bottom"},
+                            { "value": "center", "label": "Center"},
+                            { "value": "top", "label": "Top"}
+                        ],
+                        "label": "Image Alignment"
+                    },
+                    {
+                        "type": "radio",
+                        "id": "position2",
+                        "options": [
+                            { "value": "bottom", "label": "Bottom"},
+                            { "value": "center", "label": "Center"},
+                            { "value": "top", "label": "Top"}
+                        ],
+                        "label": "Image Alignment Mobile"
+                    },
+                    {
+                        "id": "video",
+                        "type": "text",
+                        "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "video_mobile",
+                        "type": "text",
+                        "label": "Video Mobile",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "button-text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Banner2.0",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

@@ -4,9 +4,13 @@
 
   .text-container {
     padding: 30px 0;
+    font-size: 12px;
+    line-height: 20px;
 
     @include breakpoint(medium) {
-      padding: 70px 0;
+      padding: 50px 0;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 

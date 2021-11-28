@@ -1,0 +1,76 @@
+<div class="section section-media-wayfinder-pillars mbi-70 m-mb-30 m-mt-20">
+    <div class="media-block-container grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y show-for-small-only">
+            <div class="text-center width-100">
+                <h4 class="h4-v2 m-mt-20">{{section.settings.title}}</h4>
+                <div class="title-underline"></div>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% for block in section.blocks %}
+                <div class="cell media-block medium-3 small-6">
+                    <a class="text-decoration-none" href="{{ block.settings.link }}">
+                        <img data-src="{{block.settings.image | img_url: '300x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image">
+                    </a>
+                    <div class="text-center">
+                        <h5 class="h5-v2 mti-10 mbi-0 m-mt-0">{{ block.settings.title }}<span class="show-for-small-only" style="padding-left: 5px;">{% include "icon-arrow-right-3" %}</span></h5>
+                        <p class="show-for-medium mti-5" style="line-height: 18px; margin-bottom: 12px">{{ block.settings.paragraph }}</p>
+                        <a class="button button-underline-dark mti-0 show-for-medium" href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Four pillars",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Mobile Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "media_block",
+                "name": "Media Block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Background Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "paragraph",
+                        "label": "Paragraph"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_text",
+                        "label": "Link Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Four pillars",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

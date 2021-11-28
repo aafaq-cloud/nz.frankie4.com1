@@ -1,0 +1,22 @@
+<div class="section section-disclaimer no-margin" style="background-color: white;">
+
+  <div class="grid-container">
+    <div class="text-center text-container mt-50 mb-50" style="padding: 0">
+      {{ section.settings.content }}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Disclaimer",
+    "settings": [
+      {
+        "id": "content",
+        "type": "richtext",
+        "label": "Content"
+      }
+    ]
+  }
+{% endschema %}

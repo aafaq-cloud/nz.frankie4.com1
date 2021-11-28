@@ -27,7 +27,7 @@ export class Product extends EventEmitter {
 
     // We will only initialise the variant bindings if we have a product container and product data
     if (this.hasOwnProperty("container") && this.hasOwnProperty("product")) {
-      this.quickview = this.container.classList.contains('is-quickview');
+      // this.quickview = this.container.classList.contains('is-quickview');
       this.setVariantGroups();
       this.setSelectors();
       this.initVariantSelectors();
@@ -319,11 +319,7 @@ export class Product extends EventEmitter {
 
       if (currentVariant != undefined) {
 
-          if (swatch.hasAttribute('data-product-quickview')) {
-            swatch.setAttribute('data-product-url','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
-          } else {
             swatch.setAttribute('href','/products/' + swatch.getAttribute('data-product-handle') + '?variant=' + currentVariant.id);
-          }
 
       }
 
@@ -436,7 +432,6 @@ export class Product extends EventEmitter {
   updateHistoryState() {
     if (
       !history.replaceState ||
-      this.quickview ||
       !this.selectedVariant ||
       this.product.variants.length < 2
     ) {
@@ -517,7 +512,7 @@ export class Product extends EventEmitter {
       clearTimeout(clearErrorTimeout);
 
       this.selectorsSingle.addToCart.classList.add("js-loading", "no-hover");
-      this.selectorsSingle.addToCartText.innerHTML = "Adding to bag";
+      this.selectorsSingle.addToCartText.innerHTML = "Adding to Cart";
 
       // Trigger an add to cart ajax function
       AppShopifyCart.addItem(variantID, quantity, properties).then(
@@ -525,7 +520,7 @@ export class Product extends EventEmitter {
           // If we successfully added the item to cart we will show a success message
           this.selectorsSingle.addToCart.classList.remove("js-loading");
           this.selectorsSingle.addToCart.classList.add("added");
-          this.selectorsSingle.addToCartText.innerHTML = "Added to bag";
+          this.selectorsSingle.addToCartText.innerHTML = "Added to Cart";
 
           // Clear the success button styles
           setTimeout(() => {

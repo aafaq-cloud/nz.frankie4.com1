@@ -1,0 +1,96 @@
+<div class="section section-media-wayfinder-trending mbi-70 m-mb-40">
+
+    <div class="media-block-container grid-container" style="max-width: 900px">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center width-100">
+                <h4 class="h4-v2">{{section.settings.title}}</h4>
+                <div class="title-underline"></div>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% for block in section.blocks %}
+                <div class="cell media-block medium-4 small-6 {% if block.settings.hide_for_mobile %}show-for-medium{% endif %}">
+                    <a href="{{ block.settings.link }}" style="text-decoration: none">
+                        <img data-src="{{block.settings.image | img_url: '500x'}}" alt="{{block.settings.title}}" class="lazyload media-block-image width-100">
+                        <div class="text-center">
+                            <p class="mti-0 mbi-0">{{ block.settings.title }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center width-100">
+                <a class="button button-box mt-30" href="{{ section.settings.link }}">{{section.settings.button}}</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Trending products",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "button",
+                "label": "Button Text"
+            },
+            {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "media_block",
+                "name": "Media Block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Background Image"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "hide_for_mobile",
+                        "label": "Hide for mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "paragraph",
+                        "label": "Paragraph"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_text",
+                        "label": "Link Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Trending products",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

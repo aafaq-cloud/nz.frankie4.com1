@@ -286,7 +286,7 @@
       "from_text_html": "From {{ price }}",
       "related_products_select_label": "Colour",
       "quantity": "Quantity",
-      "add_to_cart": "Add to Bag",
+      "add_to_cart": "Add to Cart",
       "quickview": "Quickview",
       "quickview_view_full": "View Details",
       "tab_description": "Description"

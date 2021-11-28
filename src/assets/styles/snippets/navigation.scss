@@ -16,6 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border-bottom: 1px rgba(0,0,0,0.01) solid;
 
       > li {
         &.has-children:not(.mega-menu) {
@@ -31,14 +32,19 @@
           }
         }
 
+        &:hover {
+          border-bottom: 1px black solid;
+        }
+
         > a {
           height: 60px;
           padding: 5px 10px;
-          font-size: 16px;
+          font-size: 12px;
           line-height: 1.2em;
           display: flex;
           justify-content: center;
           align-items: center;
+          letter-spacing: normal;
 
           //@include breakpoint(920px) {
           //  padding-left: 20px;
@@ -48,13 +54,14 @@
           @include breakpoint(900px) {
             padding-left: 10px;
             padding-right: 10px;
-            font-size: 16px;
+            font-size: 13px;
           }
 
-          @include breakpoint(1100px) {
+          @include breakpoint(1120px) {
             padding-left: 15px;
             padding-right: 15px;
-            font-size: 18px;
+            font-size: 15px;
+            letter-spacing: 1px;
           }
 
         }
@@ -90,7 +97,7 @@
       right: 0;
       top: 100%;
       background: white;
-      padding: 20px 20px 20px 40px;
+      padding: 20px;
 
 
       &-image-container {
@@ -134,12 +141,12 @@
 
       // Menu 2
       &-2 {
-        padding: 15px;
+        padding: 19px 25px 15px 25px;
 
         &-blocks {
-          margin: -7.5px;
+          margin: -7.5px 0 -7.5px 0;
           width: calc(100% + 15px);
-          height: calc(100% + 15px);
+          height: calc(100%);
           .cell {
             padding: 7.5px;
           }

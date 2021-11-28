@@ -1,0 +1,43 @@
+<div class="section mti-0 mbi-0 m-auto section-about-us-page-group section-brainchild-ambassador-banner m-mt-0" style="max-width: 1200px;">
+    <div class="cell-image cell medium-auto landing-image-2" 
+        style="background-image: url('{{section.settings.image_1 | img_url: '1200x'}}');">
+            <span role="img" aria-label="A mother holding a child sitting on the grass wearing FRANKiE4 socks"> </span>
+            <div class="text-center landing-text" style="width: 50%">
+                <span class="h2-v2" style="color: black; font-weight: 600; line-height: 20px;">{{section.settings.section_main_title}}</span>
+                {% if section.settings.section_subtitle != blank %}
+                    <p><span class="button-large button-underline-dark"><a href="{{section.settings.link1}}" style="text-decoration: none; font-weight: 700">{{section.settings.section_subtitle}}</a></span></p>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Banner",
+  "settings": [
+    {
+        "type": "text",
+        "id": "section_main_title",
+        "label": "Page Title"
+    },
+    {
+        "type": "text",
+        "id": "section_subtitle",
+        "label": "Page Subtitle"
+    },
+    {
+        "type": "url",
+        "id": "link1",
+        "label": "Link URL"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Page Landing Background Image"
+    }
+  ]
+}
+
+{% endschema %}

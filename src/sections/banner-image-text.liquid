@@ -1,0 +1,74 @@
+<div class="section section-banner-3 no-margin mbi-70 m-mb-30 width-100" style="max-width: 2000px; margin: auto">
+
+    <img style="height: auto; width: 100%; object-fit: contain; object-position: center" 
+            data-src="{{section.settings.image |  img_url: '2000x' }}" 
+            data-srcset="{{section.settings.image | img_url: '2000x'}} 2000w, 
+                         {{section.settings.image | img_url: '1100x'}} 1100w, 
+                         {{section.settings.image | img_url: '800x'}} 800w" 
+            alt="{{section.settings.title}}" class="lazyload show-for-medium">
+    <a href="{{section.settings.link}}" class="show-for-small-only"><img style="height: auto; width: 100%; object-fit: contain; object-position: center" 
+            data-src="{{section.settings.mobile_image |  img_url: '1400x' }}" 
+            data-srcset="{{section.settings.mobile_image | img_url: '1400x'}} 1400w, 
+                         {{section.settings.mobile_image | img_url: '1100x'}} 1100w, 
+                         {{section.settings.mobile_image | img_url: '800x'}} 800w" 
+            alt="{{section.settings.title}}" class="lazyload"></a>
+
+    <div class="banner-content-wrapper">
+        <div class="grid-container text-center">
+            <h1 class="h1-v2 m-0 show-for-medium">{{section.settings.title}}</h1>
+            <a href="{{section.settings.link}}" class="show-for-small-only" style="text-decoration: none"><h1 class="h3-v2 m-0 lsi-1">{{section.settings.title}}</h1></a>
+            {% if section.settings.subtitle != blank %}
+                <h4 class="banner-subtitle mt-10 mb-0 fwi-400">{{section.settings.subtitle}}</h4>
+            {% endif %}
+            {% if section.settings.button-text != blank %}
+                <a class="button button-underline mti-30 show-for-medium" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+{% schema %}
+    {
+        "name": "Banner Feature",
+        "settings": [
+            {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+            },
+            {
+                "id": "mobile_image",
+                "type": "image_picker",
+                "label": "Mobile Image"
+            },
+            {
+                "id": "title",
+                "type": "text",
+                "label": "Title"
+            },
+            {
+                "id": "subtitle",
+                "type": "text",
+                "label": "Subtitle"
+            },
+            {
+                "id": "button-text",
+                "type": "text",
+                "label": "Button Text"
+            },
+            {
+                "id": "link",
+                "type": "url",
+                "label": "Button Link"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Banner Feature",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

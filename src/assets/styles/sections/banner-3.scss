@@ -1,0 +1,153 @@
+.section-banner-3 {
+  position: relative;
+  margin-bottom: 30px;
+
+  .slider {
+    max-width: 2000px;
+    margin: auto;
+  }
+
+
+  .banner-video {
+    height: 60vh;
+    max-height: 80vh;
+
+    @include breakpoint(medium) {
+      height: 740px;
+    }
+  }
+
+
+  .slide {
+    &__arrow {
+
+
+      position: absolute;
+      display: block;
+      top: 50%;
+      z-index: 2;
+      color: white;
+      padding: 9px 12px;
+      background-color: transparent;
+      cursor: pointer;
+      transform: translateY(-50%);
+      line-height: 1;
+
+      svg {
+        transform: rotate(90deg);
+        height: 4rem;
+        width: 4rem;
+
+        polygon {
+          fill: #fff;
+        }
+      }
+
+      &--right {
+
+        right: 0;
+
+        svg {
+          transform: rotate(270deg);
+
+        }
+      }
+    }
+  }
+
+  .banner-image {
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+  
+    @supports (object-fit: cover) {
+      height: 60vh;
+      max-height: 80vh;
+      object-fit: cover;
+  
+      @include breakpoint(medium) {
+        height: 740px;
+      }
+    }
+  
+    &.mobile-banner-image {
+  
+      @include breakpoint(small down) {
+        + .banner-image {
+          display: none;
+        }
+      }
+  
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+  }
+  
+  .banner-content-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2), rgba(0,0,0,0));
+    background: none;
+    color: white;
+    padding-bottom: 40px;
+  }
+
+  @media screen and (max-width: 640px) {
+    .banner-content-wrapper {
+      right: 0;
+      left: auto;
+      width: 50%;
+      padding-bottom: 0;
+      color: white;
+    }
+  }
+  
+  .banner-title {
+    font-weight: 500;
+    font-size: rem-calc(16);
+    font-family: 'Montserrat', 'Helvetica';
+
+    @include breakpoint(580px) {
+      font-size: rem-calc(24);
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(28);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem-calc(34);
+    }
+
+    @include breakpoint(xlarge) {
+      font-size: rem-calc(38);
+    }
+
+  }
+
+
+  .banner-subtitle {
+    font-size: rem-calc(14px);
+    font-family: 'Montserrat', 'Helvetica';
+    letter-spacing: normal;
+    font-weight: 100;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(18px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem-calc(20px);
+    }
+  }
+
+}
+

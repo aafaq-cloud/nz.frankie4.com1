@@ -1,4 +1,4 @@
-{%- assign social_accounts = 'Snapchat, Instagram, Facebook, Pinterest, Twitter, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+{% comment %} {%- assign social_accounts = 'Snapchat, Instagram, Facebook, Pinterest, Twitter, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
 <ul class="social-icons grid-x align-middle">
     {% for social in social_accounts %}
 
@@ -17,4 +17,24 @@
         {% endif %}
 
     {% endfor %}
-</ul>
+</ul> {% endcomment %}
+
+{%- assign social_accounts = 'Snapchat, Instagram, Facebook, Pinterest, Twitter, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+{% for social in social_accounts %}
+
+    {%- assign social_handle = social | handleize -%}
+    {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+    {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+    {% if settings[social_link] != blank %}
+        <li class="social-icons">
+            <a href="{{ settings[social_link] }}"
+                style="margin-left: 1px"
+                target="_blank"
+                title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                {% include social_icon %} {{ social }} </a>
+        </li>
+    {% endif %}
+
+{% endfor %}
+

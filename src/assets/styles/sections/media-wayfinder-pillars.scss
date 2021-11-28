@@ -1,0 +1,65 @@
+.section-media-wayfinder-pillars {
+
+  @include breakpoint(small down) {
+    margin-left: map-get($grid-margin-gutters, small);
+    margin-right: map-get($grid-margin-gutters, small);
+  }
+
+  .media-block-container {
+    @include breakpoint(small down) {
+      padding: 0 map-get($grid-margin-gutters, small);
+    }
+  }
+
+  .media-block {
+    position: relative;
+    max-height: 350px;
+
+    @include breakpoint(medium) {
+      max-height: 4450px;
+    }
+
+    &-image {
+      object-fit: cover;
+      width: 100%;
+      transition: all 400ms ease;
+
+      &:hover {
+        filter: grayscale(1);
+      }
+
+      &.mobile-media-block-image {
+
+        @include breakpoint(small down) {
+          + .media-block-image {
+            display: none;
+          }
+        }
+
+        @include breakpoint(medium) {
+          display: none;
+        }
+      }
+    }
+
+    &-content {
+      position: relative;
+      z-index: 1;
+      background: white;
+      padding: 15px 20px;
+
+
+      @include breakpoint(medium) {
+        padding: 20px 40px;
+      }
+
+      &-wrapper {
+        padding: 30px;
+
+        @include breakpoint(medium) {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}

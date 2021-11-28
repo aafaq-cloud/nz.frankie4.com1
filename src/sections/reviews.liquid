@@ -1,0 +1,85 @@
+<div data-autoload-class="BannerSection" class="section section-reviews no-margin mbi-20 m-mb-10" style="background-color: #e7eae9">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center width-100">
+                <h4 class="h5-v2 mti-60 mbi-30 show-for-medium"><span class="fwi-600 lsi-1-5">{{section.settings.title1}}</span><br><span class="fwi-300">{{section.settings.title2}}</span></h4>
+                <h4 class="h4-v2 m-mt-30 m-mb-10 show-for-small-only"><span class="fwi-600 lsi-1-5">{{section.settings.title1}}</span><br><span class="fwi-300">{{section.settings.title2}}</span></h4>
+            </div>
+        </div>
+        <div class="slider">
+            <div data-glide-el="track" class="glide__track">
+                <div class="glide__slides">
+                    {% for block in section.blocks %}
+                        <div class="glide__slide" style="position: relative">
+                            <picture>
+                                <img data-src="{{section.settings.image |  img_url: '400x' }}" class="lazyload banner-image">
+                            </picture>
+                            <div class="banner-content-wrapper">
+                                <div class="grid-container text-center">
+                                    <span class="quote-text">{{block.settings.section_review}}</span>
+                                    <p class="name-text">{{block.settings.section_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if section.blocks.size > 1 %}
+            <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]">
+                {% for block in section.blocks %}
+                    <button class="slider__bullet glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+                {% endfor %}
+            </div> 
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Reviews",
+        "settings": [
+            {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+            },
+            {
+                "id": "title1",
+                "type": "text",
+                "label": "Review number"
+            },
+            {
+                "id": "title2",
+                "type": "text",
+                "label": "Review text"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "banner_slide",
+                "name": "Review Slide",
+                "settings": [
+                    {
+                        "id": "section_review",
+                        "type": "richtext",
+                        "info": "Max character count 180",
+                        "label": "Review"
+                    },
+                    {
+                        "id": "section_name",
+                        "type": "text",
+                        "label": "Name"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Reviews",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

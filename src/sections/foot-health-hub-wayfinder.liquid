@@ -1,4 +1,4 @@
-<div class="section section-foot-health-hub-wayfinder">
+<div class="section section-foot-health-hub-wayfinder mbi-0">
 
   {% assign slide_count = section.blocks.size %}
   {% assign slide_index_limit = slide_count | minus: 1 %}
@@ -7,7 +7,24 @@
 
     <div class="grid-x align-center">
       <div class="cell large-9">
-        <div class="lead medium-text-center">{{ section.settings.section_content }}</div>
+        <h2 class="text-center mbi-20 m-mb-10">{{ section.settings.section_title1 }}</h2>
+      </div>
+    </div>
+
+    <div class="grid-x align-center mti-20 m-mt-0">
+      <div class="cell large-5 show-for-medium section-top-text">
+        <div class="lead text-center">{{ section.settings.section_content }}</div>
+      </div>
+      <div class="cell large-5 show-for-small-only" style="padding: 0 15px">
+        <div class="lead text-center">{{ section.settings.section_content }}</div>
+      </div>
+      <div class="cell large-5 section-top-image" style="background-image: url('{{ section.settings.image1 | img_url: '600x600' }}');">
+      </div>
+    </div>
+
+    <div class="grid-x align-center">
+      <div class="cell large-9">
+        <div class="lead text-center">{{ section.settings.section_content2 }}</div>
         <div class="section-line"></div>
         <h2 class="medium-text-center">{{ section.settings.section_title }}</h2>
       </div>
@@ -22,13 +39,13 @@
 
               <div class="cell medium-4 glide__slide">
                 <div class="wayfinder-tile">
-                  <a href="{{ block.settings.link }}">
+                  {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
                     <div class="wayfinder-content">
                       <div class="wayfinder-title">{{ block.settings.title }}</div>
                       <div class="wayfinder-subtitle">{{ block.settings.subtitle }}</div>
                     </div>
                     <img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}">
-                  </a>
+                  {% if block.settings.link != blank %}</a>{% endif %}
                 </div>
               </div>
 
@@ -45,6 +62,12 @@
       </div>
     </div>
 
+    <div class="grid-x align-center m-mt-20">
+      <div class="cell large-9">
+        <div class="lead text-center">{{ section.settings.section_content3 }}</div>
+      </div>
+    </div>
+
   </div>
 
 </div>
@@ -54,8 +77,28 @@
         "name": "Foot Health Hub Grid",
         "settings": [
           {
+            "type": "text",
+            "id": "section_title1",
+            "label": "Title Top"
+          },
+          {
             "type": "header",
             "content": "Section Title"
+          },
+          {
+            "type": "richtext",
+            "id": "section_content",
+            "label": "Content"
+          },
+          {
+            "type": "richtext",
+            "id": "section_content2",
+            "label": "Content 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image"
           },
           {
             "type": "text",
@@ -64,8 +107,8 @@
           },
           {
             "type": "richtext",
-            "id": "section_content",
-            "label": "Content"
+            "id": "section_content3",
+            "label": "Content 3"
           }
         ],
         "blocks": [

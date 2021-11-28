@@ -22,13 +22,13 @@ var bcSfFilterTemplate = {
   'productGridItemHtml': ' <div data-product-id="{{itemId}}" class="cell small-6 large-3 grid-x align-stretch {{itemHandle}} {{isPrimary}}">' +
         '<article class="product-tile text-center grid-y" data-handle="{{itemHandle}}">' +
         '<div class="cell product-tile__image-container">' + 
+
         '<a href="{{itemUrl}}" class="cover-link" tabindex="-1" aria-hidden="true"></a>' +
         '{{itemImages}}' +
-        '<button data-product-quickview data-product-url="{{itemUrl}}" class="product-tile__quickview button button-secondary button-small">Quickview</button>' +
 
         '</div>' +
 
-        '<div class="cell product-tile__body grid-y">' +
+        '<div class="cell product-tile__body grid-y" style>' +
         '<h6 class="product-tile__title grid-x align-middle align-center">{{itemTitle}}</h6>' +
         '<div class="cell shrink yotpo bottomLine" data-product-id="{{itemId}}"></div>' +
         '<div class="product-tile__info">' +
@@ -119,6 +119,18 @@ BCSfFilter.prototype.buildProductGridItem = function(data, index) {
 
     itemHtml = itemHtml.replace(/{{itemPrice}}/g, itemPriceHtml);
 
+    // var wishlistHTML = '';
+    // if (ShopifyWishlist.customerid) {
+    //     wishlistHTML +=  '<a class="product-tile__wishlist-add" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ itemHandle }}">';
+    //     wishlistHTML += '<svg class="icon icon-heart icon--full-color" width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Icons-/-Basic-/-Favourites" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="fill" d="M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path><path class="outline" d="M59.8973077,18.5869231 C59.0215385,8.94769231 52.1988462,1.95423077 43.6603846,1.95423077 C37.9719231,1.95423077 32.7634615,5.01538462 29.8326923,9.92153846 C26.9284615,4.95192308 21.9334615,1.95307692 16.3361538,1.95307692 C7.79884615,1.95307692 0.975,8.94653846 0.100384615,18.5857692 C0.0311538462,19.0115385 -0.252692308,21.2523077 0.610384615,24.9065385 C1.85423077,30.1773077 4.72730769,34.9715385 8.91692308,38.7676923 L29.8188462,57.7357692 L51.0796154,38.7688462 C55.2692308,34.9715385 58.1423077,30.1784615 59.3861538,24.9065385 C60.2492308,21.2534615 59.9653846,19.0126923 59.8973077,18.5869231 Z M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Shape" fill="#2C2F35" fill-rule="nonzero"></path></g></svg>'
+    //     wishlistHTML += '</a>';
+    // }else{
+    //     wishlistHTML +=  '<a class="product-tile__wishlist-add" href="/pages/wishlist">';
+    //     wishlistHTML += '<svg class="icon icon-heart icon--full-color" width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Icons-/-Basic-/-Favourites" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="fill" d="M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path><path class="outline" d="M59.8973077,18.5869231 C59.0215385,8.94769231 52.1988462,1.95423077 43.6603846,1.95423077 C37.9719231,1.95423077 32.7634615,5.01538462 29.8326923,9.92153846 C26.9284615,4.95192308 21.9334615,1.95307692 16.3361538,1.95307692 C7.79884615,1.95307692 0.975,8.94653846 0.100384615,18.5857692 C0.0311538462,19.0115385 -0.252692308,21.2523077 0.610384615,24.9065385 C1.85423077,30.1773077 4.72730769,34.9715385 8.91692308,38.7676923 L29.8188462,57.7357692 L51.0796154,38.7688462 C55.2692308,34.9715385 58.1423077,30.1784615 59.3861538,24.9065385 C60.2492308,21.2534615 59.9653846,19.0126923 59.8973077,18.5869231 Z M57.1396154,24.3780769 C56.0042308,29.1919231 53.3723077,33.5776923 49.5357692,37.0530769 L29.8326923,54.6319231 L10.4676923,37.0576923 C6.62423077,33.5753846 3.99346154,29.1907692 2.85692308,24.3769231 C2.04,20.9188462 2.37576923,18.9653846 2.37692308,18.9526923 L2.39423077,18.8361538 C3.14423077,10.3911538 9.00692308,4.26076923 16.3361538,4.26076923 C21.7442308,4.26076923 26.505,7.58384615 28.7642308,12.9319231 L29.8269231,15.4507692 L30.8896154,12.9319231 C33.1130769,7.66576923 38.1253846,4.26192308 43.6615385,4.26192308 C50.9896154,4.26192308 56.8534615,10.3923077 57.6184615,18.9469231 C57.6207692,18.9653846 57.9565385,20.92 57.1396154,24.3780769 Z" id="Shape" fill="#2C2F35" fill-rule="nonzero"></path></g></svg>'
+    //     wishlistHTML += '</a>';
+    // }
+
+    // itemHtml = itemHtml.replace(/{{itemWishlist}}/g, wishlistHTML);
     itemHtml = itemHtml.replace(/{{itemBadges}}/g, buildBadges(data));
 
     // Add soldOut class
@@ -206,12 +218,17 @@ function buildImages(data) {
 
     var html = '';
     // Build Main Image
-    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '335x400_crop_center') : bcSfFilterConfig.general.no_image_url;
-    html += '<img src="' + thumbUrl + '" class=" product-tile-image" />';
-    // Build Image Swap
-    var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src']) : thumbUrl;
-    //html += '<img src="' + flipImageUrl + '" class=" product-tile-image secondary" />';
-
+    var thumbUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+    html += '<img src="' + thumbUrl + '" class="product-tile-image lazyload" />';
+    if (images.length > 1) {
+        // Build Image Swap
+        var flipImageUrl = images.length > 1 ? bcsffilter.optimizeImage(images[1]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+        html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
+    } else {
+        // Build Main Image
+        var flipImageUrl = images.length > 0 ? bcsffilter.optimizeImage(images[0]['src'], '375x400_crop_center') : bcSfFilterConfig.general.no_image_url;
+        html += '<img src="' + flipImageUrl + '" class="product-tile-image product-tile-image-2 lazyload product-tile__quickview" style="margin-top: -4px;" />';
+    }
 
     return html;
 }
@@ -474,7 +491,7 @@ BCSfFilter.prototype.buildAdditionalElements = function(data, eventType) {
     }
 
     // Refresh Quickview
-    AppQuickview.initQuickViewButtons();
+    // AppQuickview.initQuickViewButtons();
     AppProductList.initProductList();
 
     //console.log(data);

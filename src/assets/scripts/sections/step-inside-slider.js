@@ -28,7 +28,7 @@ export class StepInsideSliderSection extends AbstractComponent {
               after: 300
             },
             breakpoints: {
-                400: {
+                480: {
                     perView: 1,
                     gap: 10,
                     peek: {

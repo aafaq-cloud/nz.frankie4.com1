@@ -1,0 +1,55 @@
+<div class="section mti-0 mbi-0 m-auto section-about-us-page-group m-mt-0" style="max-width: 2000px;">
+    <div class="cell-image cell medium-auto landing-image show-for-medium" 
+        style="background-image: url('{{section.settings.image_1 | img_url: '1400x'}}');
+                background-position: bottom;">
+            <span role="img" aria-label="A mother holding a child sitting on the grass wearing FRANKiE4 socks"> </span>
+            <div class="text-center landing-text">
+                <h1 class="mt-40">{{section.settings.section_main_title}}</h1>
+                {% if section.settings.section_subtitle != blank %}
+                    <h4>{{section.settings.section_subtitle}}</h4>
+                {% endif %}
+            </div>
+    </div>
+    <div class="cell-image cell medium-auto landing-image show-for-small-only" 
+        style="background-image: url('{{section.settings.image_2 | img_url: '1400x'}}');
+                background-position: bottom;">
+            <span role="img" aria-label="A mother holding a child sitting on the grass wearing FRANKiE4 socks"> </span>
+            <div class="text-center landing-text">
+                <h1 class="m-mt-10">{{section.settings.section_main_title}}</h1>
+                {% if section.settings.section_subtitle != blank %}
+                    <h4>{{section.settings.section_subtitle}}</h4>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Banner",
+  "settings": [
+    {
+        "type": "text",
+        "id": "section_main_title",
+        "label": "Page Title"
+    },
+    {
+        "type": "text",
+        "id": "section_subtitle",
+        "label": "Page Subtitle"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Banner Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Mobile Banner Image"
+    }
+  ]
+}
+
+{% endschema %}

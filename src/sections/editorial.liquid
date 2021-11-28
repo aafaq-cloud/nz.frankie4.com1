@@ -1,0 +1,93 @@
+<div data-autoload-class="BannerEditorialSection" class="section section-editorial no-margin mbi-70">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-center width-100">
+                <h4 class="h4-v2">{{section.settings.title}}</h4>
+                <div class="title-underline mbi-40 m-mb-20"></div>
+            </div>
+        </div>
+        <div class="slider">
+            <div data-glide-el="track" class="glide__track">
+                <div class="glide__slides">
+                    {% for block in section.blocks %}
+                        <div class="glide__slide" style="position: relative">
+                            <picture>
+                                <img data-src="{{block.settings.image |  img_url: '2000x' }}" data-srcset="{{block.settings.image | img_url: '2000x'}} 2000w, {{block.settings.image | img_url: '1100x'}} 1100w, {{block.settings.image | img_url: '800x'}} 800w" data-sizes="100vw" alt="{{block.settings.title}}" class="lazyload banner-image">
+                            </picture>
+                            <div class="banner-content-wrapper">
+                                <div class="grid-container text-center">
+                                    <h1 class="h4-v2">{{block.settings.title}}</h1>
+                                </div>
+                            </div>
+                            <div class="banner-content-wrapper banner-content-wrapper-bottom">
+                                <div class="grid-container text-center">
+                                    <a class="button button-underline mbi-30 m-mb-20" href="{{block.settings.link}}">{{block.settings.button-text}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if section.blocks.size > 1 %}
+            <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]">
+                {% for block in section.blocks %}
+                    <button class="slider__bullet glide__bullet" data-glide-dir="={{ forloop.index0 }}"></button>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Editorial",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "banner_slide",
+                "name": "Banner Slide",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "id": "button-text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Editorial",
+                "category": "Sections"
+            }
+        ]
+    }
+{% endschema %}

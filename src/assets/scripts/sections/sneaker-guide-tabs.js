@@ -23,7 +23,7 @@ export class SneakerGuideTabsSection extends AbstractComponent {
         this.glideSettings = {
             type: 'carousel',
             gap: 0,
-            focusAt: 1,
+            focusAt: 0,
             perView: 6,
             breakpoints: {
                 600: {

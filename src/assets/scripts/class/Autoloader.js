@@ -2,6 +2,7 @@
 import {ComponentSelect} from "../components/ComponentSelect";
 import {ComponentQuantitySelector} from "../components/ComponentQuantitySelector";
 import {ComponentAccordionItem} from "../components/ComponentAccordionItem";
+import {ComponentAccordionFooterItem} from "../components/ComponentAccordionFooterItem";
 import {ComponentCarousel} from "../components/ComponentCarousel";
 import {ComponentVideo} from "../components/ComponentVideo";
 import {ComponentWayfinderSlider} from "../components/ComponentWayfinderSlider";
@@ -12,6 +13,7 @@ import {ComponentGridSlider} from "../components/ComponentGridSlider";
 import {CartModalSnippet} from "../snippets/CartModalSnippet";
 import {SearchAutocompleteSnippet} from "../snippets/SearchAutocompleteSnippet";
 import {CollectionFilterSnippet} from "../snippets/CollectionFilterSnippet";
+import {PromoBannerSection} from "../snippets/PromoBannerSnippet";
 
 // Sections
 import {CollectionSection} from "../sections/collection";
@@ -24,6 +26,7 @@ import {FeaturedProductsSection} from "../sections/featured-products";
 import {ContactSection} from "../sections/contact";
 import {ContactFormSection} from "../sections/contact-form";
 import {BannerSection} from "../sections/banner";
+import {BannerEditorialSection} from "../sections/banner-editorial";
 import {ShippingSection} from "../sections/shipping";
 import {SneakerGuideTabsSection} from "../sections/sneaker-guide-tabs";
 import {FootHealthHubSliderSection} from "../sections/foot-health-hub-slider";
@@ -39,6 +42,7 @@ import {HighHeelsDifference} from "../sections/high-heels-difference";
 import {StepInsideSection} from "../sections/step-inside";
 import {StepInsideSliderSection} from "../sections/step-inside-slider";
 import {SimpleGlideSection} from "../sections/simple-glider";
+import {SimpleGlideAutoplaySection} from "../sections/simple-glider-autoplay";
 import {WeStandForSection} from "../sections/we-stand-for";
 
 export class Autoloader {
@@ -48,6 +52,7 @@ export class Autoloader {
       ComponentQuantitySelector,
       ComponentSelect,
       ComponentAccordionItem,
+      ComponentAccordionFooterItem,
       ComponentCarousel,
       ComponentVideo,
       ComponentWayfinderSlider,
@@ -58,6 +63,7 @@ export class Autoloader {
       SearchAutocompleteSnippet,
       CartModalSnippet,
       CollectionFilterSnippet,
+      PromoBannerSection,
 
       // Sections
       HeaderSection,
@@ -72,6 +78,7 @@ export class Autoloader {
       SneakerGuideTabsSection,
       HighHeelsDifference,
       BannerSection,
+      BannerEditorialSection,
       ShippingSection,
       FootHealthHubSliderSection,
       FootHealthHubRoadTestersSection,
@@ -86,6 +93,7 @@ export class Autoloader {
       StepInsideSection,
       StepInsideSliderSection,
       SimpleGlideSection,
+      SimpleGlideAutoplaySection,
       WeStandForSection
     };
 

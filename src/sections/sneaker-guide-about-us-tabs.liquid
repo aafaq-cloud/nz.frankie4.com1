@@ -1,0 +1,260 @@
+<div class="section section-about-us-page-group">
+
+    <div data-autoload-class="WeStandForSection" class="section section-we-stand-for grey-section">
+
+        <div class="grid-container mbi-40 m-mb-10">
+            <div class="grid-x align-center text-center">
+            <div class="cell">
+                {% if section.settings.section_title_slider != blank %}
+                <h2 class="h1 mti-80 mbi-20 m-mt-40">{{ section.settings.section_title_slider}}</h2>
+                {% endif %}
+                <p>{{ section.settings.section_content }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+
+            <div class="tab-titles">
+            <div class="glide tab-slider">
+                <div class="glide__arrows mid-screen-show" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" style="top:40%" data-glide-dir="<">{% render 'icon-chevron-right' %}</button>
+                    <button class="glide__arrow glide__arrow--right" style="top:40%" data-glide-dir=">">{% render 'icon-chevron-right' %}</button>
+                </div>
+                <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% assign tabIndex = 1 %}
+                    {% for block in section.blocks %}
+
+                    {% if block.type == 'tab_title' %}
+                        <li class="glide__slide">
+                            <div class="tab-title-container">
+                            <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
+                                <div class="tab-title-container">
+                                <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                                <div class="tab-title-content-container" style="padding-left: 25px; padding-bottom: 15px;">
+                                    <div class="tab-title-content">
+                                    <h2 class="mobile-h">{{ block.settings.title }}</h2>
+                                    <p style="margin: 0">{{ block.settings.subtitle }}</p>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+                        </li>
+                        {% assign tabIndex = tabIndex | plus: 1 %}
+                    {% endif %}
+
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+
+        {% comment %}
+            Tab Content
+        {% endcomment %}
+        <div class="grid-container">
+
+            <div class="grid-x">
+            <div class="cell large-12">
+
+                <div class="tab-content">
+                {% assign tabContentIndex = 1 %}
+
+                {% assign slideTitles = '' %}
+
+                {% for block in section.blocks %}
+
+                    {% if block.type == 'slider_start' %}
+
+                    {% assign slideTitles = '' %}
+                    <div class="tab-content-item{% if tabContentIndex == 1 %} active{% endif %}" data-tab-content-index="{{ tabContentIndex }}">
+                    <div class="glide slider">
+                        <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                    {% assign tabContentIndex = tabContentIndex | plus: 1 %}
+
+                    {% endif %}
+
+                    {% if block.type == 'slider_end' %}
+
+                        </ul>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    {% if block.type == 'tab_content' %}
+
+                    <li class="glide__slide" style="margin-bottom: 20px">
+
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}" style="padding: 0">
+
+                            {% if block.settings.video != blank %}
+                                <div data-autoload-class="ComponentVideo">
+                                    <video class="responsive_video lazyload" preload="none" autoplay="" loop="" muted=""
+                                           playsinline controls controlslist="nodownload" 
+                                           data-src="{{block.settings.video }}">
+                                    </video>
+                                </div>
+                            {% else %}
+                                <img class="m-h250" width="100%" height="330px" style="object-fit: contain; object-position: bottom;" src="{{ block.settings.image | img_url: '960x540', crop: 'center' }}"/>
+                            {% endif %}
+
+                            </div>
+                            <div class="cell medium-12 large-6">
+                            {% comment %} <h2 class="h1">{{ block.settings.title }}</h2> {% endcomment %}
+                            <div><p style="margin-top:0">{{ block.settings.content }}</p></div>
+
+                            <a class="tab-content-item-link" href="{{ block.settings.link }}">
+                                <span class="wide-screen-only" style="text-transform: none;">{{ block.settings.button_text }}</span>
+                                <span class="mobile-screen-only" style="text-transform: none;">{{ block.settings.button_text_mobile }}</span>
+                            </a>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    {% unless slideTitles == '' %}
+                        {% assign slideTitles = slideTitles | append: ',' %}
+                    {% endunless %}
+                    {% assign slideTitles = slideTitles | append: block.settings.title %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "About Us Content",
+        "settings": [
+            {
+                "type": "text",
+                "id": "section_title_slider",
+                "label": "Section Title"
+            },
+            {
+                "id": "section_content",
+                "type": "textarea",
+                "label": "Section Paragraph"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "tab_title",
+                "name": "Tab Title",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "subtitle",
+                        "type": "text",
+                        "label": "Subtitle"
+                    }
+                ]
+            },
+            {
+                "type": "slider_start",
+                "name": "Slider Start",
+                "settings": []
+            },
+            {
+              "type": "slider_end",
+              "name": "Slider End",
+              "settings": []
+            },
+            {
+                "type": "tab_content",
+                "name": "Tab Content",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                     "type": "select",
+                     "id": "image_placement",
+                     "label": "Media Placement",
+                     "options": [
+                       {
+                         "value": "",
+                         "label": "Left"
+                       },
+                       {
+
+                         "value": "medium-order-2",
+                         "label": "Right"
+                       }
+                     ],
+                     "default": ""
+                    },
+                    {
+                        "id": "video",
+                        "type": "text",
+                        "label": "Video",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "video-m",
+                        "type": "text",
+                        "label": "Video Mobile",
+                        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "content",
+                        "type": "textarea",
+                        "label": "Content"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "button_text_mobile",
+                        "type": "text",
+                        "label": "Button Text Mobile"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

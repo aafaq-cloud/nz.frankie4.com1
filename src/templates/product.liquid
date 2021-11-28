@@ -31,7 +31,11 @@
 
 {% section 'product' %}
 
-{% section 'good-design-award' %}
+{% if product.type != "SOCKS" %}
+    {% section 'good-design-award' %}
+{% else %}
+    {% section 'brainchild-info' %}
+{% endif %}
 
 {% section 'related-products' %}
 

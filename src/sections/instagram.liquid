@@ -1,26 +1,17 @@
-<div class="section section-instagram large-margin">
-
+<div class="section section-instagram no-margin">
     <div class="grid-container">
-        <div class="title-block medium-text-center mb-30">
-            <h2 class="h1 m-0">{{section.settings.section_title}}</h2>
-            <div class="lead color-secondary-text mt-5 mb-0">{{section.settings.section_subheading}}</div>
-            {% comment %}
-            <a href="{{ settings.social_instagram_link }}" class="arrow-link color-secondary-text mt-20">Visit our Instagram page {% include 'icon-chevron-right' %}</a>
-            {% endcomment %}
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="text-left width-100">
+                <p class="instagram-title m-0">
+                    <a class="instagram-link" href="{{ section.settings.section_headinglink }}">{{ section.settings.section_heading }}</a>
+                    <a class="instagram-link show-for-medium float-right" href="{{ section.settings.section_headinglink2 }}">{{ section.settings.section_heading2 }}</a>
+                </p>
+            </div>
         </div>
     </div>
-
-    {% comment %} <div
-        class="yotpo yotpo-pictures-widget"
-        data-gallery-id="5d30323401f0952d49ff7e78">
-    </div> {% endcomment %}
-
-    <div
-        class="yotpo yotpo-pictures-widget"
-        data-gallery-id="{{section.settings.gallery_id}}">
+    <div class="yotpo yotpo-pictures-widget mti-0"
+         data-gallery-id="{{section.settings.gallery_id}}">
     </div>
-
-
 </div>
 
 {% schema %}
@@ -28,18 +19,24 @@
         "name": "Instagram",
         "settings": [
             {
-                "type": "header",
-                "content": "Section Title"
+                "type": "text",
+                "id": "section_heading",
+                "label": "Ttile"
             },
             {
                 "type": "text",
-                "id": "section_title",
-                "label": "Title"
+                "id": "section_headinglink",
+                "label": "Link"
             },
             {
-                "type": "richtext",
-                "id": "section_subheading",
-                "label": "Subheading"
+                "type": "text",
+                "id": "section_heading2",
+                "label": "Ttile2"
+            },
+            {
+                "type": "text",
+                "id": "section_headinglink2",
+                "label": "Link2"
             },
             {
                 "type": "text",

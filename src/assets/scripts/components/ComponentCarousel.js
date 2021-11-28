@@ -34,9 +34,9 @@ export class ComponentCarousel extends AbstractComponent {
     this.glide = new Glide(this.glideElement, this.glideSettings);
 
 
-    this.glide.on("build.after", () => {
-      AppQuickview.initQuickViewButtons();
-    });
+    // this.glide.on("build.after", () => {
+    //   AppQuickview.initQuickViewButtons();
+    // });
 
     this.glide.mount();
 
@@ -58,7 +58,7 @@ export class ComponentCarousel extends AbstractComponent {
         this.glideActive = false;
 
         // Refresh Quickview
-        AppQuickview.initQuickViewButtons();
+        // AppQuickview.initQuickViewButtons();
       }
       // Remove slider if medium or larger viewport
     } else if (window.innerWidth >= 640 && !(this.glideActive)) {
@@ -66,7 +66,7 @@ export class ComponentCarousel extends AbstractComponent {
       this.glideActive = true;
 
       // Refresh Quickview
-      AppQuickview.initQuickViewButtons();
+      // AppQuickview.initQuickViewButtons();
     }
   }
 }
