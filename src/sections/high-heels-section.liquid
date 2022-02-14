@@ -231,7 +231,7 @@
                         <div class="glide__bullets mobile-bullet mobile-screen-only" data-glide-el="controls[nav]">
                         {% assign slides = slideTitles | split: ',' %}
                         {% for bullet in slides %}
-                            <button class="glide__bullet" style="background: none;" data-glide-dir="={{ forloop.index0 }}">
+                            <button class="glide__bullet" style="background: none; color: black" data-glide-dir="={{ forloop.index0 }}">
                             <span></span>
                             {{bullet}}
                             </button>
