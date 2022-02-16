@@ -10,7 +10,145 @@
         </div>
     </div>
 
-    <div class="section mbi-60 m-mb-0">
+    <div data-autoload-class="WeStandForSection" class="section section-we-stand-for">
+
+        <div class="grid-container mb-40 m-mb-0">
+            <div class="grid-x align-center text-center">
+            <div class="cell">
+                <h2 class="h1 mb-20 m-mt-40 m-mb-30" style="margin-top: 80px;">{{ section.settings.section_title_extra}}</h2>
+            </div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+
+            <div class="tab-titles">
+            <div class="glide tab-slider">
+                <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% assign tabIndex = 1 %}
+                    {% for block in section.blocks %}
+
+                    {% if block.type == 'tab_title' %}
+                        <li class="glide__slide">
+                            <div class="tab-title-container">
+                            <div class="tab-title{% if tabIndex == 1 %} active{% endif %}" data-tab-index="{{ tabIndex }}">
+                                <div class="tab-title-container">
+                                <img class="tab-title-image" src="{{ block.settings.image | img_url: '500x500', crop: 'center' }}"/>
+                                <div class="tab-title-content-container" style="padding: 30px 50px 15px 25px">
+                                    <div class="tab-title-content">
+                                    <h2>{{ block.settings.title }}</h2>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                            </div>
+                        </li>
+                        {% assign tabIndex = tabIndex | plus: 1 %}
+                    {% endif %}
+
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+
+        {% comment %}
+            Tab Content
+        {% endcomment %}
+        <div class="grid-container">
+
+            <div class="grid-x">
+            <div class="cell large-12">
+
+                <div class="tab-content m-mt-30 m-mb-20 padding-0">
+                {% assign tabContentIndex = 1 %}
+
+                {% assign slideTitles = '' %}
+
+                {% for block in section.blocks %}
+
+                    {% if block.type == 'slider_start' %}
+
+                    {% assign slideTitles = '' %}
+                    <div class="tab-content-item{% if tabContentIndex == 1 %} active{% endif %}" data-tab-content-index="{{ tabContentIndex }}">
+                    <div class="glide slider">
+                        <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                    {% assign tabContentIndex = tabContentIndex | plus: 1 %}
+
+                    {% endif %}
+
+                    {% if block.type == 'slider_end' %}
+
+                        </ul>
+                        </div>
+                        <div class="glide__bullets mobile-bullet" data-glide-el="controls[nav]">
+                        {% assign slides = slideTitles | split: ',' %}
+                        {% for bullet in slides %}
+                            <button class="glide__bullet text-left" style="background: none; color: black" data-glide-dir="={{ forloop.index0 }}">
+                            <span></span>
+                            {{bullet}}
+                            </button>
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    {% if block.type == 'tab_content' %}
+
+                    <li class="glide__slide">
+
+                        <div class="grid-x grid-margin-x grid-margin-y">
+                            <div class="cell medium-12 large-6 tab-content-item-media {{ block.settings.image_placement }}">
+
+                            {% if block.settings.video_url != blank %}
+                                {% assign videoId = block.settings.video_url.id %}
+                                <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                                <img src="{{ block.settings.image | img_url: '700x560', crop: 'center' }}"/>
+                            {% endif %}
+
+                            </div>
+                            <div class="cell medium-12 large-6">
+                            <h2 class="h1-1">{{ block.settings.title }}</h2>
+                            <div>{{ block.settings.content }}</div>
+                            {% if block.settings.link != blank %}
+                            <a class="tab-content-item-link" href="{{ block.settings.link }}" style="text-transform: none;">{{ block.settings.button_text }}</a>
+                            {% endif %}
+                            </div>
+                        </div>
+
+                    </li>
+
+                    {% unless slideTitles == '' %}
+                        {% assign slideTitles = slideTitles | append: ',' %}
+                    {% endunless %}
+                    {% assign slideTitles = slideTitles | append: block.settings.title %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% comment %} <div class="section mbi-60 m-mb-0">
         <div class="grid-container">
             <div class="grid-x align-middle">
                 <div class="section-line mti-40 m-mb-0 m-mt-0"></div>
@@ -23,7 +161,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <div class="section grey-section" style="max-width: 2000px; margin: 30px auto 30px auto;">
         <div class="grid-container" style="margin: 0 auto 0 auto;">
@@ -55,11 +193,10 @@
                 <div class="cell small-12 medium-6 large-6 column-left wide-screen-only">
                     <div class="cell-image cell medium-auto image-half-width" 
                         style="background-image: url('{{section.settings.image_4 | img_url: '1400x'}}');
-                        height: 1200px">
+                        height: 800px">
                     </div>
                 </div>
                 <div class="cell small-12 medium-6 large-6 column-right">
-                    <div class="section-line m-mb-0 m-mt-0"></div>
                     <div>
                         <h1 class="text-center mti-40 mbi-40 m-mt-20 m-mb-40">{{section.settings.section_title_3}}</h1>
                         {{section.settings.section_paragraph_3}}
@@ -75,12 +212,11 @@
         </div>
     </div>
 
-    <div class="section" style="margin-bottom: 60px">
+    <div class="section grey-section" style="margin-bottom: 60px">
         <div class="grid-container">
             <div class="grid-x align-middle">
                 <div class="cell small-12 medium-6 large-6 column-left">
-                    <div class="section-line mti-30 mbi-30 m-mt-0 m-mb-20"></div>
-                    <h1 class="text-center" style="padding-bottom: 20px">{{section.settings.section_title_4}}</h1>
+                    <h1 class="text-center" style="padding-top: 40px; padding-bottom: 20px">{{section.settings.section_title_4}}</h1>
                     <div onclick="getElementById('section_a1').style.display = 'block';getElementById('section_a2').style.display = 'none';getElementById('section_a3').style.display = 'none'">
                         <p id="section_q1" class="text-left sections_questions"><b>{{section.settings.section_q1}}</b></p>
                         <p id="section_a1" class="text-left section_answers">{{section.settings.section_a1}}</p>
@@ -96,7 +232,7 @@
                         <p id="section_a3" class="text-left section_answers">{{section.settings.section_a3}}</p>
                         <div class="deco-line-horizontal"></div>
                     </div>
-                    <span><h5><a href="{{section.settings.link4}}">{{section.settings.link4_name}}</a></h5></span>
+                    <span><h5 style="padding-top: 20px; padding-bottom: 40px"><a href="{{section.settings.link4}}">{{section.settings.link4_name}}</a></h5></span>
                 </div>
                 <div class="cell small-12 medium-6 large-6 column-right wide-screen-only">
                     <div class="cell-image cell medium-auto image-half-width" 
@@ -166,6 +302,11 @@
      {
          "name": "Sustainability Content",
          "settings": [
+            {
+                "type": "text",
+                "id": "section_title_extra",
+                "label": "Title Slider"
+            },
             {
                 "type": "text",
                 "id": "section_main_title",
@@ -321,6 +462,86 @@
             }
          ],
          "blocks": [
+             {
+                "type": "tab_title",
+                "name": "Tab Title",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                ]
+            },
+            {
+                "type": "slider_start",
+                "name": "Slider Start",
+                "settings": []
+            },
+            {
+              "type": "slider_end",
+              "name": "Slider End",
+              "settings": []
+            },
+            {
+                "type": "tab_content",
+                "name": "Tab Content",
+                "settings": [
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                     "type": "select",
+                     "id": "image_placement",
+                     "label": "Media Placement",
+                     "options": [
+                       {
+                         "value": "",
+                         "label": "Left"
+                       },
+                       {
+
+                         "value": "medium-order-2",
+                         "label": "Right"
+                       }
+                     ],
+                     "default": ""
+                    },
+                    {
+                        "id": "video_url",
+                        "type": "video_url",
+                        "accept": ["youtube"],
+                        "label": "Video"
+                    },
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "content",
+                        "type": "richtext",
+                        "label": "Content"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Button Link"
+                    }
+                ]
+            },
             {
                 "type": "slide",
                 "name": "Slide",
