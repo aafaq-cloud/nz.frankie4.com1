@@ -86,6 +86,7 @@
   {% include 'header-includes' %}
 
   {% include 'shogun-head' %}
+  {% include 'ufe-offer' %}
   {% include 'bc-sf-filter-style' %}
 
   {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
@@ -95,11 +96,7 @@
   {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
     {{'yotpo-full-css.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
-  
-  <!-- Start of frankie4 Zendesk Widget script -->
-  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=ba715df2-b1f7-45cf-8cc9-ffe5f982256c"> </script>
-  <!-- End of frankie4 Zendesk Widget script -->
-  
+
   <style>
     .bc-sf-search-suggestion-mobile-overlay {
     	display: none!important;

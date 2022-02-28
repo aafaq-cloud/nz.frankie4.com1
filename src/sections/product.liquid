@@ -469,7 +469,7 @@
                                   </label>
                                   {% if product.type != "FREE GIFT" %}
                                   <div class="component-quantity-selector" data-autoload-class="ComponentQuantitySelector">
-                                    <button type="button" class="js-quantity-remove" aria-controls="{{ label_prefix }}Quantity">
+                                    <button style="color: black" type="button" class="js-quantity-remove" aria-controls="{{ label_prefix }}Quantity">
                                       <span class="show-for-sr">Remove one from quantity</span>
                                       {% render 'icon-minus' %}
                                     </button>
@@ -479,7 +479,7 @@
                                            name="quantity"
                                            value="1"
                                            min="1">
-                                    <button type="button" class="js-quantity-add" aria-controls="{{ label_prefix }}Quantity">
+                                    <button style="color: black" type="button" class="js-quantity-add" aria-controls="{{ label_prefix }}Quantity">
                                       <span class="show-for-sr">Add one to quantity</span>
                                       {% render 'icon-plus' %}
                                     </button>
