@@ -2,9 +2,9 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="text-center width-100">
-                <h4 class="h4-v2">{{ section.settings.heading }}</h4>
-                <p class="mt-10 mb-20" style="line-height: 18px">{{ section.settings.content }}</p>
-                <a class="button button-box" href="{{ section.settings.link }}">{{ section.settings.link_text }}</a>
+                {% if section.settings.heading != blank %}<h4 class="h4-v2">{{ section.settings.heading }}</h4>{% endif %}
+                {% if section.settings.content != blank %}<p class="mt-10 mb-20" style="line-height: 18px">{{ section.settings.content }}</p>{% endif %}
+                {% if section.settings.link_text != blank %}<a class="button button-box" href="{{ section.settings.link }}">{{ section.settings.link_text }}</a>{% endif %}
             </div>
         </div>
     </div>
