@@ -1,7 +1,6 @@
-.product-message {
+.product-message-third {
   padding: 20px;
-  background: #EDF1F5;
-  color: #343840;
+  background: #f9f1e9;
   margin-bottom: 20px;
 
   p:first-child {
@@ -14,7 +13,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  .product-message {
+  .product-message-third {
     margin-top: 20px;
   }
 }

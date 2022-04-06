@@ -1,0 +1,13 @@
+{% assign messages = shop.metafields.product_message3 %}
+
+{% for message in messages %}
+
+  {% assign tag = message | first %}
+
+  {% if tags contains tag %}
+    <div class="product-message-third">
+      {{ message | last }}
+    </div>
+  {% endif %}
+
+{% endfor %}
