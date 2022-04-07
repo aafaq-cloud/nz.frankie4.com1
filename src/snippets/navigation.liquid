@@ -17,7 +17,7 @@ Navigation to display on large viewports
             {% assign menu_class = menu_class | append: " mega-menu" | strip %}
 
             <li {% if menu_class != blank %}class="{{ menu_class }}"{% endif %}>
-                <a href="{{ link.url }}">
+                <a href="{{ link.url }}" {% if link.title == "SALE" %}style="color: red"{% endif %}>
                   {{ link.title | escape }}
                 </a>
 

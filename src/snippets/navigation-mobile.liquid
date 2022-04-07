@@ -20,7 +20,7 @@ Navigation to display on small and medium viewports
             <ul class="mobile-nav-links">
                 {% for link in linklists[section.settings.main_linklist_mobile].links %}
                     <li>
-                        <a {% if link.links != blank %}class="has-children toggle-link"{% else %}href="{{ link.url }}"{% endif %}><b>{{ link.title | escape }}</b></a>
+                        <a {% if link.links != blank %}class="has-children toggle-link"{% else %}href="{{ link.url }}"{% endif %} {% if link.title == "SALE" %}style="color: red"{% endif %}><b>{{ link.title | escape }}</b></a>
                         {% if link.links != blank %}
                         <span class="toggle">{% include 'icon-chevron' %}</span>
 
