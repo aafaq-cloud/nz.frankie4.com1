@@ -1,13 +1,38 @@
 <div class="section section-page-content">
     <div class="page-content grid-container">
-        {% include 'breadcrumb' %}
-        <h1 class="mt-10 mb-40">{% include 'page-title' %}</h1>
+        <h1 class="mt-10 mb-40">
+            {% if template contains '404' %}
+                {{section.settings.section_main_title}}
+            {% else %}
+                {% include 'page-title' %}
+            {% endif%}
+      	</h1>
         <div class="rte clearfix">
             {% if template contains '404' %}
-                <p>{{ 'general.404.subtext_html' | t }}</p>
+                {{section.settings.section_paragraph}}
             {% else %}
                 {{ page.content }}
             {% endif%}
         </div>
     </div>
 </div>
+
+{% schema %}
+
+{
+  "name": "Page Content",
+  "settings": [
+    {
+        "type": "text",
+        "id": "section_main_title",
+        "label": "Page Title"
+    },
+    {
+        "type": "richtext",
+        "id": "section_paragraph",
+        "label": "Page Paragraph"
+    }
+  ]
+}
+
+{% endschema %}
