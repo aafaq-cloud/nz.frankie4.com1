@@ -34,7 +34,7 @@
 {% if product.type == "SOCKS" %}
     {% section 'brainchild-info' %}
 {% elsif product.type == "Shoelace" or product.type == "SHOELACE"%}
-<!--  do nothing	 -->
+    {% section 'shoelace-info' %}
 {% else %}
 	{% section 'good-design-award' %}
 {% endif %}

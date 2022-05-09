@@ -1,0 +1,114 @@
+{% assign shoelace_text = product.metafields.frankie4.shoelace_text %}
+{% assign shoelace_image = product.metafields.frankie4.shoelace_image %}
+
+{% if section.settings.show %}
+<div class="section section-text-image no-margin show-for-medium">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell medium-6 large-4">
+                <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
+                    <p style="line-height: normal;">
+                        {% if shoelace_text != blank %}
+                            {{shoelace_text}}
+                        {% else %}
+                            {{section.settings.content}}
+                        {% endif %}
+                    </p>
+                    <div class="cell shrink">
+                        <a class="button button-primary" target="_blank" href="{{ section.settings.url_link }}">{{ section.settings.link_text }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-image cell medium-auto">
+                {% if shoelace_image != blank %}
+                    <div style="background-image: url('{{ shoelace_image }}'); width: 100%; height: 450px; background-size: cover; background-position: center;"></div>
+                {% else %}
+                    <div data-autoload-class="ComponentVideo" style="height:450px">
+                        <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                            playsinline controls controlslist="nodownload"
+                            width="100%" height="450"
+                            data-src="{{section.settings.video }}">
+                        </video>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-text-image no-margin show-for-small-only">
+    <div class="grid-container">
+        <div class="grid-x align-middle">
+            <div class="cell medium-6 large-4">
+                <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
+                    <div class="cell-image cell medium-auto">
+                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 120px; margin: auto">
+                    </div>
+                    <p style="line-height: normal;">
+                        {% if shoelace_text != blank %}
+                            {{shoelace_text}}
+                        {% else %}
+                            {{section.settings.content}}
+                        {% endif %}
+                    </p>
+                    <div class="cell shrink">
+                        <a class="button button-primary" target="_blank" href="{{ section.settings.url_link }}">{{ section.settings.link_text }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-image cell medium-auto">
+                {% if shoelace_image != blank %}
+                    <div style="background-image: url('{{ shoelace_image }}'); width: 100%; height: 450px; background-size: cover; background-position: center;"></div>
+                {% else %}
+                    <div data-autoload-class="ComponentVideo" style="height:200px">
+                        <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                            playsinline controls controlslist="nodownload"
+                            width="100%" height="200"
+                            data-src="{{section.settings.video }}">
+                        </video>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Shoelace info",
+  "settings": [
+    {
+        "type": "checkbox",
+        "id": "show",
+        "label": "Display or Hide"
+    },
+    {
+        "type": "textarea",
+        "id": "content",
+        "label": "Content"
+    },
+    {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+    },
+    {
+        "type": "url",
+        "id": "url_link",
+        "label": "URL link"
+    },
+    {
+        "id": "video",
+        "type": "text",
+        "label": "Video",
+        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+    },
+    {
+        "id": "video-m",
+        "type": "text",
+        "label": "Video Mobile",
+        "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
+    }
+  ]
+}
+{% endschema %}

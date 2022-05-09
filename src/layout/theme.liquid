@@ -111,18 +111,45 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6F6RFG"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- loop return -->
+    <script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+    <script> 
+      LoopOnstore.init({ 
+        key: "9d476eb3f17813f9590792d33e2ffbdc03ff2089", 
+        attach: "#checkout-btn" 
+      });
+    </script>
   {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
     <!-- NZ -->
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9MHBDS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- loop return -->
+    <script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+    <script> 
+      LoopOnstore.init({ 
+        key: "c8c06810728df0bce5c5df0dcd6a197250388a02", 
+        attach: "#checkout-btn" 
+      });
+    </script>
   {% else %}
     <!-- AU -->
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N82W97V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) --> 
+
+    <!-- loop return -->
+    <script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+    <script> 
+      LoopOnstore.init({ 
+        key: "8366392807fef620a74f4271b9b84cd09cf18e79", 
+        attach: "#checkout-btn" 
+      });
+    </script>
   {% endif %}
 
   {% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
