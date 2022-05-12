@@ -1,4 +1,5 @@
 {% assign shoelace_text = product.metafields.frankie4.shoelace_text %}
+{% assign shoelace_header = product.metafields.frankie4.shoelace_header %}
 {% assign shoelace_image = product.metafields.frankie4.shoelace_image %}
 
 {% if section.settings.show %}
@@ -7,6 +8,13 @@
         <div class="grid-x align-middle">
             <div class="cell medium-6 large-4">
                 <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
+                    <h2 style="line-height: normal;">
+                        {% if shoelace_header != blank %}
+                            {{shoelace_header}}
+                        {% else %}
+                            {{section.settings.header}}
+                        {% endif %}
+                    </h2>
                     <p style="line-height: normal;">
                         {% if shoelace_text != blank %}
                             {{shoelace_text}}
@@ -40,9 +48,13 @@
         <div class="grid-x align-middle">
             <div class="cell medium-6 large-4">
                 <div class="cell-text-container text-center" style="padding: 20px; margin: 8%">
-                    <div class="cell-image cell medium-auto">
-                        <img src="{{section.settings.image_2 | img_url: '400x'}}" style="width: 120px; margin: auto">
-                    </div>
+                    <h2 style="line-height: normal;">
+                        {% if shoelace_header != blank %}
+                            {{shoelace_header}}
+                        {% else %}
+                            {{section.settings.header}}
+                        {% endif %}
+                    </h2>
                     <p style="line-height: normal;">
                         {% if shoelace_text != blank %}
                             {{shoelace_text}}
@@ -50,9 +62,11 @@
                             {{section.settings.content}}
                         {% endif %}
                     </p>
+                    {% if section.settings.url_link != blank %}
                     <div class="cell shrink">
                         <a class="button button-primary" target="_blank" href="{{ section.settings.url_link }}">{{ section.settings.link_text }}</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="cell-image cell medium-auto">
@@ -81,6 +95,11 @@
         "type": "checkbox",
         "id": "show",
         "label": "Display or Hide"
+    },
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Header"
     },
     {
         "type": "textarea",
