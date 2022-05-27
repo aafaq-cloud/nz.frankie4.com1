@@ -115,5 +115,55 @@
         });
         </script>
     {% endif %}
+    <script>
+        (function($) {
+            window.PhoneNumberInputFormatter=function(){return false;};
+            $(document).on('page:load page:change', function() {
+            if (Shopify.Checkout.step === 'contact_information') {
+
+                var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])'),
+                    phoneFormatValidated = false;
+
+                // Remove automatic formatting triggers 
+                $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
+
+                function phoneNumberValidation() {
+                phoneFormatValidated = false;
+
+                var phoneFieldVal = $phoneField.val();
+
+                // Strip out any non-numeric characters
+                var formattedPhoneValue = phoneFieldVal.replace(/[^0-9+()-]/g, '');
+                $phoneField.val(formattedPhoneValue);
+
+                phoneFormatValidated = true;
+                }
+
+                // Run validator if there is a previously cached phone number
+                if ($phoneField.val() != "") { phoneNumberValidation() };
+
+                // Run validator when the user has switched focus from the phone field
+                $phoneField.on('blur', phoneNumberValidation);
+
+                // Run the function when the continue button is clicked or the enter key is pressed
+                $('[data-step] form [type="submit"]').on('click', function(e) {
+                e.preventDefault();
+                phoneNumberValidation();
+                if (phoneFormatValidated) {
+                    $('[data-step] form').trigger('submit');
+                }
+                })
+
+                $('[data-step] form').on('keypress', function(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    $('[data-step] form [type="submit"]').trigger('click');
+                }
+                });
+            }
+            });
+        })(Checkout.$);
+    </script>
 </body>
 </html>
+
