@@ -341,10 +341,14 @@ export class Product extends EventEmitter {
 
       for (const key in availableOptionsMap) {
         if (availableOptionsMap.hasOwnProperty(key)) {
-          availableOptions[key] = availableOptionsMap[key].available;
+          // availableOptions[key] = availableOptionsMap[key].available;
+          if (availableOptionsMap[key].available == false) {
+            document.getElementsByClassName('size-'+key)[0].style = 'text-align: center; opacity: 0.3';
+          }
+          availableOptions[key] = true;
         }
+        // console.log(availableOptions);
       }
-
       // Set the available options for the selector
       this.variantSelectors[i].setAvailableValues(availableOptions);
 
