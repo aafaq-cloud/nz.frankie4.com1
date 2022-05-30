@@ -343,7 +343,13 @@ export class Product extends EventEmitter {
         if (availableOptionsMap.hasOwnProperty(key)) {
           // availableOptions[key] = availableOptionsMap[key].available;
           if (availableOptionsMap[key].available == false) {
-            document.getElementsByClassName('size-'+key)[0].style = 'text-align: center; opacity: 0.3';
+            if (document.getElementsByClassName('size-'+key).length > 0) {
+              document.getElementsByClassName('size-'+key)[0].style = 'text-align: center; opacity: 0.3';
+            } else if (key.toLowerCase().split(" ").length > 0) {
+              if (document.getElementsByClassName('size-'+key.toLowerCase().split(" ")[0]).length > 0) {
+                document.getElementsByClassName('size-'+key.toLowerCase().split(" ")[0])[0].style = 'text-align: center; opacity: 0.3';
+              }
+            }
           }
           availableOptions[key] = true;
         }
