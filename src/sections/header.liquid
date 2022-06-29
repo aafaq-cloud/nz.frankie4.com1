@@ -10,6 +10,9 @@
             <nav class="show-for-medium">
               <ul class="grid-x top-nav align-middle text-small">
                 {% for link in linklists[section.settings.top_linklist].links %}
+                  {%- comment %}<locksmith:acfc>{% endcomment -%}
+                    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[section.settings.top_linklist], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                  {%- comment %}</locksmith:acfc>{% endcomment -%}
                   <li>
                     <a href="{{link.url}}">{{link.title | escape }}</a>
                   </li>
@@ -378,6 +381,7 @@
     ]
   }
 {% endschema %}
+{%- if template.name == 'index' -%}
 
 <script type="application/ld+json">
 {
@@ -401,6 +405,7 @@
   "url": "{{ shop.url }}{{ page.url }}"
 }
 </script>
+{% endif %}
 
 {% if template.name == 'index' %}
   <script type="application/ld+json">

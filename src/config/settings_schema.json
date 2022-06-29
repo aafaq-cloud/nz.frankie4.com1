@@ -227,7 +227,7 @@
         "type": "header",
         "content": "Cart Shipping Info"
       },
-       {
+      {
         "type": "richtext",
         "id": "cart_shipping_info",
         "label": "Shipping Info"
@@ -303,6 +303,43 @@
         "id": "favicon",
         "label": "Favicon image",
         "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "hreflang",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_multi_store",
+        "label": "Enable Multi Store",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "hreflang",
+        "label": "hreflang Tags",
+        "info": "a new line, comma seperated list."
+      },
+      {
+        "type": "header",
+        "content": "Example:"
+      },
+      {
+        "type": "paragraph",
+        "content": "en-au,https:\/\/example.com.au"
+      },
+      {
+        "type": "paragraph",
+        "content": "en-us,https:\/\/example.com"
+      },
+      {
+        "type": "paragraph",
+        "content": "x-default,https:\/\/example.com"
+      },
+      {
+        "type": "paragraph",
+        "content": "Do not include \/ on the end"
       }
     ]
   },
