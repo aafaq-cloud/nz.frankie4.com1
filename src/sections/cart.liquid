@@ -4,6 +4,7 @@
 
         <div class="title-block medium-text-left">
             <h2>{% include 'page-title' %}</h2>
+          	{% if section.settings.link-text != blank %}<p>{% if section.settings.link != blank %}<a href="{{section.settings.link}}">{% endif %}{{section.settings.link-text}}{% if section.settings.link != blank %}</a>{% endif %}</p>{% endif %}
         </div>
 
         {% if cart.item_count > 0 %}
@@ -96,3 +97,21 @@
 
     </div>
 </div>
+
+{% schema %}
+     {
+         "name": "Cart",
+         "settings": [
+            {
+                "type": "url",
+                "id": "link",
+                "label": "link"
+            },
+            {
+                "type": "text",
+                "id": "link-text",
+                "label": "Text"
+            }
+         ]
+     }
+ {% endschema %}
