@@ -19,9 +19,29 @@
                 </div>
             {% endfor %}
         </div>
+        {% if section.settings.video_checkbox %}
+        <div class="grid-x grid-margin-x grid-margin-y mti-30 mbi-30 show-for-medium">
+            <div data-autoload-class="ComponentVideo" style="height:450px; margin: auto">
+                <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                    playsinline controls controlslist="nodownload"
+                    width="100%" height="450"
+                    data-src="{{section.settings.video }}">
+                </video>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x grid-margin-y mti-30 mbi-30 show-for-small-only">
+            <div data-autoload-class="ComponentVideo" style="height:250px; margin: auto">
+                <video class="lazyload" preload="none" autoplay="" loop="" muted=""
+                    playsinline controls controlslist="nodownload"
+                    width="100%" height="250"
+                    data-src="{{section.settings.video }}">
+                </video>
+            </div>
+        </div>
+        {% endif %}
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="text-center width-100">
-                <a class="button button-box mt-30" href="{{ section.settings.link }}">{{section.settings.button}}</a>
+                <a class="button button-box mt-30 m-mt-10" href="{{ section.settings.link }}">{{section.settings.button}}</a>
             </div>
         </div>
     </div>
@@ -36,6 +56,17 @@
                 "type": "text",
                 "id": "title",
                 "label": "Title"
+            },
+            {
+                "id": "video_checkbox",
+                "type": "checkbox",
+                "label": "Video checkbox"
+            },
+            {
+                "id": "video",
+                "type": "text",
+                "label": "Video",
+                "info": "Enter the video source URL. The video must be .mp4 format and hosted publicly."
             },
             {
                 "type": "text",
