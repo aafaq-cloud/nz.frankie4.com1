@@ -14,6 +14,7 @@ import VueGlide from 'vue-glide-js';
 import { Glide, GlideSlide } from 'vue-glide-js';
 
 import {AbstractComponent} from "../class/AbstractComponent";
+import { includes } from "lodash-es";
 
 Vue.use(VueResource,VueGlide);
 
@@ -166,17 +167,17 @@ export class CartModalSnippet extends AbstractComponent {
 
     Vue.component("product-item-small", {
       template: `
-        <a :href="product.url" class="recommended-product grid-x align-top">
+      <a :href="'/products/'+product.handle" class="recommended-product grid-x align-top">
          
-          <div v-if="product.featured_image" class="popup-product-image">
-           <img :src="product.featured_image | formatImageSize('100x100@2x')">
-          </div>
-          <div>
-            <div class="mb-10">{{ product.title}}</div>
-            <div v-html="formatMoneyValue(product.price)"></div>
-          </div>
-       
-        </a>
+        <div v-if="product.images[0].src" class="popup-product-image">
+          <img :src="product.images[0].src | formatImageSize('100x100@2x')">
+        </div>
+        <div>
+          <div class="mb-10">{{ product.title}}</div>
+          <div v-html="formatMoneyValue(product.variants[0].price)"></div>
+        </div>
+    
+      </a>
       `,
       props: ["product"],
       data() {
@@ -346,21 +347,116 @@ export class CartModalSnippet extends AbstractComponent {
         },
         updateRecommendations() {
 
+          // algorithm based on the tags of the latest product in cart
+          // it will only recommend products that are
+          // 1. not in cart already
+          // 2. share the same tag groups 
+          // 3. in the designated collection as defined by requirement (can be changed in code)
+          // it will offer max 4 results (can be easily changed in code)
           if (this.cart.items.length > 0) {
             let self = this;
-            $.ajax({
-              type: "get",
-              url: "/recommendations/products",
-              dataType: "json",
-              data: {
-                'section_id': 'product-recommendations',
-                'limit': 3,
-                'product_id': self.cart.items[0].product_id
-              },
-              success(response) {
-                self.recommendedProducts = response.products;
-              },
-            });
+
+            let cartProductTags = '';
+            let cartProducts = [];
+            let recommendationProducts = [];
+
+            function getCollectionCartProductTags(collectionName) {
+              $.getJSON('/cart.json', function(response) {
+                console.log('ajax2 - cart products');
+                console.log(response);
+                for (let i = 0; i < response.items.length; i++) {
+                  cartProducts.push(response.items[i].product_title);
+                }
+                $.getJSON('/products/'+response.items[0].handle+'.json', function(response) {
+                  console.log('ajax3 - cart product 0');
+                  for (let i = 0; i < response.product.tags.split(',').length; i++) {
+                    if (response.product.tags.split(',')[i].includes('test_')) {
+                      cartProductTags = '';
+                      cartProductTags = response.product.tags.split(',')[i];
+                    }
+                  }
+                  $.getJSON('/collections/' + collectionName + '/products.json', function(response) {
+                    console.log('ajax1 - collection products');
+                    console.log(cartProductTags);
+                    recommendationProducts = [];
+                    for (let i = 0; i < response.products.length; i++) {
+                      for (let j = 0; j < response.products[i].tags.length; j++) {
+                        if (response.products[i].tags[j].includes('test_') &&
+                            response.products[i].tags[j] == cartProductTags.split(' ')[1] && 
+                            recommendationProducts.length < 5) {
+                              if (!cartProducts.includes(response.products[i].title)) {
+                                recommendationProducts.push(response.products[i]);
+                              }
+                        }
+                      }
+                    }
+                    // no related group situation
+                    if (recommendationProducts.length < 5) {
+                      $.getJSON('/collections/best-sellers-1/products.json', function(response) {
+                        console.log('ajax4 - save for no product scenario');
+                        console.log(cartProductTags);
+                        for (let i = 0; i < response.products.length; i++) {
+                            if (recommendationProducts.length < 5 && !cartProducts.includes(response.products[i].title)) {
+                              recommendationProducts.push(response.products[i]);
+                            }
+                        }
+                      });
+                    }
+                    self.recommendedProducts = recommendationProducts;
+                    console.log(cartProducts);
+                    console.log(self.recommendedProducts);
+                  });
+                });
+              });
+            }
+
+            // to ignore tags - for general scenario 
+            function getGeneralProducts(collectionName) {
+              $.getJSON('/cart.json', function(response) {
+                console.log('ajax2 - cart products');
+                console.log(response);
+                for (let i = 0; i < response.items.length; i++) {
+                  cartProducts.push(response.items[i].product_title);
+                }
+                $.getJSON('/collections/' + collectionName + '/products.json', function(response) {
+                  console.log('ajax1 - collection products');
+                  recommendationProducts = [];
+                  for (let i = 0; i < response.products.length; i++) {
+                    if (recommendationProducts.length < 5 && !cartProducts.includes(response.products[i].title)) {
+                      recommendationProducts.push(response.products[i]);
+                    }
+                  }
+                  self.recommendedProducts = recommendationProducts;
+                  console.log(cartProducts);
+                  console.log(self.recommendedProducts);
+                });
+
+              });
+            }
+            // to test if products added are online available ? 
+
+            if (this.cart.items[0].product_type == 'SNEAKER') {
+              getCollectionCartProductTags('shop-all-flats');
+            } else if (this.cart.items[0].product_type == 'SOCKS') {
+              getCollectionCartProductTags('shop-all-sneakers');
+            } else if (this.cart.items[0].product_type == 'Shoelace') {
+              getCollectionCartProductTags('shop-all-sneakers');
+            } else if (this.cart.items[0].product_type == 'DRESS FLAT' || 
+                       this.cart.items[0].product_type == 'CASUAL FLAT' ||
+                       this.cart.items[0].product_type == 'BALLET FLAT') {
+              getCollectionCartProductTags('active');
+            } else if (this.cart.items[0].product_type == 'SLIDE') {
+              getCollectionCartProductTags('ballet-flats');
+            } else if (this.cart.items[0].product_type == 'BOOT') {
+              getCollectionCartProductTags('shop-all-heels');
+            } else if (this.cart.items[0].product_type == 'SANDAL') {
+              getCollectionCartProductTags('ballet-flats');
+            } else if (this.cart.items[0].product_type == 'HEEL') {
+              getCollectionCartProductTags('shop-all-boots');
+            } else {
+              getGeneralProducts('best-sellers-1');
+            }
+            
           }
         }
       },
