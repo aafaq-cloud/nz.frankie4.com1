@@ -356,105 +356,86 @@ export class CartModalSnippet extends AbstractComponent {
           if (this.cart.items.length > 0) {
             let self = this;
 
-            let cartProductTags = '';
             let cartProducts = [];
             let recommendationProducts = [];
 
             function getCollectionCartProductTags(collectionName) {
               $.getJSON('/cart.json', function(response) {
-                console.log('ajax2 - cart products');
-                console.log(response);
                 for (let i = 0; i < response.items.length; i++) {
-                  cartProducts.push(response.items[i].product_title);
+                  cartProducts.push(response.items[i].product_title.split(' ')[0]);
                 }
-                $.getJSON('/products/'+response.items[0].handle+'.json', function(response) {
-                  console.log('ajax3 - cart product 0');
-                  for (let i = 0; i < response.product.tags.split(',').length; i++) {
-                    if (response.product.tags.split(',')[i].includes('test_')) {
-                      cartProductTags = '';
-                      cartProductTags = response.product.tags.split(',')[i];
-                    }
-                  }
-                  $.getJSON('/collections/' + collectionName + '/products.json', function(response) {
-                    console.log('ajax1 - collection products');
-                    console.log(cartProductTags);
-                    recommendationProducts = [];
-                    for (let i = 0; i < response.products.length; i++) {
-                      for (let j = 0; j < response.products[i].tags.length; j++) {
-                        if (response.products[i].tags[j].includes('test_') &&
-                            response.products[i].tags[j] == cartProductTags.split(' ')[1] && 
-                            recommendationProducts.length < 5) {
-                              if (!cartProducts.includes(response.products[i].title)) {
-                                recommendationProducts.push(response.products[i]);
-                              }
-                        }
-                      }
-                    }
-                    // no related group situation
-                    if (recommendationProducts.length < 5) {
-                      $.getJSON('/collections/best-sellers-1/products.json', function(response) {
-                        console.log('ajax4 - save for no product scenario');
-                        console.log(cartProductTags);
-                        for (let i = 0; i < response.products.length; i++) {
-                            if (recommendationProducts.length < 5 && !cartProducts.includes(response.products[i].title)) {
-                              recommendationProducts.push(response.products[i]);
-                            }
-                        }
-                      });
-                    }
-                    self.recommendedProducts = recommendationProducts;
-                    console.log(cartProducts);
-                    console.log(self.recommendedProducts);
-                  });
-                });
-              });
-            }
 
-            // to ignore tags - for general scenario 
-            function getGeneralProducts(collectionName) {
-              $.getJSON('/cart.json', function(response) {
-                console.log('ajax2 - cart products');
-                console.log(response);
-                for (let i = 0; i < response.items.length; i++) {
-                  cartProducts.push(response.items[i].product_title);
-                }
                 $.getJSON('/collections/' + collectionName + '/products.json', function(response) {
-                  console.log('ajax1 - collection products');
                   recommendationProducts = [];
                   for (let i = 0; i < response.products.length; i++) {
-                    if (recommendationProducts.length < 5 && !cartProducts.includes(response.products[i].title)) {
-                      recommendationProducts.push(response.products[i]);
+                    let do_not_recommend = false;
+                    for (let j = 0; j < response.products[i].tags.length; j++) {
+                      if (response.products[i].tags[j].includes('do_not_recommend')) {
+                        do_not_recommend = true;
+                      }
+                    }
+                    if (do_not_recommend == false && 
+                        !cartProducts.includes(response.products[i].title.split(' ')[0]) && 
+                        recommendationProducts.length < 5) {
+                          recommendationProducts.push(response.products[i]);
                     }
                   }
+                  // no related group situation
+                  if (recommendationProducts.length < 5) {
+                    $.getJSON('/collections/best-sellers-1/products.json', function(response) {
+                      for (let i = 0; i < response.products.length; i++) {
+                        let do_not_recommend = false;
+                        for (let j = 0; j < response.products[i].tags.length; j++) {
+                          if (response.products[i].tags[j].includes('do_not_recommend')) {
+                            do_not_recommend = true;
+                          }
+                        }
+                        if (do_not_recommend == false && 
+                            !cartProducts.includes(response.products[i].title) && 
+                            recommendationProducts.length < 5) {
+                              recommendationProducts.push(response.products[i]);
+                        }
+                      }
+                    });
+                  }
                   self.recommendedProducts = recommendationProducts;
-                  console.log(cartProducts);
-                  console.log(self.recommendedProducts);
                 });
 
               });
             }
+
+
             // to test if products added are online available ? 
 
-            if (this.cart.items[0].product_type == 'SNEAKER') {
-              getCollectionCartProductTags('shop-all-flats');
+            if (this.cart.items[0].product_type == 'SNEAKER' || this.cart.items[0].product_type == 'ACTIVE') {
+              getCollectionCartProductTags('dress-flats');
             } else if (this.cart.items[0].product_type == 'SOCKS') {
               getCollectionCartProductTags('shop-all-sneakers');
-            } else if (this.cart.items[0].product_type == 'Shoelace') {
+            } else if (this.cart.items[0].product_type == 'Shoelace' || this.cart.items[0].product_type == 'SHOELACE') {
               getCollectionCartProductTags('shop-all-sneakers');
             } else if (this.cart.items[0].product_type == 'DRESS FLAT' || 
                        this.cart.items[0].product_type == 'CASUAL FLAT' ||
                        this.cart.items[0].product_type == 'BALLET FLAT') {
-              getCollectionCartProductTags('active');
+              if (window.location.href.slice(0,20) == 'https://frankie4.com' || window.location.href.slice(0,20) == 'https://frankie4.mys') {
+                getCollectionCartProductTags('active');
+              } else {
+                getCollectionCartProductTags('shop-all-sneakers');
+              }
             } else if (this.cart.items[0].product_type == 'SLIDE') {
               getCollectionCartProductTags('ballet-flats');
             } else if (this.cart.items[0].product_type == 'BOOT') {
-              getCollectionCartProductTags('shop-all-heels');
-            } else if (this.cart.items[0].product_type == 'SANDAL') {
+              getCollectionCartProductTags('dress-flats');
+            } else if (this.cart.items[0].product_type == 'SANDAL' || this.cart.items[0].product_type == 'FLAT SANDAL') {
               getCollectionCartProductTags('ballet-flats');
             } else if (this.cart.items[0].product_type == 'HEEL') {
-              getCollectionCartProductTags('shop-all-boots');
+              if (window.location.href.slice(0,20) == 'https://us.frankie4.' || window.location.href.slice(0,20) == 'https://frankie4-uni') {
+                getCollectionCartProductTags('boots');
+              } else {
+                getCollectionCartProductTags('shop-all-boots');
+              }
+              
             } else {
-              getGeneralProducts('best-sellers-1');
+              getCollectionCartProductTags('best-sellers-1');
             }
             
           }

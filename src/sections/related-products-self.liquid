@@ -6,108 +6,34 @@ such as 'featured' or 'all'.
 {% endcomment %}
 
 {% assign excluded_collections = section.settings.exclude_collections | split: "," %}
-{% assign related_collections = '' %}
-{% assign related_test_tags = '' %}
+{% assign related_collection = '' %}
 
-{{product.type}}
-{% if product.type == 'SNEAKER' %}
-    {% assign related_collections = 'dress-flats' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+{% if product.type == 'SNEAKER' or product.type == 'ACTIVE' %}
+    {% assign related_collection = 'dress-flats' %}
 {% elsif product.type == 'SOCKS' %}
-    {% assign related_collections = 'shop-all-sneakers' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
-{% elsif product.type == 'Shoelace' %}
-    {% assign related_collections = 'shop-all-sneakers' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+    {% assign related_collection = 'shop-all-sneakers' %}
+{% elsif product.type == 'Shoelace' or product.type == 'SHOELACE' %}
+    {% assign related_collection = 'shop-all-sneakers' %}
 {% elsif product.type == 'DRESS FLAT' or product.type == 'CASUAL FLAT' or product.type == 'BALLET FLAT' %}
-    {% assign related_collections = 'active' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+    {% if request.host == 'frankie4.com' or request.host == 'frankie4.myshopify.com' %}
+        {% assign related_collection = 'active' %}
+    {% else %}
+        {% assign related_collection = 'shop-all-sneakers' %}
+    {% endif %}
 {% elsif product.type == 'SLIDE' %}
-    {% assign related_collections = 'ballet-flats' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+    {% assign related_collection = 'ballet-flats' %}
 {% elsif product.type == 'BOOT' %}
-    {% assign related_collections = 'shop-all-heels' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
-{% elsif product.type == 'SANDAL' %}
-    {% assign related_collections = 'ballet-flats' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+    {% assign related_collection = 'dress-flats' %}
+{% elsif product.type == 'SANDAL' or product.type == 'FLAT SANDAL' %}
+    {% assign related_collection = 'ballet-flats' %}
 {% elsif product.type == 'HEEL' %}
-    {% assign related_collections = 'shop-all-boots' %}
-    {% for tag in product.tags %}
-        {% if tag contains 'test_' %}
-            {% if related_test_tags != '' %}
-                {% assign related_test_tags = related_test_tags | append: ',' %}
-            {% endif %}
-            {% assign related_test_tags = related_test_tags | append: tag %}
-        {% endif %}
-    {% endfor %}
-    {{related_test_tags}}
+    {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+        {% assign related_collection = 'boots' %}
+    {% else %}
+        {% assign related_collection = 'shop-all-boots' %}
+    {% endif %}
 {% else %}
-    {% for collection in product.collections %}
-        {% unless excluded_collections contains collection.handle %}
-            {% if related_collections != '' %}
-                {% assign related_collections = related_collections | append: ',' %}
-            {% endif %}
-            {% assign related_collections = related_collections | append: collection.handle %}
-        {% endunless %}
-    {% endfor %}
-    {% assign related_collections = related_collections | split: "," %}
+    {% assign related_collection = 'best-sellers-1' %}
 {% endif %}
 
 
@@ -125,30 +51,22 @@ such as 'featured' or 'all'.
             </div>
 
             <div class="grid-x grid-margin-x grid-margin-y">
-              {% assign related_products_count = 1 %}
+                {% assign related_products_count = 1 %}
 
-
-              {% for related_collection in related_collections %}
                 {% for related_product in collections[related_collection].products %}
-                    {% comment %} {{related_product}}
-                    {{related_product.handle}}
-                    {{related_product.type}}
-                    {{related_product.title}}
-                    {{related_product.tags}} {% endcomment %}
                     {% if related_product.handle == product.handle or related_products_count > 4 %}
                         {% continue %}
                     {% endif %}
 
-                    {% assign tag_group = false %}
+                    {% assign do_not_recommend = false %}
 
                     {% for tag in related_product.tags %}
-                        {% if tag contains 'test_' and related_test_tags contains tag%}
-                            {% comment %} {{tag}} {% endcomment %}
-                            {% assign tag_group = true %}
+                        {% if tag contains 'do_not_recommend' %}
+                            {% assign do_not_recommend = true %}
                         {% endif %}
                     {% endfor %}
 
-                    {% if tag_group == true %}
+                    {% if do_not_recommend == false %}
                         <div class="cell small-6 large-3">
                         {% render 'product-tile', product: related_product %}
                         </div>
@@ -156,21 +74,29 @@ such as 'featured' or 'all'.
                     {% endif %}
 
                 {% endfor %}
-              {% endfor %}
 
-              {% comment %} no related group situation {% endcomment %}
-              {% if related_products_count < 4 %}
-                {% assign related_collection = 'best-sellers-1' %}
-                {% for related_product in collections[related_collection].products %}
-                    {% if related_product.handle == product.handle or related_products_count > 4 %}
-                        {% continue %}
-                    {% endif %}
-                    <div class="cell small-6 large-3">
-                        {% render 'product-tile', product: related_product %}
-                    </div>
-                    {% assign related_products_count = related_products_count | plus: 1 %}
-                {% endfor %}
-              {% endif %}
+
+                {% comment %} no related group situation {% endcomment %}
+                {% if related_products_count < 4 %}
+                    {% assign related_collection = 'best-sellers-1' %}
+                    {% for related_product in collections[related_collection].products %}
+                        {% if related_product.handle == product.handle or related_products_count > 4 %}
+                            {% continue %}
+                        {% endif %}
+                        {% assign do_not_recommend = false %}
+                        {% for tag in related_product.tags %}
+                            {% if tag contains 'do_not_recommend' %}
+                                {% assign do_not_recommend = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if do_not_recommend == false %}
+                            <div class="cell small-6 large-3">
+                            {% render 'product-tile', product: related_product %}
+                            </div>
+                            {% assign related_products_count = related_products_count | plus: 1 %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
 
             </div>
         </div>
