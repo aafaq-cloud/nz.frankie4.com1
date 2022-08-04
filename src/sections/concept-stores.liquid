@@ -37,7 +37,7 @@
 
 
                             <div class="opening-hours">
-                                <div class="text-small opening-hours-title">Opening Hours</div>
+                                {% if block.settings.show_open_hour %}<div class="text-small opening-hours-title">Opening Hours</div>{% endif %}
                                  <div class="opening-hours-list">
                                  {{ block.settings.opening_hours }}
                                  </div>
@@ -99,6 +99,11 @@
                            "type": "text",
                            "id": "phone",
                            "label":"Phone"
+                     },
+                    {
+                           "type": "checkbox",
+                           "id": "show_open_hour",
+                           "label":"Show open hour text"
                      },
                      {
                             "type": "richtext",
