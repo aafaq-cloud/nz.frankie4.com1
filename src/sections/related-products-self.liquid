@@ -59,6 +59,7 @@ such as 'featured' or 'all'.
                     {% endif %}
 
                     {% assign do_not_recommend = false %}
+                    {% assign existing_product = false %}
 
                     {% for tag in related_product.tags %}
                         {% if tag contains 'do_not_recommend' %}
@@ -66,7 +67,15 @@ such as 'featured' or 'all'.
                         {% endif %}
                     {% endfor %}
 
-                    {% if do_not_recommend == false %}
+                    {% assign related_product_name = related_product.title | split: ' ' | first %}
+                    {% for item in cart.items %}
+                        {% assign item_name = item.title | split: ' ' | first %}
+                        {% if item_name == related_product_name %}
+                            {% assign existing_product = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if do_not_recommend == false and existing_product == false %}
                         <div class="cell small-6 large-3">
                         {% render 'product-tile', product: related_product %}
                         </div>
