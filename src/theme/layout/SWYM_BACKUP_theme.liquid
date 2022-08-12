@@ -1,0 +1,143 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="google-site-verification" content="eP6yJoI5vi_evs4jZ-uRX6Cd0I8T40RNP02-X1VjOlA" />
+
+  <!--[CODE BELOW FOR REMOVING 'FSS' from search engines]><!-->
+  {% if handle contains 'fss-offer' %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+
+  {% assign cdn_path_basis = '?' | file_url %}
+  {% assign no_image = 'no-image.png' | asset_url %}
+  {%- assign cdn_base = cdn_path_basis | split: '?' | first -%}
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }},
+      cdnBase: {{ cdn_base | json }},
+      noImageUrl: {{ no_image | json }},
+      cart: {
+          clickAndCollect: {
+              show: {{ settings.click_and_collect_enable | json }},
+              title: {{ settings.click_and_collect_title | | json}},
+              content: {{ settings.click_and_collect_content | | json}},
+              page: {{ settings.click_and_collect_page | | json}}
+          }
+
+      }
+    };
+  </script>
+
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]>
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+  {{ content_for_header }}
+
+  {%- include 'bold-common' -%}
+
+  {% include 'header-includes' %}
+
+  
+  {% include 'bc-sf-filter-style' %}
+
+  <!-- Global site tag (gtag.js) - Google Ads: 816958429 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-816958429"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-141128031-1');
+  </script>
+
+
+  {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+  {%- assign time_now = 'now' | date: '%s' %}
+  {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+  {%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+  {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+    {{'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-M3J2K9K');</script>
+  <!-- End Google Tag Manager -->
+
+  {% render 'shogun-head' %}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} grid-y{% unless settings.promo_content == blank %} has-promo-strip{% endunless %}">
+    {% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
+    {% unless the_snippet_content contains 'Liquid error' %}
+        {{ the_snippet_content }}
+    {% endunless %}
+  <a class="in-page-link visually-hidden skip-link" href="#main">{{ 'general.accessibility.skip_to_content' | t }}</a>
+  {% section 'header' %}
+
+  <main role="main" class="flex-child-auto" id="main">
+    {% include 'feature-strip' %}
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+    <script src="//cdn.codeblackbelt.com/js/modules/cool-image-magnifier/main.min.js?shop=frankie4.myshopify.com"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {% include 'script-tags', layout: 'theme' %}
+  {% include 'shopify-wishlist' %}
+  {% include 'currencies' %}
+  {% include 'back-in-stock-helper' %}
+  {% include 'bc-sf-filter' %}
+</body>
+</html>

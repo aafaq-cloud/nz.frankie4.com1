@@ -1,0 +1,20 @@
+// Import Foundation
+@import "~foundation-sites/scss/foundation";
+
+/// include all modules of foundation
+@include foundation-xy-grid-classes;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;
+//@include foundation-reveal;
+
+// Remove the y margins from a grid
+.grid-offset-padding-y {
+  @each $breakpoint, $grid-margin-gutter in $grid-margin-gutters {
+    @include -zf-each-breakpoint() {
+      @if $breakpoint == $-zf-size {
+        margin-top: calc(#{$grid-margin-gutter} / 2 * -1);
+        margin-bottom: calc(#{$grid-margin-gutter} / 2 * -1);
+      }
+    }
+  }
+}

@@ -1,10 +1,5 @@
 {
-  "extends": [
-    "airbnb-base",
-    "plugin:shopify/esnext",
-    "plugin:shopify/jquery",
-    "prettier"
-  ],
+  "extends": ["airbnb-base", "prettier"],
   "plugins": ["html", "prettier"],
   "globals": {
     "Shopify": true,

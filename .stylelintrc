@@ -1,7 +1,6 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-shopify",
     "stylelint-config-prettier"
   ],
   "plugins": [

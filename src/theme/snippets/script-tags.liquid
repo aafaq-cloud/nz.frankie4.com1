@@ -1,0 +1,46 @@
+
+{%- if layout == 'checkout' -%}
+<script type="text/javascript" src="{{ 'layout.checkout.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'layout.checkout.js' | asset_url }}" as="script">
+{%- endif -%} {%- if layout == 'gift_card' -%}
+<script type="text/javascript" src="{{ 'layout.gift_card.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'layout.gift_card.js' | asset_url }}" as="script">
+{%- endif -%} {%- if layout == 'password' -%}
+<script type="text/javascript" src="{{ 'layout.password.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'layout.password.js' | asset_url }}" as="script">
+{%- endif -%} {%- if layout == 'theme' -%}
+<script type="text/javascript" src="{{ 'vendors@layout.theme.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'vendors@layout.theme.js' | asset_url }}" as="script">
+{%- endif -%} {%- if layout == 'theme' -%}
+<script type="text/javascript" src="{{ 'layout.theme.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'layout.theme.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'gift_card' -%}
+<script type="text/javascript" src="{{ 'template.gift_card.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.gift_card.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'index' -%}
+<script type="text/javascript" src="{{ 'template.index.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.index.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'password' -%}
+<script type="text/javascript" src="{{ 'template.password.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.password.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'product' -%}
+<script type="text/javascript" src="{{ 'template.product.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.product.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'addresses' -%}
+<script type="text/javascript" src="{{ 'template.addresses.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.addresses.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template.name == 'login' -%}
+<script type="text/javascript" src="{{ 'template.login.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.login.js' | asset_url }}" as="script">
+{%- endif -%}

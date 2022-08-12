@@ -1,0 +1,24 @@
+{% include 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% section 'breadcrumbs' %}
+
+{% section 'product-alternate' %}
+
+{% for collection in product.collections %}    
+  {% if collection.handle == 'sale' %}       
+    <script>        
+      var _BISConfig = _BISConfig || {}; 
+      _BISConfig.button = { visible: false };       
+    </script>
+   {% endif %} 
+{% endfor %}
+
+{% section 'related-products' %}
+
+{% section 'product-reviews' %}
+
+{% section 'form-subscribe' %}
+
+
+{{product.metafields.shogun.below}}
+

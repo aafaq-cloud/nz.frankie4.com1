@@ -1,0 +1,43 @@
+{% assign sale = false %}
+{% assign new = false %}
+{% assign restocked = false %}
+{% assign last_sizes = false %}
+
+{% if product.compare_at_price_max > product.price %}
+    {% assign sale = false %}
+{% endif %}
+
+{% for tag in product.tags %}
+    {% if tag == 'new'  %}
+        {% assign new = true %}
+    {% elsif tag == 'restocked' %}
+        {% assign restocked = true %}
+    {% elsif tag == 'last_sizes' %}
+        {% assign last_sizes = true %}
+    {% endif %}
+{% endfor %}
+
+{% if sale or new or restocked or last_sizes %}
+    <div class="product-stickers">
+        {% if sale %}
+            <div class="product-sticker product-sticker__sale">
+                <strong class="text-small">Sale</strong>
+            </div>
+        {% endif %}
+        {% if new %}
+            <div class="product-sticker product-sticker__new">
+                <strong class="text-small">New</strong>
+            </div>
+        {% endif %}
+        {% if restocked %}
+            <div class="product-sticker product-sticker__restocked">
+                <strong class="text-small">Restocked</strong>
+            </div>
+        {% endif %}
+        {% if last_sizes %}
+            <div class="product-sticker product-sticker__last-sizes">
+                <strong class="text-small">Last Sizes</strong>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

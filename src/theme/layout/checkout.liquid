@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {% include 'social-meta-tags' %}
+    {{ content_for_header }}
+    {% include 'css-variables' %}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+    {% include 'style-tags', layout: 'checkout' %}
+    {%- include 'bold-common' -%}
+    
+
+    <script>(function(d){var e=d.createElement('script');e.src='https://td.yieldify.com/yieldify/code.js?w_uuid=12aa557f-a238-44d8-ae27-97296a26782c&k=1&loca='+window.location.href;e.async=true;d.getElementsByTagName('head')[0].appendChild(e);}(document));</script>
+
+  {% render 'shogun-head' %}
+</head>
+<body>
+{{ skip_to_content_link }}
+
+
+<header class="checkout-header">
+    <div class="grid-container">
+        {{ content_for_logo }}
+    </div>
+</header>
+<div class="grid-container w-100">
+{{ breadcrumb }}
+</div>
+<div class="grid-container">
+    {{ alternative_payment_methods }}
+</div>
+
+<div class="order-section grid-container">
+    <div class="grid-x grid-margin-x grid-margin-y align-top">
+        <div class="column-order-summary sidebar cell small-12 large-shrink">
+
+            {{ order_summary_toggle }}
+
+            <div class="bag-status show-for-large">
+                {% assign item_count = checkout.line_items.size %}
+
+                {% if item_count == 1 %}
+                    <strong>{{ item_count }} item</strong>
+                {% else %}
+                    <strong>{{ item_count }} items</strong>
+                {% endif %}
+                in <br> your {{ 'cart.general.title' | t }}
+            </div>
+
+            {{ content_for_order_summary }}
+
+            <div class="show-for-large">
+                {% include 'cart-message' %}
+            </div>
+
+        </div>
+        <div role="main" class="column-layout main cell small-12 large-auto">
+            {{ content_for_layout }}
+        </div>
+    </div>
+
+    {{ tracking_code }}
+
+    {% include 'script-tags', layout: 'checkout' %}
+  
+
+
+    {% if request.host == 'us.frankie4.com' or request.host == 'frankie4-united-states-store.myshopify.com' %}
+        <!-- US -->
+        <script type="text/javascript" src="https://dnuaqhs941n75.cloudfront.net/files/shopify/js/checkout_marketing_subscription_v2.js?ver=1619574145"></script>
+        <script>
+        smsbump_checkout_widget.init({
+            has_box: 1,
+            has_title: 1, 
+            checkbox_title: "Sign up for SMS updates",
+            checkbox_label: "Be the first to know about our latest styles to drop and sales.",
+            consent_message : "By checking this box I consent to receive recurring automated marketing by text message through an automatic telephone dialing system. Consent is not a condition to purchase. Message and Data rate apply. Opt-Out by texting STOP.",
+            privacy_policy_text: "View Privacy Policy",
+            privacy_policy_link: "https://us.frankie4.com/pages/terms-privacy-policy-us", 
+        });
+        </script>
+    {% elsif request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}
+        <!-- NZ -->
+        <script type="text/javascript" src="https://dnuaqhs941n75.cloudfront.net/files/shopify/js/checkout_marketing_subscription_v2.js?ver=1619562848"></script>
+        <script>
+        smsbump_checkout_widget.init({
+            has_box: 1,
+            has_title: 1, 
+            checkbox_title: "Sign up for SMS updates",
+            checkbox_label: "Be the first to know about our latest styles to drop and sales.",
+            consent_message : "By checking this box I consent to receive recurring automated marketing by text message through an automatic telephone dialing system. Consent is not a condition to purchase. Message and Data rate apply. Opt-Out by texting STOP.",
+            privacy_policy_text: "View Privacy Policy",
+            privacy_policy_link: "https://nz.frankie4.com/pages/terms-privacy-policy-nz", 
+        });
+        </script>
+    {% else %}
+        <!-- AU -->
+        <script type="text/javascript" src="https://dnuaqhs941n75.cloudfront.net/files/shopify/js/checkout_marketing_subscription_v2.js?ver=1619574772"></script>
+        <script>
+        smsbump_checkout_widget.init({
+            has_box: 1,
+            has_title: 1, 
+            checkbox_title: "Sign up for SMS updates",
+            checkbox_label: "Be the first to know about our latest styles to drop and sales.",
+            consent_message : "By checking the SMS updates signup box I consent to receive recurring automated marketing by text message through an automatic telephone dialing system. Consent is not a condition to purchase. Message and Data rate apply. Opt-Out by texting STOP.",
+            privacy_policy_text: "View Privacy Policy",
+            privacy_policy_link: "https://frankie4.com/pages/terms-privacy-policy", 
+        });
+        </script>
+    {% endif %}
+    <script>
+        (function($) {
+            window.PhoneNumberInputFormatter=function(){return false;};
+            $(document).on('page:load page:change', function() {
+            if (Shopify.Checkout.step === 'contact_information') {
+
+                var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])'),
+                    phoneFormatValidated = false;
+
+                // Remove automatic formatting triggers 
+                $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
+
+                function phoneNumberValidation() {
+                phoneFormatValidated = false;
+
+                var phoneFieldVal = $phoneField.val();
+
+                // Strip out any non-numeric characters
+                var formattedPhoneValue = phoneFieldVal.replace(/[^0-9+()-]/g, '');
+                $phoneField.val(formattedPhoneValue);
+
+                phoneFormatValidated = true;
+                }
+
+                // Run validator if there is a previously cached phone number
+                if ($phoneField.val() != "") { phoneNumberValidation() };
+
+                // Run validator when the user has switched focus from the phone field
+                $phoneField.on('blur', phoneNumberValidation);
+
+                // Run the function when the continue button is clicked or the enter key is pressed
+                $('[data-step] form [type="submit"]').on('click', function(e) {
+                e.preventDefault();
+                phoneNumberValidation();
+                if (phoneFormatValidated) {
+                    $('[data-step] form').trigger('submit');
+                }
+                })
+
+                $('[data-step] form').on('keypress', function(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    $('[data-step] form [type="submit"]').trigger('click');
+                }
+                });
+            }
+            });
+        })(Checkout.$);
+    </script>
+</body>
+</html>
+

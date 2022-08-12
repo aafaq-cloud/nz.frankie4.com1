@@ -1,0 +1,392 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Lambify",
+    "theme_version": "1.0.0",
+    "theme_author": "Lamb Agency",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/starter-theme",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/starter-theme\/issues",
+    "theme_packaged_with": "@shopify\/slate-tools@1.0.0-beta.6"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary",
+        "default": "#343840",
+        "info": "Buttons and special ornaments"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#e1cbcd",
+        "info": "Alternative accents"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text",
+        "default": "#1a1b1c"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_text",
+        "label": "Secondary Text",
+        "default": "#68727d"
+      },
+      {
+        "type": "color",
+        "id": "color_main_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Promo Strip",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "promo_content",
+        "label": "Content"
+      },
+      {
+        "type": "richtext",
+        "id": "promo_content2",
+        "label": "Content2"
+      },
+      {
+        "type": "richtext",
+        "id": "promo_content3",
+        "label": "Content3"
+      }
+    ]
+  },
+  {
+    "name": "Feature Strip",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_feature_strip",
+        "label": "Display Feature Strip"
+      },
+      {
+        "type": "header",
+        "content": "Feature Box 1"
+      },
+      {
+        "type": "textarea",
+        "id": "feature_strip_text_1",
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_1",
+        "label": "Background Colour",
+        "default": "#e4eaed"
+      },
+      {
+        "type": "header",
+        "content": "Feature Box 2"
+      },
+      {
+        "type": "textarea",
+        "id": "feature_strip_text_2",
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_2",
+        "label": "Background Colour",
+        "default": "#e4eaed"
+      },
+      {
+        "type": "header",
+        "content": "Feature Box 3"
+      },
+      {
+        "type": "textarea",
+        "id": "feature_strip_text_3",
+        "label": "Content"
+      },
+      {
+        "type": "color",
+        "id": "feature_strip_color_3",
+        "label": "Background Colour",
+        "default": "#e4eaed"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart Notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cart Message"
+      },
+      {
+        "type": "text",
+        "id": "cart_message",
+        "label": "Message",
+        "default": "Fast delivery. Fully Tracked"
+      },
+      {
+        "type": "header",
+        "content": "Cart Shipping Info"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_shipping_info",
+        "label": "Shipping Info"
+      },
+      {
+        "type": "header",
+        "content": "Cart Promos"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_1",
+        "label": "Content 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_2",
+        "label": "Content 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_feature_strip_image_3",
+        "label": "Image 3"
+      },
+      {
+        "type": "richtext",
+        "id": "cart_feature_strip_text_3",
+        "label": "Content 3"
+      },
+      {
+        "type": "header",
+        "content": "Click and Collect"
+      },
+      {
+        "type": "checkbox",
+        "id": "click_and_collect_enable",
+        "label": "Enable Click and Collect",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_title",
+        "label": "Click and Collect Title",
+        "default": "Available for Click and Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_and_collect_content",
+        "label": "Click and Collect Content",
+        "default": "Order online by 5pm today and collect in-store from 2pm tomorrow."
+      },
+      {
+        "type": "url",
+        "id": "click_and_collect_page",
+        "label": "Nearest Store Link"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "hreflang",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_multi_store",
+        "label": "Enable Multi Store",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "hreflang",
+        "label": "hreflang Tags",
+        "info": "a new line, comma seperated list."
+      },
+      {
+        "type": "header",
+        "content": "Example:"
+      },
+      {
+        "type": "paragraph",
+        "content": "en-au,https:\/\/example.com.au"
+      },
+      {
+        "type": "paragraph",
+        "content": "en-us,https:\/\/example.com"
+      },
+      {
+        "type": "paragraph",
+        "content": "x-default,https:\/\/example.com"
+      },
+      {
+        "type": "paragraph",
+        "content": "Do not include \/ on the end"
+      }
+    ]
+  },
+  {
+    "name": "Currency",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting]({{ site.url }}\/manual\/using-themes\/change-the-layout\/help-script-find-money-formats)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Enable currency conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency ($10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency ($10.00 AUD)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "INR GBP CAD USD AUD EUR JPY",
+        "info": "Use the country's ISO [currency code](http:\/\/www.xe.com\/iso4217.php). Separate your currency codes with a space."
+      },
+      {
+        "type": "text",
+        "id": "default_currency",
+        "label": "Default currency",
+        "default": "USD"
+      }
+    ]
+  }
+]

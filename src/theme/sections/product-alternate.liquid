@@ -1,0 +1,558 @@
+{% if template contains 'product.quickview' %}
+    {%- assign is_quickview = true -%}
+    {%- assign label_prefix = 'quickview-' -%}
+{% endif %}
+
+{% assign current_variant_id = product.selected_or_first_available_variant.id %}
+
+{% assign related_products = '' %}
+{% for unclean_tag in product.tags %}
+    {% if unclean_tag contains 'variant_' %}
+        {% assign tag = unclean_tag | remove: 'variant_' %}
+        {% if related_products != blank %}
+            {% assign related_products = related_products | append: ',' %}
+        {% endif %}
+        {% assign related_products = related_products | append: tag %}
+    {% endif %}
+{% endfor %}
+{% assign related_products = related_products | split: ',' %}
+
+{% assign video = product.metafields.frankie4.video %}
+{% assign slide_count = product.images | size %}
+{% if video != blank %}
+    {% assign slide_count = slide_count | plus: 1 %}
+{% endif %}
+{% assign slide_index_limit = slide_count | minus: 1 %}
+
+<div data-autoload-class="ProductSection" class="section section-product{% if is_quickview %} is-quickview no-margin{% endif %}" itemscope itemtype="http://schema.org/Product">
+
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+    {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+    <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+    <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+    <meta itemprop="brand" content="{{ product.vendor }}">
+    <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+    <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+    {% unless is_quickview %}
+    <div class="grid-container">
+    {% endunless %}
+
+        <div class="grid-x grid-margin-y align-top">
+
+            <div class="product-details-mobile cell show-for-small-only">
+                <div class="grid-x grid-margin-x align-middle">
+                    <div class="cell auto">
+                        <h1 class="h3">{{ product.title }}</h1>
+                    </div>
+                    <div class="cell shrink">
+                        <h5 class="price-wrapper m-0 text-right color-secondary-text">
+                            <span class="price db" data-product-price>
+                              {{ current_variant.price | money }}
+                            </span>
+
+                            {% if product.compare_at_price_max > product.price %}
+                                <span class="show-for-sr" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                                <s class="price-compare{% if current_variant.compare_at_price <= current_variant.price %} hide{% endif %}" data-compare-price>
+                                    {% if current_variant.compare_at_price > current_variant.price %}
+                                        {{ current_variant.compare_at_price | money }}
+                                    {% endif %}
+                                </s>
+                            {% endif %}
+                        </h5>
+                    </div>
+                </div>
+
+            </div>
+
+            {% unless is_quickview %}
+                <div class="product-thumbnails cell show-for-large large-shrink">
+                    {% if product.images.size > 0 %}
+                        <div class="product-item-thumbnails">
+                            {% for image in product.images %}
+                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ forloop.index0 }}">
+                                    <img data-src="{{image.src | img_url: '160x160', crop: 'center'}}" class="lazyload product-item-thumbnail-image">
+                                </a>
+                            {% endfor %}
+                            {% if video != blank %}
+                                <a class="product-item-thumbnail" data-thumbnail data-image-index="{{ slide_index_limit }}">
+                                    <div class="video-wrapper">
+                                        {% include 'icon-play' %}
+                                        <video loop="" muted="" plays-inline="" playsinline>
+                                            <source src="{{ video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endunless %}
+
+            <div class="product-images cell small-12 {% unless is_quickview %}medium-7{% else %}medium-6{% endunless %} large-auto">
+
+                {% include 'product-stickers' with product:product limit:1 %}
+
+                <div class="glide">
+                    <div data-glide-el="track" class="glide__track">
+                        <div class="glide__slides">
+                            {% if product.images.size > 0 %}
+                                {% for image in product.images %}
+                                    <div class="glide__slide">
+                                        <img data-image data-image-index="{{ forloop.index0 }}" data-src="{{image.src | img_url: '1024x1024', crop: 'center'}}" class="lazyload product-item-image">
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% if video != blank %}
+                                <div class="glide__slide">
+                                    <div class="video-wrapper" data-image data-image-index="{{ slide_index_limit }}" >
+                                        <video autoplay="" loop="" muted="" plays-inline="" playsinline>
+                                            <source src="{{ video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        {% for i in (0..slide_index_limit) %}
+                            <button class="glide__bullet" data-glide-dir="={{ i }}"></button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-details cell {% unless is_quickview %}medium-5{% else %}medium-6{% endunless %}">
+
+                <div class="show-for-medium">
+                    {% include 'product-stickers' with product:product %}
+                </div>
+
+                {% if is_quickview %}
+                    <h3 class="hide-for-small-only">{{ product.title }}</h3>
+                {% else %}
+                    <h1 class="hide-for-small-only">{{ product.title }}</h1>
+                {% endif %}
+
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+                    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                    <form data-product-form action="/cart/add" method="post" enctype="multipart/form-data">
+
+                        <div class="price-wrapper" data-price-wrapper>
+
+                            <h4 class="price-wrapper">
+                                <span class="price color-secondary-text mr-10" data-product-price>
+                                  {{ current_variant.price | money }}
+                                </span>
+
+                                {% if product.compare_at_price_max > product.price %}
+                                    <span class="show-for-sr" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                                    <s class="price-compare color-secondary-text{% if current_variant.compare_at_price <= current_variant.price %} hide{% endif %}" data-compare-price>
+                                        {% if current_variant.compare_at_price > current_variant.price %}
+                                            {{ current_variant.compare_at_price | money }}
+                                        {% endif %}
+                                    </s>
+                                {% endif %}
+                            </h4>
+
+                            <div class="after-pay-info color-secondary-text text-small">
+                                <p>
+                                    Or 4 interest free payments of
+                                    <span class="after-pay-price" data-product-price data-product-price-divide="4">{{ current_variant.price | divided_by: 4 | money }}</span>
+                                    with {% include 'icon-afterpay' %}
+                                    <a class="icon-coloured afterpay-modal" target="_blank" href="#">learn more</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="yotpo bottomLine"
+                             data-appkey="9EWiF6APYT2SBbTCuabmaoDVjeXJQc1Hr7F9vog3"
+                             data-domain="{{shop.permanent_domain | escape }}"
+                             data-product-id="{{ product.id }}"
+                             data-product-models="{{ product.id }}"
+                             data-name="{{ product.title | escape }}"
+                             data-url="{{ shop.url }}{{ product.url }}"
+                             data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                             data-description="{{ product.description | escape }}"
+                             data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                        </div>
+
+
+                        <div class="variant-wrapper mt-40">
+
+                            {% if related_products != blank %}
+                                <div class="mb-20">
+                                    <label class="option-label">{{ 'products.product.related_products_select_label' | t }}</label>
+
+                                    <div class="related-products">
+                                        <a class="related-products__product current">
+                                            <img data-src="{{product | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
+                                        </a>
+                                        {% for related_product in related_products %}
+                                            {% assign related_product_object = all_products[related_product] %}
+                                            {% if is_quickview %}
+                                                <a class="related-products__product{% if related_product_object.available == false %} unavailable{% endif %}" {% if related_product_object.available %}data-product-quickview data-product-url="{{ related_product_object.url }}"{% endif %}
+                                                   title="{{ related_product_object.title }}{% if related_product_object.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}">
+                                            {% else %}
+                                                <a class="related-products__product{% if related_product_object.available == false %} unavailable{% endif %}" {% if related_product_object.available %}href="{{ related_product_object.url }}"{% endif %}
+                                                   title="{{ related_product_object.title }}{% if related_product_object.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}">
+                                            {% endif %}
+                                                <img data-src="{{related_product_object | img_url: '120x120', crop: 'center'}}" class="lazyload related-products__product-image">
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% unless product.has_only_default_variant %}
+
+                                {% for option in product.options_with_values %}
+
+                                        <div class="mb-20" {% if option.values.size < 2 %} style="display: none;" {%  endif %}>
+
+                                            <label class="option-label hide">{{ option.name }}</label>
+
+                                            {% if option.name == 'Size' %}
+
+                                                <div class="radio-select">
+
+                                                    {%- assign selector_name = forloop.index0 -%}
+
+                                                    {% for value in option.values %}
+
+                                                        {%- assign input_id = 'variantselector-' | append: selector_name | append: forloop.index0 -%}
+
+                                                        <input id="{{ label_prefix }}{{ input_id }}"
+                                                               data-single-option-selector
+                                                               data-index="{{ option.position }}"
+                                                               name="variantselector-{{ selector_name }}[]"
+                                                               type="radio" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                                                        <label title="{{ value }}"
+                                                               class="{{ option.name | downcase  }}-{{ value | downcase }}" for="{{ label_prefix }}{{ input_id }}">
+                                                            <span>{{ value | escape }}</span>
+                                                        </label>
+                                                    {% endfor %}
+
+                                                </div>
+
+                                            {% else %}
+
+                                                <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
+
+                                                    <select id="SingleOptionSelector-{{ forloop.index0 }}"
+                                                            data-single-option-selector
+                                                            data-index="{{ option.position }}"
+                                                            {% if option.values.size < 2 %}disabled{% endif %}>
+                                                        {% for value in option.values %}
+                                                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                                                                {{ value }}
+                                                            </option>
+                                                        {% endfor %}
+                                                    </select>
+
+                                                    {% include 'icon-chevron-down-bold' %}
+
+                                                </div>
+
+                                            {% endif %}
+                                        </div>
+                                {% endfor %}
+                            {% endunless %}
+
+                            <select name="id" class="variant-id" data-product-id>
+                                {% for variant in product.variants %}
+                                    <option {% if variant == current_variant %}selected="selected"{% endif %} value="{{ variant.id }}">
+                                        {{ variant.title }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+
+                                  {% unless is_quickview %}
+                                {% if section.settings.display_size_guide %}
+                                    <a class="icon-link mb-20" data-open="size-guide-modal">
+                                        {% include 'icon-size-guide' %}
+                                        Size Guide
+                                    </a>
+
+                                    <div class="reveal modal-size-guide" id="size-guide-modal" data-reveal>
+                                        <a class="close-button" data-close aria-label="Close Quick View">
+                                            <svg aria-hidden="true" viewBox="0 0 100 100" class="icon icon-cross">
+                                                <path fill="#010101" d="M61.88 50l35.65-35.65A8.401 8.401 0 0 0 85.65 2.47L50
+                                                        38.12 14.35 2.46A8.401 8.401 0 0 0 2.47 14.34L38.12 50 2.46 85.65a8.401 8.401
+                                                        0 0 0 11.88 11.88L50 61.88l35.65 35.65a8.401 8.401 0 0 0 11.88-11.88L61.88 50z"/>
+                                            </svg>
+                                        </a>
+                                        <div class="modal-content">
+                                            <img src="{{section.settings.size_guide_image | img_url: '800x'}}" srcset=" {{section.settings.size_guide_image | img_url: '800x'}} 800w, {{section.settings.size_guide_image | img_url: '700x700'}} 700w"  class="lazyload">
+
+                                            <div class="modal-content-text">
+                                                {% if section.settings.size_guide_content %}
+                                                    <div class="rte">
+                                                        {{ section.settings.size_guide_content }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if section.settings.size_guide_button_text %}
+                                                    <div class="text-right">
+                                                        <a class="arrow-link color-secondary-text mt-20" href="{{ section.settings.size_guide_button_link }}">
+                                                            {{ section.settings.size_guide_button_text }}
+                                                            {% include 'icon-chevron-right' %}
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                <a class="icon-link ml-10 mb-20" id="BIS_trigger">
+                                    {% include 'icon-cant-find' %}
+                                    Can't find your size?
+                                </a>
+                                 
+                                  
+                            {% endunless %}
+                                  {% for collection in product.collections %}    
+  {% if collection.handle == 'sale' %}       
+    <script>        
+      var _BISConfig = _BISConfig || {}; 
+      _BISConfig.button = { visible: false };       
+    </script>    
+   {% endif %} 
+{% endfor %}
+
+                            <div class="grid-x grid-buttons">
+
+                                <div class="cell">
+
+                                    {% if section.settings.showquantity %}
+                                        <label class="option-label hide" for="{{ label_prefix }}Quantity">{{ 'products.product.quantity' | t }}</label>
+
+                                        <div class="component-select select-wrap" data-autoload-class="ComponentSelect">
+                                            <select id="{{ label_prefix }}Quantity" name="quantity" data-quantity-selector>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+
+                                            {% include 'icon-chevron-down-bold' %}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+
+                                <div class="cell">
+
+                                    <button type="submit"
+                                            class="add-to-cart button button-primary button-expanded has-icon-absolute"
+                                            name="add"
+                                            data-add-to-cart
+                                            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                                        <span data-add-to-cart-text>
+                                            {% if current_variant.available %}
+                                                {{ 'products.product.add_to_cart' | t }}
+                                            {% else %}
+                                                {{ 'products.product.sold_out' | t }}
+                                            {% endif %}
+                                        </span>
+                                        <i data-add-to-cart-icon>
+                                            {% include 'icon-checkmark' %}
+                                        </i>
+                                    </button>
+
+                                    <span class="error-message mt-10" data-add-to-cart-error></span>
+                                </div>
+
+                            </div>
+
+                            <div class="grid-x grid-buttons mt-20">
+
+                                <div class="cell">
+                                    <a class="add-to-wishlist button button-hollow button-expanded has-icon" data-shopify-wishlist-add data-shopify-wishlist-product-handle="{{ product.handle }}_variant_{{ current_variant.id }}">
+                                        <span data-shopify-wishlist-label data-shopify-wishlist-text-add="Add to Wishlist" data-shopify-wishlist-text-added="Added to Wishlist">Add to Wishlist</span>
+                                        <i>
+                                            {% include 'icon-heart' %}
+                                        </i>
+                                    </a>
+                                </div>
+                                <div class="cell">
+                                    {% include 'social-sharing', share_permalink: product.url %}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                {% unless is_quickview %}
+
+                    <div class="product-information mt-40">
+                        {% if product.description %}
+                            <div class="rte">
+                                {{ product.description }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_1 != blank %}
+                            <h6 class="mt-40">{{ section.settings.product_accordion_title_1 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_1 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_2 != blank %}
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_2 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_2 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_3 != blank %}
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_3 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_3 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_4 != blank %}
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_4 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_4 }}
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.product_accordion_title_5 != blank %}
+                            <h6 class="mt-30">{{ section.settings.product_accordion_title_5 }}</h6>
+                            <div class="rte">
+                                {{ section.settings.product_accordion_content_5 }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                {% endunless %}
+
+                {% unless product == empty %}
+                    <script type="application/json" data-product-json>
+                        {{ product | json }}
+                    </script>
+                {% endunless %}
+
+            </div>
+        </div>
+
+    {% unless is_quickview %}
+    </div>
+    {% endunless %}
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "id": "showquantity",
+        "type": "checkbox",
+        "label": "Display quantity selector",
+        "info": "If unchecked, Add To Cart is always 1 item",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Product Information"
+      },
+      {
+        "type": "text",
+        "id": "product_accordion_title_1",
+        "label": "Title 1"
+      },
+      {
+        "type": "richtext",
+        "id": "product_accordion_content_1",
+        "label": "Content 1"
+      },
+      {
+        "type": "text",
+        "id": "product_accordion_title_2",
+        "label": "Title 2"
+      },
+      {
+        "type": "richtext",
+        "id": "product_accordion_content_2",
+        "label": "Content 2"
+      },
+      {
+        "type": "text",
+        "id": "product_accordion_title_3",
+        "label": "Title 3"
+      },
+      {
+        "type": "richtext",
+        "id": "product_accordion_content_3",
+        "label": "Content 3"
+      },
+      {
+        "type": "text",
+        "id": "product_accordion_title_4",
+        "label": "Title 4"
+      },
+      {
+        "type": "richtext",
+        "id": "product_accordion_content_4",
+        "label": "Content 4"
+      },
+      {
+        "type": "text",
+        "id": "product_accordion_title_5",
+        "label": "Title 5"
+      },
+      {
+        "type": "richtext",
+        "id": "product_accordion_content_5",
+        "label": "Content 5"
+      },
+      {
+        "type": "header",
+        "content": "Size Guide"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_size_guide",
+        "label": "Display Size Guide"
+      },
+      {
+        "type": "image_picker",
+        "id": "size_guide_image",
+        "label": "Image"
+      },
+      {
+        "type": "richtext",
+        "id": "size_guide_content",
+        "label": "Content"
+      },
+      {
+        "type": "text",
+        "id": "size_guide_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "size_guide_button_link",
+        "label": "Button Link"
+      }
+    ]
+  }
+{% endschema %}

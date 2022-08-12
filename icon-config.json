@@ -1,0 +1,33 @@
+{
+  "input": "./src/interface/icons",
+  "output": "./dist/snippets",
+  "classify": [
+    {
+      "attribute": "fill",
+      "maps": [
+        {
+          "class": "icon-white",
+          "values": ["#fff", "#FFF", "#ffffff", "#FFFFFF", "rgb(255,255,255)"]
+        },
+        {
+          "class": "icon-empty",
+          "values": ["none"]
+        }
+      ]
+    }
+  ],
+  "svgo": {
+    "plugins": [
+      {
+        "removeAttrs": {
+          "attrs": "(stroke|id|enable-background|space)"
+        }
+      },
+      { "removeViewBox": false },
+      { "removeStyleElement": true },
+      { "removeScriptElement": true }
+    ]
+  },
+  "cleanPrefixes": [],
+  "outputExtension": ".liquid"
+}

@@ -1,0 +1,88 @@
+<div data-autoload-class="CartSection" class="section section-cart no-margin-top">
+
+    <div class="grid-container">
+
+        <div class="title-block medium-text-left">
+            <h2 class="mb-30">{% include 'page-title' %}</h2>
+        </div>
+
+        {% if cart.item_count > 0 %}
+
+        <form action="/cart" method="post" novalidate>
+
+          <div class="grid-y cart-grid" data-cart-grid is="cart-grid">
+
+              <div class="grid-x cart-headings hide-for-small-only">
+                  <div class="cell auto product-heading">
+                      Product
+                  </div>
+                  <div class="cell auto">
+                      Price
+                  </div>
+                  <div class="cell auto">
+                      Quantity
+                  </div>
+                  <div class="cell auto">
+                      Total
+                  </div>
+              </div>
+
+            {% for item in cart.items %}
+
+              {% include 'cart-product' %}
+
+            {% endfor %}
+          </div>
+
+          <div class="cart-totals">
+            <div class="price-row total grid-x align-right text-right">
+              <div>
+                <p class="cart-total-price">{{ cart.total_price | money }}</p>
+                <p class="shipping-note">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+              </div>
+            </div>
+          </div>
+          {% if settings.cart_upsell_enable %}
+            {% include 'upsell' %}
+          {% endif %}
+
+
+          <div class="grid-x align-bottom {% if settings.cart_notes_enable %}align-justify{% else %}align-right{% endif %}">
+            {% if settings.cart_notes_enable %}
+            <div class="special-note">
+              <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+              <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            </div>
+            {% endif %}
+
+            <div class="align-right small-stacked grid-x grid-margin-x">
+              <button class="cell shrink button button-hollow" type="submit" name="update" value="{{ 'cart.general.update' | t }}" id="update-cart-button">{{ 'cart.general.update' | t }}</button>
+              <button class="cell shrink button button-primary" type="submit" name="checkout">{{ 'cart.general.checkout' | t }}</button>
+            </div>
+          </div>
+        </form>
+
+        {% else %}
+
+            {% comment %}
+            Cart empty state
+            {% endcomment %}
+
+            <div class="message-box rte supports-cookies">
+                <p>{{ 'cart.general.empty' | t }}</p>
+                <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+            </div>
+
+            {% comment %}
+            Cart no cookies state
+            ---------------------
+            Browser cookies are required to use the cart. If cookies aren't enabled in the
+            browser a message is displayed prompting the user to enable them.
+            {% endcomment %}
+            <div class="message-box rte supports-no-cookies">
+                <p>{{ 'cart.general.cookies_required' | t }}</p>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
