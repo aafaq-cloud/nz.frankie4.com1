@@ -332,8 +332,8 @@
                             <div class="cell shrink">
                               {% comment %}Exclude link if the product is tagged bis-hidden{% endcomment %}
                               {% unless product.tags contains 'bis-hidden' %}
-                                <a class="icon-link" id="BIS_trigger">
-                                  Size not listed? Notify me when this product is available.
+                                <a class="icon-link" id="BIS_trigger" style="text-align: right;">
+                                  Size not listed? <br>Notify me when this product is available.
                                 </a>
                               {% endunless %}
                             </div>
