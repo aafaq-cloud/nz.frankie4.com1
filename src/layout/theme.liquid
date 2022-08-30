@@ -1,12 +1,10 @@
-{%- comment %}<locksmith:5b98>{% endcomment -%}
-  {%- include 'locksmith' -%}
-{%- comment %}</locksmith:5b98>{% endcomment -%}
+{% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{%- include 'locksmith' -%}{%endif%}
 
 <!doctype html>
 <!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
-  {{ locksmith_initializations }}
+  {% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{{ locksmith_initializations }}{%endif%}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -202,7 +200,6 @@
 
   {% section 'footer' %}
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   {% include 'script-tags', layout: 'theme' %}
