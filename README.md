@@ -4,10 +4,29 @@ Lambify is a Shopify theme and build-tooling system designed to enable an effici
 
 ## Structure
 
-Lambify v2 separates compiled code from template code. Under the `src` folder, there are 5 subfolders:
+Lambify v2 separates compiled code from template code. Under the `src` folder, there are 2 subfolders:
 
 - **Theme** - this is where all the Shopify template files live. They will be copied across to the site with no further processing. You can put pre-compiled assets in the assets folder, and icons will be made available as snippets - for example, you could use `{% render 'icon-chevron' %}` to inline that icon.
 - **Interface** - This houses compile-able assets (scripts, styles and icons). The Autoloader here can be used to load sections, snippets and components on-demand.
+
+
+## Installation & Setup
+Usage of this system requires Shopify Themekit to be installed and configured.
+
+1. [Get a Theme Kit password](https://shopify.dev/themes/tools/theme-kit/getting-started#step-2-get-a-theme-kit-password) - this will be used during configuration.
+
+2. From the base directory, run `npm install` to install dependencies (including Theme Kit)
+3. Create a duplicate of  `config-example.yaml`, and rename it to `config.yaml`
+4. Fill in the config fields:
+
+    a) password - Theme Kit password.
+    
+    b) theme_id - The ID of the theme to connect to. To view the theme ID, select Actions on the theme you want modified, and then Edit code.
+    Once you're within the code editor, the theme's ID number will be indicated in your browser's URL.
+    
+    c) store - the shopify store URL. Ensure the URL does not include the Protocol (http/https)
+    
+5. Run `npm start` to establish connection and ensure that configuration has been set correctly.
 
 ## Commands
 
