@@ -237,7 +237,7 @@ function buildSwatches(data) {
 
     var html = '';
     console.log(data.product_type);
-    if (data.product_type != 'GIFT CARD' || data.product_type != 'BUNDLE') {
+    if (data.product_type != 'GIFT CARD' && data.product_type != 'BUNDLE') {
         html += '<div class="product-tile__swatches">';
 
         if (data.tags) {

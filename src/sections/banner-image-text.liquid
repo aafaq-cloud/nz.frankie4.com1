@@ -13,6 +13,7 @@
                          {{section.settings.mobile_image | img_url: '800x'}} 800w" 
             alt="{{section.settings.title}}" class="lazyload"></a>
 
+    {% if section.settings.option == '1' %}
     <div class="banner-content-wrapper">
         <div class="grid-container text-center">
             <h1 class="h1-v2 m-0 show-for-medium">{{section.settings.title}}</h1>
@@ -25,6 +26,26 @@
             {% endif %}
         </div>
     </div>
+    {% elsif section.settings.option == '2' %}
+    <div class="banner-content-wrapper">
+        <div class="grid-container text-left" style="color: black; width: 80vw">
+            <h1 class="h1-v2 m-0 show-for-medium" style="margin-top: 300px">{{section.settings.title}}</h1>
+            <a href="{{section.settings.link}}" class="show-for-small-only" style="text-decoration: none"><h1 class="h3-v2 m-0 lsi-1" style="margin-left: -180px; margin-top: 100px;">{{section.settings.title}}</h1></a>
+            {% if section.settings.subtitle != blank %}
+                <h4 class="banner-subtitle mt-10 mb-0 fwi-400">{{section.settings.subtitle}}</h4>
+            {% endif %}
+            {% if section.settings.button-text != blank %}
+                <a class="button button-underline button-underline2 mti-30 show-for-medium" href="{{section.settings.link}}">{{section.settings.button-text}}</a>
+                <style>
+                    .button-underline2 {
+                        color: black;
+                        border-bottom: 2px solid #000;
+                    }
+                </style>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
 
 </div>
 
@@ -62,6 +83,12 @@
                 "id": "link",
                 "type": "url",
                 "label": "Button Link"
+            },
+            {
+                "id": "option",
+                "type": "text",
+                "label": "Style Option",
+                "default": "1"
             }
         ],
         "presets": [

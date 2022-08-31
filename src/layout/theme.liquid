@@ -1,10 +1,10 @@
-{% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{%- include 'locksmith' -%}{%endif%}
+{% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{%- include 'locksmith' -%}{% endunless %}
 
 <!doctype html>
 <!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
-  {% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{{ locksmith_initializations }}{%endif%}
+  {% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{{ locksmith_initializations }}{%endunless%}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -110,6 +110,9 @@
   {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
     {{'yotpo-full-css.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
+  <!-- Begin: Northbeam pixel -->
+  <script async type="text/javascript" src="//j.northbeam.io/ota-sp/e230324b-77b4-4d3e-a95c-6b8d6ba39f90.js"></script>
+  <!-- End: Northbeam pixel -->
 
   <style>
     .bc-sf-search-suggestion-mobile-overlay {
