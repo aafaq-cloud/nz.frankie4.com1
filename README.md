@@ -15,7 +15,7 @@ Usage of this system requires Shopify Themekit to be installed and configured.
 
 1. [Get a Theme Kit password](https://shopify.dev/themes/tools/theme-kit/getting-started#step-2-get-a-theme-kit-password) - this will be used during configuration.
 
-2. From the base directory, run `npm install` to install dependencies (including Theme Kit)
+2. From the base directory, run `npm install` to install dependencies (including Theme Kit's node component)
 3. Create a duplicate of  `config-example.yaml`, and rename it to `config.yaml`
 4. Fill in the config fields:
 
@@ -26,6 +26,10 @@ Usage of this system requires Shopify Themekit to be installed and configured.
     
     c) store - the shopify store URL. Ensure the URL does not include the Protocol (http/https)
     
+    d) directory - this field should be copied over from the example. **Field value must be set to `dist` for deployment to succeed.**
+
+    To see all possible configuration options, [refer to Shopify's official documentation](https://shopify.dev/themes/tools/theme-kit/configuration-reference).
+
 5. Run `npm start` to establish connection and ensure that configuration has been set correctly.
 
 ## Commands

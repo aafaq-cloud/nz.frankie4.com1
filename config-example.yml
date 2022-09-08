@@ -2,3 +2,4 @@ development:
   password: XXXXXXXXXXXXXXXXXXXX
   theme_id: "XXXXXXXXXXXXX"
   store: XXXXXXXXXXXXXXXXXX
+  directory: dist
