@@ -1,2 +1,4 @@
 settings_data.json
-templates/
+*.js.liquid
+*.css.liquid
+*.scss.liquid
