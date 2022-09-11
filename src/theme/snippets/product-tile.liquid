@@ -81,7 +81,7 @@
           {% assign related_products = related_products | split: ',' %}
 
 
-          {% unless product.type == 'GIFT CARD'%}
+          {% unless product.type == 'GIFT CARD' or product.type == 'BUNDLE' %}
           <div class="product-tile__swatches">
             {% assign colour = product.handle %}
             {% assign image = colour | append: '.png' %}
