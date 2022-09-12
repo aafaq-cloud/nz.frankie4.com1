@@ -3,8 +3,6 @@
     counter-reset: list-counter;
     display: inline-flex;
     @include flex-align(center);
-    margin: 30px 0 !important;
-    padding: 0 0 94px;
     height: 140px;
     width: 100%;
     min-height: 100px;
