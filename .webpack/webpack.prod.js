@@ -63,7 +63,7 @@ module.exports = {
   plugins: [
     ...util.plugins,
     ...util.prodSnippets,
-    new DropletPlugin(),
+    // new DropletPlugin(),
     new webpack.DefinePlugin({
       ...util.GLOBALS
     }),
