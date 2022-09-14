@@ -10,7 +10,7 @@ module.exports = {
   entry: util.entry,
   output: {
     filename: `${util.jsOutPath}/[name].js`,
-    chunkFilename: `${util.jsOutPath}/[name].bundle.js`,
+    // chunkFilename: `${util.jsOutPath}/[name].bundle.js`,
     path: util.outPath,
     publicPath: "https://localhost:8080/"
   },

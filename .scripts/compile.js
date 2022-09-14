@@ -15,8 +15,6 @@ module.exports = function compile(prod = true) {
         reject(err);
         return;
       }
-      // Delete theme.js since ThemeKit won't upload both the .js.liquid and .js files
-      fs.unlinkSync(path.resolve(`${process.cwd()}/dist/assets/theme.js`));
 
       console.log(":: ⚛️  Webpack compile complete");
       resolve(stats);

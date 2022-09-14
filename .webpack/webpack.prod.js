@@ -19,7 +19,6 @@ module.exports = {
   entry: util.entry,
   output: {
     filename: `[name].js`,
-    chunkFilename: "chunk.[name].js?[contenthash:5]",
     path: `${util.outPath}/${util.jsOutPath}`
   },
   module: {
@@ -52,24 +51,6 @@ module.exports = {
     ]
   },
   optimization: {
-    splitChunks: {
-      chunks: "async",
-      minSize: 15000,
-      maxSize: 0,
-      minChunks: 1,
-      automaticNameDelimiter: "@",
-      name: true,
-      cacheGroups: {
-        default: false,
-        style: {
-          name: "style",
-          test: /\.s?[ca]ss$/,
-          chunks: "all",
-          priority: 10,
-          enforce: true
-        }
-      }
-    },
     minimizer: [
       new Uglify({
         // extractComments: true,
@@ -87,8 +68,7 @@ module.exports = {
       ...util.GLOBALS
     }),
     new ExtractCSS({
-      filename: `style.[contenthash:6].min.css`,
-      chunkFilename: `style.[contenthash:6].min.css`
+      filename: `style.min.css`,
     }),
     new webpack.HashedModuleIdsPlugin()
   ],
