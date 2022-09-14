@@ -62,20 +62,27 @@
 
     </div>
 
-    <div class="grid-x grid-padding-x grid-margin-y align-center show-for-medium">
+    <div class="grid-x grid-padding-x grid-margin-y align-center">
       <div class="small-12 medium-12 large-12 cell">
 
         <div class="collection-description">
           {% assign SEO_heading = collection.metafields.collections.SEO_heading %}
           {% assign SEO_text = collection.metafields.collections.SEO_text %}
-          {% if SEO_text != '' %}
+          {% assign SEO_text_all = collection.metafields.collections.SEO_text_hidden %}
+          {% if SEO_text %}
             <div class="color-secondary-text text-left seo_div">
-              {% if SEO_heading != '' %}
+              {% if SEO_heading %}
                 <h5>{{SEO_heading}}</h5>
               {% endif %}
               <div class="seo_text">
                 {{SEO_text}}
               </div>
+              {% if SEO_text_all %}
+              <div id="toggle_btn" onclick="document.getElementById('more_text').style.display = 'block';document.getElementById('toggle_btn').style.display = 'none'">Read more...</div>
+              <div id="more_text" class="seo_text" style="display: none">
+                  {{SEO_text_all}}
+              </div>
+              {% endif %}
             </div>
           {% endif %}
         </div>

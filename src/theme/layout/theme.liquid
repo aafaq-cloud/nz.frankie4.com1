@@ -1,13 +1,21 @@
+{% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{%- include 'locksmith' -%}{% endunless %}
+
 <!doctype html>
 <!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
+  {% unless request.host == 'nz.frankie4.com' or request.host == 'frankie4-new-zealand-store.myshopify.com' %}{{ locksmith_initializations }}{%endunless%}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.color_accent }}">
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="google-site-verification" content="eP6yJoI5vi_evs4jZ-uRX6Cd0I8T40RNP02-X1VjOlA" />
+
+  <link rel="alternate" href="https://frankie4.com/" hreflang="en-au">
+  <link rel="alternate" href="https://us.frankie4.com/" hreflang="en-us">
+  <link rel="alternate" href="https://nz.frankie4.com/" hreflang="en-nz">
+  <link rel="alternate" href="https://frankie4.com/" hreflang="x-default">
 
   <!--[CODE BELOW FOR REMOVING 'FSS' from search engines]><!-->
   {% if handle contains 'fss-offer' %}
@@ -79,6 +87,8 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
   {% endif %}
 
+  <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"52013346", tm:"shpfy_ui"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
   {% if false %}{{ content_for_header }}{% endif %}
   {% render 'content-for-header' %}
   
@@ -97,6 +107,9 @@
   {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
     {{'yotpo-full-css.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
+  <!-- Begin: Northbeam pixel -->
+  <script async type="text/javascript" src="//j.northbeam.io/ota-sp/e230324b-77b4-4d3e-a95c-6b8d6ba39f90.js"></script>
+  <!-- End: Northbeam pixel -->
 
   <style>
     .bc-sf-search-suggestion-mobile-overlay {
@@ -189,10 +202,6 @@
 
   {% section 'footer' %}
 
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700,800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   {% include 'script-tags', layout: 'theme' %}

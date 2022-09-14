@@ -106,22 +106,22 @@
   
   .banner-title {
     font-weight: 500;
-    font-size: rem-calc(48);
+    font-size: rem-calc(38);
   
     @include breakpoint(580px) {
-      font-size: rem-calc(70);
+      font-size: rem-calc(50);
     }
   
     @include breakpoint(medium) {
-      font-size: rem-calc(80);
+      font-size: rem-calc(60);
     }
   
     @include breakpoint(large) {
-      font-size: rem-calc(90);
+      font-size: rem-calc(70);
     }
   
     @include breakpoint(xlarge) {
-      font-size: rem-calc(100);
+      font-size: rem-calc(80);
     }
   
   }
