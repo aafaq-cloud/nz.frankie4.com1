@@ -44,3 +44,4 @@ With the 2.0.0 release, Lambify now uses custom scripts to compile and upload fi
 ## Online Store 2.0
 Lambify uses json templates and is Online Store 2.0 compatible. Because data is tied to the json template, all files in the template folder are added to the deployment ignore. This is to keep data management out of the repository.
 New templates created will either need to be made on live or on a theme that will be deployed.
+# nz.frankie4.com
